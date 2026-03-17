@@ -1,0 +1,817 @@
+import { Product, Collection, Category, Review } from "./types";
+
+export const PRODUCTS: Product[] = [
+  {
+    id: "prod_001",
+    slug: "moonlit-guardian-bracelet",
+    name: "Moonlit Guardian Bracelet",
+    price: 128,
+    compareAtPrice: 168,
+    category: "Bracelets",
+    collection: ["Protection", "Love & Harmony"],
+    gemstone: "Black Tourmaline",
+    symbolicMeaning:
+      "Protection and grounding energy. A steadfast companion for navigating life's complexities.",
+    shortDescription:
+      "Sterling silver bracelet with black tourmaline beads, designed for grounding and inner clarity.",
+    longDescription:
+      "Crafted with intention, the Moonlit Guardian combines the protective properties of black tourmaline with the elegant simplicity of sterling silver. Each bead is hand-selected for its natural patterns and energy. This bracelet serves as a meaningful reminder to stay grounded in your truth, no matter what surrounds you. Perfect for daily wear and layering with intention.",
+    materials: ["Sterling Silver", "Black Tourmaline", "Elastic cord"],
+    images: [
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&h=800&fit=crop&q=80",
+    ],
+    badges: ["bestseller", "bestseller-2024"],
+    rating: 4.8,
+    reviewCount: 247,
+    isBestSeller: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_002",
+    slug: "celestial-shield-pendant",
+    name: "Celestial Shield Pendant",
+    price: 198,
+    compareAtPrice: 248,
+    category: "Necklaces",
+    collection: ["Protection", "Evil Eye"],
+    gemstone: "Lapis Lazuli",
+    symbolicMeaning:
+      "Divine protection and inner vision. A sentinel of wisdom and truth.",
+    shortDescription:
+      "14K gold-plated pendant featuring lapis lazuli and protective symbolism, handcrafted with celestial details.",
+    longDescription:
+      "The Celestial Shield is an intentional piece designed to inspire confidence and spiritual clarity. Deep lapis lazuli evokes the night sky and inner knowing, while the geometric protection symbol is delicately etched into the frame. Suspended on a 18-inch adjustable chain, this pendant works as both a statement piece and a subtle daily reminder of your inner strength. The timeless lapis stone connects you to ancient wisdom traditions across cultures.",
+    materials: ["14K Gold-plated sterling silver", "Lapis Lazuli", "Gold chain"],
+    images: [
+      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1515562141589-67f0d569b2d5?w=800&h=800&fit=crop&q=80",
+    ],
+    badges: ["new"],
+    rating: 4.9,
+    reviewCount: 89,
+    isNew: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_003",
+    slug: "whisper-of-rose-quartz-earrings",
+    name: "Whisper of Rose Quartz Earrings",
+    price: 92,
+    category: "Earrings",
+    collection: ["Love & Harmony"],
+    gemstone: "Rose Quartz",
+    symbolicMeaning:
+      "Unconditional love and compassion. A gentle reminder to lead with your heart.",
+    shortDescription:
+      "Delicate rose quartz sphere earrings with 14K gold vermeil hooks, crafted for everyday elegance.",
+    longDescription:
+      "These understated earrings celebrate the timeless beauty of rose quartz. Each pale pink sphere is cut and polished to catch light softly, creating a gentle presence at the ear. Rose quartz, known as the stone of unconditional love, is worn as a daily practice of compassion—first toward yourself, then extending outward. The 14K gold vermeil hooks ensure comfort and durability for daily wear. A meaningful gift for yourself or someone you cherish.",
+    materials: ["Rose Quartz", "14K Gold Vermeil", "Surgical steel posts"],
+    images: [
+      "https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d?w=800&h=800&fit=crop&q=80",
+    ],
+    badges: [],
+    rating: 4.7,
+    reviewCount: 156,
+    isGiftable: true,
+  },
+  {
+    id: "prod_004",
+    slug: "eternal-bond-ring",
+    name: "Eternal Bond Ring",
+    price: 248,
+    compareAtPrice: 298,
+    category: "Rings",
+    collection: ["Love & Harmony"],
+    gemstone: "Diamond (lab-created)",
+    symbolicMeaning:
+      "Enduring connection and commitment. A promise worn in clarity and light.",
+    shortDescription:
+      "Minimalist engagement or commitment ring featuring lab-created diamond, sustainably crafted.",
+    longDescription:
+      "The Eternal Bond ring distills commitment to its essence: clarity, brilliance, and timelessness. Featuring an ethically sourced lab-created diamond set in sustainable platinum-plated silver, this ring honors the promise of forever while respecting the earth. The clean, geometric band allows the stone's light to speak. Whether worn as an engagement ring or a personal symbol of self-commitment, it carries meaning as intentional as the moment it was chosen. Available in sizes 4-12.",
+    materials: [
+      "Platinum-plated sterling silver",
+      "Lab-created diamond (0.75ct)",
+      "Sustainable sourcing",
+    ],
+    images: [
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&h=800&fit=crop&q=80",
+    ],
+    badges: ["bestseller"],
+    rating: 4.9,
+    reviewCount: 312,
+    isBestSeller: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_005",
+    slug: "golden-abundance-bracelet",
+    name: "Golden Abundance Bracelet",
+    price: 156,
+    compareAtPrice: 198,
+    category: "Bracelets",
+    collection: ["Prosperity"],
+    gemstone: "Citrine",
+    symbolicMeaning:
+      "Prosperity and manifested intention. A golden reminder of your innate worth.",
+    shortDescription:
+      "Warm citrine and pyrite bracelet with 24K gold accents, designed to invite intentional abundance.",
+    longDescription:
+      "Radiant citrine pairs with reflective pyrite in this prosperity-focused bracelet, creating a visual and energetic blend of warmth and abundance. Each stone is hand-selected for its natural variations and beauty. The delicate 24K gold spacers catch light like small promises of prosperity consciousness. Wear this as a daily reminder that abundance—in all its forms—begins with intention and gratitude. The adjustable design fits comfortably on any wrist.",
+    materials: [
+      "Citrine",
+      "Pyrite",
+      "24K Gold plating",
+      "Elastic cord",
+      "Sterling silver spacers",
+    ],
+    images: [
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=800&h=800&fit=crop&q=80",
+    ],
+    badges: ["new"],
+    rating: 4.6,
+    reviewCount: 94,
+    isNew: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_006",
+    slug: "midnight-obsidian-necklace",
+    name: "Midnight Obsidian Necklace",
+    price: 175,
+    category: "Necklaces",
+    collection: ["Protection"],
+    gemstone: "Black Obsidian",
+    symbolicMeaning:
+      "Deep protection and shadow work. Safe passage through life's darkest passages.",
+    shortDescription:
+      "Polished volcanic glass obsidian pendant on leather cord, a striking grounding piece.",
+    longDescription:
+      "Born from ancient volcanic activity, black obsidian carries the earth's protection within its glossy depths. This necklace features a single polished pendant suspended on a soft leather cord, allowing the stone's natural patterns to be the focal point. Obsidian traditionally serves as a guardian stone, shielding against negativity while encouraging grounded clarity. The minimalist presentation makes it equally at home in boardrooms or meditation spaces. An intentional piece for anyone seeking to cultivate resilience and inner stability.",
+    materials: ["Black Obsidian", "Leather cord", "Sterling silver clasp"],
+    images: [
+      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1515562141589-67f0d569b2d5?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&h=800&fit=crop&q=80",
+    ],
+    badges: [],
+    rating: 4.7,
+    reviewCount: 128,
+    isGiftable: true,
+  },
+  {
+    id: "prod_007",
+    slug: "serenity-tree-of-life-pendant",
+    name: "Serenity Tree of Life Pendant",
+    price: 142,
+    compareAtPrice: 178,
+    category: "Necklaces",
+    collection: ["Tree of Life"],
+    gemstone: "Mixed gemstones",
+    symbolicMeaning:
+      "Connection, growth, and ancestral wisdom. Roots in the past, branches toward the future.",
+    shortDescription:
+      "Handcrafted tree of life pendant with mixed gemstone leaves, symbolizing connection and growth.",
+    longDescription:
+      "The Tree of Life represents humanity's place within nature and the cosmos. This pendant brings that ancient symbol into your daily life with delicate craftsmanship. Each 'leaf' is cut from a different gemstone—amethyst, rose quartz, citrine, and turquoise—creating a prism of natural beauty. The tree's trunk and branches are hand-twisted in 14K gold-plated silver. Wear it as a meditation on your own growth, your connection to all living things, and your place in the greater whole. A meaningful piece that resonates across spiritual traditions.",
+    materials: [
+      "14K Gold-plated sterling silver",
+      "Amethyst",
+      "Rose Quartz",
+      "Citrine",
+      "Turquoise",
+      "Adjustable chain",
+    ],
+    images: [
+      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1515562141589-67f0d569b2d5?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&h=800&fit=crop&q=80",
+    ],
+    badges: ["bestseller"],
+    rating: 4.8,
+    reviewCount: 203,
+    isBestSeller: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_008",
+    slug: "crimson-thread-of-fate-bracelet",
+    name: "Crimson Thread of Fate Bracelet",
+    price: 68,
+    category: "Bracelets",
+    collection: ["Red String"],
+    gemstone: "Carnelian",
+    symbolicMeaning:
+      "Destiny and divine connection. The invisible thread that binds all meaningful encounters.",
+    shortDescription:
+      "Traditional red string bracelet with carnelian bead, inspired by ancient protective traditions.",
+    longDescription:
+      "Rooted in protection traditions spanning cultures, the red thread symbolizes the invisible connections between souls destined to meet. This version weaves a single carnelian bead—a stone of vitality and courage—into a simple, elegant cord. Wear it as a talisman of destiny, as a reminder that meaningful encounters are never accidents. The adjustable design makes it easy to share or gift. A subtle, powerful piece grounded in ancient wisdom and modern intention.",
+    materials: ["Red silk cord", "Carnelian", "Adjustable closure"],
+    images: [
+      "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&h=800&fit=crop&q=80",
+    ],
+    badges: [],
+    rating: 4.5,
+    reviewCount: 178,
+    isGiftable: true,
+  },
+  {
+    id: "prod_009",
+    slug: "aurora-borealis-earrings",
+    name: "Aurora Borealis Earrings",
+    price: 118,
+    compareAtPrice: 148,
+    category: "Earrings",
+    collection: ["Love & Harmony"],
+    gemstone: "Labradorite",
+    symbolicMeaning:
+      "Magic and transformation. A reminder that light exists within all darkness.",
+    shortDescription:
+      "Shimmering labradorite earrings featuring protective shimmer, 14K gold-plated setting.",
+    longDescription:
+      "Like the northern lights dancing across winter skies, labradorite captures light in unexpected ways. These earrings celebrate the stone's characteristic play-of-color—called labradorescence—which shifts and shimmers with every movement. Beyond their visual magic, labradorites are traditionally worn for transformation and protection during times of change. The 14K gold-plated setting grounds the ethereal stone in warmth. Perfect for anyone navigating transitions and seeking to remember their inner light. Wear them as a daily reminder that transformation is beautiful.",
+    materials: [
+      "Labradorite",
+      "14K Gold-plated sterling silver",
+      "Surgical steel posts",
+    ],
+    images: [
+      "https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?w=800&h=800&fit=crop&q=80",
+    ],
+    badges: ["new"],
+    rating: 4.7,
+    reviewCount: 67,
+    isNew: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_010",
+    slug: "sacred-eye-charm-necklace",
+    name: "Sacred Eye Charm Necklace",
+    price: 95,
+    category: "Necklaces",
+    collection: ["Evil Eye", "Protection"],
+    gemstone: "Evil eye enamel and lapis",
+    symbolicMeaning:
+      "Watchful protection and spiritual sight. Guardian of your path and intention.",
+    shortDescription:
+      "Traditional evil eye necklace with lapis accents, a symbol of protection across cultures.",
+    longDescription:
+      "The evil eye appears in protective traditions across Mediterranean, Middle Eastern, and Asian cultures—a symbol of divine watchfulness. This necklace honors that ancient wisdom with an enamel evil eye centered in deep lapis lazuli. The combination invokes both spiritual sight and protective presence. Wear it as a talisman against negativity and as a reminder to cultivate clear vision in your own life. The pendant hangs on a delicate gold chain, making it wearable across any style. A meaningful piece with roots deeper than trend.",
+    materials: [
+      "Enamel",
+      "Lapis Lazuli",
+      "14K Gold-plated sterling silver",
+      "Gold chain",
+    ],
+    images: [
+      "https://images.unsplash.com/photo-1590736704728-f4730bb30770?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1590736704728-f4730bb30770?w=800&h=800&fit=crop&q=80",
+    ],
+    badges: ["bestseller"],
+    rating: 4.8,
+    reviewCount: 421,
+    isBestSeller: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_011",
+    slug: "lotus-bloom-ring",
+    name: "Lotus Bloom Ring",
+    price: 175,
+    compareAtPrice: 218,
+    category: "Rings",
+    collection: ["Love & Harmony"],
+    gemstone: "Pink tourmaline",
+    symbolicMeaning:
+      "Spiritual awakening and pure enlightenment. Rising from stillness into your fullest expression.",
+    shortDescription:
+      "Delicate lotus-shaped ring with pink tourmaline, symbolizing spiritual growth and purity.",
+    longDescription:
+      "The lotus rises from muddy waters to bloom in pure sunlight—a universal symbol of transformation and spiritual awakening. This ring captures that journey in miniature. Pink tourmaline at the flower's heart represents compassion and heart opening. The lotus petals are hand-carved in sterling silver, creating an almost sculptural quality. Wear it as a reminder of your capacity for growth, your resilience, and your ability to bloom regardless of circumstances. A meaningful piece for personal transformation or a gift for someone beginning their spiritual journey.",
+    materials: [
+      "Sterling Silver",
+      "Pink Tourmaline",
+      "Hand-carved petals",
+    ],
+    images: [
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&h=800&fit=crop&q=80",
+    ],
+    badges: ["new"],
+    rating: 4.6,
+    reviewCount: 74,
+    isNew: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_012",
+    slug: "starlight-amethyst-bracelet",
+    name: "Starlight Amethyst Bracelet",
+    price: 104,
+    category: "Bracelets",
+    collection: ["Birthstones", "Love & Harmony"],
+    gemstone: "Amethyst",
+    symbolicMeaning:
+      "Clarity, calm, and spiritual awareness. A gateway to inner peace and intuition.",
+    shortDescription:
+      "Purple amethyst bracelet with sterling silver accents, designed for daily spiritual practice.",
+    longDescription:
+      "Amethyst, the stone of clarity and calm, has been treasured across cultures as a pathway to deeper awareness. This bracelet pairs polished amethyst spheres with delicate sterling silver details, creating an elegant piece suitable for meditation, work, or daily wear. The cool purple tones are simultaneously grounding and elevating. Amethyst's traditional association with intuition makes this piece particularly meaningful for anyone seeking to strengthen their inner knowing. Wear it as a daily practice of stillness, or gift it to someone navigating a period of transformation.",
+    materials: [
+      "Amethyst",
+      "Sterling Silver",
+      "Elastic cord",
+      "Adjustable fit",
+    ],
+    images: [
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&h=800&fit=crop&q=80",
+    ],
+    badges: ["bestseller"],
+    rating: 4.8,
+    reviewCount: 289,
+    isBestSeller: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_013",
+    slug: "ocean-embrace-earrings",
+    name: "Ocean's Embrace Earrings",
+    price: 138,
+    compareAtPrice: 178,
+    category: "Earrings",
+    collection: ["Love & Harmony"],
+    gemstone: "Aquamarine",
+    symbolicMeaning:
+      "Calm, clarity, and inner peace. The serene depth of water reflecting sky.",
+    shortDescription:
+      "Soft aquamarine earrings with 14K gold setting, evoking oceanic tranquility and flow.",
+    longDescription:
+      "Aquamarine, named for the sea itself, carries the ocean's tranquil essence. These earrings feature pale blue stones that shift with light, evoking water depths and endless horizons. Aquamarine is traditionally worn for clear communication and emotional clarity—qualities that emerge when we align with water's flowing acceptance. The 14K gold-plated setting provides warmth against the cool blue, creating visual balance. A versatile piece that works for everyday wear or as a thoughtful gift for someone seeking more flow and ease in their life.",
+    materials: [
+      "Aquamarine",
+      "14K Gold-plated sterling silver",
+      "Surgical steel posts",
+    ],
+    images: [
+      "https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?w=800&h=800&fit=crop&q=80",
+    ],
+    badges: ["new"],
+    rating: 4.7,
+    reviewCount: 51,
+    isNew: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_014",
+    slug: "temple-of-light-jewelry-set",
+    name: "Temple of Light Jewelry Set",
+    price: 268,
+    compareAtPrice: 328,
+    category: "Jewelry Sets",
+    collection: ["Love & Harmony", "Protection"],
+    gemstone: "Mixed gemstones",
+    symbolicMeaning:
+      "Complete spiritual alignment across body and spirit. A unified practice of presence.",
+    shortDescription:
+      "Coordinated set including necklace, bracelet, and earrings with complementary gemstones.",
+    longDescription:
+      "Designed for those who practice intentional living across every dimension of their day, the Temple of Light set brings cohesive energy to your spiritual practice. The set includes a rose quartz heart pendant, corresponding rose quartz and turquoise bracelet, and matching earrings—each piece thoughtfully chosen to work in harmony. Rose quartz centers you in love, while turquoise supports authentic communication and peaceful presence. Wear together for unified intention, or mix and match as needed. A complete offering for someone deepening their spiritual practice, or a luxurious gift for milestone moments.",
+    materials: [
+      "Rose Quartz",
+      "Turquoise",
+      "14K Gold-plated sterling silver",
+      "Adjustable chains and cords",
+    ],
+    images: [
+      "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=800&h=800&fit=crop&q=80",
+    ],
+    badges: ["bestseller"],
+    rating: 4.9,
+    reviewCount: 156,
+    isBestSeller: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_015",
+    slug: "amber-solstice-necklace",
+    name: "Amber Solstice Necklace",
+    price: 165,
+    compareAtPrice: 208,
+    category: "Necklaces",
+    collection: ["Prosperity", "Birthstones"],
+    gemstone: "Baltic Amber",
+    symbolicMeaning:
+      "Warmth, ancient wisdom, and the turning of seasons. Earth's golden memory.",
+    shortDescription:
+      "Genuine Baltic amber pendant capturing ancient warmth, set in oxidized silver.",
+    longDescription:
+      "Amber holds the earth's memory—fossilized resin that glowed with warmth millions of years ago. This necklace features genuine Baltic amber, each piece unique with natural inclusions and warm honey tones. Set in oxidized sterling silver that echoes amber's antiquity, the pendant becomes a meditation on time, transformation, and the persistence of beauty. Amber traditionally connects to prosperity consciousness and ancient wisdom. Wear it as a reminder that all beautiful things take time, and that you carry within you the resilience of ancient earth. A conversation piece with soul.",
+    materials: [
+      "Genuine Baltic Amber",
+      "Oxidized sterling silver",
+      "Silver chain",
+    ],
+    images: [
+      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1515562141589-67f0d569b2d5?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&h=800&fit=crop&q=80",
+    ],
+    badges: [],
+    rating: 4.6,
+    reviewCount: 82,
+    isGiftable: true,
+  },
+  {
+    id: "prod_016",
+    slug: "spirit-quartz-tower-home-decor",
+    name: "Spirit Quartz Tower",
+    price: 58,
+    compareAtPrice: 78,
+    category: "Home Decor",
+    collection: ["Prosperity", "Love & Harmony"],
+    gemstone: "Spirit Quartz",
+    symbolicMeaning:
+      "Collective harmony and spiritual elevation. Many voices unified in light.",
+    shortDescription:
+      "Polished spirit quartz tower for home or altar, naturally clustered crystal form.",
+    longDescription:
+      "Spirit quartz—also called cactus quartz—grows in unique clustered formations, where countless small crystals surround a central point. This natural geometry symbolizes community, unity, and collective consciousness. Each tower is naturally formed and polished to reveal its delicate violet and clear crystal matrix. Ideal for a bedside table, meditation altar, or work desk, it silently radiates harmony. Spirit quartz traditionally supports group energy and social connection—perfect for shared spaces or as a gift celebrating community. A beautiful conversation piece that brings both aesthetic beauty and intentional energy to your environment.",
+    materials: ["Natural Spirit Quartz", "Hand-polished", "Naturally formed"],
+    images: [
+      "https://images.unsplash.com/photo-1615486511262-c7b5e1ab9f11?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1602519093515-7e7ca91a27e3?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1615486511262-c7b5e1ab9f11?w=800&h=800&fit=crop&q=80",
+    ],
+    badges: ["new"],
+    rating: 4.7,
+    reviewCount: 43,
+    isNew: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_017",
+    slug: "harmony-jade-bracelet",
+    name: "Harmony Jade Bracelet",
+    price: 148,
+    compareAtPrice: 188,
+    category: "Bracelets",
+    collection: ["Love & Harmony", "Prosperity"],
+    gemstone: "Jade",
+    symbolicMeaning:
+      "Balance, peace, and prosperity. The stone of gentle, steady alignment.",
+    shortDescription:
+      "Luminous jade bangle bracelet with minimalist sterling silver details.",
+    longDescription:
+      "Jade has held sacred significance across Asian cultures for thousands of years—a stone of luck, balance, and inner harmony. This bangle features jewel-tone jade (a deeper, more valuable variety) with subtle sterling silver accents that don't overwhelm the stone's natural beauty. The smooth, rounded form invites touch and meditation. Whether worn for its traditional association with prosperity or simply for the grounding calm it inspires, this bracelet becomes part of your daily ritual. The timeless design transcends trend, making it equally appropriate as an heirloom gift or a personal investment in peace.",
+    materials: ["Jade (natural)", "Sterling Silver", "Smooth bangle form"],
+    images: [
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&h=800&fit=crop&q=80",
+    ],
+    badges: ["bestseller"],
+    rating: 4.8,
+    reviewCount: 195,
+    isBestSeller: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_018",
+    slug: "phoenix-rising-ring",
+    name: "Phoenix Rising Ring",
+    price: 218,
+    compareAtPrice: 268,
+    category: "Rings",
+    collection: ["Protection", "Love & Harmony"],
+    gemstone: "Garnet",
+    symbolicMeaning:
+      "Rebirth and inner strength. Rising renewed from every challenge.",
+    shortDescription:
+      "Statement ring featuring deep red garnet with phoenix motif, symbolizing resilience.",
+    longDescription:
+      "The phoenix has inspired hope across mythologies—the bird that rises anew from ashes, stronger and more radiant. This ring honors that archetype with a deep, glowing garnet set in a frame that echoes phoenix wings in flight. Garnet traditionally supports courage and vitality, making this piece both symbolically powerful and visually striking. Perfect for marking transformations, celebrating survivorship, or simply reminding yourself of your resilience on difficult days. A statement ring for anyone who has risen and knows they can rise again.",
+    materials: [
+      "Sterling Silver",
+      "Garnet (deep red)",
+      "Hand-carved phoenix motif",
+    ],
+    images: [
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&h=800&fit=crop&q=80",
+    ],
+    badges: ["new"],
+    rating: 4.7,
+    reviewCount: 68,
+    isNew: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_019",
+    slug: "pearl-of-wisdom-earrings",
+    name: "Pearl of Wisdom Earrings",
+    price: 124,
+    compareAtPrice: 164,
+    category: "Earrings",
+    collection: ["Birthstones", "Love & Harmony"],
+    gemstone: "Freshwater Pearl",
+    symbolicMeaning:
+      "Inner wisdom and authentic beauty. Truth formed through time and pressure.",
+    shortDescription:
+      "Luminous freshwater pearl earrings with 14K gold vermeil, elegant and timeless.",
+    longDescription:
+      "Pearls emerge from depth and irritation, transformed by time into objects of profound beauty. A perfect metaphor for human wisdom—crafted through experience and challenge. These earrings feature quality freshwater pearls with subtle variations that speak to their natural origin. Each pearl is unique, making these a deeply personal piece. The 14K gold vermeil setting honors the pearl's luminosity without overwhelming it. Appropriate for every occasion from boardroom to celebration, these earrings are an investment in quiet elegance. A meaningful piece for anyone who values substance over flash.",
+    materials: [
+      "Freshwater Pearl",
+      "14K Gold Vermeil",
+      "Surgical steel posts",
+    ],
+    images: [
+      "https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d?w=800&h=800&fit=crop&q=80",
+    ],
+    badges: ["bestseller"],
+    rating: 4.9,
+    reviewCount: 234,
+    isBestSeller: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_020",
+    slug: "divine-protection-jewelry-set",
+    name: "Divine Protection Jewelry Set",
+    price: 298,
+    compareAtPrice: 378,
+    category: "Jewelry Sets",
+    collection: ["Protection", "Evil Eye"],
+    gemstone: "Mixed protective stones",
+    symbolicMeaning:
+      "Complete energetic protection and spiritual armor. Guardianship across all dimensions.",
+    shortDescription:
+      "Premium protective jewelry set with evil eye, black tourmaline, and lapis lazuli pieces.",
+    longDescription:
+      "For those who practice serious spiritual protection work, this comprehensive set ensures your entire energetic field is tended with intention. Included: a lapis lazuli and enamel evil eye necklace, a black tourmaline protective bracelet, and matching statement earrings with protective symbols. Each piece is crafted in 14K gold plating with premium stones. Wear the complete set during challenging periods, or mix and match as your intuition guides. A powerful offering for serious practitioners, or an exceptional gift for someone navigating major life transitions. Rooted in ancient protection traditions, expressed through contemporary luxury.",
+    materials: [
+      "Lapis Lazuli",
+      "Black Tourmaline",
+      "Enamel",
+      "14K Gold-plated sterling silver",
+      "Adjustable closures",
+    ],
+    images: [
+      "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1590736704728-f4730bb30770?w=800&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=800&h=800&fit=crop&q=80",
+    ],
+    badges: ["bestseller"],
+    rating: 4.9,
+    reviewCount: 198,
+    isBestSeller: true,
+    isGiftable: true,
+  },
+];
+
+export const COLLECTIONS: Collection[] = [
+  {
+    id: "col_001",
+    slug: "protection",
+    name: "Protection",
+    tagline: "Guardianship for your spiritual path",
+    description: "Intentional pieces designed to support grounding, resilience, and energetic boundaries.",
+    longDescription:
+      "Our Protection collection honors ancient traditions of spiritual guardianship. Each piece is crafted with stones and symbols that have been treasured across cultures for their grounding and protective qualities. From black tourmaline to protective eye symbols, these pieces support you in maintaining clear energetic boundaries while staying rooted in your truth. Perfect for anyone navigating transitions, managing stress, or simply seeking to strengthen their spiritual foundation. Protection is not about fear—it's about standing firmly in your power.",
+    image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=1200&h=600&fit=crop&q=80",
+    symbolism:
+      "Strength, grounding, resilience. The ability to maintain your center regardless of external circumstances.",
+    productCount: 6,
+  },
+  {
+    id: "col_002",
+    slug: "love-harmony",
+    name: "Love & Harmony",
+    tagline: "Intention for the heart and soul",
+    description: "Pieces celebrating compassion, connection, and inner alignment.",
+    longDescription:
+      "Love in the LUNARIS philosophy extends beyond romance—it encompasses self-compassion, connection to all beings, and the harmony that emerges when we lead with our hearts. This collection features rose quartz, tourmaline, aquamarine, and other heart-centered stones. Whether you're deepening a relationship, cultivating self-love, or simply seeking more peace in your daily life, these pieces serve as gentle reminders of your capacity for compassion. The harmony they inspire radiates outward, touching everyone you encounter.",
+    image: "https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d?w=1200&h=600&fit=crop&q=80",
+    symbolism:
+      "Compassion, connection, alignment. The frequency of love expressed through intention and beauty.",
+    productCount: 8,
+  },
+  {
+    id: "col_003",
+    slug: "prosperity",
+    name: "Prosperity",
+    tagline: "Abundance consciousness in wearable form",
+    description: "Citrine, pyrite, jade, and amber for attracting meaningful abundance.",
+    longDescription:
+      "Prosperity is about more than material wealth—it's about cultivating abundance consciousness in all forms: time, relationships, creativity, health, and resources. This collection features stones traditionally associated with manifestation and gratitude. Citrine's warm golden light, pyrite's reflective gleam, jade's steady calm, and amber's ancient wisdom all support an expansive mindset. Wear these pieces as daily anchors for prosperity consciousness, reminding yourself that you are worthy of a rich and full life.",
+    image: "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=1200&h=600&fit=crop&q=80",
+    symbolism:
+      "Manifestation, gratitude, worthiness. The knowledge that abundance begins with consciousness and intention.",
+    productCount: 4,
+  },
+  {
+    id: "col_004",
+    slug: "birthstones",
+    name: "Birthstones",
+    tagline: "Aligned with your celestial identity",
+    description: "Traditional birthstone pieces celebrating your month and cosmic connection.",
+    longDescription:
+      "Birthstones connect us to the cosmic moment of our arrival—a spiritual fingerprint of sorts. Each month carries its own energetic signature, represented by stones treasured for their unique qualities. Whether you're drawn to amethyst for its clarifying calm, pearl for its timeless wisdom, or any of the other sacred stones, a birthstone piece becomes a deeply personal talisman. Wear your birthstone as a connection to your essence, or gift it as a way of honoring someone's unique place in the cosmos.",
+    image: "https://images.unsplash.com/photo-1602519093515-7e7ca91a27e3?w=1200&h=600&fit=crop&q=80",
+    symbolism:
+      "Identity, destiny, cosmic connection. Your personal celestial signature made wearable.",
+    productCount: 3,
+  },
+  {
+    id: "col_005",
+    slug: "evil-eye",
+    name: "Evil Eye",
+    tagline: "Ancient protection across cultures",
+    description: "The watchful protection symbol honored in Mediterranean and Eastern traditions.",
+    longDescription:
+      "The evil eye appears in protective traditions across the Mediterranean, Middle East, and Asia—a symbol of divine watchfulness and protection against negativity. This collection honors that ancient wisdom while transcending cultural boundaries. Each piece combines the traditional evil eye symbol with complementary protective stones, creating modern expressions of timeless guardianship. Wear an evil eye piece as a talisman against negativity, as a symbol of spiritual sight, or simply as a beautiful reminder to maintain clear vision about your path and purpose.",
+    image: "https://images.unsplash.com/photo-1590736704728-f4730bb30770?w=1200&h=600&fit=crop&q=80",
+    symbolism:
+      "Spiritual sight, protection, divine watchfulness. The awareness that see clearly and act from integrity.",
+    productCount: 3,
+  },
+  {
+    id: "col_006",
+    slug: "tree-of-life",
+    name: "Tree of Life",
+    tagline: "Growth rooted in wisdom",
+    description: "The universal symbol of connection, ancestry, and spiritual growth.",
+    longDescription:
+      "The Tree of Life appears across spiritual traditions as a symbol of connection—roots in ancestral wisdom, trunk in the present moment, branches reaching toward possibility. This collection celebrates that archetypal symbol through contemporary craftsmanship. Whether you're meditating on your own growth journey, honoring your lineage, or simply seeking to remember your place in the greater whole, a Tree of Life piece becomes a constant meditation. Wear it through seasons of change as a reminder that growth is natural, that you are supported by those who came before, and that your highest self is always reaching upward.",
+    image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=1200&h=600&fit=crop&q=80",
+    symbolism:
+      "Growth, connection, ancestry. The knowledge that you are rooted in wisdom while reaching toward your potential.",
+    productCount: 2,
+  },
+  {
+    id: "col_007",
+    slug: "red-string",
+    name: "Red String",
+    tagline: "Destiny and divine connection",
+    description: "Ancient symbol of the invisible threads that bind meaningful encounters.",
+    longDescription:
+      "Across cultures, the red string symbolizes destiny—the invisible thread connecting souls meant to meet. Worn as a talisman of fate and divine protection, the red string reminds us that our most meaningful connections are never accidents. This collection honors that beautiful tradition with pieces that combine the red thread with gemstones that support connection, courage, and clarity. Wear a red string piece as a celebration of destiny, as protection during journeys, or as a gift symbolizing an unbreakable bond with someone you love.",
+    image: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=1200&h=600&fit=crop&q=80",
+    symbolism:
+      "Destiny, connection, protection. The knowledge that meaningful encounters are woven into your path.",
+    productCount: 1,
+  },
+];
+
+export const CATEGORIES: Category[] = [
+  {
+    id: "cat_001",
+    slug: "bracelets",
+    name: "Bracelets",
+    image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&h=600&fit=crop&q=80",
+    productCount: 5,
+  },
+  {
+    id: "cat_002",
+    slug: "necklaces",
+    name: "Necklaces",
+    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&h=600&fit=crop&q=80",
+    productCount: 5,
+  },
+  {
+    id: "cat_003",
+    slug: "earrings",
+    name: "Earrings",
+    image: "https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?w=600&h=600&fit=crop&q=80",
+    productCount: 5,
+  },
+  {
+    id: "cat_004",
+    slug: "rings",
+    name: "Rings",
+    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=600&fit=crop&q=80",
+    productCount: 3,
+  },
+  {
+    id: "cat_005",
+    slug: "jewelry-sets",
+    name: "Jewelry Sets",
+    image: "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=600&h=600&fit=crop&q=80",
+    productCount: 2,
+  },
+  {
+    id: "cat_006",
+    slug: "home-decor",
+    name: "Home Decor",
+    image: "https://images.unsplash.com/photo-1615486511262-c7b5e1ab9f11?w=600&h=600&fit=crop&q=80",
+    productCount: 1,
+  },
+];
+
+export const REVIEWS: Review[] = [
+  {
+    id: "rev_001",
+    author: "Sarah M.",
+    rating: 5,
+    text: "The Moonlit Guardian bracelet is absolutely beautiful. I've been wearing it daily for three months and it feels like part of my spiritual practice. The quality is exceptional.",
+    date: "2026-02-15",
+    verified: true,
+  },
+  {
+    id: "rev_002",
+    author: "James T.",
+    rating: 5,
+    text: "Bought the Celestial Shield pendant as an engagement gift. The presentation was stunning and my fiancée hasn't taken it off. Worth every penny.",
+    date: "2026-02-10",
+    verified: true,
+  },
+  {
+    id: "rev_003",
+    author: "Michelle L.",
+    rating: 4,
+    text: "Love the rose quartz earrings. They're delicate and the quality is evident. Shipping was fast too.",
+    date: "2026-02-05",
+    verified: true,
+  },
+  {
+    id: "rev_004",
+    author: "David K.",
+    rating: 5,
+    text: "The Eternal Bond ring exceeded my expectations. The diamond is brilliant and the craftsmanship is remarkable. Customer service was exceptional.",
+    date: "2026-01-28",
+    verified: true,
+  },
+  {
+    id: "rev_005",
+    author: "Elena G.",
+    rating: 5,
+    text: "Temple of Light set is perfect. I wear the pieces together and separately depending on the day. The intention behind the collection is palpable.",
+    date: "2026-01-20",
+    verified: true,
+  },
+  {
+    id: "rev_006",
+    author: "Marcus D.",
+    rating: 4,
+    text: "The Evil Eye necklace arrived quickly and securely packaged. Beautiful piece. A little pricier than expected but you get what you pay for.",
+    date: "2026-01-15",
+    verified: true,
+  },
+  {
+    id: "rev_007",
+    author: "Priya S.",
+    rating: 5,
+    text: "I purchased the Divine Protection set during a difficult transition in my life. The quality, intention, and beauty of these pieces gave me real comfort. Highly recommend.",
+    date: "2026-01-10",
+    verified: true,
+  },
+  {
+    id: "rev_008",
+    author: "Thomas R.",
+    rating: 5,
+    text: "The amber necklace is stunning. Each piece is unique and the oxidized silver setting is perfect. Feels like wearable art.",
+    date: "2025-12-28",
+    verified: true,
+  },
+  {
+    id: "rev_009",
+    author: "Jasmine W.",
+    rating: 5,
+    text: "Pearl of Wisdom earrings are my new signature piece. Simple, elegant, and the quality is obvious. Investment jewelry.",
+    date: "2025-12-20",
+    verified: true,
+  },
+  {
+    id: "rev_010",
+    author: "Christopher N.",
+    rating: 4,
+    text: "Beautiful work. I bought the Tree of Life pendant for my daughter's birthday. She adores it. Great gift option.",
+    date: "2025-12-15",
+    verified: true,
+  },
+];

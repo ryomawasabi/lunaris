@@ -1,0 +1,53 @@
+import type { Metadata } from "next";
+import "./globals.css";
+import AnnouncementBar from "@/components/layout/AnnouncementBar";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import { AuthProvider } from "@/components/auth/AuthProvider";
+import { ProductStatusProvider } from "@/components/providers/ProductStatusProvider";
+
+export const metadata: Metadata = {
+  title: "LUNARIS | Meaningful Luxury Jewelry",
+  description: "Discover LUNARIS luxury spiritual jewelry crafted with intention. Each piece features natural gemstones and carries symbolic meaning. Shop meaningful jewelry for protection, love, prosperity, and personal transformation.",
+  metadataBase: new URL("https://lunaris.com"),
+  openGraph: {
+    title: "LUNARIS | Meaningful Luxury Jewelry",
+    description: "Discover LUNARIS luxury spiritual jewelry crafted with intention and natural gemstones.",
+    type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "LUNARIS Jewelry",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "LUNARIS | Meaningful Luxury Jewelry",
+    description: "Discover LUNARIS luxury spiritual jewelry crafted with intention.",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body className="bg-cream antialiased">
+        <AuthProvider>
+          <ProductStatusProvider>
+            <AnnouncementBar />
+            <Header />
+            {children}
+            <Footer />
+          </ProductStatusProvider>
+        </AuthProvider>
+      </body>
+    </html>
+  );
+}
