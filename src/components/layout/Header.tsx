@@ -26,7 +26,7 @@ export default function Header() {
     { label: 'Men', href: '/products?category=men' },
     { label: 'Collections', href: '/collections' },
     { label: 'Gifts', href: '/gifts' },
-    { label: 'FAQ', href: '/faq' },
+    { label: 'About', href: '/about' },
   ];
 
   return (
