@@ -34,7 +34,7 @@ export function ImageGallery({
           height="h-full"
           text={`${productName} - View ${selectedImageIndex + 1}`}
           className="w-full h-full"
-          src={typeof selectedImage === 'string' && selectedImage.startsWith('http') ? selectedImage : undefined}
+          src={typeof selectedImage === 'string' && (selectedImage.startsWith('http') || selectedImage.startsWith('data:')) ? selectedImage : undefined}
           alt={`${productName} image ${selectedImageIndex + 1}`}
         />
       </div>
@@ -58,7 +58,7 @@ export function ImageGallery({
               height="h-full"
               text={`${index + 1}`}
               className="w-full h-full"
-              src={typeof displayImages[index] === 'string' && displayImages[index].startsWith('http') ? displayImages[index] : undefined}
+              src={typeof displayImages[index] === 'string' && (displayImages[index].startsWith('http') || displayImages[index].startsWith('data:')) ? displayImages[index] : undefined}
               alt={`${productName} thumbnail ${index + 1}`}
             />
           </button>
