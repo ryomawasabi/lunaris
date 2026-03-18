@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { Gem, Heart, Shield, Star } from 'lucide-react';
 
