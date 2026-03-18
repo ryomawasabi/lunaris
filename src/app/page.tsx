@@ -1,11 +1,5 @@
-'use client'
-
 import PlaceholderImage from '@/components/layout/PlaceholderImage';
 import { Button } from '@/components/ui/Button';
-import { BestSellers } from '@/components/home/BestSellers';
-import { NewArrivals } from '@/components/home/NewArrivals';
-import { CollectionShowcase } from '@/components/home/CollectionShowcase';
-import { NewsletterSection } from '@/components/home/NewsletterSection';
 import { Sparkles, Shield, Gem, Eye, Moon, Star, Flame, Heart } from 'lucide-react';
 
 export default function Home() {
@@ -30,10 +24,10 @@ export default function Home() {
             <div className="h-px w-12 bg-mystic-star" />
           </div>
           <p className="font-sans text-xs md:text-sm uppercase tracking-[0.3em] text-mystic-star mb-4">
-            Sacred Adornment &mdash; Spiritual Protection
+            Est. 2024 &mdash; Sacred Adornment
           </p>
           <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-cream text-center font-light leading-tight">
-            LUNARIS
+            Our Story
           </h1>
           <p className="font-serif text-lg md:text-xl text-cream/70 text-center mt-6 max-w-xl italic">
             Where ancient wisdom meets modern mysticism
@@ -42,11 +36,6 @@ export default function Home() {
             <div className="h-px w-8 bg-cream/30" />
             <span className="text-mystic-star text-lg">&#10022;</span>
             <div className="h-px w-8 bg-cream/30" />
-          </div>
-          <div className="mt-10">
-            <Button href="/products" variant="gold" size="lg">
-              Explore Collections
-            </Button>
           </div>
         </div>
       </section>
@@ -60,24 +49,47 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <Moon className="w-8 h-8 text-gold mx-auto mb-8 opacity-60" />
           <h2 className="font-serif text-3xl md:text-5xl text-cream font-light leading-relaxed mb-8">
-            Jewelry that does more than adorn
+            We believe jewelry should do more than adorn
             <span className="text-gold">&mdash;</span>
             <br className="hidden md:block" />
-            it <em className="text-gold">transforms</em>.
+            it should <em className="text-gold">transform</em>.
           </h2>
           <div className="h-px w-24 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-8" />
           <p className="font-sans text-base md:text-lg text-cream/60 leading-relaxed max-w-2xl mx-auto">
-            LUNARIS channels ancient wisdom, cosmic energy, and the healing power of crystals into
-            sacred jewelry that protects, heals, and empowers your spiritual journey.
+            LUNARIS was born from a calling to bridge the seen and unseen worlds. Each piece is a portal
+            to ancient protective energies, channeled through sacred gemstones and intentional design.
           </p>
         </div>
       </section>
 
-      {/* Best Sellers */}
-      <BestSellers />
+      {/* Brand Story */}
+      <section className="py-20 md:py-28 px-4">
+        <div className="max-w-3xl mx-auto space-y-8">
+          <div className="text-center mb-12">
+            <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold mb-4">The Beginning</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-dark font-light">A Calling From the Cosmos</h2>
+          </div>
+          <p className="font-sans text-base md:text-lg text-warm leading-relaxed">
+            LUNARIS began as a whisper&mdash;a deep, intuitive calling to channel the ancient power of crystals
+            and sacred symbols into wearable form. We saw how disconnected modern life had become from the
+            spiritual currents that have guided humanity for millennia, and we knew there had to be a bridge.
+          </p>
+          <p className="font-sans text-base md:text-lg text-warm leading-relaxed">
+            Inspired by sacred geometry, celestial cycles, and the metaphysical properties of gemstones,
+            we set out to create jewelry that serves as a spiritual companion. Each piece is infused with
+            intention during creation, designed to align your chakras, attract positive karma, and shield
+            you from negative energies. This is jewelry as spiritual practice.
+          </p>
+          <p className="font-sans text-base md:text-lg text-warm leading-relaxed">
+            When you choose LUNARIS, you&apos;re not just wearing jewelry&mdash;you&apos;re activating ancient
+            protective energies. You&apos;re aligning with the cosmos. You&apos;re joining a community of
+            spiritual seekers who believe in the transformative power of sacred adornment.
+          </p>
+        </div>
+      </section>
 
       {/* Brand Pillars */}
-      <section className="py-20 md:py-28 px-4 bg-cream">
+      <section className="py-20 md:py-28 px-4 bg-stone-light/50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold mb-4">Our Philosophy</p>
@@ -125,9 +137,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Collection Showcase */}
-      <CollectionShowcase />
-
       {/* Split Image + Story */}
       <section className="py-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[600px]">
@@ -157,8 +166,9 @@ export default function Home() {
                   every stone is chosen with sacred intention.
                 </p>
                 <p>
-                  Our master artisans shape each setting to amplify the stone&apos;s natural frequency.
-                  The result is jewelry that doesn&apos;t just look beautiful&mdash;it <em>feels</em> alive.
+                  Our master artisans work with sterling silver and gold vermeil, shaping each setting
+                  to amplify the stone&apos;s natural frequency. The result is jewelry that doesn&apos;t just look
+                  beautiful&mdash;it <em>feels</em> alive.
                 </p>
               </div>
               <div className="mt-8 flex items-center gap-6">
@@ -182,9 +192,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* New Arrivals */}
-      <NewArrivals />
-
       {/* Process Timeline */}
       <section className="py-20 md:py-28 px-4 bg-cream relative">
         <div className="max-w-5xl mx-auto">
@@ -195,10 +202,10 @@ export default function Home() {
 
           <div className="space-y-0">
             {[
-              { number: '01', title: 'Channeling', description: 'We begin in deep meditation, connecting with celestial alignments to receive the vision for each new piece.', icon: Eye },
-              { number: '02', title: 'Sacred Design', description: 'Spiritual visions become sacred geometry, considering energy flow and how the piece will resonate with its wearer.', icon: Moon },
-              { number: '03', title: 'Crystal Selection', description: 'Each gemstone is hand-selected for its spiritual properties and alignment with the piece\'s healing purpose.', icon: Gem },
-              { number: '04', title: 'Blessing & Activation', description: 'Every finished piece undergoes ritual cleansing under moonlight, blessed with positive energy for its journey to you.', icon: Star },
+              { number: '01', title: 'Channeling', description: 'We begin in deep meditation, connecting with celestial alignments and the metaphysical realm to receive the vision for each new piece.', icon: Eye },
+              { number: '02', title: 'Sacred Design', description: 'Spiritual visions are translated into sacred geometry, considering energy flow, chakra alignment, and how the piece will resonate with its future wearer.', icon: Moon },
+              { number: '03', title: 'Crystal Selection', description: 'Each gemstone is hand-selected for its spiritual properties, energetic vibration, and alignment with the piece\'s protective or healing purpose.', icon: Gem },
+              { number: '04', title: 'Blessing & Activation', description: 'Every finished piece undergoes ritual cleansing under moonlight and is blessed with positive energy before beginning its journey to you.', icon: Star },
             ].map((step, index) => {
               const Icon = step.icon;
               return (
@@ -223,7 +230,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quote — Full Bleed */}
+      {/* Quote */}
       <section className="relative py-24 md:py-32 px-4 overflow-hidden">
         <PlaceholderImage
           width="w-full"
@@ -276,8 +283,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Newsletter */}
-      <NewsletterSection />
+      {/* CTA */}
+      <section className="py-20 md:py-28 px-4 bg-gradient-to-b from-cream to-stone-light">
+        <div className="max-w-2xl mx-auto text-center">
+          <Sparkles className="w-6 h-6 text-gold mx-auto mb-6" />
+          <h2 className="font-serif text-3xl md:text-4xl text-dark font-light mb-6">
+            Begin Your Sacred Journey
+          </h2>
+          <p className="font-sans text-base text-warm leading-relaxed mb-10">
+            Explore our collections and discover the talismans that resonate with your soul&apos;s deepest purpose.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button href="/products" variant="primary" size="lg">
+              Explore Collections
+            </Button>
+            <Button href="/gifts" variant="secondary" size="lg">
+              Sacred Gifting
+            </Button>
+          </div>
+        </div>
+      </section>
 
     </main>
   );
