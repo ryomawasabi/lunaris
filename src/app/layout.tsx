@@ -5,6 +5,8 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { AuthProvider } from "@/components/auth/AuthProvider";
 import { ProductStatusProvider } from "@/components/providers/ProductStatusProvider";
+import { LenisProvider } from "@/components/providers/LenisProvider";
+import { PageTransition } from "@/components/animations/PageTransition";
 
 export const metadata: Metadata = {
   title: "LUNARIS | Meaningful Luxury Jewelry",
@@ -41,10 +43,12 @@ export default function RootLayout({
       <body className="bg-cream antialiased">
         <AuthProvider>
           <ProductStatusProvider>
-            <AnnouncementBar />
-            <Header />
-            {children}
-            <Footer />
+            <LenisProvider>
+              <AnnouncementBar />
+              <Header />
+              <PageTransition>{children}</PageTransition>
+              <Footer />
+            </LenisProvider>
           </ProductStatusProvider>
         </AuthProvider>
       </body>

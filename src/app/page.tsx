@@ -1,44 +1,15 @@
 import PlaceholderImage from '@/components/layout/PlaceholderImage';
 import { Button } from '@/components/ui/Button';
 import { Sparkles, Shield, Gem, Eye, Moon, Star, Flame, Heart } from 'lucide-react';
+import { FeaturedTeaser } from '@/components/home/FeaturedTeaser';
+import { AnimatedHero } from '@/components/animations/AnimatedHero';
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-cream">
 
       {/* Cinematic Hero */}
-      <section className="relative h-[70vh] md:h-[85vh] overflow-hidden">
-        <PlaceholderImage
-          width="w-full"
-          height="h-full"
-          text="LUNARIS"
-          className="absolute inset-0"
-          src="https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=1800&h=1000&fit=crop&q=80"
-          alt="Sacred Jewelry Craftsmanship"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-dark/60 via-dark/40 to-dark/80" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="h-px w-12 bg-mystic-star" />
-            <Star className="w-4 h-4 text-mystic-star" />
-            <div className="h-px w-12 bg-mystic-star" />
-          </div>
-          <p className="font-sans text-xs md:text-sm uppercase tracking-[0.3em] text-mystic-star mb-4">
-            Est. 2024 &mdash; Sacred Adornment
-          </p>
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-cream text-center font-light leading-tight">
-            Our Story
-          </h1>
-          <p className="font-serif text-lg md:text-xl text-cream/70 text-center mt-6 max-w-xl italic">
-            Where ancient wisdom meets modern mysticism
-          </p>
-          <div className="flex items-center gap-3 mt-8">
-            <div className="h-px w-8 bg-cream/30" />
-            <span className="text-mystic-star text-lg">&#10022;</span>
-            <div className="h-px w-8 bg-cream/30" />
-          </div>
-        </div>
-      </section>
+      <AnimatedHero />
 
       {/* Opening Statement */}
       <section className="py-20 md:py-32 px-4 bg-dark relative overflow-hidden">
@@ -87,6 +58,9 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+      {/* Featured Products Teaser — No Prices */}
+      <FeaturedTeaser />
 
       {/* Brand Pillars */}
       <section className="py-20 md:py-28 px-4 bg-stone-light/50">

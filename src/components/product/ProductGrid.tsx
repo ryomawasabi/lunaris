@@ -1,3 +1,6 @@
+'use client'
+
+import { motion } from 'framer-motion'
 import { Product } from "@/lib/types";
 import { ProductCard } from "@/components/product/ProductCard";
 import { cn } from "@/lib/utils";
@@ -7,6 +10,24 @@ interface ProductGridProps {
   columns?: 2 | 3 | 4;
   className?: string;
 }
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+} as const
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: 'easeOut' as const },
+  },
+} as const
 
 export function ProductGrid({
   products,
@@ -20,17 +41,23 @@ export function ProductGrid({
   };
 
   return (
-    <div
+    <motion.div
       className={cn(
         "grid grid-cols-1",
         colsMap[columns],
         "gap-6 md:gap-8",
         className
       )}
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-50px' }}
     >
       {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
+        <motion.div key={product.id} variants={itemVariants}>
+          <ProductCard product={product} />
+        </motion.div>
       ))}
-    </div>
+    </motion.div>
   );
 }

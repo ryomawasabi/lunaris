@@ -22,8 +22,7 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { label: 'Women', href: '/products?category=women' },
-    { label: 'Men', href: '/products?category=men' },
+    { label: 'Shop All', href: '/products' },
     { label: 'Collections', href: '/collections' },
     { label: 'Gifts', href: '/gifts' },
     { label: 'About', href: '/about' },
