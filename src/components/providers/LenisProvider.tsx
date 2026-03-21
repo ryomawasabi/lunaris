@@ -2,29 +2,33 @@
 
 import { useEffect, useRef } from 'react'
 import Lenis from '@studio-freight/lenis'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 export function LenisProvider({ children }: { children: React.ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null)
 
   useEffect(() => {
-    // Respect prefers-reduced-motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (prefersReducedMotion) return
 
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.0,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     })
     lenisRef.current = lenis
 
-    function raf(time: number) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
-    requestAnimationFrame(raf)
+    // Sync Lenis with GSAP ScrollTrigger so they don't fight each other
+    lenis.on('scroll', ScrollTrigger.update)
 
-    // Listen for changes to prefers-reduced-motion
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000)
+    })
+    gsap.ticker.lagSmoothing(0)
+
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
     const handleChange = (e: MediaQueryListEvent) => {
       if (e.matches) {

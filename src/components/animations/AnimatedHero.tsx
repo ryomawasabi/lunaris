@@ -34,13 +34,13 @@ export function AnimatedHero() {
     if (!imageRef.current || !sectionRef.current) return
 
     gsap.to(imageRef.current, {
-      yPercent: 25,
+      yPercent: 12,
       ease: 'none',
       scrollTrigger: {
         trigger: sectionRef.current,
         start: 'top top',
         end: 'bottom top',
-        scrub: true,
+        scrub: 0.5,
       },
     })
   }, { scope: sectionRef })
@@ -48,7 +48,7 @@ export function AnimatedHero() {
   return (
     <section ref={sectionRef} className="relative h-[70vh] md:h-[85vh] overflow-hidden">
       {/* Parallax background image */}
-      <div ref={imageRef} className="absolute inset-0 will-change-transform" style={{ top: '-15%', height: '130%' }}>
+      <div ref={imageRef} className="absolute inset-0 will-change-transform" style={{ top: '-10%', height: '120%' }}>
         <PlaceholderImage
           width="w-full"
           height="h-full"
