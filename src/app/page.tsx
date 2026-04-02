@@ -113,21 +113,7 @@ export default function Home() {
       </section>
 
       {/* Chakra Map — Lotus Mandala */}
-      <section className="py-20 md:py-28 px-4 bg-cream relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(90,142,174,0.04) 0%, transparent 60%)' }}
-        />
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold mb-4">Energy Centers</p>
-            <h2 className="font-serif text-3xl md:text-5xl text-dark font-light">The Seven Chakras</h2>
-            <p className="font-sans text-sm text-warm mt-4 max-w-xl mx-auto">
-              Hover over the lotus to discover each chakra and the sacred stones that resonate with your energy centers.
-            </p>
-          </div>
-          <LotusChakraMap />
-        </div>
-      </section>
+      <LotusChakraMap />
 
       {/* Split Image + Story */}
       <section className="py-0">
