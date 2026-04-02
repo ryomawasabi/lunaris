@@ -32,9 +32,9 @@ const navItems = [
 
 function NavLink({ icon, label, href, side }: { icon: string; label: string; href: string; side: 'left' | 'right' }) {
   const isDark = side === 'right';
-  const baseColor = isDark ? 'rgba(240,244,248,0.75)' : 'rgba(28,42,56,0.6)';
-  const hoverColor = isDark ? '#FFFFFF' : CC.yinBlack;
-  const hoverBg = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(28,42,56,0.08)';
+  const baseColor = isDark ? '#C0D0DC' : '#3A4E5E';
+  const hoverColor = isDark ? '#FFFFFF' : '#1C2A38';
+  const hoverBg = isDark ? 'rgba(255,255,255,0.12)' : 'rgba(28,42,56,0.1)';
 
   return (
     <Link
@@ -59,9 +59,9 @@ function NavLink({ icon, label, href, side }: { icon: string; label: string; hre
         borderRadius: 8,
         color: baseColor,
         textDecoration: 'none',
-        fontSize: 14,
-        fontWeight: 400,
-        letterSpacing: 1.5,
+        fontSize: 15,
+        fontWeight: 500,
+        letterSpacing: 1.2,
         transition: 'background 0.15s, color 0.15s',
         fontFamily: 'Inter, system-ui, sans-serif',
       }}
