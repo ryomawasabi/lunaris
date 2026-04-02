@@ -253,35 +253,35 @@ export function CrystalQuiz() {
                         <p className="text-xs font-sans text-warm-light uppercase tracking-wider mb-4">
                           Recommended {crystal.name} pieces for you
                         </p>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                           {crystalProducts.map(({ product }) => (
                             <Link
                               key={product.id}
                               href={`/products/${product.slug}`}
-                              className="group flex gap-4 p-3 rounded-xl bg-white/60 border border-stone-light/40 hover:border-gold/30 hover:shadow-md hover:shadow-gold/5 transition-all duration-300"
+                              className="group rounded-2xl overflow-hidden bg-white/70 border border-stone-light/40 hover:border-gold/30 hover:shadow-lg hover:shadow-gold/5 transition-all duration-300"
                             >
                               {/* Product Image */}
-                              <div className="relative w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden bg-stone-light">
+                              <div className="relative aspect-[4/3] overflow-hidden bg-stone-light">
                                 <img
                                   src={product.images[0]}
                                   alt={product.name}
-                                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                 />
                               </div>
                               {/* Product Info */}
-                              <div className="flex-1 min-w-0">
-                                <h5 className="font-serif text-sm text-dark leading-tight mb-1 group-hover:text-gold transition-colors">
+                              <div className="p-4">
+                                <h5 className="font-serif text-base md:text-lg text-dark leading-tight mb-1 group-hover:text-gold transition-colors">
                                   {product.name}
                                 </h5>
-                                <p className="text-xs font-sans text-warm-light mb-2">
-                                  {product.crystalType}
+                                <p className="text-xs font-sans text-warm-light mb-3">
+                                  {product.crystalType} · {product.category}
                                 </p>
                                 {/* Crystal Effects Tags */}
-                                <div className="flex flex-wrap gap-1">
-                                  {product.crystalEffects.slice(0, 3).map((effect) => (
+                                <div className="flex flex-wrap gap-1.5">
+                                  {product.crystalEffects.map((effect) => (
                                     <span
                                       key={effect}
-                                      className="inline-block text-[10px] font-sans px-2 py-0.5 rounded-full bg-gold/10 text-gold-dark"
+                                      className="inline-block text-xs font-sans px-2.5 py-1 rounded-full bg-gold/10 text-gold-dark"
                                     >
                                       {effect}
                                     </span>
