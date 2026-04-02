@@ -39,14 +39,14 @@ export default function ProductDetailContent() {
       {/* Breadcrumb */}
       <div className="px-4 md:px-6 lg:px-8 py-6 border-b border-stone-light">
         <div className="max-w-7xl mx-auto flex items-center gap-2 text-sm">
-          <Link href="/" className="text-stone hover:text-dark transition-colors">
+          <Link href="/" className="text-warm hover:text-dark transition-colors">
             Home
           </Link>
-          <ChevronRight className="w-4 h-4 text-stone" />
-          <Link href="/products" className="text-stone hover:text-dark transition-colors">
+          <ChevronRight className="w-4 h-4 text-warm" />
+          <Link href="/products" className="text-warm hover:text-dark transition-colors">
             Products
           </Link>
-          <ChevronRight className="w-4 h-4 text-stone" />
+          <ChevronRight className="w-4 h-4 text-warm" />
           <span className="text-dark font-medium">{product.name}</span>
         </div>
       </div>
@@ -83,7 +83,7 @@ export default function ProductDetailContent() {
                     count={product.reviewCount}
                     size="md"
                   />
-                  <span className="text-sm text-stone">
+                  <span className="text-sm text-warm">
                     {product.rating} out of 5 &bull; {product.reviewCount} reviews
                   </span>
                 </div>
@@ -97,7 +97,7 @@ export default function ProductDetailContent() {
                   </span>
                   {hasComparePrice && (
                     <>
-                      <span className="text-lg text-stone line-through">
+                      <span className="text-lg text-warm line-through">
                         {formatPrice(product.compareAtPrice!)}
                       </span>
                       <span className="text-sm font-medium text-warm">
@@ -109,7 +109,7 @@ export default function ProductDetailContent() {
               </div>
 
               {/* Short Description */}
-              <p className="text-base text-stone mb-6 leading-relaxed">
+              <p className="text-base text-warm mb-6 leading-relaxed">
                 {product.shortDescription}
               </p>
 
@@ -121,7 +121,7 @@ export default function ProductDetailContent() {
                     <h3 className="font-sans font-medium text-dark text-sm uppercase tracking-wider mb-2">
                       {product.gemstone}
                     </h3>
-                    <p className="text-sm text-stone italic">
+                    <p className="text-sm text-warm italic">
                       {product.symbolicMeaning}
                     </p>
                   </div>
@@ -135,7 +135,7 @@ export default function ProductDetailContent() {
                 </h3>
                 <ul className="space-y-2">
                   {product.materials.map((material, index) => (
-                    <li key={index} className="text-sm text-stone">
+                    <li key={index} className="text-sm text-warm">
                       &bull; {material}
                     </li>
                   ))}
@@ -163,7 +163,7 @@ export default function ProductDetailContent() {
                 <div className="flex items-start gap-3">
                   <Truck className="w-5 h-5 text-warm flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-sm text-stone">
+                    <p className="text-sm text-warm">
                       Complimentary shipping on orders over <span className="font-medium">$150</span>
                     </p>
                   </div>
@@ -171,7 +171,7 @@ export default function ProductDetailContent() {
                 <div className="flex items-start gap-3">
                   <RotateCcw className="w-5 h-5 text-warm flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-sm text-stone">
+                    <p className="text-sm text-warm">
                       <span className="font-medium">30-day easy returns</span> — satisfaction guaranteed
                     </p>
                   </div>
@@ -191,7 +191,7 @@ export default function ProductDetailContent() {
                   </div>
                 </div>
                 <h3 className="font-serif text-lg text-dark mb-2">Genuine Gemstones</h3>
-                <p className="text-sm text-stone">
+                <p className="text-sm text-warm">
                   Every piece features authentic, high-quality gemstones hand-selected for their beauty and energy.
                 </p>
               </div>
@@ -203,7 +203,7 @@ export default function ProductDetailContent() {
                   </div>
                 </div>
                 <h3 className="font-serif text-lg text-dark mb-2">Handcrafted</h3>
-                <p className="text-sm text-stone">
+                <p className="text-sm text-warm">
                   Thoughtfully designed and skillfully crafted by our artisans with attention to every detail.
                 </p>
               </div>
@@ -215,7 +215,7 @@ export default function ProductDetailContent() {
                   </div>
                 </div>
                 <h3 className="font-serif text-lg text-dark mb-2">Meaningful Design</h3>
-                <p className="text-sm text-stone">
+                <p className="text-sm text-warm">
                   Each piece carries symbolic significance rooted in spiritual traditions and personal intention.
                 </p>
               </div>
@@ -226,7 +226,7 @@ export default function ProductDetailContent() {
           <section className="my-16">
             <SectionTitle title="Symbolism &amp; Meaning" align="left" />
             <div className="max-w-3xl">
-              <p className="text-base text-stone leading-relaxed">
+              <p className="text-base text-warm leading-relaxed">
                 {product.longDescription}
               </p>
             </div>
@@ -248,10 +248,10 @@ export default function ProductDetailContent() {
                   <div className="mb-3">
                     <StarRating rating={review.rating} size="sm" />
                   </div>
-                  <p className="text-sm text-stone mb-4 italic">
+                  <p className="text-sm text-warm mb-4 italic">
                     &ldquo;{review.text}&rdquo;
                   </p>
-                  <div className="text-xs text-stone/70">
+                  <div className="text-xs text-warm">
                     <p className="font-medium">{review.author}</p>
                     <p>{review.date}</p>
                   </div>
