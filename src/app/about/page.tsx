@@ -22,7 +22,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission */}
-      <section className="py-16 md:py-20 px-4 bg-dark">
+      <section className="py-16 md:py-20 px-4 bg-dark texture-noise-dark">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-serif text-2xl md:text-3xl text-cream font-light mb-6">The Philosophy of Balance</h2>
           <p className="font-sans text-base text-cream/60 leading-relaxed">
@@ -59,7 +59,7 @@ export default function AboutPage() {
       </section>
 
       {/* Numbers */}
-      <section className="py-16 md:py-20 px-4 bg-stone-light/50">
+      <section className="py-16 md:py-20 px-4 bg-stone-light/50 texture-noise-light">
         <div className="max-w-3xl mx-auto">
           <div className="grid grid-cols-3 gap-8 text-center">
             <div>

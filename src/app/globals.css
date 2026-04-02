@@ -124,3 +124,70 @@ h1, h2, h3, h4, h5, h6 {
   0%, 100% { box-shadow: 0 0 4px currentColor; }
   50% { box-shadow: 0 0 12px currentColor; }
 }
+
+/* ─── Noise Texture Overlay ─── */
+/* Subtle grain that adds depth to flat sections */
+.texture-noise {
+  position: relative;
+}
+.texture-noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+
+/* Slightly stronger noise for light backgrounds */
+.texture-noise-light::before {
+  opacity: 0.04;
+}
+
+/* Softer noise for dark backgrounds */
+.texture-noise-dark::before {
+  opacity: 0.06;
+  mix-blend-mode: soft-light;
+}
+
+/* Subtle radial vignette gradient (adds depth to sections) */
+.texture-vignette {
+  position: relative;
+}
+.texture-vignette::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(28, 42, 56, 0.04) 100%);
+}
+
+/* Combined noise + vignette */
+.texture-rich {
+  position: relative;
+}
+.texture-rich::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+.texture-rich::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(28, 42, 56, 0.04) 100%);
+}

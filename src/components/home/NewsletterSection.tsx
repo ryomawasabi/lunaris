@@ -18,7 +18,7 @@ export function NewsletterSection() {
   };
 
   return (
-    <section className="py-16 md:py-24 px-6 md:px-12 bg-dark text-cream">
+    <section className="py-16 md:py-24 px-6 md:px-12 bg-dark text-cream texture-noise-dark">
       <div className="max-w-2xl mx-auto text-center">
         <h2 className="font-serif text-3xl md:text-4xl mb-4">
           Join the Yin-Yang Circle

@@ -46,7 +46,7 @@ export default function Home() {
       <SectionDivider variant="yinyang" />
 
       {/* Brand Story */}
-      <section className="py-20 md:py-28 px-4">
+      <section className="py-20 md:py-28 px-4 texture-rich">
         <div className="max-w-3xl mx-auto space-y-8">
           <ScrollReveal>
             <div className="text-center mb-12">
@@ -78,7 +78,7 @@ export default function Home() {
       <SectionDivider variant="lotus" />
 
       {/* Brand Pillars */}
-      <section className="py-20 md:py-28 px-4 bg-stone-light/50">
+      <section className="py-20 md:py-28 px-4 bg-stone-light/50 texture-noise-light">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-16">
@@ -193,7 +193,7 @@ export default function Home() {
       </section>
 
       {/* Process Timeline */}
-      <section className="py-20 md:py-28 px-4 bg-cream relative">
+      <section className="py-20 md:py-28 px-4 bg-cream relative texture-rich">
         <div className="max-w-5xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-16">
@@ -270,7 +270,7 @@ export default function Home() {
       </section>
 
       {/* Promise Strip */}
-      <section className="py-16 md:py-20 px-4 bg-white border-y border-stone-light">
+      <section className="py-16 md:py-20 px-4 bg-white border-y border-stone-light texture-noise">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
             {[
@@ -295,7 +295,7 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 md:py-28 px-4 bg-gradient-to-b from-cream to-stone-light">
+      <section className="py-20 md:py-28 px-4 bg-gradient-to-b from-cream to-stone-light texture-rich">
         <ScrollReveal>
           <div className="max-w-2xl mx-auto text-center">
             <Sparkles className="w-6 h-6 text-gold mx-auto mb-6" />

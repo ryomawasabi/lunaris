@@ -92,7 +92,7 @@ export default function GiftsPage() {
       </section>
 
       {/* Gift by Occasion */}
-      <section className="py-16 md:py-20 px-4 bg-stone-light">
+      <section className="py-16 md:py-20 px-4 bg-stone-light texture-noise-light">
         <div className="max-w-6xl mx-auto">
           <SectionTitle title="Gift by Occasion" align="center" />
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -134,7 +134,7 @@ export default function GiftsPage() {
       </section>
 
       {/* Most Giftable Products */}
-      <section className="py-16 md:py-20 px-4 bg-stone-light">
+      <section className="py-16 md:py-20 px-4 bg-stone-light texture-noise-light">
         <div className="max-w-6xl mx-auto">
           <SectionTitle title="Most Harmonious Gift Pieces" align="center" />
           <p className="text-center text-warm mb-12 max-w-2xl mx-auto">
@@ -185,7 +185,7 @@ export default function GiftsPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 md:py-20 px-4 bg-dark text-cream">
+      <section className="py-16 md:py-20 px-4 bg-dark text-cream texture-noise-dark">
         <div className="max-w-3xl mx-auto text-center space-y-8">
           <h2 className="font-serif text-3xl md:text-4xl font-light">Ready to Gift Harmony?</h2>
           <p className="text-cream/90 text-lg leading-relaxed">

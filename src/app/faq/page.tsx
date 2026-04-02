@@ -138,7 +138,7 @@ export default function FAQPage() {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-16 md:py-20 px-4 bg-dark text-cream">
+      <section className="py-16 md:py-20 px-4 bg-dark text-cream texture-noise-dark">
         <div className="max-w-3xl mx-auto text-center space-y-8">
           <h2 className="font-serif text-3xl md:text-4xl font-light">Still have questions?</h2>
           <p className="text-cream/90 text-lg leading-relaxed">
