@@ -125,6 +125,12 @@ h1, h2, h3, h4, h5, h6 {
   50% { box-shadow: 0 0 12px currentColor; }
 }
 
+/* Star Twinkle Animation (used by Soul Stone Discovery section) */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.5); }
+}
+
 /* ─── Noise Texture Overlay ─── */
 /* Subtle grain that adds depth to flat sections */
 .texture-noise {

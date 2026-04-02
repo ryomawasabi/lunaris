@@ -131,6 +131,69 @@ export default function Home() {
 
       <SectionDivider variant="dots" />
 
+      {/* Soul Stone Discovery CTA */}
+      <section className="relative py-24 md:py-32 overflow-hidden">
+        {/* Dark celestial background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#060e1a] via-[#0f1f3a] to-[#060e1a]" />
+
+        {/* Animated background stars */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(60)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute rounded-full bg-white"
+              style={{
+                width: i % 5 === 0 ? 2 : 1,
+                height: i % 5 === 0 ? 2 : 1,
+                left: `${(i * 17 + 7) % 100}%`,
+                top: `${(i * 31 + 13) % 100}%`,
+                opacity: 0.15 + (i % 8) * 0.05,
+                animation: `twinkle ${3 + (i % 4)}s ease-in-out ${(i % 7) * 0.5}s infinite`,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Zodiac ring decoration */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[700px] md:h-[700px] rounded-full border border-[#5A8EAE]/10 opacity-40" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] md:w-[500px] md:h-[500px] rounded-full border border-[#5A8EAE]/8 opacity-30" style={{ animation: 'spin 120s linear infinite' }} />
+
+        {/* Content */}
+        <div className="relative z-10 max-w-3xl mx-auto text-center px-4">
+          <ScrollReveal>
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <span className="text-[#8BB8D6]/40 text-lg">♈</span>
+              <span className="text-[#8BB8D6]/50 text-xl">♌</span>
+              <span className="text-[#8BB8D6]/60 text-2xl">♏</span>
+              <Star className="w-5 h-5 text-[#5A8EAE] mx-2" />
+              <span className="text-[#8BB8D6]/60 text-2xl">♓</span>
+              <span className="text-[#8BB8D6]/50 text-xl">♊</span>
+              <span className="text-[#8BB8D6]/40 text-lg">♎</span>
+            </div>
+            <h2 className="font-serif text-4xl md:text-6xl text-white font-light leading-tight mb-6" style={{ textShadow: '0 2px 20px rgba(90,142,174,0.3)' }}>
+              Soul Stone<br />Discovery
+            </h2>
+            <div className="h-px w-20 bg-gradient-to-r from-transparent via-[#5A8EAE] to-transparent mx-auto mb-6" />
+            <p className="font-sans text-base md:text-lg text-[#8BB8D6]/70 leading-relaxed max-w-xl mx-auto mb-10">
+              The stars hold the key to your crystal alignment. Enter your birth date and uncover the gemstones that resonate with your unique celestial energy.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.2}>
+            <a
+              href="/crystal-quiz"
+              className="group inline-flex items-center gap-3 px-10 py-4 rounded-full border border-[#5A8EAE]/40 bg-[#5A8EAE]/10 text-white font-sans text-sm tracking-wider hover:bg-[#5A8EAE]/20 hover:border-[#5A8EAE]/60 transition-all duration-500 backdrop-blur-sm"
+            >
+              <Sparkles className="w-4 h-4 text-[#8BB8D6] group-hover:scale-110 transition-transform" />
+              Discover Your Soul Stone
+              <span className="text-[#8BB8D6]/60 group-hover:translate-x-1 transition-transform">&rarr;</span>
+            </a>
+            <p className="font-sans text-xs text-[#5A8EAE]/40 mt-6 tracking-wider">
+              FREE · TAKES 30 SECONDS
+            </p>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* Chakra Map — Lotus Mandala */}
       <LotusChakraMap />
 
