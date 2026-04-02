@@ -7,6 +7,8 @@ import type { ZodiacSign } from '@/lib/zodiac';
 import { useProductStatus } from '@/components/providers/ProductStatusProvider';
 import type { Product } from '@/lib/types';
 import { Sparkles, ArrowRight, RotateCcw, Calendar, ShoppingBag } from 'lucide-react';
+import { ZodiacWheel } from './ZodiacWheel';
+import { ConstellationMap } from './ConstellationMap';
 
 type Step = 'intro' | 'input' | 'revealing' | 'result';
 
@@ -63,7 +65,7 @@ export function CrystalQuiz() {
     const zodiac = getZodiacFromDate(m, d);
     setResult(zodiac);
 
-    setTimeout(() => setStep('result'), 2000);
+    setTimeout(() => setStep('result'), 3500);
   };
 
   return (
@@ -177,27 +179,32 @@ export function CrystalQuiz() {
         </div>
       )}
 
-      {/* Revealing Animation */}
+      {/* Revealing Animation - Zodiac Wheel */}
       {step === 'revealing' && result && (
-        <div className="min-h-[80vh] flex flex-col items-center justify-center px-4 text-center">
-          <div className="text-7xl mb-8 animate-pulse">{result.symbol}</div>
-          <p className="font-serif text-2xl md:text-3xl text-dark animate-fade-in-up">
+        <div className="min-h-[80vh] flex flex-col items-center justify-center px-4 text-center bg-gradient-to-b from-[#0a1628] via-[#0f1f3a] to-[#0a1628]">
+          <div className="mb-8">
+            <ZodiacWheel highlightSign={result.name} size={300} />
+          </div>
+          <p className="font-serif text-2xl md:text-3xl text-[#8BB8D6] animate-fade-in-up">
             Reading the stars...
           </p>
-          <div className="mt-8 flex gap-2">
-            <div className="w-2 h-2 rounded-full bg-gold animate-bounce" style={{ animationDelay: '0ms' }} />
-            <div className="w-2 h-2 rounded-full bg-gold animate-bounce" style={{ animationDelay: '200ms' }} />
-            <div className="w-2 h-2 rounded-full bg-gold animate-bounce" style={{ animationDelay: '400ms' }} />
-          </div>
+          <p className="font-sans text-sm text-[#5A8EAE]/60 mt-3 tracking-wider uppercase">
+            Aligning your celestial energy
+          </p>
         </div>
       )}
 
       {/* Result Screen */}
       {step === 'result' && result && (
         <div className="max-w-4xl mx-auto px-4 py-16 md:py-24 animate-fade-in-up">
-          {/* Zodiac Header */}
+          {/* Zodiac Header with Constellation */}
           <div className="text-center mb-12">
-            <div className="text-6xl mb-4">{result.symbol}</div>
+            {/* Constellation visualization */}
+            <div className="relative mx-auto mb-6 rounded-2xl overflow-hidden" style={{ width: 280, height: 280 }}>
+              <div className="absolute inset-0 bg-gradient-to-b from-[#0a1628] via-[#0f1f3a] to-[#0a1628] rounded-2xl" />
+              <ConstellationMap sign={result.name} size={280} />
+            </div>
+            <div className="text-5xl mb-3">{result.symbol}</div>
             <h2 className="font-serif text-4xl md:text-5xl text-dark mb-2">
               {result.name}
             </h2>
