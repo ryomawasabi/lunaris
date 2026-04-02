@@ -36,7 +36,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
   return (
     <Link href={`/products/${product.slug}`}>
-      <div className={cn("group flex flex-col h-full rounded-lg transition-shadow duration-500 hover:shadow-[0_0_20px_rgba(155,126,200,0.25)]", isSoldOut && "opacity-70")}>
+      <div className={cn("group flex flex-col h-full rounded-lg transition-shadow duration-500 hover:shadow-[0_0_20px_rgba(90,142,174,0.25)]", isSoldOut && "opacity-70")}>
         {/* Image Container */}
         <div className="relative overflow-hidden bg-stone-light mb-4 aspect-square">
           <div className={cn("w-full h-full group-hover:scale-110 transition-transform duration-500 ease-out", isSoldOut && "grayscale-[30%]")}>

@@ -9,28 +9,28 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cream: '#F5F0F8',
+        cream: '#FAFCFE',
         gold: {
-          DEFAULT: '#9B7EC8',
-          light: '#B69DD4',
-          dark: '#7B5DAF',
+          DEFAULT: '#5A8EAE',
+          light: '#8BB8D6',
+          dark: '#3D6E8E',
         },
-        dark: '#1A1525',
+        dark: '#1C2A38',
         warm: {
-          DEFAULT: '#6B5B7B',
-          light: '#8E7FA0',
+          DEFAULT: '#7A8EA0',
+          light: '#9AACBB',
         },
         stone: {
-          DEFAULT: '#DDD5E8',
-          light: '#EAE4F0',
+          DEFAULT: '#DDE8F0',
+          light: '#F0F4F8',
         },
-        charcoal: '#2A2235',
+        charcoal: '#253545',
         mystic: {
-          indigo: '#4A3B6B',
-          violet: '#6B4E8D',
-          moon: '#C8BFD6',
-          star: '#E8D5A0',
-          aura: '#8B6BB5',
+          indigo: '#3D6E8E',
+          violet: '#5A8EAE',
+          moon: '#C0D8E8',
+          star: '#A0D0F0',
+          aura: '#6BA0C0',
         },
       },
       fontFamily: {

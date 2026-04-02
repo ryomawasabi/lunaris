@@ -5,16 +5,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
-  --color-cream: #F5F0F8;
-  --color-gold: #9B7EC8;
-  --color-gold-light: #B69DD4;
-  --color-gold-dark: #7B5DAF;
-  --color-dark: #1A1525;
-  --color-warm: #6B5B7B;
-  --color-warm-light: #8E7FA0;
-  --color-stone: #DDD5E8;
-  --color-stone-light: #EAE4F0;
-  --color-charcoal: #2A2235;
+  --color-cream: #FAFCFE;
+  --color-gold: #5A8EAE;
+  --color-gold-light: #8BB8D6;
+  --color-gold-dark: #3D6E8E;
+  --color-dark: #1C2A38;
+  --color-warm: #7A8EA0;
+  --color-warm-light: #9AACBB;
+  --color-stone: #DDE8F0;
+  --color-stone-light: #F0F4F8;
+  --color-charcoal: #253545;
 }
 
 * {
@@ -78,6 +78,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::selection {
-  background-color: rgba(155, 126, 200, 0.2);
+  background-color: rgba(90, 142, 174, 0.2);
   color: var(--color-dark);
 }
