@@ -26,6 +26,8 @@ function mapDbProductToProduct(dbProduct: any): Product {
     isBestSeller: dbProduct.is_best_seller,
     isNew: dbProduct.is_new,
     isGiftable: dbProduct.is_giftable,
+    crystalType: dbProduct.crystal_type || dbProduct.gemstone || '',
+    crystalEffects: dbProduct.crystal_effects || [],
   }
 }
 

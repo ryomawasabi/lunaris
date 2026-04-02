@@ -7,6 +7,8 @@ export interface Product {
   category: string;
   collection: string[];
   gemstone: string;
+  crystalType: string;       // Normalized crystal name for matching (e.g. "Rose Quartz")
+  crystalEffects: string[];  // Effects/benefits (e.g. ["Love", "Healing", "Compassion"])
   symbolicMeaning: string;
   shortDescription: string;
   longDescription: string;

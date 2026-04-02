@@ -10,6 +10,8 @@ export const PRODUCTS: Product[] = [
     category: "Bracelets",
     collection: ["Protection", "Love & Harmony"],
     gemstone: "Black Tourmaline",
+    crystalType: "Black Tourmaline",
+    crystalEffects: ["Protection", "Grounding", "Negative Energy Shield"],
     symbolicMeaning:
       "Protection and grounding energy. A steadfast companion for navigating life's complexities.",
     shortDescription:
@@ -36,6 +38,8 @@ export const PRODUCTS: Product[] = [
     category: "Necklaces",
     collection: ["Protection", "Evil Eye"],
     gemstone: "Lapis Lazuli",
+    crystalType: "Lapis Lazuli",
+    crystalEffects: ["Wisdom", "Protection", "Inner Vision", "Career"],
     symbolicMeaning:
       "Divine protection and inner vision. A sentinel of wisdom and truth.",
     shortDescription:
@@ -62,6 +66,8 @@ export const PRODUCTS: Product[] = [
     category: "Earrings",
     collection: ["Love & Harmony"],
     gemstone: "Rose Quartz",
+    crystalType: "Rose Quartz",
+    crystalEffects: ["Love", "Compassion", "Emotional Healing", "Relationships"],
     symbolicMeaning:
       "Unconditional love and compassion. A gentle reminder to lead with your heart.",
     shortDescription:
@@ -87,6 +93,8 @@ export const PRODUCTS: Product[] = [
     category: "Rings",
     collection: ["Love & Harmony"],
     gemstone: "Diamond (lab-created)",
+    crystalType: "Lab-Created Diamond",
+    crystalEffects: ["Clarity", "Commitment", "Strength", "Abundance"],
     symbolicMeaning:
       "Enduring connection and commitment. A promise worn in clarity and light.",
     shortDescription:
@@ -118,6 +126,8 @@ export const PRODUCTS: Product[] = [
     category: "Bracelets",
     collection: ["Prosperity"],
     gemstone: "Citrine",
+    crystalType: "Citrine",
+    crystalEffects: ["Prosperity", "Wealth", "Manifestation", "Confidence"],
     symbolicMeaning:
       "Prosperity and manifested intention. A golden reminder of your innate worth.",
     shortDescription:
@@ -149,6 +159,8 @@ export const PRODUCTS: Product[] = [
     category: "Necklaces",
     collection: ["Protection"],
     gemstone: "Black Obsidian",
+    crystalType: "Black Obsidian",
+    crystalEffects: ["Protection", "Shadow Work", "Grounding", "Truth"],
     symbolicMeaning:
       "Deep protection and shadow work. Safe passage through life's darkest passages.",
     shortDescription:
@@ -175,6 +187,8 @@ export const PRODUCTS: Product[] = [
     category: "Necklaces",
     collection: ["Tree of Life"],
     gemstone: "Mixed gemstones",
+    crystalType: "Mixed Gemstones",
+    crystalEffects: ["Growth", "Connection", "Balance", "Spiritual Awareness"],
     symbolicMeaning:
       "Connection, growth, and ancestral wisdom. Roots in the past, branches toward the future.",
     shortDescription:
@@ -208,6 +222,8 @@ export const PRODUCTS: Product[] = [
     category: "Bracelets",
     collection: ["Red String"],
     gemstone: "Carnelian",
+    crystalType: "Carnelian",
+    crystalEffects: ["Vitality", "Courage", "Destiny", "Passion"],
     symbolicMeaning:
       "Destiny and divine connection. The invisible thread that binds all meaningful encounters.",
     shortDescription:
@@ -233,6 +249,8 @@ export const PRODUCTS: Product[] = [
     category: "Earrings",
     collection: ["Love & Harmony"],
     gemstone: "Labradorite",
+    crystalType: "Labradorite",
+    crystalEffects: ["Transformation", "Intuition", "Magic", "Protection"],
     symbolicMeaning:
       "Magic and transformation. A reminder that light exists within all darkness.",
     shortDescription:
@@ -263,6 +281,8 @@ export const PRODUCTS: Product[] = [
     category: "Necklaces",
     collection: ["Evil Eye", "Protection"],
     gemstone: "Evil eye enamel and lapis",
+    crystalType: "Lapis Lazuli",
+    crystalEffects: ["Protection", "Spiritual Sight", "Wisdom", "Warding"],
     symbolicMeaning:
       "Watchful protection and spiritual sight. Guardian of your path and intention.",
     shortDescription:
@@ -295,6 +315,8 @@ export const PRODUCTS: Product[] = [
     category: "Rings",
     collection: ["Love & Harmony"],
     gemstone: "Pink tourmaline",
+    crystalType: "Pink Tourmaline",
+    crystalEffects: ["Love", "Spiritual Growth", "Heart Opening", "Compassion"],
     symbolicMeaning:
       "Spiritual awakening and pure enlightenment. Rising from stillness into your fullest expression.",
     shortDescription:
@@ -325,6 +347,8 @@ export const PRODUCTS: Product[] = [
     category: "Bracelets",
     collection: ["Birthstones", "Love & Harmony"],
     gemstone: "Amethyst",
+    crystalType: "Amethyst",
+    crystalEffects: ["Clarity", "Calm", "Intuition", "Spiritual Awareness"],
     symbolicMeaning:
       "Clarity, calm, and spiritual awareness. A gateway to inner peace and intuition.",
     shortDescription:
@@ -356,6 +380,8 @@ export const PRODUCTS: Product[] = [
     category: "Earrings",
     collection: ["Love & Harmony"],
     gemstone: "Aquamarine",
+    crystalType: "Aquamarine",
+    crystalEffects: ["Peace", "Communication", "Clarity", "Emotional Balance"],
     symbolicMeaning:
       "Calm, clarity, and inner peace. The serene depth of water reflecting sky.",
     shortDescription:
@@ -387,6 +413,8 @@ export const PRODUCTS: Product[] = [
     category: "Jewelry Sets",
     collection: ["Love & Harmony", "Protection"],
     gemstone: "Mixed gemstones",
+    crystalType: "Rose Quartz",
+    crystalEffects: ["Love", "Communication", "Harmony", "Spiritual Alignment"],
     symbolicMeaning:
       "Complete spiritual alignment across body and spirit. A unified practice of presence.",
     shortDescription:
@@ -420,6 +448,8 @@ export const PRODUCTS: Product[] = [
     category: "Necklaces",
     collection: ["Prosperity", "Birthstones"],
     gemstone: "Baltic Amber",
+    crystalType: "Baltic Amber",
+    crystalEffects: ["Prosperity", "Ancient Wisdom", "Warmth", "Healing"],
     symbolicMeaning:
       "Warmth, ancient wisdom, and the turning of seasons. Earth's golden memory.",
     shortDescription:
@@ -450,6 +480,8 @@ export const PRODUCTS: Product[] = [
     category: "Home Decor",
     collection: ["Prosperity", "Love & Harmony"],
     gemstone: "Spirit Quartz",
+    crystalType: "Spirit Quartz",
+    crystalEffects: ["Harmony", "Community", "Spiritual Elevation", "Unity"],
     symbolicMeaning:
       "Collective harmony and spiritual elevation. Many voices unified in light.",
     shortDescription:
@@ -477,6 +509,8 @@ export const PRODUCTS: Product[] = [
     category: "Bracelets",
     collection: ["Love & Harmony", "Prosperity"],
     gemstone: "Jade",
+    crystalType: "Jade",
+    crystalEffects: ["Prosperity", "Balance", "Peace", "Good Fortune"],
     symbolicMeaning:
       "Balance, peace, and prosperity. The stone of gentle, steady alignment.",
     shortDescription:
@@ -504,6 +538,8 @@ export const PRODUCTS: Product[] = [
     category: "Rings",
     collection: ["Protection", "Love & Harmony"],
     gemstone: "Garnet",
+    crystalType: "Garnet",
+    crystalEffects: ["Courage", "Vitality", "Rebirth", "Passion"],
     symbolicMeaning:
       "Rebirth and inner strength. Rising renewed from every challenge.",
     shortDescription:
@@ -535,6 +571,8 @@ export const PRODUCTS: Product[] = [
     category: "Earrings",
     collection: ["Birthstones", "Love & Harmony"],
     gemstone: "Freshwater Pearl",
+    crystalType: "Freshwater Pearl",
+    crystalEffects: ["Wisdom", "Beauty", "Calm", "Femininity"],
     symbolicMeaning:
       "Inner wisdom and authentic beauty. Truth formed through time and pressure.",
     shortDescription:
@@ -566,6 +604,8 @@ export const PRODUCTS: Product[] = [
     category: "Jewelry Sets",
     collection: ["Protection", "Evil Eye"],
     gemstone: "Mixed protective stones",
+    crystalType: "Black Tourmaline",
+    crystalEffects: ["Protection", "Spiritual Armor", "Grounding", "Warding"],
     symbolicMeaning:
       "Complete energetic protection and spiritual armor. Guardianship across all dimensions.",
     shortDescription:

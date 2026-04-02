@@ -222,4 +222,21 @@ export function getElementBorder(element: string): string {
   }
 }
 
+// Map crystal names used in zodiac recommendations to product crystalType values
+// This handles cases where the zodiac uses a slightly different name
+const CRYSTAL_NAME_MAP: Record<string, string[]> = {
+  'Black Tourmaline': ['Black Tourmaline'],
+  'Lapis Lazuli': ['Lapis Lazuli'],
+  'Rose Quartz': ['Rose Quartz'],
+  'Lab-Created Diamond': ['Lab-Created Diamond'],
+  'Citrine': ['Citrine'],
+  'Black Obsidian': ['Black Obsidian'],
+  'Carnelian': ['Carnelian'],
+  'Labradorite': ['Labradorite'],
+};
+
+export function getMatchingCrystalTypes(crystalName: string): string[] {
+  return CRYSTAL_NAME_MAP[crystalName] || [crystalName];
+}
+
 export { ZODIAC_SIGNS };

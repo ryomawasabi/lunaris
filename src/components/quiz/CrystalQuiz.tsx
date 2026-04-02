@@ -1,12 +1,20 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { getZodiacFromDate, getElementColor, getElementBorder } from '@/lib/zodiac';
+import Image from 'next/image';
+import { getZodiacFromDate, getElementColor, getElementBorder, getMatchingCrystalTypes } from '@/lib/zodiac';
 import type { ZodiacSign } from '@/lib/zodiac';
-import { Sparkles, ArrowRight, RotateCcw, Calendar } from 'lucide-react';
+import { useProductStatus } from '@/components/providers/ProductStatusProvider';
+import type { Product } from '@/lib/types';
+import { Sparkles, ArrowRight, RotateCcw, Calendar, ShoppingBag } from 'lucide-react';
 
 type Step = 'intro' | 'input' | 'revealing' | 'result';
+
+interface MatchedProduct {
+  product: Product;
+  matchedCrystal: string;
+}
 
 export function CrystalQuiz() {
   const [step, setStep] = useState<Step>('intro');
@@ -15,6 +23,31 @@ export function CrystalQuiz() {
   const [year, setYear] = useState('');
   const [result, setResult] = useState<ZodiacSign | null>(null);
   const [error, setError] = useState('');
+  const { products } = useProductStatus();
+
+  // Find products that match the recommended crystals
+  const matchedProducts = useMemo(() => {
+    if (!result) return [];
+
+    const matches: MatchedProduct[] = [];
+    const seen = new Set<string>();
+
+    for (const crystal of result.crystals) {
+      const crystalTypes = getMatchingCrystalTypes(crystal.name);
+
+      for (const product of products) {
+        if (seen.has(product.id)) continue;
+        if (product.isHidden || product.isSoldOut) continue;
+
+        if (crystalTypes.includes(product.crystalType)) {
+          matches.push({ product, matchedCrystal: crystal.name });
+          seen.add(product.id);
+        }
+      }
+    }
+
+    return matches;
+  }, [result, products]);
 
   const handleSubmit = () => {
     const m = parseInt(month);
@@ -162,7 +195,7 @@ export function CrystalQuiz() {
 
       {/* Result Screen */}
       {step === 'result' && result && (
-        <div className="max-w-3xl mx-auto px-4 py-16 md:py-24 animate-fade-in-up">
+        <div className="max-w-4xl mx-auto px-4 py-16 md:py-24 animate-fade-in-up">
           {/* Zodiac Header */}
           <div className="text-center mb-12">
             <div className="text-6xl mb-4">{result.symbol}</div>
@@ -185,43 +218,151 @@ export function CrystalQuiz() {
           </div>
 
           {/* Crystal Recommendations */}
-          <div className="mb-12">
+          <div className="mb-16">
             <h3 className="font-serif text-2xl md:text-3xl text-dark text-center mb-8">
               Your Crystal Alignment
             </h3>
             <div className="space-y-6">
-              {result.crystals.map((crystal, i) => (
-                <div
-                  key={crystal.name}
-                  className="animate-fadeInUp bg-white/50 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-stone-light/60 hover:border-gold/30 transition-all duration-300 hover:shadow-lg hover:shadow-gold/5"
-                  style={{ animationDelay: `${i * 150}ms` }}
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-3">
+              {result.crystals.map((crystal, i) => {
+                // Find products that match this specific crystal
+                const crystalProducts = matchedProducts.filter(
+                  (mp) => mp.matchedCrystal === crystal.name
+                );
+
+                return (
+                  <div
+                    key={crystal.name}
+                    className="animate-fadeInUp bg-white/50 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-stone-light/60 hover:border-gold/30 transition-all duration-300"
+                    style={{ animationDelay: `${i * 150}ms` }}
+                  >
+                    {/* Crystal Info */}
+                    <div className="mb-4">
+                      <div className="flex items-center gap-3 mb-2">
                         <span className="text-lg text-gold">◆</span>
                         <h4 className="font-serif text-xl md:text-2xl text-dark">
                           {crystal.name}
                         </h4>
                       </div>
-                      <p className="font-sans text-warm text-sm leading-relaxed mb-4">
+                      <p className="font-sans text-warm text-sm leading-relaxed">
                         {crystal.reason}
                       </p>
-                      {crystal.productSlug && (
-                        <Link
-                          href={`/products/${crystal.productSlug}`}
-                          className="inline-flex items-center gap-2 text-sm font-sans text-gold hover:text-gold-dark transition-colors group"
-                        >
-                          Shop this crystal
-                          <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                        </Link>
-                      )}
                     </div>
+
+                    {/* Matched Products for this crystal */}
+                    {crystalProducts.length > 0 && (
+                      <div className="mt-5 pt-5 border-t border-stone-light/60">
+                        <p className="text-xs font-sans text-warm-light uppercase tracking-wider mb-4">
+                          Recommended {crystal.name} pieces for you
+                        </p>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          {crystalProducts.map(({ product }) => (
+                            <Link
+                              key={product.id}
+                              href={`/products/${product.slug}`}
+                              className="group flex gap-4 p-3 rounded-xl bg-white/60 border border-stone-light/40 hover:border-gold/30 hover:shadow-md hover:shadow-gold/5 transition-all duration-300"
+                            >
+                              {/* Product Image */}
+                              <div className="relative w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden bg-stone-light">
+                                <Image
+                                  src={product.images[0]}
+                                  alt={product.name}
+                                  fill
+                                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                                  sizes="80px"
+                                />
+                              </div>
+                              {/* Product Info */}
+                              <div className="flex-1 min-w-0">
+                                <h5 className="font-serif text-sm text-dark leading-tight mb-1 group-hover:text-gold transition-colors">
+                                  {product.name}
+                                </h5>
+                                <p className="text-xs font-sans text-warm-light mb-2">
+                                  {product.crystalType}
+                                </p>
+                                {/* Crystal Effects Tags */}
+                                <div className="flex flex-wrap gap-1">
+                                  {product.crystalEffects.slice(0, 3).map((effect) => (
+                                    <span
+                                      key={effect}
+                                      className="inline-block text-[10px] font-sans px-2 py-0.5 rounded-full bg-gold/10 text-gold-dark"
+                                    >
+                                      {effect}
+                                    </span>
+                                  ))}
+                                </div>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
+
+          {/* All Matched Products Summary */}
+          {matchedProducts.length > 0 && (
+            <div className="mb-16">
+              <div className="text-center mb-8">
+                <ShoppingBag size={24} className="mx-auto text-gold mb-3" />
+                <h3 className="font-serif text-2xl md:text-3xl text-dark mb-2">
+                  Your Celestial Collection
+                </h3>
+                <p className="font-sans text-warm text-sm">
+                  All LUNARIS pieces aligned with your {result.name} energy
+                </p>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {matchedProducts.map(({ product }, i) => (
+                  <Link
+                    key={product.id}
+                    href={`/products/${product.slug}`}
+                    className="group animate-fadeInUp rounded-xl overflow-hidden bg-white/50 border border-stone-light/60 hover:border-gold/30 hover:shadow-lg hover:shadow-gold/5 transition-all duration-300"
+                    style={{ animationDelay: `${i * 80}ms` }}
+                  >
+                    {/* Image */}
+                    <div className="relative aspect-square overflow-hidden bg-stone-light">
+                      <Image
+                        src={product.images[0]}
+                        alt={product.name}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        sizes="(max-width: 768px) 50vw, 33vw"
+                      />
+                      {/* Crystal Type Badge */}
+                      <div className="absolute top-2 left-2">
+                        <span className="inline-block text-[10px] font-sans px-2 py-1 rounded-full bg-dark/70 text-cream backdrop-blur-sm">
+                          {product.crystalType}
+                        </span>
+                      </div>
+                    </div>
+                    {/* Info */}
+                    <div className="p-3 md:p-4">
+                      <h5 className="font-serif text-sm md:text-base text-dark leading-tight mb-2 group-hover:text-gold transition-colors">
+                        {product.name}
+                      </h5>
+                      {/* Effects */}
+                      <div className="flex flex-wrap gap-1 mb-2">
+                        {product.crystalEffects.map((effect) => (
+                          <span
+                            key={effect}
+                            className="inline-block text-[10px] font-sans px-2 py-0.5 rounded-full bg-gold/10 text-gold-dark"
+                          >
+                            {effect}
+                          </span>
+                        ))}
+                      </div>
+                      <p className="text-sm font-sans text-dark">
+                        ¥{product.price.toLocaleString()}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Actions */}
           <div className="text-center space-y-4">

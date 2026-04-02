@@ -146,6 +146,8 @@ export default function NewProductPage() {
       isBestSeller: formData.isBestSeller,
       isNew: formData.isNew,
       isGiftable: formData.isGiftable,
+      crystalType: formData.gemstone,
+      crystalEffects: [],
     }
 
     addProduct(product)
