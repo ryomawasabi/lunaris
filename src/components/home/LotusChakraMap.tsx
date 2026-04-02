@@ -1,24 +1,25 @@
 'use client';
 
 import { useState, useRef, useCallback } from 'react';
+import Link from 'next/link';
 
-const SVG_SIZE = 520;
+const SVG_SIZE = 640;
 const CX = SVG_SIZE / 2;
 const CY = SVG_SIZE / 2;
 
-const PETAL_R_OPEN = 190;
-const PETAL_R_BUD = 55;
-const PETAL_W_OPEN = 68;
-const PETAL_W_BUD = 18;
+const PETAL_R_OPEN = 240;
+const PETAL_R_BUD = 65;
+const PETAL_W_OPEN = 85;
+const PETAL_W_BUD = 22;
 
 const chakras = [
-  { name: 'Crown', nameJa: 'クラウン', color: '#B8A0D8', stones: ['アメジスト', 'クリアクォーツ'], desc: '宇宙意識・悟り・スピリチュアルな覚醒' },
-  { name: 'Third Eye', nameJa: '第三の目', color: '#7B8EC8', stones: ['ラピスラズリ', 'ソーダライト'], desc: '直感・洞察力・内なるビジョン' },
-  { name: 'Throat', nameJa: 'スロート', color: '#6AB8D0', stones: ['アクアマリン', 'ターコイズ'], desc: 'コミュニケーション・自己表現・真実' },
-  { name: 'Heart', nameJa: 'ハート', color: '#6CC88C', stones: ['ローズクォーツ', 'グリーンアベンチュリン'], desc: '愛・共感・癒し・調和' },
-  { name: 'Solar Plexus', nameJa: 'ソーラー', color: '#E8D060', stones: ['シトリン', 'タイガーアイ'], desc: '自信・意志力・個人のパワー' },
-  { name: 'Sacral', nameJa: 'サクラル', color: '#E8A060', stones: ['カーネリアン', 'オレンジカルサイト'], desc: '創造性・感情・情熱' },
-  { name: 'Root', nameJa: 'ルート', color: '#D06868', stones: ['ガーネット', 'レッドジャスパー'], desc: '安定・グラウンディング・安心感' },
+  { name: 'Crown', subtitle: 'Cosmic Consciousness', color: '#B8A0D8', stones: ['Amethyst', 'Clear Quartz'], desc: 'Spiritual awakening, enlightenment, and connection to universal consciousness.', link: '/products?category=crown' },
+  { name: 'Third Eye', subtitle: 'Inner Vision', color: '#7B8EC8', stones: ['Lapis Lazuli', 'Sodalite'], desc: 'Intuition, insight, and the ability to see beyond the physical world.', link: '/products?category=third-eye' },
+  { name: 'Throat', subtitle: 'True Expression', color: '#6AB8D0', stones: ['Aquamarine', 'Turquoise'], desc: 'Communication, self-expression, and speaking your authentic truth.', link: '/products?category=throat' },
+  { name: 'Heart', subtitle: 'Unconditional Love', color: '#6CC88C', stones: ['Rose Quartz', 'Green Aventurine'], desc: 'Love, compassion, healing, and harmony with all living beings.', link: '/products?category=heart' },
+  { name: 'Solar Plexus', subtitle: 'Personal Power', color: '#E8D060', stones: ['Citrine', 'Tiger Eye'], desc: 'Confidence, willpower, and the fire of personal transformation.', link: '/products?category=solar-plexus' },
+  { name: 'Sacral', subtitle: 'Creative Flow', color: '#E8A060', stones: ['Carnelian', 'Orange Calcite'], desc: 'Creativity, emotion, passion, and the joy of being alive.', link: '/products?category=sacral' },
+  { name: 'Root', subtitle: 'Foundation', color: '#D06868', stones: ['Garnet', 'Red Jasper'], desc: 'Stability, grounding, safety, and connection to the earth.', link: '/products?category=root' },
 ];
 
 const angles = [-90, -38.6, 12.9, 64.3, 115.7, 167.1, 218.6];
@@ -36,7 +37,7 @@ export default function LotusChakraMap() {
     const tipX = CX + r * Math.cos(a);
     const tipY = CY + r * Math.sin(a);
     const perpA = a + Math.PI / 2;
-    const baseOffset = isBloomed ? (active ? 30 : 24) : 10;
+    const baseOffset = isBloomed ? (active ? 34 : 28) : 12;
     const bx1 = CX + baseOffset * Math.cos(perpA);
     const by1 = CY + baseOffset * Math.sin(perpA);
     const bx2 = CX - baseOffset * Math.cos(perpA);
@@ -52,7 +53,7 @@ export default function LotusChakraMap() {
 
   const tipPos = (i: number) => {
     const a = (angles[i] * Math.PI) / 180;
-    return { x: CX + (PETAL_R_OPEN + 16) * Math.cos(a), y: CY + (PETAL_R_OPEN + 16) * Math.sin(a) };
+    return { x: CX + (PETAL_R_OPEN + 20) * Math.cos(a), y: CY + (PETAL_R_OPEN + 20) * Math.sin(a) };
   };
 
   const handleAreaEnter = () => {
@@ -93,7 +94,7 @@ export default function LotusChakraMap() {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-12">
           <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold mb-4">Energy Guide</p>
-          <h2 className="font-serif text-3xl md:text-5xl text-dark font-light">Chakra × Crystal Map</h2>
+          <h2 className="font-serif text-3xl md:text-5xl text-dark font-light">Chakra &times; Crystal Map</h2>
           <div className="h-px w-16 mx-auto mt-5" style={{ background: 'linear-gradient(90deg, transparent, #5A8EAE, transparent)' }} />
         </div>
 
@@ -106,7 +107,7 @@ export default function LotusChakraMap() {
           >
             {/* Bud hint */}
             <div style={{
-              position: 'absolute', left: '50%', bottom: 30, transform: 'translateX(-50%)',
+              position: 'absolute', left: '50%', bottom: 40, transform: 'translateX(-50%)',
               whiteSpace: 'nowrap', textAlign: 'center',
               opacity: bloomed ? 0 : 0.6, transition: 'opacity 0.6s ease', pointerEvents: 'none', zIndex: 5,
             }}>
@@ -141,14 +142,14 @@ export default function LotusChakraMap() {
               </defs>
 
               {/* Decorative rings (bloom only) */}
-              {[60, 110, 160, 210].map((r, i) => (
+              {[70, 135, 200, 260].map((r, i) => (
                 <circle key={`ring-${i}`} cx={CX} cy={CY} r={r} fill="none" stroke="#5A8EAE" strokeWidth="0.4"
                   opacity={bloomed ? (0.12 - i * 0.02) : 0} strokeDasharray="2 8"
                   style={{ transition: 'opacity 0.8s ease', animation: bloomed ? `lotusBreath ${10 + i * 3}s ease-in-out infinite` : 'none', animationDelay: `${i}s` }} />
               ))}
 
               {/* Bud glow */}
-              <circle cx={CX} cy={CY} r={bloomed ? 48 : 70} fill="url(#lbg)"
+              <circle cx={CX} cy={CY} r={bloomed ? 56 : 85} fill="url(#lbg)"
                 opacity={bloomed ? 0 : 1}
                 style={{ transition: 'all 0.8s ease', animation: !bloomed ? 'budPulse 3s ease-in-out infinite' : 'none' }} />
 
@@ -180,35 +181,35 @@ export default function LotusChakraMap() {
                 const glowX = CX + PETAL_R_OPEN * 0.5 * Math.cos(a);
                 const glowY = CY + PETAL_R_OPEN * 0.5 * Math.sin(a);
                 return (
-                  <circle cx={glowX} cy={glowY} r={60} fill={`url(#lrg${activeChakra})`}
+                  <circle cx={glowX} cy={glowY} r={75} fill={`url(#lrg${activeChakra})`}
                     style={{ animation: 'lotusGlowPulse 2s ease-in-out infinite', pointerEvents: 'none' }} />
                 );
               })()}
 
               {/* Center */}
-              <circle cx={CX} cy={CY} r={bloomed ? 48 : 36} fill="url(#lcg)" style={{ transition: 'all 0.8s ease' }} />
-              <circle cx={CX} cy={CY} r={bloomed ? 32 : 24} fill="none" stroke="#5A8EAE" strokeWidth="0.8" opacity="0.25" style={{ transition: 'all 0.8s ease' }} />
-              <circle cx={CX} cy={CY} r={bloomed ? 20 : 14} fill="none" stroke="#5A8EAE" strokeWidth="0.5" opacity="0.2" style={{ transition: 'all 0.8s ease' }} />
-              <circle cx={CX} cy={CY} r={7} fill="#5A8EAE" opacity="0.4" />
+              <circle cx={CX} cy={CY} r={bloomed ? 56 : 42} fill="url(#lcg)" style={{ transition: 'all 0.8s ease' }} />
+              <circle cx={CX} cy={CY} r={bloomed ? 38 : 28} fill="none" stroke="#5A8EAE" strokeWidth="0.8" opacity="0.25" style={{ transition: 'all 0.8s ease' }} />
+              <circle cx={CX} cy={CY} r={bloomed ? 24 : 16} fill="none" stroke="#5A8EAE" strokeWidth="0.5" opacity="0.2" style={{ transition: 'all 0.8s ease' }} />
+              <circle cx={CX} cy={CY} r={8} fill="#5A8EAE" opacity="0.4" />
 
               {/* Jewels at petal tips */}
               {chakras.map((ch, i) => {
                 const a = (angles[i] * Math.PI) / 180;
-                const jx = CX + (curR - 12) * Math.cos(a);
-                const jy = CY + (curR - 12) * Math.sin(a);
+                const jx = CX + (curR - 14) * Math.cos(a);
+                const jy = CY + (curR - 14) * Math.sin(a);
                 const isActive = activeChakra === i && bloomed;
-                const jewR = isActive ? 10 : bloomed ? 6 : 3;
+                const jewR = isActive ? 12 : bloomed ? 7 : 4;
                 return (
                   <g key={`jewel-${i}`} style={{ cursor: bloomed ? 'pointer' : 'default' }}
                     onMouseEnter={() => bloomed && setActiveChakra(i)}
                     onMouseLeave={() => bloomed && setActiveChakra(null)}>
-                    {isActive && <circle cx={jx} cy={jy} r={20} fill={`url(#lrg${i})`} />}
-                    <circle cx={jx} cy={jy} r={jewR + 3} fill="none" stroke={ch.color}
+                    {isActive && <circle cx={jx} cy={jy} r={24} fill={`url(#lrg${i})`} />}
+                    <circle cx={jx} cy={jy} r={jewR + 4} fill="none" stroke={ch.color}
                       strokeWidth={isActive ? 1.2 : 0.5} opacity={bloomed ? (isActive ? 0.6 : 0.3) : 0}
                       style={{ transition: 'all 0.8s ease' }} />
                     <circle cx={jx} cy={jy} r={jewR} fill={ch.color}
                       opacity={isActive ? 1 : bloomed ? 0.7 : 0.5}
-                      style={{ transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)', filter: isActive ? `drop-shadow(0 0 6px ${ch.color})` : 'none' }} />
+                      style={{ transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)', filter: isActive ? `drop-shadow(0 0 8px ${ch.color})` : 'none' }} />
                   </g>
                 );
               })}
@@ -233,15 +234,15 @@ export default function LotusChakraMap() {
                     transition: 'opacity 0.6s ease', cursor: 'pointer', padding: '4px 8px',
                     pointerEvents: bloomed ? 'auto' : 'none',
                   }}>
-                  <div className="font-sans text-xs font-semibold" style={{ color: ch.color, lineHeight: 1.3 }}>{ch.nameJa}</div>
-                  <div className="font-sans text-[9px] text-warm tracking-wider">{ch.name}</div>
+                  <div className="font-sans text-xs font-semibold" style={{ color: ch.color, lineHeight: 1.3 }}>{ch.name}</div>
+                  <div className="font-sans text-[9px] text-warm tracking-wider">{ch.subtitle}</div>
                 </div>
               );
             })}
           </div>
 
           {/* Detail Panel */}
-          <div className="w-full lg:w-[340px] min-h-[280px] bg-white rounded-2xl p-8 flex flex-col justify-center"
+          <div className="w-full lg:w-[380px] min-h-[320px] bg-white rounded-2xl p-8 flex flex-col justify-center"
             style={{
               border: `1px solid ${activeChakra !== null && bloomed ? chakras[activeChakra].color + '44' : '#DDE8F0'}`,
               boxShadow: activeChakra !== null && bloomed
@@ -252,7 +253,7 @@ export default function LotusChakraMap() {
             {activeChakra !== null && bloomed ? (
               <>
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="w-11 h-11 rounded-full flex items-center justify-center"
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center"
                     style={{
                       background: `radial-gradient(circle at 35% 35%, ${chakras[activeChakra].color}40, ${chakras[activeChakra].color}15)`,
                       border: `2px solid ${chakras[activeChakra].color}`,
@@ -261,31 +262,41 @@ export default function LotusChakraMap() {
                     <div className="w-4 h-4 rounded-full" style={{ background: chakras[activeChakra].color }} />
                   </div>
                   <div>
-                    <h3 className="font-serif text-xl text-dark">{chakras[activeChakra].nameJa}</h3>
-                    <p className="font-sans text-xs tracking-widest" style={{ color: chakras[activeChakra].color }}>{chakras[activeChakra].name}</p>
+                    <h3 className="font-serif text-xl text-dark">{chakras[activeChakra].name}</h3>
+                    <p className="font-sans text-xs tracking-widest" style={{ color: chakras[activeChakra].color }}>{chakras[activeChakra].subtitle}</p>
                   </div>
                 </div>
                 <p className="font-sans text-sm text-warm leading-relaxed mb-5 font-light">
                   {chakras[activeChakra].desc}
                 </p>
                 <p className="font-sans text-[11px] text-gold tracking-widest uppercase font-semibold mb-3">Recommended Stones</p>
-                <div className="flex gap-2 flex-wrap">
+                <div className="flex gap-2 flex-wrap mb-6">
                   {chakras[activeChakra].stones.map((s) => (
                     <span key={s} className="font-sans text-sm text-dark"
                       style={{
                         padding: '8px 16px', borderRadius: 20,
-                        background: `${chakras[activeChakra].color}12`,
-                        border: `1px solid ${chakras[activeChakra].color}33`,
+                        background: `${chakras[activeChakra!].color}12`,
+                        border: `1px solid ${chakras[activeChakra!].color}33`,
                       }}>{s}</span>
                   ))}
                 </div>
+                <Link href={chakras[activeChakra].link}
+                  className="inline-flex items-center gap-2 font-sans text-sm font-medium transition-all duration-300 group"
+                  style={{ color: chakras[activeChakra].color }}>
+                  <span className="border-b border-current pb-0.5 group-hover:pb-1 transition-all duration-300">
+                    Shop {chakras[activeChakra].name} Collection
+                  </span>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="group-hover:translate-x-1 transition-transform duration-300">
+                    <path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </Link>
               </>
             ) : (
               <div className="text-center">
                 <p className="font-sans text-[11px] text-gold tracking-widest uppercase mb-3">Lotus Mandala</p>
-                <p className="font-serif text-3xl text-stone mb-3">❀</p>
+                <p className="font-serif text-3xl text-stone mb-3">&#10048;</p>
                 <p className="font-sans text-sm text-warm font-light leading-relaxed">
-                  {bloomed ? '花弁にカーソルを合わせて\nチャクラとクリスタルを探索' : '蓮の蕾にカーソルを近づけると\n花が開きます'}
+                  {bloomed ? 'Hover over a petal to explore\neach chakra and its crystals' : 'Bring your cursor close\nto watch the lotus bloom'}
                 </p>
               </div>
             )}
