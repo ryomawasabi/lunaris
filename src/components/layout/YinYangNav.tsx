@@ -3,10 +3,10 @@
 import { useState, useRef, useCallback } from 'react';
 import Link from 'next/link';
 
-const SIZE = 340;
+const SIZE = 400;
 const HALF = SIZE / 2;
-const CIRCLE_R = 160;
-const SPREAD = 180;
+const CIRCLE_R = 190;
+const SPREAD = 200;
 
 const CC = {
   yinWhite: '#FFFFFF',
