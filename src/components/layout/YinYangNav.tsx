@@ -3,22 +3,24 @@
 import { useState, useRef, useCallback } from 'react';
 import Link from 'next/link';
 
-const SIZE = 280;
+const SIZE = 380;
 const HALF = SIZE / 2;
-const SPREAD = 160;
+const SPREAD = 200;
 
 // Crystal Clear palette
 const CC = {
   yinWhite: '#F0F4F8',
   yinBlack: '#1C2A38',
   accent: '#5A8EAE',
-  accentLight: '#8BB8D6',
-  text: '#1C2A38',
-  textMuted: '#7A8EA0',
 };
 
-// S-curve path for yin-yang split
+// S-curve path for yin-yang boundary
 const sPath = `M ${HALF} 0 A ${HALF / 2} ${HALF / 2} 0 0 1 ${HALF} ${HALF} A ${HALF / 2} ${HALF / 2} 0 0 0 ${HALF} ${SIZE}`;
+
+// Left half clip (white side): S-curve + left boundary
+const leftClip = `${sPath} L 0 ${SIZE} L 0 0 Z`;
+// Right half clip (black side): S-curve + right boundary
+const rightClip = `${sPath} L ${SIZE} ${SIZE} L ${SIZE} 0 Z`;
 
 const navItems = [
   { icon: '✦', label: 'New Arrivals', href: '/products?sort=newest' },
@@ -28,11 +30,10 @@ const navItems = [
   { icon: '◇', label: 'About', href: '/about' },
 ];
 
-// Optimized NavLink - uses DOM manipulation instead of React state for hover
 function NavLink({ icon, label, href, side }: { icon: string; label: string; href: string; side: 'left' | 'right' }) {
   const isDark = side === 'right';
   const baseColor = isDark ? 'rgba(240,244,248,0.7)' : 'rgba(28,42,56,0.7)';
-  const hoverColor = isDark ? '#F0F4F8' : CC.text;
+  const hoverColor = isDark ? '#F0F4F8' : CC.yinBlack;
   const hoverBg = isDark ? 'rgba(240,244,248,0.08)' : 'rgba(28,42,56,0.06)';
 
   return (
@@ -54,18 +55,18 @@ function NavLink({ icon, label, href, side }: { icon: string; label: string; hre
         display: 'flex',
         alignItems: 'center',
         gap: 10,
-        padding: '8px 16px',
+        padding: '10px 18px',
         borderRadius: 8,
         color: baseColor,
         textDecoration: 'none',
-        fontSize: 13,
+        fontSize: 14,
         fontWeight: 400,
         letterSpacing: 1.5,
         transition: 'background 0.15s, color 0.15s',
         fontFamily: 'Inter, system-ui, sans-serif',
       }}
     >
-      <span data-icon style={{ fontSize: 14, transition: 'color 0.15s' }}>{icon}</span>
+      <span data-icon style={{ fontSize: 15, transition: 'color 0.15s' }}>{icon}</span>
       {label}
     </Link>
   );
@@ -81,7 +82,7 @@ export default function YinYangNav() {
   }, []);
 
   const handleLeave = useCallback(() => {
-    closeTimer.current = setTimeout(() => setOpen(false), 250);
+    closeTimer.current = setTimeout(() => setOpen(false), 300);
   }, []);
 
   const leftItems = navItems.slice(0, Math.ceil(navItems.length / 2));
@@ -93,74 +94,72 @@ export default function YinYangNav() {
       onMouseLeave={handleLeave}
       style={{
         position: 'relative',
-        width: SIZE,
+        width: open ? SIZE + SPREAD * 2 : SIZE,
         height: SIZE,
         cursor: 'pointer',
+        transition: 'width 0.5s cubic-bezier(0.22, 1, 0.36, 1)',
       }}
     >
-      {/* Closed state: Complete yin-yang SVG */}
-      <svg
-        width={SIZE}
-        height={SIZE}
-        viewBox={`0 0 ${SIZE} ${SIZE}`}
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          zIndex: 3,
-          opacity: open ? 0 : 1,
-          transition: 'opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
-          pointerEvents: open ? 'none' : 'auto',
-        }}
-      >
-        <circle cx={HALF} cy={HALF} r={HALF} fill={CC.yinWhite} />
-        <path d={`${sPath} L ${SIZE} ${SIZE} L ${SIZE} 0 Z`} fill={CC.yinBlack} />
-        {/* 勾玉 dots */}
-        <circle cx={HALF} cy={HALF * 0.5} r={HALF * 0.1} fill={CC.yinBlack} />
-        <circle cx={HALF} cy={HALF * 1.5} r={HALF * 0.12} fill={CC.yinWhite} />
-      </svg>
+      {/* Closed state: Complete yin-yang (single SVG, no background) */}
+      <div style={{
+        position: 'absolute',
+        left: '50%',
+        top: 0,
+        transform: 'translateX(-50%)',
+        width: SIZE,
+        height: SIZE,
+        zIndex: 3,
+        opacity: open ? 0 : 1,
+        transition: 'opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
+        pointerEvents: open ? 'none' : 'auto',
+      }}>
+        <svg width={SIZE} height={SIZE} viewBox={`0 0 ${SIZE} ${SIZE}`}>
+          {/* White circle base */}
+          <circle cx={HALF} cy={HALF} r={HALF} fill={CC.yinWhite} />
+          {/* Black half via clip */}
+          <clipPath id="yy-closed-right">
+            <path d={rightClip} />
+          </clipPath>
+          <circle cx={HALF} cy={HALF} r={HALF} fill={CC.yinBlack} clipPath="url(#yy-closed-right)" />
+          {/* 勾玉 dots */}
+          <circle cx={HALF} cy={HALF * 0.5} r={HALF * 0.1} fill={CC.yinBlack} />
+          <circle cx={HALF} cy={HALF * 1.5} r={HALF * 0.12} fill={CC.yinWhite} />
+        </svg>
+      </div>
 
       {/* Open state: Left panel (white / yin) */}
-      <div
-        style={{
-          position: 'absolute',
-          width: SIZE,
-          height: SIZE,
-          left: open ? -SPREAD : 0,
-          top: 0,
-          transition: 'left 0.5s cubic-bezier(0.22, 1, 0.36, 1)',
-          zIndex: 2,
-        }}
-      >
-        <svg
-          width={SIZE}
-          height={SIZE}
-          viewBox={`0 0 ${SIZE} ${SIZE}`}
-          style={{ position: 'absolute', top: 0, left: 0 }}
-        >
+      <div style={{
+        position: 'absolute',
+        width: SIZE,
+        height: SIZE,
+        left: open ? '50%' : '50%',
+        top: 0,
+        transform: open ? `translateX(calc(-50% - ${SPREAD}px))` : 'translateX(-50%)',
+        transition: 'transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)',
+        zIndex: 2,
+      }}>
+        <svg width={SIZE} height={SIZE} viewBox={`0 0 ${SIZE} ${SIZE}`} style={{ position: 'absolute', top: 0, left: 0 }}>
           <defs>
             <clipPath id="yy-left-clip">
-              <path d={`${sPath} L 0 ${SIZE} L 0 0 Z`} />
+              <path d={leftClip} />
             </clipPath>
           </defs>
           <circle cx={HALF} cy={HALF} r={HALF} fill={CC.yinWhite} clipPath="url(#yy-left-clip)" />
           <circle cx={HALF} cy={HALF * 0.5} r={HALF * 0.1} fill={CC.yinBlack} clipPath="url(#yy-left-clip)" />
         </svg>
         {/* Left nav items */}
-        <div
-          style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 4,
-            opacity: open ? 1 : 0,
-            transition: 'opacity 0.4s ease 0.15s',
-            pointerEvents: open ? 'auto' : 'none',
-          }}
-        >
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 4,
+          opacity: open ? 1 : 0,
+          transition: 'opacity 0.4s ease 0.15s',
+          pointerEvents: open ? 'auto' : 'none',
+        }}>
           {leftItems.map((item) => (
             <NavLink key={item.label} {...item} side="left" />
           ))}
@@ -168,46 +167,38 @@ export default function YinYangNav() {
       </div>
 
       {/* Open state: Right panel (black / yang) */}
-      <div
-        style={{
-          position: 'absolute',
-          width: SIZE,
-          height: SIZE,
-          left: open ? SPREAD : 0,
-          top: 0,
-          transition: 'left 0.5s cubic-bezier(0.22, 1, 0.36, 1)',
-          zIndex: 2,
-        }}
-      >
-        <svg
-          width={SIZE}
-          height={SIZE}
-          viewBox={`0 0 ${SIZE} ${SIZE}`}
-          style={{ position: 'absolute', top: 0, left: 0 }}
-        >
+      <div style={{
+        position: 'absolute',
+        width: SIZE,
+        height: SIZE,
+        left: open ? '50%' : '50%',
+        top: 0,
+        transform: open ? `translateX(calc(-50% + ${SPREAD}px))` : 'translateX(-50%)',
+        transition: 'transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)',
+        zIndex: 2,
+      }}>
+        <svg width={SIZE} height={SIZE} viewBox={`0 0 ${SIZE} ${SIZE}`} style={{ position: 'absolute', top: 0, left: 0 }}>
           <defs>
             <clipPath id="yy-right-clip">
-              <path d={`${sPath} L ${SIZE} ${SIZE} L ${SIZE} 0 Z`} />
+              <path d={rightClip} />
             </clipPath>
           </defs>
           <circle cx={HALF} cy={HALF} r={HALF} fill={CC.yinBlack} clipPath="url(#yy-right-clip)" />
           <circle cx={HALF} cy={HALF * 1.5} r={HALF * 0.12} fill={CC.yinWhite} clipPath="url(#yy-right-clip)" />
         </svg>
         {/* Right nav items */}
-        <div
-          style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 4,
-            opacity: open ? 1 : 0,
-            transition: 'opacity 0.4s ease 0.15s',
-            pointerEvents: open ? 'auto' : 'none',
-          }}
-        >
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 4,
+          opacity: open ? 1 : 0,
+          transition: 'opacity 0.4s ease 0.15s',
+          pointerEvents: open ? 'auto' : 'none',
+        }}>
           {rightItems.map((item) => (
             <NavLink key={item.label} {...item} side="right" />
           ))}
