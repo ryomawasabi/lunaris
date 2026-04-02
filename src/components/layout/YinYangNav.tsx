@@ -32,7 +32,7 @@ const navItems = [
 
 function NavLink({ icon, label, href, side }: { icon: string; label: string; href: string; side: 'left' | 'right' }) {
   const isDark = side === 'right';
-  const baseColor = isDark ? '#C0D0DC' : '#3A4E5E';
+  const baseColor = isDark ? '#E8EEF2' : '#3A4E5E';
   const hoverColor = isDark ? '#FFFFFF' : '#1C2A38';
   const hoverBg = isDark ? 'rgba(255,255,255,0.12)' : 'rgba(28,42,56,0.1)';
 
