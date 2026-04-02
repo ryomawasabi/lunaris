@@ -15,7 +15,7 @@ export default function Footer() {
               YINYANG GUARDIAN
             </h2>
             <p className="text-sm text-stone mb-8 leading-relaxed">
-              Sacred jewelry channeling ancient wisdom, cosmic energy, and spiritual protection for your soul&apos;s journey.
+              Chakra-aligned crystal jewelry inspired by the ancient wisdom of yin and yang, crafted to restore balance and harmony.
             </p>
             <div className="flex items-center gap-6">
               <a

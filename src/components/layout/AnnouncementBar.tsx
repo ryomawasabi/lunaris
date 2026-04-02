@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react';
 
 const MESSAGES = [
-  'Align Your Energy with Every Piece You Wear',
-  'Crafted Under the Stars for Spiritual Protection',
+  'Align Your Chakras with Every Crystal You Wear',
+  'Yin-Yang Balance — Crafted Under Sun &amp; Moon',
   'Free Shipping on Orders Over $150',
 ];
 

@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button';
 
 export const metadata: Metadata = {
   title: 'FAQ | YINYANG GUARDIAN',
-  description: 'Frequently asked questions about YINYANG GUARDIAN jewelry, shipping, returns, and care.',
+  description: 'Frequently asked questions about YINYANG GUARDIAN chakra crystal jewelry, energy alignment, shipping, and care.',
 };
 
 export default function FAQPage() {
@@ -67,12 +67,12 @@ export default function FAQPage() {
         {
           question: 'How should I care for my jewelry?',
           answer:
-            'To keep your YINYANG GUARDIAN jewelry beautiful, avoid exposing it to water, perfume, or harsh chemicals. Store your pieces in the soft pouch provided. For deeper cleaning, use a soft cloth. We recommend removing your jewelry during exercise, bathing, and swimming.',
+            'To keep your YINYANG GUARDIAN jewelry beautiful, avoid exposing it to water, perfume, or harsh chemicals. Store your pieces in the soft pouch provided. For deeper cleaning, use a soft cloth. We recommend removing your jewelry during exercise, bathing, and swimming. To maintain energetic alignment, we recommend cleansing your crystals under moonlight once a month.',
         },
         {
-          question: 'Do the crystals have real spiritual properties?',
+          question: 'How do the chakra properties of crystals work?',
           answer:
-            'We draw on ancient wisdom traditions, metaphysical practices, and centuries of crystal healing knowledge. Each stone is selected for its unique energetic vibration. While we honor these spiritual traditions deeply, the meaning of each crystal is ultimately what resonates with your soul. We create these pieces as sacred tools for spiritual practice and energy alignment.',
+            'Each crystal resonates at a unique frequency that corresponds to one or more of the seven chakras. Drawing on Taoist philosophy, Ayurvedic tradition, and centuries of crystal healing wisdom, we select stones for their ability to balance yin and yang energies within your energy body. While we honor these ancient traditions deeply, the meaning of each crystal is ultimately what resonates with your own energy centers.',
         },
         {
           question: 'Are your materials hypoallergenic?',
@@ -118,7 +118,7 @@ export default function FAQPage() {
             Frequently Asked Questions
           </h1>
           <p className="text-cream/90 text-center text-lg max-w-2xl px-4">
-            Everything you need to know about YINYANG GUARDIAN and our sacred jewelry.
+            Everything you need to know about our chakra-aligned crystal jewelry and the philosophy of yin-yang balance.
           </p>
         </div>
       </section>
@@ -142,8 +142,7 @@ export default function FAQPage() {
         <div className="max-w-3xl mx-auto text-center space-y-8">
           <h2 className="font-serif text-3xl md:text-4xl font-light">Still have questions?</h2>
           <p className="text-cream/90 text-lg leading-relaxed">
-            Our customer service team is here to help. Reach out with any questions about our
-            products, shipping, or your YINYANG GUARDIAN experience.
+            Our energy guides are here to help. Reach out with any questions about chakra alignment, crystal properties, or your YINYANG GUARDIAN experience.
           </p>
           <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
             <div className="flex items-center space-x-3">

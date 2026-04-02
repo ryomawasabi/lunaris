@@ -21,11 +21,11 @@ export function NewsletterSection() {
     <section className="py-16 md:py-24 px-6 md:px-12 bg-dark text-cream">
       <div className="max-w-2xl mx-auto text-center">
         <h2 className="font-serif text-3xl md:text-4xl mb-4">
-          Join the Cosmic Circle
+          Join the Yin-Yang Circle
         </h2>
 
         <p className="font-sans text-cream/90 text-base mb-8 leading-relaxed">
-          Receive moon phase rituals, spiritual guidance, and early access to new sacred pieces. Join thousands of seekers on their path to enlightenment.
+          Receive chakra alignment guides, yin-yang balance rituals, and early access to new crystal pieces. Join thousands of seekers on their path to harmony.
         </p>
 
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 mb-4">

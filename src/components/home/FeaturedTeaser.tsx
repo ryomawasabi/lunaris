@@ -24,10 +24,10 @@ export function FeaturedTeaser() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-gold/[0.03]" />
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-16">
-          <p className="font-sans text-xs uppercase tracking-[0.25em] text-mystic-star mb-4">Sacred Adornment</p>
-          <h2 className="font-serif text-3xl md:text-5xl text-cream font-light">Discover Our Talismans</h2>
+          <p className="font-sans text-xs uppercase tracking-[0.25em] text-mystic-star mb-4">Chakra Collection</p>
+          <h2 className="font-serif text-3xl md:text-5xl text-cream font-light">Crystals of Balance</h2>
           <p className="font-sans text-sm text-cream/50 mt-4 max-w-lg mx-auto">
-            Each piece carries ancient energy, waiting to resonate with its destined wearer.
+            Each piece aligns with your energy centers, restoring the balance of yin and yang within.
           </p>
         </div>
 

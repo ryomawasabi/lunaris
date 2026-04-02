@@ -21,15 +21,14 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <Moon className="w-8 h-8 text-gold mx-auto mb-8 opacity-60" />
           <h2 className="font-serif text-3xl md:text-5xl text-cream font-light leading-relaxed mb-8">
-            We believe jewelry should do more than adorn
+            Where yin meets yang, balance is born
             <span className="text-gold">&mdash;</span>
             <br className="hidden md:block" />
-            it should <em className="text-gold">transform</em>.
+            and through balance, we <em className="text-gold">transform</em>.
           </h2>
           <div className="h-px w-24 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-8" />
           <p className="font-sans text-base md:text-lg text-cream/60 leading-relaxed max-w-2xl mx-auto">
-            YINYANG GUARDIAN was born from a calling to bridge the seen and unseen worlds. Each piece is a portal
-            to ancient protective energies, channeled through sacred gemstones and intentional design.
+            YINYANG GUARDIAN was born from the ancient philosophy of duality — the dance of light and shadow, stillness and motion. Each piece channels the harmony of opposing forces through chakra-aligned gemstones and sacred design.
           </p>
         </div>
       </section>
@@ -38,24 +37,17 @@ export default function Home() {
       <section className="py-20 md:py-28 px-4">
         <div className="max-w-3xl mx-auto space-y-8">
           <div className="text-center mb-12">
-            <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold mb-4">The Beginning</p>
-            <h2 className="font-serif text-3xl md:text-4xl text-dark font-light">A Calling From the Cosmos</h2>
+            <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold mb-4">The Origin</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-dark font-light">Born of Balance</h2>
           </div>
           <p className="font-sans text-base md:text-lg text-warm leading-relaxed">
-            YINYANG GUARDIAN began as a whisper&mdash;a deep, intuitive calling to channel the ancient power of crystals
-            and sacred symbols into wearable form. We saw how disconnected modern life had become from the
-            spiritual currents that have guided humanity for millennia, and we knew there had to be a bridge.
+            YINYANG GUARDIAN was born from a simple truth: when your energy centers are aligned, life flows with purpose. We saw how modern life had drifted from the ancient wisdom of yin and yang — the eternal balance that governs all things — and we set out to create wearable reminders of that harmony.
           </p>
           <p className="font-sans text-base md:text-lg text-warm leading-relaxed">
-            Inspired by sacred geometry, celestial cycles, and the metaphysical properties of gemstones,
-            we set out to create jewelry that serves as a spiritual companion. Each piece is infused with
-            intention during creation, designed to align your chakras, attract positive karma, and shield
-            you from negative energies. This is jewelry as spiritual practice.
+            Drawing from chakra healing traditions, Taoist philosophy, and the metaphysical properties of gemstones, each piece is designed to restore balance to specific energy centers. Whether you seek the grounding power of your root chakra or the spiritual clarity of your crown, our crystals are chosen to harmonize the flow of chi through your body.
           </p>
           <p className="font-sans text-base md:text-lg text-warm leading-relaxed">
-            When you choose YINYANG GUARDIAN, you&apos;re not just wearing jewelry&mdash;you&apos;re activating ancient
-            protective energies. You&apos;re aligning with the cosmos. You&apos;re joining a community of
-            spiritual seekers who believe in the transformative power of sacred adornment.
+            When you wear YINYANG GUARDIAN, you carry the balance of yin and yang with you. You align your seven chakras. You honor the duality within yourself — strength and softness, fire and water, earth and sky — and find wholeness in the space between.
           </p>
         </div>
       </section>
@@ -67,29 +59,29 @@ export default function Home() {
       <section className="py-20 md:py-28 px-4 bg-stone-light/50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold mb-4">Our Philosophy</p>
-            <h2 className="font-serif text-3xl md:text-5xl text-dark font-light">Three Sacred Pillars</h2>
+            <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold mb-4">The Way of Balance</p>
+            <h2 className="font-serif text-3xl md:text-5xl text-dark font-light">Yin, Yang &amp; the Path Between</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {[
               {
                 icon: Sparkles,
-                title: 'Sacred Energy',
-                subtitle: 'Channeled Power',
-                description: 'Each piece channels cosmic energy through sacred geometry and healing gemstones, creating wearable talismans that resonate with your soul.',
+                title: 'Yin Energy',
+                subtitle: 'Receptive Flow',
+                description: 'The yin within each piece draws from lunar energy, water elements, and feminine crystals — creating a vessel of intuition, calm, and deep inner wisdom.',
               },
               {
                 icon: Shield,
-                title: 'Karmic Integrity',
-                subtitle: 'Pure Intention',
-                description: 'Every gemstone is ethically sourced with positive karma. The energy that reaches you is pure, unbroken, and aligned with the highest spiritual vibration.',
+                title: 'Yang Energy',
+                subtitle: 'Active Force',
+                description: 'The yang force channels solar power, fire elements, and protective stones — forging shields of confidence, vitality, and outward strength.',
               },
               {
                 icon: Flame,
-                title: 'Ritual Craft',
-                subtitle: 'Meditative Creation',
-                description: 'Our artisans work in meditative states, infusing each detail with spiritual purpose. Every piece emerges as a unique vessel of protective energy.',
+                title: 'Chakra Harmony',
+                subtitle: 'Energy Alignment',
+                description: 'Where yin and yang converge, the seven chakras align. Each piece is tuned to specific energy centers, creating a bridge between your physical body and spiritual self.',
               },
             ].map((pillar, index) => {
               const Icon = pillar.icon;
@@ -132,21 +124,17 @@ export default function Home() {
             <div className="max-w-lg">
               <div className="flex items-center gap-3 mb-6">
                 <Gem className="w-5 h-5 text-mystic-star" />
-                <p className="font-sans text-xs uppercase tracking-[0.25em] text-mystic-star">The Craft</p>
+                <p className="font-sans text-xs uppercase tracking-[0.25em] text-mystic-star">The Alchemy</p>
               </div>
               <h2 className="font-serif text-3xl md:text-4xl text-cream font-light leading-snug mb-6">
-                Every gemstone tells a story millions of years in the making
+                Each crystal carries the balance of earth and cosmos within
               </h2>
               <div className="space-y-5 text-cream/60 font-sans text-sm leading-relaxed">
                 <p>
-                  We hand-select each crystal for its metaphysical properties, clarity, and energetic resonance.
-                  From deep purple amethyst for spiritual awakening to rose quartz for unconditional love,
-                  every stone is chosen with sacred intention.
+                  We select each stone for its chakra resonance and elemental alignment. Cool blue lapis for the third eye, warm carnelian for the sacral center, grounding garnet for the root — every crystal is chosen to restore balance where you need it most.
                 </p>
                 <p>
-                  Our master artisans work with sterling silver and gold vermeil, shaping each setting
-                  to amplify the stone&apos;s natural frequency. The result is jewelry that doesn&apos;t just look
-                  beautiful&mdash;it <em>feels</em> alive.
+                  Our artisans work with the rhythms of yin and yang, pairing masculine metals with feminine stones, creating pieces where opposing energies meet in perfect equilibrium. The result is jewelry that doesn&apos;t just adorn — it <em>realigns</em>.
                 </p>
               </div>
               <div className="mt-8 flex items-center gap-6">
@@ -157,12 +145,12 @@ export default function Home() {
                 <div className="w-px h-10 bg-cream/10" />
                 <div className="text-center">
                   <p className="font-serif text-3xl text-gold">48h</p>
-                  <p className="font-sans text-[10px] uppercase tracking-wider text-cream/40 mt-1">Avg. Craft Time</p>
+                  <p className="font-sans text-[10px] uppercase tracking-wider text-cream/40 mt-1">Balancing Time</p>
                 </div>
                 <div className="w-px h-10 bg-cream/10" />
                 <div className="text-center">
                   <p className="font-serif text-3xl text-gold">7</p>
-                  <p className="font-sans text-[10px] uppercase tracking-wider text-cream/40 mt-1">Blessing Steps</p>
+                  <p className="font-sans text-[10px] uppercase tracking-wider text-cream/40 mt-1">Chakra Points</p>
                 </div>
               </div>
             </div>
@@ -174,16 +162,16 @@ export default function Home() {
       <section className="py-20 md:py-28 px-4 bg-cream relative">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold mb-4">From Vision to Vessel</p>
-            <h2 className="font-serif text-3xl md:text-5xl text-dark font-light">The Sacred Process</h2>
+            <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold mb-4">The Path of Creation</p>
+            <h2 className="font-serif text-3xl md:text-5xl text-dark font-light">From Duality to Unity</h2>
           </div>
 
           <div className="space-y-0">
             {[
-              { number: '01', title: 'Channeling', description: 'We begin in deep meditation, connecting with celestial alignments and the metaphysical realm to receive the vision for each new piece.', icon: Eye },
-              { number: '02', title: 'Sacred Design', description: 'Spiritual visions are translated into sacred geometry, considering energy flow, chakra alignment, and how the piece will resonate with its future wearer.', icon: Moon },
-              { number: '03', title: 'Crystal Selection', description: 'Each gemstone is hand-selected for its spiritual properties, energetic vibration, and alignment with the piece\'s protective or healing purpose.', icon: Gem },
-              { number: '04', title: 'Blessing & Activation', description: 'Every finished piece undergoes ritual cleansing under moonlight and is blessed with positive energy before beginning its journey to you.', icon: Star },
+              { number: '01', title: 'Intention Setting', description: 'Every piece begins with a meditation on balance — which chakra needs awakening, which element seeks expression, where yin and yang must find their meeting point.', icon: Eye },
+              { number: '02', title: 'Energy Mapping', description: 'We map the flow of chi through each design, aligning gemstone placement with chakra positions and balancing warm yang metals with cool yin stones.', icon: Moon },
+              { number: '03', title: 'Stone Pairing', description: 'Crystals are paired by their energetic polarity — grounding root stones with expansive crown crystals, fiery solar plexus gems with cooling throat chakra minerals.', icon: Gem },
+              { number: '04', title: 'Yin-Yang Activation', description: 'Each finished piece is activated under both sun and moon — charged with yang energy at dawn and yin energy at dusk — before beginning its journey to you.', icon: Star },
             ].map((step, index) => {
               const Icon = step.icon;
               return (
@@ -226,12 +214,12 @@ export default function Home() {
             <Star className="w-3 h-3 text-mystic-star" />
           </div>
           <blockquote className="font-serif text-2xl md:text-4xl lg:text-5xl text-cream font-light leading-relaxed italic">
-            &ldquo;When you wear sacred energy close to your heart, the universe conspires to protect your path.&rdquo;
+            &ldquo;In the balance of yin and yang, all things find their true nature. Wear the harmony, become the harmony.&rdquo;
           </blockquote>
           <div className="mt-10 flex items-center justify-center gap-4">
             <div className="h-px w-8 bg-gold/40" />
             <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold">
-              The YINYANG GUARDIAN Spirit Circle
+              Ancient Wisdom of Balance
             </p>
             <div className="h-px w-8 bg-gold/40" />
           </div>
@@ -243,10 +231,10 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
             {[
-              { icon: Gem, label: 'Genuine Gemstones', sub: 'Certified & Authentic' },
-              { icon: Shield, label: 'Lifetime Energy', sub: 'Blessed & Protected' },
-              { icon: Heart, label: 'Ethically Sourced', sub: 'Positive Karma Only' },
-              { icon: Star, label: 'Sacred Craft', sub: 'Handmade with Intention' },
+              { icon: Gem, label: 'Chakra Crystals', sub: 'Energetically Aligned' },
+              { icon: Shield, label: 'Yin-Yang Balance', sub: 'Dual Energy Charged' },
+              { icon: Heart, label: 'Ethically Sourced', sub: 'Pure Chi Energy' },
+              { icon: Star, label: 'Handcrafted', sub: 'Aligned with Intention' },
             ].map((item, i) => {
               const Icon = item.icon;
               return (
@@ -266,17 +254,17 @@ export default function Home() {
         <div className="max-w-2xl mx-auto text-center">
           <Sparkles className="w-6 h-6 text-gold mx-auto mb-6" />
           <h2 className="font-serif text-3xl md:text-4xl text-dark font-light mb-6">
-            Begin Your Sacred Journey
+            Find Your Balance
           </h2>
           <p className="font-sans text-base text-warm leading-relaxed mb-10">
-            Explore our collections and discover the talismans that resonate with your soul&apos;s deepest purpose.
+            Explore our chakra-aligned collections and discover the crystals that restore harmony to your energy centers.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button href="/products" variant="primary" size="lg">
               Explore Collections
             </Button>
             <Button href="/gifts" variant="secondary" size="lg">
-              Sacred Gifting
+              Gift Balance
             </Button>
           </div>
         </div>

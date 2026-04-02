@@ -4,7 +4,7 @@ import { Gem, Heart, Shield, Star } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'About | YINYANG GUARDIAN',
-  description: 'YINYANG GUARDIAN creates sacred spiritual jewelry with ethically sourced gemstones and intentional design.',
+  description: 'YINYANG GUARDIAN creates chakra-aligned crystal jewelry inspired by the ancient philosophy of yin and yang balance.',
 };
 
 export default function AboutPage() {
@@ -17,19 +17,16 @@ export default function AboutPage() {
         <h1 className="font-serif text-4xl md:text-6xl text-dark font-light mb-6">YINYANG GUARDIAN</h1>
         <div className="h-px w-16 bg-gold mx-auto mb-6" />
         <p className="font-sans text-base md:text-lg text-warm max-w-2xl mx-auto leading-relaxed">
-          Sacred spiritual jewelry channeling cosmic energy, ancient wisdom,
-          and karmic protection through ethically sourced gemstones and intentional design.
+          Crystal jewelry rooted in the ancient wisdom of yin and yang, designed to align your chakras and restore balance to body, mind, and spirit.
         </p>
       </section>
 
       {/* Mission */}
       <section className="py-16 md:py-20 px-4 bg-dark">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-serif text-2xl md:text-3xl text-cream font-light mb-6">Our Mission</h2>
+          <h2 className="font-serif text-2xl md:text-3xl text-cream font-light mb-6">The Philosophy of Balance</h2>
           <p className="font-sans text-base text-cream/60 leading-relaxed">
-            We create jewelry that serves as a bridge between the physical and spiritual worlds.
-            Every piece is designed to protect, heal, and empower&mdash;transforming sacred gemstones
-            into wearable talismans that resonate with your soul&apos;s purpose.
+            We believe that true beauty comes from harmony — the balance of yin and yang that flows through all living things. Our jewelry bridges the physical and energetic worlds, using chakra-aligned crystals to help you find equilibrium in an unbalanced world.
           </p>
         </div>
       </section>
@@ -39,10 +36,10 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {[
-              { icon: Gem, title: 'Authentic Gemstones', text: 'Every crystal is hand-selected for its metaphysical properties and energetic resonance.' },
-              { icon: Shield, title: 'Ethical Sourcing', text: 'Gemstones sourced with positive karma, ensuring pure and unbroken spiritual energy.' },
-              { icon: Heart, title: 'Intentional Design', text: 'Each piece is crafted in meditative states, infused with spiritual purpose and sacred geometry.' },
-              { icon: Star, title: 'Ritual Blessing', text: 'Every finished piece undergoes cleansing and blessing before beginning its journey to you.' },
+              { icon: Gem, title: 'Chakra-Aligned Crystals', text: 'Every stone is selected for its resonance with specific energy centers, from root to crown, ensuring balanced chi flow.' },
+              { icon: Shield, title: 'Yin-Yang Sourcing', text: 'We honor both the giving and receiving cycle of nature. Stones are sourced with respect for the earth and the communities that gather them.' },
+              { icon: Heart, title: 'Balanced Design', text: 'Each piece embodies the interplay of yin and yang — soft curves with bold structure, cooling stones with warming metals.' },
+              { icon: Star, title: 'Energetic Activation', text: 'Every piece is charged under both sun (yang) and moon (yin), activating dual energies before it reaches your hands.' },
             ].map((item, i) => {
               const Icon = item.icon;
               return (
@@ -67,15 +64,15 @@ export default function AboutPage() {
           <div className="grid grid-cols-3 gap-8 text-center">
             <div>
               <p className="font-serif text-4xl text-gold">100+</p>
-              <p className="font-sans text-xs uppercase tracking-wider text-warm mt-2">Crystal Varieties</p>
+              <p className="font-sans text-xs uppercase tracking-wider text-warm mt-2">Chakra Stones</p>
             </div>
             <div>
               <p className="font-serif text-4xl text-gold">48h</p>
-              <p className="font-sans text-xs uppercase tracking-wider text-warm mt-2">Avg. Craft Time</p>
+              <p className="font-sans text-xs uppercase tracking-wider text-warm mt-2">Balancing Hours</p>
             </div>
             <div>
               <p className="font-serif text-4xl text-gold">7</p>
-              <p className="font-sans text-xs uppercase tracking-wider text-warm mt-2">Blessing Steps</p>
+              <p className="font-sans text-xs uppercase tracking-wider text-warm mt-2">Energy Centers</p>
             </div>
           </div>
         </div>
@@ -84,13 +81,13 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="py-16 md:py-20 px-4 text-center">
         <h2 className="font-serif text-2xl md:text-3xl text-dark font-light mb-4">
-          Explore Our Collections
+          Discover Your Balance
         </h2>
         <p className="font-sans text-sm text-warm mb-8">
-          Discover the talismans that resonate with your journey.
+          Find the crystals that align with your chakras and restore your flow.
         </p>
         <Button href="/products" variant="primary" size="lg">
-          Shop Now
+          Explore Collections
         </Button>
       </section>
 

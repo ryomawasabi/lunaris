@@ -13,19 +13,19 @@ export default function GiftsPage() {
   const giftFeatures = [
     {
       icon: Gift,
-      title: 'Sacred Gift Wrapping',
-      description: 'Every order arrives in blessed packaging designed to preserve the spiritual energy within.',
+      title: 'Balanced Energy Wrapping',
+      description: 'Every order arrives in packaging designed to preserve the yin-yang equilibrium of the crystals within.',
     },
     {
       icon: PenLine,
-      title: 'Karmic Blessing Note',
-      description: 'Include a personal blessing or intention with your gift to amplify its spiritual power.',
+      title: 'Chakra Intention Card',
+      description: 'Include a personal intention or chakra blessing with your gift to amplify its healing energy.',
     },
     {
       icon: BookOpen,
       title: 'Crystal Energy Guide',
       description:
-        'Each piece comes with a guide explaining its spiritual properties and how to activate its protective energy.',
+        'Each piece comes with a guide explaining its chakra alignment, yin-yang properties, and how to activate its energy.',
     },
   ];
 
@@ -62,10 +62,10 @@ export default function GiftsPage() {
         />
         <div className="absolute inset-0 bg-dark/40 flex flex-col items-center justify-center space-y-4">
           <h1 className="font-serif text-4xl md:text-5xl text-cream text-center font-light">
-            Share Positive Karma
+            Gift the Power of Balance
           </h1>
           <p className="text-cream/90 text-center text-lg max-w-2xl px-4">
-            Gift more than jewelry—share spiritual protection, cosmic energy, and sacred blessings.
+            Share more than jewelry — gift chakra alignment, yin-yang harmony, and the ancient wisdom of crystal healing.
           </p>
         </div>
       </section>
@@ -73,7 +73,7 @@ export default function GiftsPage() {
       {/* Gift Features */}
       <section className="py-16 md:py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <SectionTitle title="Why Gift Sacred Energy" align="center" />
+          <SectionTitle title="Why Gift Balance" align="center" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             {giftFeatures.map((feature, index) => {
               const Icon = feature.icon;
@@ -136,10 +136,9 @@ export default function GiftsPage() {
       {/* Most Giftable Products */}
       <section className="py-16 md:py-20 px-4 bg-stone-light">
         <div className="max-w-6xl mx-auto">
-          <SectionTitle title="Most Blessed Gift Pieces" align="center" />
+          <SectionTitle title="Most Harmonious Gift Pieces" align="center" />
           <p className="text-center text-warm mb-12 max-w-2xl mx-auto">
-            Sacred selections perfect for sharing positive energy. Each piece carries spiritual power and comes with
-            a crystal energy guide.
+            Chakra-aligned selections perfect for sharing balanced energy. Each piece harmonizes specific energy centers and comes with a crystal alignment guide.
           </p>
           <ProductGrid products={giftableProducts} columns={4} />
         </div>
@@ -159,15 +158,12 @@ export default function GiftsPage() {
               />
             </div>
             <div className="space-y-6">
-              <h2 className="font-serif text-3xl md:text-4xl text-dark">The Sacred Unboxing</h2>
+              <h2 className="font-serif text-3xl md:text-4xl text-dark">The Unboxing Ritual</h2>
               <p className="text-warm text-base leading-relaxed">
-                We believe that the moment of receiving sacred energy is itself a spiritual experience. Each YINYANG GUARDIAN
-                piece arrives in blessed packaging—designed to protect the spiritual vibration within.
+                We believe that the moment of receiving balanced energy is itself a transformative experience. Each YINYANG GUARDIAN piece arrives in packaging designed to protect the yin-yang equilibrium within.
               </p>
               <p className="text-warm text-base leading-relaxed">
-                Every box is designed to create a moment of cosmic connection when the recipient opens it.
-                We include a crystal energy guide explaining the spiritual properties of their piece, transforming
-                a gift into a sacred practice. The energy keeps flowing every time they wear it.
+                Every box creates a moment of energetic connection when the recipient opens it. We include a chakra alignment guide explaining which energy centers the piece activates, transforming a gift into a daily balance practice.
               </p>
               <div className="space-y-3 pt-4">
                 <div className="flex items-start space-x-3">
@@ -191,9 +187,9 @@ export default function GiftsPage() {
       {/* Final CTA */}
       <section className="py-16 md:py-20 px-4 bg-dark text-cream">
         <div className="max-w-3xl mx-auto text-center space-y-8">
-          <h2 className="font-serif text-3xl md:text-4xl font-light">Ready to Share Sacred Energy?</h2>
+          <h2 className="font-serif text-3xl md:text-4xl font-light">Ready to Gift Harmony?</h2>
           <p className="text-cream/90 text-lg leading-relaxed">
-            Find the perfect talisman and gift someone the power of spiritual protection and cosmic alignment.
+            Find the perfect crystal and gift someone the power of chakra alignment and yin-yang balance.
           </p>
           <Button href="/products" variant="gold" size="lg">
             Shop Gift Collection
