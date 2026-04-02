@@ -239,8 +239,8 @@ export default function LotusChakraMap() {
                     transition: 'opacity 0.6s ease', cursor: 'pointer', padding: '4px 8px',
                     pointerEvents: bloomed ? 'auto' : 'none',
                   }}>
-                  <div className="font-sans text-xs font-semibold" style={{ color: ch.color, lineHeight: 1.3 }}>{ch.name}</div>
-                  <div className="font-sans text-[9px] text-warm tracking-wider">{ch.subtitle}</div>
+                  <div className="font-sans text-sm md:text-base font-semibold" style={{ color: ch.color, lineHeight: 1.3 }}>{ch.name}</div>
+                  <div className="font-sans text-[11px] text-warm tracking-wider">{ch.subtitle}</div>
                 </div>
               );
             })}
@@ -299,9 +299,12 @@ export default function LotusChakraMap() {
             ) : (
               <div className="text-center">
                 <p className="font-sans text-[11px] text-gold tracking-widest uppercase mb-3">Lotus Mandala</p>
-                <p className="font-serif text-3xl text-stone mb-3">&#10048;</p>
-                <p className="font-sans text-sm text-warm font-light leading-relaxed">
-                  {bloomed ? 'Hover over a petal to explore\neach chakra and its crystals' : 'Bring your cursor close\nto watch the lotus bloom'}
+                <p className="font-serif text-3xl text-stone mb-4">&#10048;</p>
+                <p className="font-sans text-base text-warm font-light leading-relaxed mb-4">
+                  {bloomed ? 'Hover over a petal to explore\neach chakra and its crystals.' : 'Bring your cursor close\nto watch the lotus bloom.'}
+                </p>
+                <p className="font-sans text-sm text-gold/80 font-medium">
+                  Click a petal to shop its collection
                 </p>
               </div>
             )}
