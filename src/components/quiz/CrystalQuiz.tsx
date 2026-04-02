@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { getZodiacFromDate, getElementColor, getElementBorder, getMatchingCrystalTypes } from '@/lib/zodiac';
+import { getZodiacFromDate, getMatchingCrystalTypes } from '@/lib/zodiac';
 import type { ZodiacSign } from '@/lib/zodiac';
 import { useProductStatus } from '@/components/providers/ProductStatusProvider';
 import type { Product } from '@/lib/types';
@@ -196,33 +196,40 @@ export function CrystalQuiz() {
 
       {/* Result Screen */}
       {step === 'result' && result && (
-        <div className="max-w-4xl mx-auto px-4 py-16 md:py-24 animate-fade-in-up">
-          {/* Zodiac Header with Constellation */}
-          <div className="text-center mb-12">
-            {/* Constellation visualization */}
-            <div className="relative mx-auto mb-6 rounded-2xl overflow-hidden w-[340px] h-[340px] md:w-[440px] md:h-[440px]">
-              <div className="absolute inset-0 bg-gradient-to-b from-[#0a1628] via-[#0f1f3a] to-[#0a1628] rounded-2xl" />
-              <div className="hidden md:block"><ConstellationMap sign={result.name} size={440} /></div>
-              <div className="block md:hidden"><ConstellationMap sign={result.name} size={340} /></div>
+        <div className="animate-fade-in-up">
+          {/* Full-width Celestial Hero Section */}
+          <div className="relative w-full min-h-[85vh] flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#060e1a] via-[#0f1f3a] to-[#0a1628]">
+            {/* Constellation as full background */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-90">
+              <div className="hidden md:block"><ConstellationMap sign={result.name} size={700} /></div>
+              <div className="block md:hidden"><ConstellationMap sign={result.name} size={420} /></div>
             </div>
-            <div className="text-5xl mb-3">{result.symbol}</div>
-            <h2 className="font-serif text-4xl md:text-5xl text-dark mb-2">
-              {result.name}
-            </h2>
-            <p className="font-sans text-sm text-warm-light tracking-wider uppercase mb-1">
-              {result.dateRange} · {result.element} Element
-            </p>
-            <p className="font-serif text-xl md:text-2xl text-gold mt-4 italic">
-              &ldquo;{result.energy}&rdquo;
-            </p>
+
+            {/* Content overlay */}
+            <div className="relative z-10 text-center px-4 pt-16 pb-20">
+              <div className="text-6xl md:text-7xl mb-6" style={{ textShadow: '0 0 30px rgba(90,142,174,0.5)' }}>
+                {result.symbol}
+              </div>
+              <h2 className="font-serif text-5xl md:text-7xl text-white mb-4" style={{ textShadow: '0 2px 20px rgba(0,0,0,0.5)' }}>
+                {result.name}
+              </h2>
+              <p className="font-sans text-sm md:text-base text-[#8BB8D6] tracking-[0.2em] uppercase mb-6">
+                {result.dateRange} · {result.element} Element
+              </p>
+              <p className="font-serif text-2xl md:text-3xl text-[#8BB8D6]/80 italic mb-10">
+                &ldquo;{result.energy}&rdquo;
+              </p>
+              <p className="font-sans text-white/60 max-w-xl mx-auto text-sm md:text-base leading-relaxed">
+                {result.energyDescription}
+              </p>
+            </div>
+
+            {/* Bottom fade transition to white */}
+            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-cream to-transparent" />
           </div>
 
-          {/* Energy Description */}
-          <div className={`rounded-2xl p-8 mb-12 bg-gradient-to-br ${getElementColor(result.element)} border ${getElementBorder(result.element)}`}>
-            <p className="font-sans text-dark/80 leading-relaxed text-center text-sm md:text-base">
-              {result.energyDescription}
-            </p>
-          </div>
+          {/* Content section (white background) */}
+          <div className="max-w-4xl mx-auto px-4 pt-8 pb-16 md:pb-24">
 
           {/* Crystal Recommendations */}
           <div className="mb-16">
@@ -392,6 +399,7 @@ export function CrystalQuiz() {
               </button>
             </div>
           </div>
+          </div>{/* close content section */}
         </div>
       )}
     </div>
