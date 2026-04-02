@@ -154,37 +154,48 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Outer static ring */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[700px] md:h-[700px] rounded-full border border-[#5A8EAE]/10 opacity-40" />
+        {/* Zodiac orbit — centered wrapper keeps everything aligned */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          {/* Outer static ring */}
+          <div className="absolute w-[500px] h-[500px] md:w-[700px] md:h-[700px] rounded-full border border-[#5A8EAE]/10 opacity-40" />
 
-        {/* Rotating zodiac orbit with 12 signs */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] h-[380px] md:w-[550px] md:h-[550px]" style={{ animation: 'spin 90s linear infinite' }}>
-          {['♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓'].map((symbol, i) => {
-            const angle = (i * 30) * (Math.PI / 180);
-            const r = 50;
-            const x = 50 + r * Math.cos(angle);
-            const y = 50 + r * Math.sin(angle);
-            return (
-              <span
-                key={i}
-                className="absolute text-lg md:text-xl"
-                style={{
-                  left: `${x}%`,
-                  top: `${y}%`,
-                  transform: 'translate(-50%, -50%)',
-                  color: `rgba(139,184,214,${0.25 + (i % 3) * 0.1})`,
-                  textShadow: '0 0 8px rgba(90,142,174,0.3)',
-                  animation: `spin 90s linear infinite reverse`,
-                }}
-              >
-                {symbol}
-              </span>
-            );
-          })}
+          {/* Inner static ring */}
+          <div className="absolute w-[260px] h-[260px] md:w-[380px] md:h-[380px] rounded-full border border-[#5A8EAE]/8 opacity-30" />
+
+          {/* Rotating zodiac symbols on SVG circle path */}
+          <svg className="absolute w-[380px] h-[380px] md:w-[550px] md:h-[550px]" viewBox="0 0 550 550" style={{ animation: 'spin 90s linear infinite' }}>
+            {['♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓'].map((symbol, i) => {
+              const angle = (i * 30 - 90) * (Math.PI / 180);
+              const cx = 275;
+              const cy = 275;
+              const r = 245;
+              const x = cx + r * Math.cos(angle);
+              const y = cy + r * Math.sin(angle);
+              return (
+                <text
+                  key={i}
+                  x={x}
+                  y={y}
+                  textAnchor="middle"
+                  dominantBaseline="central"
+                  fill={`rgba(139,184,214,${0.3 + (i % 3) * 0.1})`}
+                  fontSize="22"
+                  style={{ filter: 'drop-shadow(0 0 6px rgba(90,142,174,0.3))' }}
+                >
+                  <animateTransform
+                    attributeName="transform"
+                    type="rotate"
+                    from={`0 ${x} ${y}`}
+                    to={`-360 ${x} ${y}`}
+                    dur="90s"
+                    repeatCount="indefinite"
+                  />
+                  {symbol}
+                </text>
+              );
+            })}
+          </svg>
         </div>
-
-        {/* Inner ring */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[260px] h-[260px] md:w-[380px] md:h-[380px] rounded-full border border-[#5A8EAE]/8 opacity-30" />
 
         {/* Content */}
         <div className="relative z-10 max-w-3xl mx-auto text-center px-4">
