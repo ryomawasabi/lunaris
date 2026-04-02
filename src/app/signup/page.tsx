@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { Turnstile } from '@marsidev/react-turnstile'
 import { createClient } from '@/lib/supabase/client'
 import { Mail, Lock, User as UserIcon, AlertCircle, Loader, CheckCircle, Eye, EyeOff } from 'lucide-react'
 
@@ -17,10 +18,17 @@ export default function SignupPage() {
   const [isLoading, setIsLoading] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null)
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
+
+    if (!captchaToken) {
+      setError('Please complete the verification.')
+      return
+    }
+
     setIsLoading(true)
 
     try {
@@ -31,6 +39,7 @@ export default function SignupPage() {
           data: {
             full_name: fullName,
           },
+          captchaToken,
         },
       })
 
@@ -40,7 +49,6 @@ export default function SignupPage() {
       }
 
       if (data.user) {
-        // Create a profile for the new user
         await supabase.from('profiles').insert({
           id: data.user.id,
           email,
@@ -53,7 +61,6 @@ export default function SignupPage() {
         setPassword('')
         setFullName('')
 
-        // Redirect after 3 seconds if confirmation not needed
         setTimeout(() => {
           router.push('/login')
         }, 3000)
@@ -177,6 +184,18 @@ export default function SignupPage() {
               <p className="text-xs text-warm-light font-sans mt-2">
                 At least 8 characters recommended
               </p>
+            </div>
+
+            {/* Turnstile CAPTCHA */}
+            <div className="flex justify-center">
+              <Turnstile
+                siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+                onSuccess={(token) => setCaptchaToken(token)}
+                onExpire={() => setCaptchaToken(null)}
+                options={{
+                  theme: 'light',
+                }}
+              />
             </div>
 
             {/* Signup Button */}

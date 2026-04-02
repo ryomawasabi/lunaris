@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { Turnstile } from '@marsidev/react-turnstile'
 import { createClient } from '@/lib/supabase/client'
 import { Mail, Lock, AlertCircle, Loader, Eye, EyeOff } from 'lucide-react'
 
@@ -15,16 +16,26 @@ export default function LoginPage() {
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null)
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
+
+    if (!captchaToken) {
+      setError('Please complete the verification.')
+      return
+    }
+
     setIsLoading(true)
 
     try {
       const { data, error: authError } = await supabase.auth.signInWithPassword({
         email,
         password,
+        options: {
+          captchaToken,
+        },
       })
 
       if (authError) {
@@ -33,7 +44,6 @@ export default function LoginPage() {
       }
 
       if (data.user) {
-        // Check if user is admin via user_metadata
         const isAdmin = data.user.user_metadata?.role === 'admin'
         if (isAdmin) {
           router.push('/admin')
@@ -119,6 +129,18 @@ export default function LoginPage() {
                 {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
               </button>
             </div>
+          </div>
+
+          {/* Turnstile CAPTCHA */}
+          <div className="flex justify-center">
+            <Turnstile
+              siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+              onSuccess={(token) => setCaptchaToken(token)}
+              onExpire={() => setCaptchaToken(null)}
+              options={{
+                theme: 'light',
+              }}
+            />
           </div>
 
           {/* Login Button */}

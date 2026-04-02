@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "@marsidev/react-turnstile": "^1.5.0",
     "@next/swc-linux-x64-gnu": "^14.2.33",
     "@studio-freight/lenis": "^1.0.42",
     "@supabase/ssr": "^0.9.0",
