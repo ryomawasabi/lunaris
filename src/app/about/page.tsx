@@ -3,8 +3,8 @@ import { Button } from '@/components/ui/Button';
 import { Gem, Heart, Shield, Star } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'About | LUNARIS',
-  description: 'LUNARIS creates sacred spiritual jewelry with ethically sourced gemstones and intentional design.',
+  title: 'About | YINYANG GUARDIAN',
+  description: 'YINYANG GUARDIAN creates sacred spiritual jewelry with ethically sourced gemstones and intentional design.',
 };
 
 export default function AboutPage() {
@@ -14,7 +14,7 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="py-20 md:py-28 px-4 text-center">
         <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold mb-4">About Us</p>
-        <h1 className="font-serif text-4xl md:text-6xl text-dark font-light mb-6">LUNARIS</h1>
+        <h1 className="font-serif text-4xl md:text-6xl text-dark font-light mb-6">YINYANG GUARDIAN</h1>
         <div className="h-px w-16 bg-gold mx-auto mb-6" />
         <p className="font-sans text-base md:text-lg text-warm max-w-2xl mx-auto leading-relaxed">
           Sacred spiritual jewelry channeling cosmic energy, ancient wisdom,

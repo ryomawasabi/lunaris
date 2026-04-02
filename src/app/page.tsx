@@ -27,7 +27,7 @@ export default function Home() {
           </h2>
           <div className="h-px w-24 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-8" />
           <p className="font-sans text-base md:text-lg text-cream/60 leading-relaxed max-w-2xl mx-auto">
-            LUNARIS was born from a calling to bridge the seen and unseen worlds. Each piece is a portal
+            YINYANG GUARDIAN was born from a calling to bridge the seen and unseen worlds. Each piece is a portal
             to ancient protective energies, channeled through sacred gemstones and intentional design.
           </p>
         </div>
@@ -41,7 +41,7 @@ export default function Home() {
             <h2 className="font-serif text-3xl md:text-4xl text-dark font-light">A Calling From the Cosmos</h2>
           </div>
           <p className="font-sans text-base md:text-lg text-warm leading-relaxed">
-            LUNARIS began as a whisper&mdash;a deep, intuitive calling to channel the ancient power of crystals
+            YINYANG GUARDIAN began as a whisper&mdash;a deep, intuitive calling to channel the ancient power of crystals
             and sacred symbols into wearable form. We saw how disconnected modern life had become from the
             spiritual currents that have guided humanity for millennia, and we knew there had to be a bridge.
           </p>
@@ -52,7 +52,7 @@ export default function Home() {
             you from negative energies. This is jewelry as spiritual practice.
           </p>
           <p className="font-sans text-base md:text-lg text-warm leading-relaxed">
-            When you choose LUNARIS, you&apos;re not just wearing jewelry&mdash;you&apos;re activating ancient
+            When you choose YINYANG GUARDIAN, you&apos;re not just wearing jewelry&mdash;you&apos;re activating ancient
             protective energies. You&apos;re aligning with the cosmos. You&apos;re joining a community of
             spiritual seekers who believe in the transformative power of sacred adornment.
           </p>
@@ -227,7 +227,7 @@ export default function Home() {
           <div className="mt-10 flex items-center justify-center gap-4">
             <div className="h-px w-8 bg-gold/40" />
             <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold">
-              The LUNARIS Spirit Circle
+              The YINYANG GUARDIAN Spirit Circle
             </p>
             <div className="h-px w-8 bg-gold/40" />
           </div>

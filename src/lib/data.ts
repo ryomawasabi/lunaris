@@ -655,7 +655,7 @@ export const COLLECTIONS: Collection[] = [
     tagline: "Intention for the heart and soul",
     description: "Pieces celebrating compassion, connection, and inner alignment.",
     longDescription:
-      "Love in the LUNARIS philosophy extends beyond romance—it encompasses self-compassion, connection to all beings, and the harmony that emerges when we lead with our hearts. This collection features rose quartz, tourmaline, aquamarine, and other heart-centered stones. Whether you're deepening a relationship, cultivating self-love, or simply seeking more peace in your daily life, these pieces serve as gentle reminders of your capacity for compassion. The harmony they inspire radiates outward, touching everyone you encounter.",
+      "Love in the YINYANG GUARDIAN philosophy extends beyond romance—it encompasses self-compassion, connection to all beings, and the harmony that emerges when we lead with our hearts. This collection features rose quartz, tourmaline, aquamarine, and other heart-centered stones. Whether you're deepening a relationship, cultivating self-love, or simply seeking more peace in your daily life, these pieces serve as gentle reminders of your capacity for compassion. The harmony they inspire radiates outward, touching everyone you encounter.",
     image: "https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d?w=1200&h=600&fit=crop&q=80",
     symbolism:
       "Compassion, connection, alignment. The frequency of love expressed through intention and beauty.",

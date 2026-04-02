@@ -12,7 +12,7 @@ export interface ZodiacSign {
 export interface CrystalRecommendation {
   name: string;
   reason: string;
-  productSlug?: string; // Links to an existing Lunaris product if available
+  productSlug?: string; // Links to an existing YinYang Guardian product if available
 }
 
 const ZODIAC_SIGNS: ZodiacSign[] = [

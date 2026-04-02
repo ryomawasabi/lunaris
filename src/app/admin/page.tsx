@@ -35,7 +35,7 @@ export default function AdminDashboard() {
       <div>
         <h1 className="font-serif text-4xl text-dark mb-2">Admin Dashboard</h1>
         <p className="text-warm font-sans">
-          Manage your LUNARIS inventory and content
+          Manage your YINYANG GUARDIAN inventory and content
         </p>
       </div>
 
@@ -95,7 +95,7 @@ export default function AdminDashboard() {
         <h2 className="font-serif text-2xl text-dark mb-2">Welcome to Admin</h2>
         <p className="font-sans text-warm mb-4">
           Use the sidebar to navigate through your admin portal. Manage products,
-          collections, and categories to keep your LUNARIS inventory up to date.
+          collections, and categories to keep your YINYANG GUARDIAN inventory up to date.
         </p>
         <Link
           href="/admin/products"

@@ -65,7 +65,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
         <aside className="w-64 bg-white border-r border-stone-light min-h-screen">
           <div className="p-6 border-b border-stone-light">
             <Link href="/" className="block">
-              <h1 className="font-serif text-xl text-dark tracking-wide">LUNARIS</h1>
+              <h1 className="font-serif text-xl text-dark tracking-wide">YINYANG GUARDIAN</h1>
               <p className="text-xs text-warm-light font-sans mt-1">Admin Portal</p>
             </Link>
           </div>

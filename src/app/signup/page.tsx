@@ -73,7 +73,7 @@ export default function SignupPage() {
         <div className="text-center mb-12">
           <h1 className="font-serif text-4xl text-dark mb-2">Create Account</h1>
           <p className="text-warm font-sans text-sm">
-            Join LUNARIS for meaningful jewelry
+            Join YINYANG GUARDIAN for meaningful jewelry
           </p>
         </div>
 

@@ -25,7 +25,7 @@ export function GiftSection() {
             </h2>
 
             <p className="font-sans text-stone mb-6 leading-relaxed">
-              Gift a piece of spiritual protection to someone you love. Each LUNARIS piece carries intention and sacred energy, making it more than a gift&mdash;it&apos;s a blessing.
+              Gift a piece of spiritual protection to someone you love. Each YINYANG GUARDIAN piece carries intention and sacred energy, making it more than a gift&mdash;it&apos;s a blessing.
             </p>
 
             <div className="space-y-3 mb-8">

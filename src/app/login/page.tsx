@@ -56,7 +56,7 @@ export default function LoginPage() {
         <div className="text-center mb-12">
           <h1 className="font-serif text-4xl text-dark mb-2">Sign In</h1>
           <p className="text-warm font-sans text-sm">
-            Access your LUNARIS account
+            Access your YINYANG GUARDIAN account
           </p>
         </div>
 

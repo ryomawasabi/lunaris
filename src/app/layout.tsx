@@ -8,12 +8,12 @@ import { ProductStatusProvider } from "@/components/providers/ProductStatusProvi
 import { LenisProvider } from "@/components/providers/LenisProvider";
 
 export const metadata: Metadata = {
-  title: "LUNARIS | Meaningful Luxury Jewelry",
-  description: "Discover LUNARIS luxury spiritual jewelry crafted with intention. Each piece features natural gemstones and carries symbolic meaning. Shop meaningful jewelry for protection, love, prosperity, and personal transformation.",
-  metadataBase: new URL("https://lunaris.com"),
+  title: "YINYANG GUARDIAN | Meaningful Luxury Jewelry",
+  description: "Discover YINYANG GUARDIAN luxury spiritual jewelry crafted with intention. Each piece features natural gemstones and carries symbolic meaning. Shop meaningful jewelry for protection, love, prosperity, and personal transformation.",
+  metadataBase: new URL("https://yinyangguardian.com"),
   openGraph: {
-    title: "LUNARIS | Meaningful Luxury Jewelry",
-    description: "Discover LUNARIS luxury spiritual jewelry crafted with intention and natural gemstones.",
+    title: "YINYANG GUARDIAN | Meaningful Luxury Jewelry",
+    description: "Discover YINYANG GUARDIAN luxury spiritual jewelry crafted with intention and natural gemstones.",
     type: "website",
     locale: "en_US",
     images: [
@@ -21,14 +21,14 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "LUNARIS Jewelry",
+        alt: "YINYANG GUARDIAN Jewelry",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "LUNARIS | Meaningful Luxury Jewelry",
-    description: "Discover LUNARIS luxury spiritual jewelry crafted with intention.",
+    title: "YINYANG GUARDIAN | Meaningful Luxury Jewelry",
+    description: "Discover YINYANG GUARDIAN luxury spiritual jewelry crafted with intention.",
   },
 };
 

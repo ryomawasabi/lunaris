@@ -15,7 +15,7 @@ export function UGCSection() {
       <div className="max-w-7xl mx-auto">
         <SectionTitle
           title="Channeling Energy"
-          subtitle="#LUNARISSPIRIT"
+          subtitle="#YINYANGGUARDIAN"
           align="center"
         />
 

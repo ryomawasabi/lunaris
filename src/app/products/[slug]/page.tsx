@@ -16,12 +16,12 @@ export async function generateMetadata({
 
   if (!product) {
     return {
-      title: 'Product Not Found | LUNARIS',
+      title: 'Product Not Found | YINYANG GUARDIAN',
     };
   }
 
   return {
-    title: `${product.name} | LUNARIS`,
+    title: `${product.name} | YINYANG GUARDIAN`,
     description: product.shortDescription,
     openGraph: {
       title: product.name,

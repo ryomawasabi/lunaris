@@ -161,7 +161,7 @@ export default function GiftsPage() {
             <div className="space-y-6">
               <h2 className="font-serif text-3xl md:text-4xl text-dark">The Sacred Unboxing</h2>
               <p className="text-warm text-base leading-relaxed">
-                We believe that the moment of receiving sacred energy is itself a spiritual experience. Each LUNARIS
+                We believe that the moment of receiving sacred energy is itself a spiritual experience. Each YINYANG GUARDIAN
                 piece arrives in blessed packaging—designed to protect the spiritual vibration within.
               </p>
               <p className="text-warm text-base leading-relaxed">

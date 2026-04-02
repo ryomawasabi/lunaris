@@ -5,8 +5,8 @@ import { Accordion, AccordionItem } from '@/components/ui/Accordion';
 import { Button } from '@/components/ui/Button';
 
 export const metadata: Metadata = {
-  title: 'FAQ | LUNARIS',
-  description: 'Frequently asked questions about LUNARIS jewelry, shipping, returns, and care.',
+  title: 'FAQ | YINYANG GUARDIAN',
+  description: 'Frequently asked questions about YINYANG GUARDIAN jewelry, shipping, returns, and care.',
 };
 
 export default function FAQPage() {
@@ -67,7 +67,7 @@ export default function FAQPage() {
         {
           question: 'How should I care for my jewelry?',
           answer:
-            'To keep your LUNARIS jewelry beautiful, avoid exposing it to water, perfume, or harsh chemicals. Store your pieces in the soft pouch provided. For deeper cleaning, use a soft cloth. We recommend removing your jewelry during exercise, bathing, and swimming.',
+            'To keep your YINYANG GUARDIAN jewelry beautiful, avoid exposing it to water, perfume, or harsh chemicals. Store your pieces in the soft pouch provided. For deeper cleaning, use a soft cloth. We recommend removing your jewelry during exercise, bathing, and swimming.',
         },
         {
           question: 'Do the crystals have real spiritual properties?',
@@ -118,7 +118,7 @@ export default function FAQPage() {
             Frequently Asked Questions
           </h1>
           <p className="text-cream/90 text-center text-lg max-w-2xl px-4">
-            Everything you need to know about LUNARIS and our sacred jewelry.
+            Everything you need to know about YINYANG GUARDIAN and our sacred jewelry.
           </p>
         </div>
       </section>
@@ -143,13 +143,13 @@ export default function FAQPage() {
           <h2 className="font-serif text-3xl md:text-4xl font-light">Still have questions?</h2>
           <p className="text-cream/90 text-lg leading-relaxed">
             Our customer service team is here to help. Reach out with any questions about our
-            products, shipping, or your LUNARIS experience.
+            products, shipping, or your YINYANG GUARDIAN experience.
           </p>
           <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
             <div className="flex items-center space-x-3">
               <Mail size={20} className="text-gold" />
-              <a href="mailto:hello@lunaris.com" className="hover:text-gold transition-colors">
-                hello@lunaris.com
+              <a href="mailto:hello@yinyangguardian.com" className="hover:text-gold transition-colors">
+                hello@yinyangguardian.com
               </a>
             </div>
             <div className="hidden md:block w-0.5 h-6 bg-gold/30"></div>

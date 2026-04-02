@@ -308,7 +308,7 @@ export function CrystalQuiz() {
                   Your Celestial Collection
                 </h3>
                 <p className="font-sans text-warm text-sm">
-                  All LUNARIS pieces aligned with your {result.name} energy
+                  All YINYANG GUARDIAN pieces aligned with your {result.name} energy
                 </p>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">

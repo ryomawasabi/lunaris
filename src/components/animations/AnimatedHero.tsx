@@ -52,7 +52,7 @@ export function AnimatedHero() {
         <PlaceholderImage
           width="w-full"
           height="h-full"
-          text="LUNARIS"
+          text="YINYANG GUARDIAN"
           className="absolute inset-0"
           src="https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=1800&h=1000&fit=crop&q=80"
           alt="Sacred Jewelry Craftsmanship"

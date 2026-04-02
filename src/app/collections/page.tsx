@@ -5,10 +5,10 @@ import { CollectionCard } from '@/components/collection/CollectionCard';
 import { COLLECTIONS } from '@/lib/data';
 
 export const metadata: Metadata = {
-  title: 'Collections | LUNARIS',
+  title: 'Collections | YINYANG GUARDIAN',
   description: 'Explore our sacred collections of spiritual jewelry, each channeling unique cosmic energies to protect, heal, and empower your soul.',
   openGraph: {
-    title: 'Collections | LUNARIS',
+    title: 'Collections | YINYANG GUARDIAN',
     description: 'Explore our sacred collections of spiritual jewelry channeling cosmic energy.',
   },
 };

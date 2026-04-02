@@ -43,7 +43,7 @@ export default function Header() {
           {/* Left Logo */}
           <Link href="/" className="flex-shrink-0">
             <h1 className="font-serif text-2xl tracking-widest-xl text-dark">
-              LUNARIS
+              YINYANG GUARDIAN
             </h1>
           </Link>
 
@@ -160,7 +160,7 @@ export default function Header() {
 
           <Link href="/" className="flex-shrink-0">
             <h1 className="font-serif text-xl tracking-widest-xl text-dark">
-              LUNARIS
+              YINYANG GUARDIAN
             </h1>
           </Link>
 

@@ -18,8 +18,8 @@ interface ProductStatusContextType {
   addProduct: (product: Product) => void
 }
 
-const STORAGE_KEY_PRODUCTS = 'lunaris_products'
-const STORAGE_KEY_STATUSES = 'lunaris_statuses'
+const STORAGE_KEY_PRODUCTS = 'yyg_products'
+const STORAGE_KEY_STATUSES = 'yyg_statuses'
 
 function loadFromStorage<T>(key: string, fallback: T): T {
   if (typeof window === 'undefined') return fallback

@@ -12,7 +12,7 @@ export default function Footer() {
           {/* Column 1: Brand */}
           <div>
             <h2 className="font-serif text-2xl tracking-widest-xl mb-4">
-              LUNARIS
+              YINYANG GUARDIAN
             </h2>
             <p className="text-sm text-stone mb-8 leading-relaxed">
               Sacred jewelry channeling ancient wisdom, cosmic energy, and spiritual protection for your soul&apos;s journey.
@@ -205,7 +205,7 @@ export default function Footer() {
         <div className="max-w-8xl mx-auto px-4 md:px-8 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-stone">
             <p>
-              &copy; {currentYear} LUNARIS. All rights reserved.
+              &copy; {currentYear} YINYANG GUARDIAN. All rights reserved.
             </p>
 
             {/* Payment Icons */}
