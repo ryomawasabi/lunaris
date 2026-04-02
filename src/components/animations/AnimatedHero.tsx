@@ -7,6 +7,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Star } from 'lucide-react'
 import PlaceholderImage from '@/components/layout/PlaceholderImage'
+import YinYangNav from '@/components/layout/YinYangNav'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -111,9 +112,19 @@ export function AnimatedHero() {
           Where ancient wisdom meets modern mysticism
         </motion.p>
 
-        {/* Decorative star */}
+        {/* Yin-Yang Navigation */}
         <motion.div
-          className="flex items-center gap-3 mt-8"
+          className="mt-10 hidden md:block"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 1.6, ease: 'easeOut' }}
+        >
+          <YinYangNav />
+        </motion.div>
+
+        {/* Decorative star (mobile only) */}
+        <motion.div
+          className="flex items-center gap-3 mt-8 md:hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.6 }}
