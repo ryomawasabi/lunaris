@@ -345,13 +345,13 @@ export function ConstellationMap({ sign, size = 280, className = '' }: Constella
     );
     // Gradual opacity increase
     timers.push(
-      setTimeout(() => setIllustrationOpacity(0.06), illustrationDelay + 100)
+      setTimeout(() => setIllustrationOpacity(0.08), illustrationDelay + 100)
     );
     timers.push(
-      setTimeout(() => setIllustrationOpacity(0.1), illustrationDelay + 300)
+      setTimeout(() => setIllustrationOpacity(0.15), illustrationDelay + 300)
     );
     timers.push(
-      setTimeout(() => setIllustrationOpacity(0.15), illustrationDelay + 600)
+      setTimeout(() => setIllustrationOpacity(0.22), illustrationDelay + 600)
     );
 
     return () => timers.forEach(clearTimeout);
@@ -409,8 +409,8 @@ export function ConstellationMap({ sign, size = 280, className = '' }: Constella
               key={`illust-${i}`}
               d={pathD}
               fill="none"
-              stroke="rgba(139,184,214,0.8)"
-              strokeWidth={0.8}
+              stroke="rgba(139,184,214,0.9)"
+              strokeWidth={1.2}
               strokeLinecap="round"
               strokeLinejoin="round"
               filter="url(#illustrationGlow)"

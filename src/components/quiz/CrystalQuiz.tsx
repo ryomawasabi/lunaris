@@ -200,9 +200,10 @@ export function CrystalQuiz() {
           {/* Zodiac Header with Constellation */}
           <div className="text-center mb-12">
             {/* Constellation visualization */}
-            <div className="relative mx-auto mb-6 rounded-2xl overflow-hidden" style={{ width: 280, height: 280 }}>
+            <div className="relative mx-auto mb-6 rounded-2xl overflow-hidden w-[340px] h-[340px] md:w-[440px] md:h-[440px]">
               <div className="absolute inset-0 bg-gradient-to-b from-[#0a1628] via-[#0f1f3a] to-[#0a1628] rounded-2xl" />
-              <ConstellationMap sign={result.name} size={280} />
+              <div className="hidden md:block"><ConstellationMap sign={result.name} size={440} /></div>
+              <div className="block md:hidden"><ConstellationMap sign={result.name} size={340} /></div>
             </div>
             <div className="text-5xl mb-3">{result.symbol}</div>
             <h2 className="font-serif text-4xl md:text-5xl text-dark mb-2">
