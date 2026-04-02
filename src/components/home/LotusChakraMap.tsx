@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 const SVG_SIZE = 640;
@@ -25,6 +26,7 @@ const chakras = [
 const angles = [-90, -38.6, 12.9, 64.3, 115.7, 167.1, 218.6];
 
 export default function LotusChakraMap() {
+  const router = useRouter();
   const [activeChakra, setActiveChakra] = useState<number | null>(null);
   const [bloomed, setBloomed] = useState(false);
   const bloomTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -172,6 +174,7 @@ export default function LotusChakraMap() {
                     }}
                     onMouseEnter={() => bloomed && setActiveChakra(i)}
                     onMouseLeave={() => bloomed && setActiveChakra(null)}
+                    onClick={() => bloomed && router.push(ch.link)}
                   />
                 );
               })}
@@ -203,7 +206,8 @@ export default function LotusChakraMap() {
                 return (
                   <g key={`jewel-${i}`} style={{ cursor: bloomed ? 'pointer' : 'default' }}
                     onMouseEnter={() => bloomed && setActiveChakra(i)}
-                    onMouseLeave={() => bloomed && setActiveChakra(null)}>
+                    onMouseLeave={() => bloomed && setActiveChakra(null)}
+                    onClick={() => bloomed && router.push(ch.link)}>
                     {isActive && <circle cx={jx} cy={jy} r={24} fill={`url(#lrg${i})`} />}
                     <circle cx={jx} cy={jy} r={jewR + 4} fill="none" stroke={ch.color}
                       strokeWidth={isActive ? 1.2 : 0.5} opacity={bloomed ? (isActive ? 0.6 : 0.3) : 0}
