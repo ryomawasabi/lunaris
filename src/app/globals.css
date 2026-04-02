@@ -131,6 +131,12 @@ h1, h2, h3, h4, h5, h6 {
   50% { opacity: 0.6; transform: scale(1.5); }
 }
 
+/* Slow spin for zodiac orbit */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 /* ─── Noise Texture Overlay ─── */
 /* Subtle grain that adds depth to flat sections */
 .texture-noise {
