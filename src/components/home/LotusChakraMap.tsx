@@ -98,11 +98,12 @@ export default function LotusChakraMap() {
           <div className="h-px w-16 mx-auto mt-5" style={{ background: 'linear-gradient(90deg, transparent, #5A8EAE, transparent)' }} />
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-12 items-center justify-center">
+        <div className="flex flex-col lg:flex-row gap-12 items-center justify-center"
+          onMouseEnter={handleAreaEnter}
+          onMouseLeave={handleAreaLeave}
+        >
           {/* Lotus Mandala */}
           <div
-            onMouseEnter={handleAreaEnter}
-            onMouseLeave={handleAreaLeave}
             style={{ position: 'relative', width: SVG_SIZE, height: SVG_SIZE, flexShrink: 0, cursor: bloomed ? 'default' : 'pointer' }}
           >
             {/* Bud hint */}
