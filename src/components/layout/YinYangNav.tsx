@@ -9,7 +9,7 @@ const SPREAD = 200;
 
 // Crystal Clear palette
 const CC = {
-  yinWhite: '#F0F4F8',
+  yinWhite: '#FFFFFF',
   yinBlack: '#1C2A38',
   accent: '#5A8EAE',
 };
@@ -32,9 +32,9 @@ const navItems = [
 
 function NavLink({ icon, label, href, side }: { icon: string; label: string; href: string; side: 'left' | 'right' }) {
   const isDark = side === 'right';
-  const baseColor = isDark ? 'rgba(240,244,248,0.7)' : 'rgba(28,42,56,0.7)';
-  const hoverColor = isDark ? '#F0F4F8' : CC.yinBlack;
-  const hoverBg = isDark ? 'rgba(240,244,248,0.08)' : 'rgba(28,42,56,0.06)';
+  const baseColor = isDark ? 'rgba(240,244,248,0.75)' : 'rgba(28,42,56,0.6)';
+  const hoverColor = isDark ? '#FFFFFF' : CC.yinBlack;
+  const hoverBg = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(28,42,56,0.08)';
 
   return (
     <Link
@@ -112,6 +112,7 @@ export default function YinYangNav() {
         opacity: open ? 0 : 1,
         transition: 'opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
         pointerEvents: open ? 'none' : 'auto',
+        filter: 'drop-shadow(0 4px 20px rgba(28,42,56,0.15))',
       }}>
         <svg width={SIZE} height={SIZE} viewBox={`0 0 ${SIZE} ${SIZE}`}>
           {/* White circle base */}
@@ -137,6 +138,7 @@ export default function YinYangNav() {
         transform: open ? `translateX(calc(-50% - ${SPREAD}px))` : 'translateX(-50%)',
         transition: 'transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)',
         zIndex: 2,
+        filter: 'drop-shadow(0 4px 20px rgba(28,42,56,0.12))',
       }}>
         <svg width={SIZE} height={SIZE} viewBox={`0 0 ${SIZE} ${SIZE}`} style={{ position: 'absolute', top: 0, left: 0 }}>
           <defs>
@@ -176,6 +178,7 @@ export default function YinYangNav() {
         transform: open ? `translateX(calc(-50% + ${SPREAD}px))` : 'translateX(-50%)',
         transition: 'transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)',
         zIndex: 2,
+        filter: 'drop-shadow(0 4px 20px rgba(28,42,56,0.12))',
       }}>
         <svg width={SIZE} height={SIZE} viewBox={`0 0 ${SIZE} ${SIZE}`} style={{ position: 'absolute', top: 0, left: 0 }}>
           <defs>
