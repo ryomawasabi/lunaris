@@ -81,3 +81,46 @@ h1, h2, h3, h4, h5, h6 {
   background-color: rgba(90, 142, 174, 0.2);
   color: var(--color-dark);
 }
+
+/* Aurora Gradient Border for Product Cards */
+@keyframes auroraShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.aurora-border {
+  background: linear-gradient(
+    270deg,
+    rgba(90, 142, 174, 0.8),
+    rgba(139, 184, 214, 0.6),
+    rgba(122, 100, 172, 0.5),
+    rgba(90, 142, 174, 0.4),
+    rgba(100, 180, 160, 0.5),
+    rgba(139, 184, 214, 0.8)
+  );
+  background-size: 300% 300%;
+  animation: auroraShift 6s ease infinite;
+}
+
+/* Particle Float Animation (used by FloatingParticles component) */
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--particle-opacity, 0.6);
+  }
+  90% {
+    opacity: var(--particle-opacity, 0.6);
+  }
+  50% {
+    transform: translate(var(--particle-dx, 30px), var(--particle-dy, -60px)) scale(1.2);
+  }
+}
+
+@keyframes particleGlow {
+  0%, 100% { box-shadow: 0 0 4px currentColor; }
+  50% { box-shadow: 0 0 12px currentColor; }
+}

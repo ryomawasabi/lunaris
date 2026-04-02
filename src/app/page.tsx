@@ -1,9 +1,14 @@
+'use client';
+
 import PlaceholderImage from '@/components/layout/PlaceholderImage';
 import { Button } from '@/components/ui/Button';
 import { Sparkles, Shield, Gem, Eye, Moon, Star, Flame, Heart } from 'lucide-react';
 import { FeaturedTeaser } from '@/components/home/FeaturedTeaser';
 import { AnimatedHero } from '@/components/animations/AnimatedHero';
 import LotusChakraMap from '@/components/home/LotusChakraMap';
+import { ScrollReveal } from '@/components/animations/ScrollReveal';
+import { FloatingParticles } from '@/components/animations/FloatingParticles';
+import { SectionDivider } from '@/components/animations/SectionDivider';
 
 export default function Home() {
   return (
@@ -14,54 +19,73 @@ export default function Home() {
 
       {/* Opening Statement */}
       <section className="py-20 md:py-32 px-4 bg-dark relative overflow-hidden">
+        <FloatingParticles count={20} color="#5A8EAE" />
         <div className="absolute top-10 left-10 w-64 h-64 rounded-full border border-gold/5" />
         <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full border border-gold/5" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-gold/[0.03]" />
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <Moon className="w-8 h-8 text-gold mx-auto mb-8 opacity-60" />
-          <h2 className="font-serif text-3xl md:text-5xl text-cream font-light leading-relaxed mb-8">
-            Where yin meets yang, balance is born
-            <span className="text-gold">&mdash;</span>
-            <br className="hidden md:block" />
-            and through balance, we <em className="text-gold">transform</em>.
-          </h2>
-          <div className="h-px w-24 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-8" />
-          <p className="font-sans text-base md:text-lg text-cream/60 leading-relaxed max-w-2xl mx-auto">
-            YINYANG GUARDIAN was born from the ancient philosophy of duality — the dance of light and shadow, stillness and motion. Each piece channels the harmony of opposing forces through chakra-aligned gemstones and sacred design.
-          </p>
+          <ScrollReveal>
+            <Moon className="w-8 h-8 text-gold mx-auto mb-8 opacity-60" />
+            <h2 className="font-serif text-3xl md:text-5xl text-cream font-light leading-relaxed mb-8">
+              Where yin meets yang, balance is born
+              <span className="text-gold">&mdash;</span>
+              <br className="hidden md:block" />
+              and through balance, we <em className="text-gold">transform</em>.
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal delay={0.2}>
+            <div className="h-px w-24 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-8" />
+            <p className="font-sans text-base md:text-lg text-cream/60 leading-relaxed max-w-2xl mx-auto">
+              YINYANG GUARDIAN was born from the ancient philosophy of duality — the dance of light and shadow, stillness and motion. Each piece channels the harmony of opposing forces through chakra-aligned gemstones and sacred design.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
+
+      <SectionDivider variant="yinyang" />
 
       {/* Brand Story */}
       <section className="py-20 md:py-28 px-4">
         <div className="max-w-3xl mx-auto space-y-8">
-          <div className="text-center mb-12">
-            <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold mb-4">The Origin</p>
-            <h2 className="font-serif text-3xl md:text-4xl text-dark font-light">Born of Balance</h2>
-          </div>
-          <p className="font-sans text-base md:text-lg text-warm leading-relaxed">
-            YINYANG GUARDIAN was born from a simple truth: when your energy centers are aligned, life flows with purpose. We saw how modern life had drifted from the ancient wisdom of yin and yang — the eternal balance that governs all things — and we set out to create wearable reminders of that harmony.
-          </p>
-          <p className="font-sans text-base md:text-lg text-warm leading-relaxed">
-            Drawing from chakra healing traditions, Taoist philosophy, and the metaphysical properties of gemstones, each piece is designed to restore balance to specific energy centers. Whether you seek the grounding power of your root chakra or the spiritual clarity of your crown, our crystals are chosen to harmonize the flow of chi through your body.
-          </p>
-          <p className="font-sans text-base md:text-lg text-warm leading-relaxed">
-            When you wear YINYANG GUARDIAN, you carry the balance of yin and yang with you. You align your seven chakras. You honor the duality within yourself — strength and softness, fire and water, earth and sky — and find wholeness in the space between.
-          </p>
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold mb-4">The Origin</p>
+              <h2 className="font-serif text-3xl md:text-4xl text-dark font-light">Born of Balance</h2>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <p className="font-sans text-base md:text-lg text-warm leading-relaxed">
+              YINYANG GUARDIAN was born from a simple truth: when your energy centers are aligned, life flows with purpose. We saw how modern life had drifted from the ancient wisdom of yin and yang — the eternal balance that governs all things — and we set out to create wearable reminders of that harmony.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.2}>
+            <p className="font-sans text-base md:text-lg text-warm leading-relaxed">
+              Drawing from chakra healing traditions, Taoist philosophy, and the metaphysical properties of gemstones, each piece is designed to restore balance to specific energy centers. Whether you seek the grounding power of your root chakra or the spiritual clarity of your crown, our crystals are chosen to harmonize the flow of chi through your body.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.3}>
+            <p className="font-sans text-base md:text-lg text-warm leading-relaxed">
+              When you wear YINYANG GUARDIAN, you carry the balance of yin and yang with you. You align your seven chakras. You honor the duality within yourself — strength and softness, fire and water, earth and sky — and find wholeness in the space between.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Featured Products Teaser — No Prices */}
       <FeaturedTeaser />
 
+      <SectionDivider variant="lotus" />
+
       {/* Brand Pillars */}
       <section className="py-20 md:py-28 px-4 bg-stone-light/50">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold mb-4">The Way of Balance</p>
-            <h2 className="font-serif text-3xl md:text-5xl text-dark font-light">Yin, Yang &amp; the Path Between</h2>
-          </div>
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold mb-4">The Way of Balance</p>
+              <h2 className="font-serif text-3xl md:text-5xl text-dark font-light">Yin, Yang &amp; the Path Between</h2>
+            </div>
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {[
@@ -86,23 +110,26 @@ export default function Home() {
             ].map((pillar, index) => {
               const Icon = pillar.icon;
               return (
-                <div
-                  key={index}
-                  className="group relative bg-white border border-stone-light rounded-2xl p-8 md:p-10 hover:border-gold/40 hover:shadow-xl hover:shadow-gold/5 transition-all duration-500"
-                >
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-gold/10 to-mystic-aura/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
-                    <Icon className="w-6 h-6 text-gold" />
+                <ScrollReveal key={index} delay={index * 0.15} direction={index === 0 ? 'left' : index === 2 ? 'right' : 'up'}>
+                  <div
+                    className="group relative bg-white border border-stone-light rounded-2xl p-8 md:p-10 hover:border-gold/40 hover:shadow-xl hover:shadow-gold/5 transition-all duration-500 h-full"
+                  >
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-gold/10 to-mystic-aura/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                      <Icon className="w-6 h-6 text-gold" />
+                    </div>
+                    <p className="font-sans text-[10px] uppercase tracking-[0.25em] text-gold mb-2">{pillar.subtitle}</p>
+                    <h3 className="font-serif text-2xl text-dark mb-4">{pillar.title}</h3>
+                    <p className="font-sans text-sm text-warm leading-relaxed">{pillar.description}</p>
                   </div>
-                  <p className="font-sans text-[10px] uppercase tracking-[0.25em] text-gold mb-2">{pillar.subtitle}</p>
-                  <h3 className="font-serif text-2xl text-dark mb-4">{pillar.title}</h3>
-                  <p className="font-sans text-sm text-warm leading-relaxed">{pillar.description}</p>
-                </div>
+                </ScrollReveal>
               );
             })}
           </div>
         </div>
       </section>
+
+      <SectionDivider variant="dots" />
 
       {/* Chakra Map — Lotus Mandala */}
       <LotusChakraMap />
@@ -120,39 +147,46 @@ export default function Home() {
               alt="Artisan crafting sacred jewelry"
             />
           </div>
-          <div className="bg-dark flex items-center px-8 md:px-16 lg:px-20 py-16 lg:py-0">
-            <div className="max-w-lg">
-              <div className="flex items-center gap-3 mb-6">
-                <Gem className="w-5 h-5 text-mystic-star" />
-                <p className="font-sans text-xs uppercase tracking-[0.25em] text-mystic-star">The Alchemy</p>
-              </div>
-              <h2 className="font-serif text-3xl md:text-4xl text-cream font-light leading-snug mb-6">
-                Each crystal carries the balance of earth and cosmos within
-              </h2>
-              <div className="space-y-5 text-cream/60 font-sans text-sm leading-relaxed">
-                <p>
-                  We select each stone for its chakra resonance and elemental alignment. Cool blue lapis for the third eye, warm carnelian for the sacral center, grounding garnet for the root — every crystal is chosen to restore balance where you need it most.
-                </p>
-                <p>
-                  Our artisans work with the rhythms of yin and yang, pairing masculine metals with feminine stones, creating pieces where opposing energies meet in perfect equilibrium. The result is jewelry that doesn&apos;t just adorn — it <em>realigns</em>.
-                </p>
-              </div>
-              <div className="mt-8 flex items-center gap-6">
-                <div className="text-center">
-                  <p className="font-serif text-3xl text-gold">100+</p>
-                  <p className="font-sans text-[10px] uppercase tracking-wider text-cream/40 mt-1">Crystal Varieties</p>
+          <div className="bg-dark relative flex items-center px-8 md:px-16 lg:px-20 py-16 lg:py-0 overflow-hidden">
+            <FloatingParticles count={12} color="#5A8EAE" />
+            <div className="max-w-lg relative z-10">
+              <ScrollReveal direction="right">
+                <div className="flex items-center gap-3 mb-6">
+                  <Gem className="w-5 h-5 text-mystic-star" />
+                  <p className="font-sans text-xs uppercase tracking-[0.25em] text-mystic-star">The Alchemy</p>
                 </div>
-                <div className="w-px h-10 bg-cream/10" />
-                <div className="text-center">
-                  <p className="font-serif text-3xl text-gold">48h</p>
-                  <p className="font-sans text-[10px] uppercase tracking-wider text-cream/40 mt-1">Balancing Time</p>
+                <h2 className="font-serif text-3xl md:text-4xl text-cream font-light leading-snug mb-6">
+                  Each crystal carries the balance of earth and cosmos within
+                </h2>
+              </ScrollReveal>
+              <ScrollReveal direction="right" delay={0.2}>
+                <div className="space-y-5 text-cream/60 font-sans text-sm leading-relaxed">
+                  <p>
+                    We select each stone for its chakra resonance and elemental alignment. Cool blue lapis for the third eye, warm carnelian for the sacral center, grounding garnet for the root — every crystal is chosen to restore balance where you need it most.
+                  </p>
+                  <p>
+                    Our artisans work with the rhythms of yin and yang, pairing masculine metals with feminine stones, creating pieces where opposing energies meet in perfect equilibrium. The result is jewelry that doesn&apos;t just adorn — it <em>realigns</em>.
+                  </p>
                 </div>
-                <div className="w-px h-10 bg-cream/10" />
-                <div className="text-center">
-                  <p className="font-serif text-3xl text-gold">7</p>
-                  <p className="font-sans text-[10px] uppercase tracking-wider text-cream/40 mt-1">Chakra Points</p>
+              </ScrollReveal>
+              <ScrollReveal direction="right" delay={0.35}>
+                <div className="mt-8 flex items-center gap-6">
+                  <div className="text-center">
+                    <p className="font-serif text-3xl text-gold">100+</p>
+                    <p className="font-sans text-[10px] uppercase tracking-wider text-cream/40 mt-1">Crystal Varieties</p>
+                  </div>
+                  <div className="w-px h-10 bg-cream/10" />
+                  <div className="text-center">
+                    <p className="font-serif text-3xl text-gold">48h</p>
+                    <p className="font-sans text-[10px] uppercase tracking-wider text-cream/40 mt-1">Balancing Time</p>
+                  </div>
+                  <div className="w-px h-10 bg-cream/10" />
+                  <div className="text-center">
+                    <p className="font-serif text-3xl text-gold">7</p>
+                    <p className="font-sans text-[10px] uppercase tracking-wider text-cream/40 mt-1">Chakra Points</p>
+                  </div>
                 </div>
-              </div>
+              </ScrollReveal>
             </div>
           </div>
         </div>
@@ -161,10 +195,12 @@ export default function Home() {
       {/* Process Timeline */}
       <section className="py-20 md:py-28 px-4 bg-cream relative">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold mb-4">The Path of Creation</p>
-            <h2 className="font-serif text-3xl md:text-5xl text-dark font-light">From Duality to Unity</h2>
-          </div>
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold mb-4">The Path of Creation</p>
+              <h2 className="font-serif text-3xl md:text-5xl text-dark font-light">From Duality to Unity</h2>
+            </div>
+          </ScrollReveal>
 
           <div className="space-y-0">
             {[
@@ -175,26 +211,30 @@ export default function Home() {
             ].map((step, index) => {
               const Icon = step.icon;
               return (
-                <div key={index} className="relative flex gap-8 md:gap-12 pb-12 last:pb-0">
-                  {index < 3 && (
-                    <div className="absolute left-6 md:left-8 top-16 bottom-0 w-px bg-gradient-to-b from-gold/30 to-stone" />
-                  )}
-                  <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full bg-dark flex items-center justify-center relative z-10">
-                    <Icon className="w-5 h-5 md:w-6 md:h-6 text-gold" />
-                  </div>
-                  <div className="pt-1 md:pt-3">
-                    <div className="flex items-baseline gap-3 mb-2">
-                      <span className="font-sans text-xs text-gold/60 tracking-wider">{step.number}</span>
-                      <h3 className="font-serif text-xl md:text-2xl text-dark">{step.title}</h3>
+                <ScrollReveal key={index} delay={index * 0.12} direction="left">
+                  <div className="relative flex gap-8 md:gap-12 pb-12 last:pb-0">
+                    {index < 3 && (
+                      <div className="absolute left-6 md:left-8 top-16 bottom-0 w-px bg-gradient-to-b from-gold/30 to-stone" />
+                    )}
+                    <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full bg-dark flex items-center justify-center relative z-10">
+                      <Icon className="w-5 h-5 md:w-6 md:h-6 text-gold" />
                     </div>
-                    <p className="font-sans text-sm text-warm leading-relaxed max-w-lg">{step.description}</p>
+                    <div className="pt-1 md:pt-3">
+                      <div className="flex items-baseline gap-3 mb-2">
+                        <span className="font-sans text-xs text-gold/60 tracking-wider">{step.number}</span>
+                        <h3 className="font-serif text-xl md:text-2xl text-dark">{step.title}</h3>
+                      </div>
+                      <p className="font-sans text-sm text-warm leading-relaxed max-w-lg">{step.description}</p>
+                    </div>
                   </div>
-                </div>
+                </ScrollReveal>
               );
             })}
           </div>
         </div>
       </section>
+
+      <SectionDivider variant="line" />
 
       {/* Quote */}
       <section className="relative py-24 md:py-32 px-4 overflow-hidden">
@@ -207,22 +247,25 @@ export default function Home() {
           alt="Mystical cosmic background"
         />
         <div className="absolute inset-0 bg-dark/80" />
+        <FloatingParticles count={15} color="#8BB8D6" />
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="flex items-center justify-center gap-2 mb-8">
-            <Star className="w-3 h-3 text-mystic-star" />
-            <Star className="w-4 h-4 text-mystic-star" />
-            <Star className="w-3 h-3 text-mystic-star" />
-          </div>
-          <blockquote className="font-serif text-2xl md:text-4xl lg:text-5xl text-cream font-light leading-relaxed italic">
-            &ldquo;In the balance of yin and yang, all things find their true nature. Wear the harmony, become the harmony.&rdquo;
-          </blockquote>
-          <div className="mt-10 flex items-center justify-center gap-4">
-            <div className="h-px w-8 bg-gold/40" />
-            <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold">
-              Ancient Wisdom of Balance
-            </p>
-            <div className="h-px w-8 bg-gold/40" />
-          </div>
+          <ScrollReveal>
+            <div className="flex items-center justify-center gap-2 mb-8">
+              <Star className="w-3 h-3 text-mystic-star" />
+              <Star className="w-4 h-4 text-mystic-star" />
+              <Star className="w-3 h-3 text-mystic-star" />
+            </div>
+            <blockquote className="font-serif text-2xl md:text-4xl lg:text-5xl text-cream font-light leading-relaxed italic">
+              &ldquo;In the balance of yin and yang, all things find their true nature. Wear the harmony, become the harmony.&rdquo;
+            </blockquote>
+            <div className="mt-10 flex items-center justify-center gap-4">
+              <div className="h-px w-8 bg-gold/40" />
+              <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold">
+                Ancient Wisdom of Balance
+              </p>
+              <div className="h-px w-8 bg-gold/40" />
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -238,11 +281,13 @@ export default function Home() {
             ].map((item, i) => {
               const Icon = item.icon;
               return (
-                <div key={i} className="text-center">
-                  <Icon className="w-6 h-6 text-gold mx-auto mb-3" />
-                  <p className="font-serif text-sm md:text-base text-dark mb-1">{item.label}</p>
-                  <p className="font-sans text-[10px] uppercase tracking-wider text-warm">{item.sub}</p>
-                </div>
+                <ScrollReveal key={i} delay={i * 0.1} direction="none">
+                  <div className="text-center">
+                    <Icon className="w-6 h-6 text-gold mx-auto mb-3" />
+                    <p className="font-serif text-sm md:text-base text-dark mb-1">{item.label}</p>
+                    <p className="font-sans text-[10px] uppercase tracking-wider text-warm">{item.sub}</p>
+                  </div>
+                </ScrollReveal>
               );
             })}
           </div>
@@ -251,23 +296,25 @@ export default function Home() {
 
       {/* CTA */}
       <section className="py-20 md:py-28 px-4 bg-gradient-to-b from-cream to-stone-light">
-        <div className="max-w-2xl mx-auto text-center">
-          <Sparkles className="w-6 h-6 text-gold mx-auto mb-6" />
-          <h2 className="font-serif text-3xl md:text-4xl text-dark font-light mb-6">
-            Find Your Balance
-          </h2>
-          <p className="font-sans text-base text-warm leading-relaxed mb-10">
-            Explore our chakra-aligned collections and discover the crystals that restore harmony to your energy centers.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button href="/products" variant="primary" size="lg">
-              Explore Collections
-            </Button>
-            <Button href="/gifts" variant="secondary" size="lg">
-              Gift Balance
-            </Button>
+        <ScrollReveal>
+          <div className="max-w-2xl mx-auto text-center">
+            <Sparkles className="w-6 h-6 text-gold mx-auto mb-6" />
+            <h2 className="font-serif text-3xl md:text-4xl text-dark font-light mb-6">
+              Find Your Balance
+            </h2>
+            <p className="font-sans text-base text-warm leading-relaxed mb-10">
+              Explore our chakra-aligned collections and discover the crystals that restore harmony to your energy centers.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button href="/products" variant="primary" size="lg">
+                Explore Collections
+              </Button>
+              <Button href="/gifts" variant="secondary" size="lg">
+                Gift Balance
+              </Button>
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
     </main>

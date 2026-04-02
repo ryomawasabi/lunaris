@@ -36,7 +36,13 @@ export function ProductCard({ product }: ProductCardProps) {
 
   return (
     <Link href={`/products/${product.slug}`}>
-      <div className={cn("group flex flex-col h-full rounded-lg transition-shadow duration-500 hover:shadow-[0_0_20px_rgba(90,142,174,0.25)]", isSoldOut && "opacity-70")}>
+      <div className={cn("group relative flex flex-col h-full rounded-lg transition-all duration-500", isSoldOut && "opacity-70")}>
+        {/* Aurora Gradient Border - visible on hover */}
+        <div className="absolute -inset-[1px] rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 aurora-border" />
+        {/* Aurora Glow Effect */}
+        <div className="absolute -inset-[2px] rounded-lg opacity-0 group-hover:opacity-60 blur-md transition-opacity duration-700 z-0 aurora-border" />
+        {/* Card background to sit above glow */}
+        <div className="relative z-10 flex flex-col h-full rounded-lg bg-white overflow-hidden">
         {/* Image Container */}
         <div className="relative overflow-hidden bg-stone-light mb-4 aspect-square">
           <div className={cn("w-full h-full group-hover:scale-110 transition-transform duration-500 ease-out", isSoldOut && "grayscale-[30%]")}>
@@ -79,7 +85,7 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
 
         {/* Content */}
-        <div className="flex flex-col flex-1">
+        <div className="flex flex-col flex-1 px-3 pb-4">
           {/* Product Name */}
           <h3 className="font-serif text-sm md:text-base text-dark mb-2 group-hover:underline transition-all">
             {product.name}
@@ -114,6 +120,7 @@ export function ProductCard({ product }: ProductCardProps) {
             )}
           </div>
         </div>
+        </div>{/* close card background */}
       </div>
     </Link>
   );
