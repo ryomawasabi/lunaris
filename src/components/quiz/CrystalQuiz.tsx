@@ -2,7 +2,6 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { getZodiacFromDate, getElementColor, getElementBorder, getMatchingCrystalTypes } from '@/lib/zodiac';
 import type { ZodiacSign } from '@/lib/zodiac';
 import { useProductStatus } from '@/components/providers/ProductStatusProvider';
@@ -263,12 +262,10 @@ export function CrystalQuiz() {
                             >
                               {/* Product Image */}
                               <div className="relative w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden bg-stone-light">
-                                <Image
+                                <img
                                   src={product.images[0]}
                                   alt={product.name}
-                                  fill
-                                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                                  sizes="80px"
+                                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                 />
                               </div>
                               {/* Product Info */}
@@ -324,12 +321,10 @@ export function CrystalQuiz() {
                   >
                     {/* Image */}
                     <div className="relative aspect-square overflow-hidden bg-stone-light">
-                      <Image
+                      <img
                         src={product.images[0]}
                         alt={product.name}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-500"
-                        sizes="(max-width: 768px) 50vw, 33vw"
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                       {/* Crystal Type Badge */}
                       <div className="absolute top-2 left-2">
