@@ -21,7 +21,7 @@ const rightClip = `${sPath} L ${SIZE} ${SIZE} L ${SIZE} 0 Z`;
 const leftItems = [
   { icon: '✦', label: 'New Arrivals', href: '/products?sort=newest' },
   { icon: '◈', label: 'Collections', href: '/collections' },
-  { icon: '☾', label: 'Crystal Quiz', href: '/crystal-quiz' },
+  { icon: '☾', label: 'Soul Stone Discovery', href: '/crystal-quiz' },
 ];
 
 const rightItems = [

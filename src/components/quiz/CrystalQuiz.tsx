@@ -73,7 +73,7 @@ export function CrystalQuiz() {
         <div className="min-h-[80vh] flex flex-col items-center justify-center px-4 text-center animate-fade-in-up">
           <div className="mb-8 text-6xl opacity-80">✦</div>
           <h1 className="font-serif text-4xl md:text-6xl text-dark mb-6 leading-tight">
-            Discover Your<br />Crystal Energy
+            Soul Stone<br />Discovery
           </h1>
           <p className="font-sans text-warm max-w-lg text-base md:text-lg mb-12 leading-relaxed">
             The stars have aligned to guide you. Enter your date of birth and
