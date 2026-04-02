@@ -23,14 +23,21 @@ export async function GET() {
       }
     )
 
+    // Use getUser() for server-side verification (not getSession which trusts the JWT)
     const {
       data: { user },
     } = await supabase.auth.getUser()
 
     if (!user) {
-      return NextResponse.json({ isAdmin: false })
+      return NextResponse.json({ isAdmin: false }, { status: 401 })
     }
 
+    // Check 1: user_metadata (set during signup or by admin)
+    if (user.user_metadata?.role === 'admin') {
+      return NextResponse.json({ isAdmin: true })
+    }
+
+    // Check 2: profiles table fallback
     const { data, error } = await supabase
       .from('profiles')
       .select('role')
@@ -38,11 +45,11 @@ export async function GET() {
       .single()
 
     if (error || !data) {
-      return NextResponse.json({ isAdmin: false })
+      return NextResponse.json({ isAdmin: false }, { status: 403 })
     }
 
     return NextResponse.json({ isAdmin: data.role === 'admin' })
   } catch {
-    return NextResponse.json({ isAdmin: false })
+    return NextResponse.json({ isAdmin: false }, { status: 500 })
   }
 }

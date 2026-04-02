@@ -23,6 +23,42 @@ export async function updateSession(request: NextRequest) {
     }
   )
 
-  await supabase.auth.getUser()
+  // Get the authenticated user (server-side verified, not from JWT alone)
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+
+  const pathname = request.nextUrl.pathname
+
+  // ─── Admin route protection ───
+  if (pathname.startsWith('/admin')) {
+    // Not logged in → redirect to login
+    if (!user) {
+      const loginUrl = request.nextUrl.clone()
+      loginUrl.pathname = '/login'
+      loginUrl.searchParams.set('redirect', pathname)
+      return NextResponse.redirect(loginUrl)
+    }
+
+    // Logged in but not admin → redirect to home
+    const isAdmin = user.user_metadata?.role === 'admin'
+    if (!isAdmin) {
+      const homeUrl = request.nextUrl.clone()
+      homeUrl.pathname = '/'
+      return NextResponse.redirect(homeUrl)
+    }
+  }
+
+  // ─── Admin API route protection ───
+  if (pathname.startsWith('/api/admin')) {
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+    const isAdmin = user.user_metadata?.role === 'admin'
+    if (!isAdmin) {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+    }
+  }
+
   return supabaseResponse
 }
