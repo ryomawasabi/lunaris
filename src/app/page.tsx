@@ -2,7 +2,7 @@
 
 import PlaceholderImage from '@/components/layout/PlaceholderImage';
 import { Button } from '@/components/ui/Button';
-import { Sparkles, Shield, Gem, Eye, Moon, Star, Flame, Heart } from 'lucide-react';
+import { Sparkles, Shield, Gem, Moon, Star, Flame } from 'lucide-react';
 import { FeaturedTeaser } from '@/components/home/FeaturedTeaser';
 import { AnimatedHero } from '@/components/animations/AnimatedHero';
 import LotusChakraMap from '@/components/home/LotusChakraMap';
@@ -44,33 +44,6 @@ export default function Home() {
       </section>
 
       <SectionDivider variant="yinyang" />
-
-      {/* Brand Story */}
-      <section className="py-20 md:py-28 px-4 texture-rich">
-        <div className="max-w-3xl mx-auto space-y-8">
-          <ScrollReveal>
-            <div className="text-center mb-12">
-              <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold mb-4">The Origin</p>
-              <h2 className="font-serif text-3xl md:text-4xl text-dark font-light">Born of Balance</h2>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal delay={0.1}>
-            <p className="font-sans text-base md:text-lg text-warm leading-relaxed">
-              YINYANG GUARDIAN was born from a simple truth: when your energy centers are aligned, life flows with purpose. We saw how modern life had drifted from the ancient wisdom of yin and yang — the eternal balance that governs all things — and we set out to create wearable reminders of that harmony.
-            </p>
-          </ScrollReveal>
-          <ScrollReveal delay={0.2}>
-            <p className="font-sans text-base md:text-lg text-warm leading-relaxed">
-              Drawing from chakra healing traditions, Taoist philosophy, and the metaphysical properties of gemstones, each piece is designed to restore balance to specific energy centers. Whether you seek the grounding power of your root chakra or the spiritual clarity of your crown, our crystals are chosen to harmonize the flow of chi through your body.
-            </p>
-          </ScrollReveal>
-          <ScrollReveal delay={0.3}>
-            <p className="font-sans text-base md:text-lg text-warm leading-relaxed">
-              When you wear YINYANG GUARDIAN, you carry the balance of yin and yang with you. You align your seven chakras. You honor the duality within yourself — strength and softness, fire and water, earth and sky — and find wholeness in the space between.
-            </p>
-          </ScrollReveal>
-        </div>
-      </section>
 
       {/* Featured Products Teaser — No Prices */}
       <FeaturedTeaser />
@@ -285,50 +258,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Process Timeline */}
-      <section className="py-20 md:py-28 px-4 bg-cream relative texture-rich">
-        <div className="max-w-5xl mx-auto">
-          <ScrollReveal>
-            <div className="text-center mb-16">
-              <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold mb-4">The Path of Creation</p>
-              <h2 className="font-serif text-3xl md:text-5xl text-dark font-light">From Duality to Unity</h2>
-            </div>
-          </ScrollReveal>
-
-          <div className="space-y-0">
-            {[
-              { number: '01', title: 'Intention Setting', description: 'Every piece begins with a meditation on balance — which chakra needs awakening, which element seeks expression, where yin and yang must find their meeting point.', icon: Eye },
-              { number: '02', title: 'Energy Mapping', description: 'We map the flow of chi through each design, aligning gemstone placement with chakra positions and balancing warm yang metals with cool yin stones.', icon: Moon },
-              { number: '03', title: 'Stone Pairing', description: 'Crystals are paired by their energetic polarity — grounding root stones with expansive crown crystals, fiery solar plexus gems with cooling throat chakra minerals.', icon: Gem },
-              { number: '04', title: 'Yin-Yang Activation', description: 'Each finished piece is activated under both sun and moon — charged with yang energy at dawn and yin energy at dusk — before beginning its journey to you.', icon: Star },
-            ].map((step, index) => {
-              const Icon = step.icon;
-              return (
-                <ScrollReveal key={index} delay={index * 0.12} direction="left">
-                  <div className="relative flex gap-8 md:gap-12 pb-12 last:pb-0">
-                    {index < 3 && (
-                      <div className="absolute left-6 md:left-8 top-16 bottom-0 w-px bg-gradient-to-b from-gold/30 to-stone" />
-                    )}
-                    <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full bg-dark flex items-center justify-center relative z-10">
-                      <Icon className="w-5 h-5 md:w-6 md:h-6 text-gold" />
-                    </div>
-                    <div className="pt-1 md:pt-3">
-                      <div className="flex items-baseline gap-3 mb-2">
-                        <span className="font-sans text-xs text-gold/60 tracking-wider">{step.number}</span>
-                        <h3 className="font-serif text-xl md:text-2xl text-dark">{step.title}</h3>
-                      </div>
-                      <p className="font-sans text-sm text-warm leading-relaxed max-w-lg">{step.description}</p>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <SectionDivider variant="line" />
-
       {/* Quote */}
       <section className="relative py-24 md:py-32 px-4 overflow-hidden">
         <PlaceholderImage
@@ -359,31 +288,6 @@ export default function Home() {
               <div className="h-px w-8 bg-gold/40" />
             </div>
           </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Promise Strip */}
-      <section className="py-16 md:py-20 px-4 bg-white border-y border-stone-light texture-noise">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-            {[
-              { icon: Gem, label: 'Chakra Crystals', sub: 'Energetically Aligned' },
-              { icon: Shield, label: 'Yin-Yang Balance', sub: 'Dual Energy Charged' },
-              { icon: Heart, label: 'Ethically Sourced', sub: 'Pure Chi Energy' },
-              { icon: Star, label: 'Handcrafted', sub: 'Aligned with Intention' },
-            ].map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <ScrollReveal key={i} delay={i * 0.1} direction="none">
-                  <div className="text-center">
-                    <Icon className="w-6 h-6 text-gold mx-auto mb-3" />
-                    <p className="font-serif text-sm md:text-base text-dark mb-1">{item.label}</p>
-                    <p className="font-sans text-[10px] uppercase tracking-wider text-warm">{item.sub}</p>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
         </div>
       </section>
 
