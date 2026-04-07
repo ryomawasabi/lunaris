@@ -127,7 +127,7 @@ export const PRODUCTS: Product[] = [
     collection: ["Prosperity"],
     gemstone: "Citrine",
     crystalType: "Citrine",
-    crystalEffects: ["Prosperity", "Wealth", "Manifestation", "Confidence"],
+    crystalEffects: ["Prosperity", "Abundance", "Confidence", "Manifestation"],
     symbolicMeaning:
       "Prosperity and manifested intention. A golden reminder of your innate worth.",
     shortDescription:
@@ -160,7 +160,7 @@ export const PRODUCTS: Product[] = [
     collection: ["Protection"],
     gemstone: "Black Obsidian",
     crystalType: "Black Obsidian",
-    crystalEffects: ["Protection", "Shadow Work", "Grounding", "Truth"],
+    crystalEffects: ["Protection", "Grounding", "Shadow Work", "Truth"],
     symbolicMeaning:
       "Deep protection and shadow work. Safe passage through life's darkest passages.",
     shortDescription:
@@ -348,7 +348,7 @@ export const PRODUCTS: Product[] = [
     collection: ["Birthstones", "Love & Harmony"],
     gemstone: "Amethyst",
     crystalType: "Amethyst",
-    crystalEffects: ["Clarity", "Calm", "Intuition", "Spiritual Awareness"],
+    crystalEffects: ["Intuition", "Calm", "Spiritual Awareness", "Clarity"],
     symbolicMeaning:
       "Clarity, calm, and spiritual awareness. A gateway to inner peace and intuition.",
     shortDescription:
@@ -414,7 +414,7 @@ export const PRODUCTS: Product[] = [
     collection: ["Love & Harmony", "Protection"],
     gemstone: "Mixed gemstones",
     crystalType: "Rose Quartz",
-    crystalEffects: ["Love", "Communication", "Harmony", "Spiritual Alignment"],
+    crystalEffects: ["Love", "Compassion", "Emotional Healing", "Relationships"],
     symbolicMeaning:
       "Complete spiritual alignment across body and spirit. A unified practice of presence.",
     shortDescription:

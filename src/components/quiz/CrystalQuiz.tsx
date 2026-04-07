@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { getZodiacFromDate, getMatchingCrystalTypes } from '@/lib/zodiac';
+import { getZodiacFromDate, getMatchingCrystalTypes, POWER_STONE_EFFECTS } from '@/lib/zodiac';
 import type { ZodiacSign } from '@/lib/zodiac';
 import { useProductStatus } from '@/components/providers/ProductStatusProvider';
 import type { Product } from '@/lib/types';
@@ -255,8 +255,26 @@ export function CrystalQuiz() {
                         <span className="text-lg text-gold">◆</span>
                         <h4 className="font-serif text-xl md:text-2xl text-dark">
                           {crystal.name}
+                          {POWER_STONE_EFFECTS[crystal.name]?.nameJa && (
+                            <span className="text-sm font-sans text-warm-light ml-2">
+                              {POWER_STONE_EFFECTS[crystal.name].nameJa}
+                            </span>
+                          )}
                         </h4>
                       </div>
+                      {/* Stone Effects Tags */}
+                      {POWER_STONE_EFFECTS[crystal.name] && (
+                        <div className="flex flex-wrap gap-1.5 mb-3">
+                          {POWER_STONE_EFFECTS[crystal.name].effects.map((effect) => (
+                            <span
+                              key={effect}
+                              className="inline-block text-xs font-sans px-2.5 py-1 rounded-full bg-gold/10 text-gold-dark"
+                            >
+                              {effect}
+                            </span>
+                          ))}
+                        </div>
+                      )}
                       <p className="font-sans text-warm text-sm leading-relaxed">
                         {crystal.reason}
                       </p>

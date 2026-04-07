@@ -15,6 +15,60 @@ export interface CrystalRecommendation {
   productSlug?: string; // Links to an existing YinYang Guardian product if available
 }
 
+// Canonical effects for the 10 power stones sold on YINYANG GUARDIAN
+export const POWER_STONE_EFFECTS: Record<string, { effects: string[]; nameJa: string; description: string }> = {
+  'Smoky Quartz': {
+    nameJa: 'スモーキークォーツ',
+    effects: ['Grounding', 'Stress Relief', 'Protection', 'Transformation'],
+    description: 'Anchors your energy to the earth, dissolving negativity and transforming fear into calm resilience.',
+  },
+  'Aquamarine': {
+    nameJa: 'アクアマリン',
+    effects: ['Peace', 'Communication', 'Clarity', 'Emotional Balance'],
+    description: 'Carries the tranquil essence of the ocean, enhancing clear communication and emotional flow.',
+  },
+  'Amethyst': {
+    nameJa: 'アメジスト',
+    effects: ['Intuition', 'Calm', 'Spiritual Awareness', 'Clarity'],
+    description: 'Opens the third eye to deepen intuition, bringing calm clarity and spiritual connection.',
+  },
+  'Fluorite': {
+    nameJa: 'フローライト',
+    effects: ['Focus', 'Mental Clarity', 'Protection', 'Balance'],
+    description: 'Sharpens the mind with rainbow clarity, organizing scattered thoughts into purposeful direction.',
+  },
+  'Citrine': {
+    nameJa: 'シトリン',
+    effects: ['Prosperity', 'Abundance', 'Confidence', 'Manifestation'],
+    description: 'Radiates solar energy that attracts abundance and fuels the confidence to manifest your dreams.',
+  },
+  'Rose Quartz': {
+    nameJa: 'ローズクォーツ',
+    effects: ['Love', 'Compassion', 'Emotional Healing', 'Relationships'],
+    description: 'The stone of unconditional love, nurturing self-compassion and deepening heart connections.',
+  },
+  'Ametrine': {
+    nameJa: 'アメトリン',
+    effects: ['Balance', 'Creativity', 'Inner Harmony', 'Spiritual Growth'],
+    description: 'Unites the calm of amethyst with the spark of citrine—two energies in perfect creative balance.',
+  },
+  'Amazonite': {
+    nameJa: 'アマゾナイト',
+    effects: ['Courage', 'Truth', 'Hope', 'Harmony'],
+    description: 'Empowers you to speak your truth with courage while nurturing hope and inner harmony.',
+  },
+  'Rock Crystal': {
+    nameJa: '水晶',
+    effects: ['Amplification', 'Purification', 'Energy', 'Clarity'],
+    description: 'The master healer that amplifies energy and intention, bringing pure clarity to every purpose.',
+  },
+  'Obsidian': {
+    nameJa: 'オブシディアン',
+    effects: ['Protection', 'Grounding', 'Shadow Work', 'Truth'],
+    description: 'A volcanic mirror that shields against negativity and reveals the deepest truths within.',
+  },
+};
+
 const ZODIAC_SIGNS: ZodiacSign[] = [
   {
     name: 'Aries',
