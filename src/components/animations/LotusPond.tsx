@@ -25,9 +25,10 @@ interface LotusItem {
 interface LotusPondProps {
   className?: string;
   variant?: 'dark' | 'aqua';
+  parentRef?: React.RefObject<HTMLElement | null>;
 }
 
-export function LotusPond({ className = '', variant = 'dark' }: LotusPondProps) {
+export function LotusPond({ className = '', variant = 'dark', parentRef }: LotusPondProps) {
   const isAqua = variant === 'aqua';
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const ripplesRef = useRef<Ripple[]>([]);
@@ -366,6 +367,57 @@ export function LotusPond({ className = '', variant = 'dark' }: LotusPondProps) 
       window.removeEventListener('resize', resize);
     };
   }, [initLotus, drawLilypad, drawFlower, drawBud, drawLeaf, isAqua]);
+
+  // Forward mouse events from parent element (when canvas is behind z-indexed content)
+  useEffect(() => {
+    const parent = parentRef?.current;
+    if (!parent) return;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const onMove = (e: PointerEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      mouseRef.current = { x, y };
+
+      const now = Date.now();
+      if (now - lastRippleRef.current > 120) {
+        ripplesRef.current.push({
+          x, y, radius: 2 + Math.random() * 4, opacity: 0.25 + Math.random() * 0.1, born: now,
+        });
+        lastRippleRef.current = now;
+      }
+    };
+
+    const onLeave = () => {
+      mouseRef.current = { x: -999, y: -999 };
+    };
+
+    const onClick = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      for (let i = 0; i < 3; i++) {
+        ripplesRef.current.push({
+          x: x + (Math.random() - 0.5) * 10,
+          y: y + (Math.random() - 0.5) * 10,
+          radius: 5 + i * 8,
+          opacity: 0.35 - i * 0.08,
+          born: Date.now() + i * 100,
+        });
+      }
+    };
+
+    parent.addEventListener('pointermove', onMove);
+    parent.addEventListener('pointerleave', onLeave);
+    parent.addEventListener('click', onClick);
+    return () => {
+      parent.removeEventListener('pointermove', onMove);
+      parent.removeEventListener('pointerleave', onLeave);
+      parent.removeEventListener('click', onClick);
+    };
+  }, [parentRef]);
 
   // Mouse/touch handlers
   const handlePointerMove = useCallback((e: React.PointerEvent) => {

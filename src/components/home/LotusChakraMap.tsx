@@ -31,6 +31,7 @@ export default function LotusChakraMap() {
   const [activeChakra, setActiveChakra] = useState<number | null>(null);
   const [bloomed, setBloomed] = useState(false);
   const bloomTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const curR = bloomed ? PETAL_R_OPEN : PETAL_R_BUD;
   const curW = bloomed ? PETAL_W_OPEN : PETAL_W_BUD;
@@ -91,9 +92,9 @@ export default function LotusChakraMap() {
   `;
 
   return (
-    <section className="py-20 md:py-28 px-4 bg-cream relative overflow-hidden">
+    <section ref={sectionRef} className="py-20 md:py-28 px-4 bg-cream relative overflow-hidden">
       <style>{lotusStyles}</style>
-      <LotusPond variant="aqua" />
+      <LotusPond variant="aqua" parentRef={sectionRef} />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-12">
