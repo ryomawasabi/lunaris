@@ -1,11 +1,20 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { POWER_STONE_EFFECTS } from '@/lib/zodiac';
-import { Check, Package, Sparkles, RotateCcw, ShoppingBag } from 'lucide-react';
+import { Check, Package, Sparkles, RotateCcw, ShoppingBag, ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import GlassVessel from '@/components/gift-box/GlassVessel';
+
+const SHOWCASE_IMAGES = [
+  '/Crystal Essence/crystal-essence-product 1.png',
+  '/Crystal Essence/crystal-essence-product 2.png',
+  '/Crystal Essence/crystal-essence-product 3.png',
+  '/Crystal Essence/crystal-essence-product 4.png',
+  '/Crystal Essence/crystal-essence-product 5.png',
+  '/Crystal Essence/crystal-essence-product 6.png',
+];
 
 const STONE_IMAGES: Record<string, string> = {
   'Smoky Quartz': '/stones/smoky-quartz.png',
@@ -79,6 +88,10 @@ export default function GiftBoxPage() {
     new Set(selectedStones.flatMap((name) => POWER_STONE_EFFECTS[name]?.effects || []))
   );
 
+  const scrollToCreate = () => {
+    document.getElementById('create-set')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <main className="min-h-screen bg-cream">
       {/* Hero */}
@@ -100,7 +113,10 @@ export default function GiftBoxPage() {
         </div>
       </section>
 
-      <div className="max-w-6xl mx-auto px-4 py-12 md:py-16">
+      {/* Product Showcase Section */}
+      <ProductShowcase />
+
+      <div id="create-set" className="max-w-6xl mx-auto px-4 py-12 md:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-14">
 
           {/* Left: Stone Selection */}
@@ -373,5 +389,147 @@ export default function GiftBoxPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+function ProductShowcase() {
+  const [currentImage, setCurrentImage] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  const nextImage = useCallback(() => {
+    setCurrentImage((prev) => (prev + 1) % SHOWCASE_IMAGES.length);
+  }, []);
+
+  const prevImage = () => {
+    setCurrentImage((prev) => (prev - 1 + SHOWCASE_IMAGES.length) % SHOWCASE_IMAGES.length);
+  };
+
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    const interval = setInterval(nextImage, 4000);
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, nextImage]);
+
+  const scrollToCreate = () => {
+    document.getElementById('create-set')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <section className="bg-white">
+      <div className="max-w-6xl mx-auto px-4 py-16 md:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+          {/* Left: Image Carousel */}
+          <div
+            className="relative"
+            onMouseEnter={() => setIsAutoPlaying(false)}
+            onMouseLeave={() => setIsAutoPlaying(true)}
+          >
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-cream shadow-lg">
+              {SHOWCASE_IMAGES.map((src, i) => (
+                <img
+                  key={src}
+                  src={src}
+                  alt={`Crystal Essence Set variation ${i + 1}`}
+                  className={cn(
+                    'absolute inset-0 w-full h-full object-cover transition-opacity duration-700',
+                    i === currentImage ? 'opacity-100' : 'opacity-0'
+                  )}
+                />
+              ))}
+
+              {/* Navigation Arrows */}
+              <button
+                onClick={prevImage}
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center hover:bg-white transition-colors shadow-md"
+              >
+                <ChevronLeft size={20} className="text-dark" />
+              </button>
+              <button
+                onClick={() => { nextImage(); }}
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center hover:bg-white transition-colors shadow-md"
+              >
+                <ChevronRight size={20} className="text-dark" />
+              </button>
+            </div>
+
+            {/* Dots */}
+            <div className="flex justify-center gap-2 mt-4">
+              {SHOWCASE_IMAGES.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentImage(i)}
+                  className={cn(
+                    'w-2 h-2 rounded-full transition-all duration-300',
+                    i === currentImage
+                      ? 'bg-dark w-6'
+                      : 'bg-stone-light hover:bg-stone'
+                  )}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Right: Product Info */}
+          <div>
+            <p className="text-[11px] font-sans text-gold-dark uppercase tracking-[0.2em] mb-3">
+              Signature Collection
+            </p>
+            <h2 className="font-serif text-3xl md:text-4xl text-dark mb-4 leading-tight">
+              Crystal Essence Set
+            </h2>
+            <p className="font-sans text-warm text-sm md:text-base leading-relaxed mb-8">
+              A luxurious set featuring hand-selected power stones, a crystal-charged
+              essential oil, and a glass display vessel — all presented in a premium
+              gift box with a protective sponge cushion. Choose your own combination
+              of stones to create a set that resonates with your unique energy.
+            </p>
+
+            {/* What's Included */}
+            <div className="space-y-3 mb-8">
+              <p className="text-[10px] font-sans text-warm-light uppercase tracking-[0.15em]">
+                Each Set Includes
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {[
+                  { icon: '◇', label: '2–3 Power Stones', desc: 'Hand-selected natural crystals' },
+                  { icon: '◈', label: 'Essence Oil', desc: 'Crystal-charged aromatherapy blend' },
+                  { icon: '○', label: 'Glass Vessel', desc: 'Display vessel for your stones' },
+                  { icon: '□', label: 'Premium Gift Box', desc: 'Luxury box with sponge cushion' },
+                ].map((item) => (
+                  <div
+                    key={item.label}
+                    className="flex items-start gap-3 p-3 rounded-xl bg-cream/60 border border-stone-light/30"
+                  >
+                    <span className="text-gold text-lg mt-0.5">{item.icon}</span>
+                    <div>
+                      <p className="text-sm font-serif text-dark">{item.label}</p>
+                      <p className="text-[11px] font-sans text-warm-light">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Price & CTA */}
+            <div className="flex items-center gap-6">
+              <div>
+                <span className="font-serif text-3xl text-dark">¥4,980</span>
+                <span className="text-xs font-sans text-warm-light ml-2">Tax included</span>
+              </div>
+              <button
+                onClick={scrollToCreate}
+                className="flex items-center gap-2 px-8 py-3.5 rounded-full bg-dark text-cream font-sans text-sm tracking-wider hover:bg-charcoal transition-all duration-300 shadow-md hover:shadow-lg"
+              >
+                <Sparkles size={16} />
+                Create Your Set
+                <ChevronDown size={14} className="ml-1" />
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
   );
 }
