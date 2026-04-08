@@ -82,19 +82,19 @@ export default function GiftBoxPage() {
   return (
     <main className="min-h-screen bg-cream">
       {/* Hero */}
-      <section className="relative h-72 md:h-96 overflow-hidden bg-dark">
-        <div className="absolute inset-0 bg-gradient-to-b from-dark/80 via-dark/60 to-dark/90" />
+      <section className="relative h-72 md:h-96 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1549465220-1a8b9238f1b0?w=1200&h=600&fit=crop&q=80"
-          alt="Gift Box"
-          className="absolute inset-0 w-full h-full object-cover opacity-40"
+          src="/gift-box-hero.jpg"
+          alt="Crystal gift box collection with power stones and essential oils"
+          className="absolute inset-0 w-full h-full object-cover"
         />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/40" />
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
-          <Package size={36} className="text-gold mb-4" />
-          <h1 className="font-serif text-4xl md:text-5xl text-cream mb-3">
+          <Package size={36} className="text-white/90 mb-4 drop-shadow-lg" />
+          <h1 className="font-serif text-4xl md:text-5xl text-white mb-3 drop-shadow-lg">
             Create Your Gift Box
           </h1>
-          <p className="font-sans text-cream/70 text-sm md:text-base max-w-lg">
+          <p className="font-sans text-white/80 text-sm md:text-base max-w-lg drop-shadow-md">
             Choose {MIN_STONES}–{MAX_STONES} power stones to create a personalized healing gift set with essential oil and glass vessel.
           </p>
         </div>
