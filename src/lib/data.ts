@@ -695,7 +695,7 @@ export const COLLECTIONS: Collection[] = [
     description: "Pure essential oil blends infused with crystal energy to harmonize your chakras and elevate your daily rituals.",
     longDescription:
       "Our Essence Oil collection bridges the worlds of aromatherapy and crystal healing. Each blend is carefully crafted from pure botanical extracts — lavender for crown chakra calm, eucalyptus for throat chakra clarity, and ylang-ylang for heart chakra opening — then charged alongside their corresponding crystals. In yin-yang philosophy, scent is the invisible bridge between body and spirit: yin in its subtlety, yang in its power to transform a space instantly. Use these oils in meditation, bath rituals, or simply to infuse your environment with balanced chi. Every drop carries the intention of alignment.",
-    image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=1200&h=600&fit=crop&q=80",
+    image: "/Essence oil/Rose Berry.png",
     symbolism:
       "Aromatic chi, botanical alchemy, sensory healing. The invisible energy of scent as a pathway to chakra balance.",
     productCount: 3,
