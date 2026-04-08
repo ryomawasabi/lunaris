@@ -85,17 +85,17 @@ export default function GiftBoxPage() {
       <section className="relative h-72 md:h-96 overflow-hidden">
         <img
           src="/gift-box-hero.jpg"
-          alt="Crystal gift box collection with power stones and essential oils"
+          alt="Crystal Essence Set with power stones and essential oils"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/55" />
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
           <Package size={36} className="text-white/90 mb-4 drop-shadow-lg" />
           <h1 className="font-serif text-4xl md:text-5xl text-white mb-3 drop-shadow-lg">
-            Create Your Gift Box
+            Create Your Crystal Essence Set
           </h1>
           <p className="font-sans text-white/80 text-sm md:text-base max-w-lg drop-shadow-md">
-            Choose {MIN_STONES}–{MAX_STONES} power stones to create a personalized healing gift set with essential oil and glass vessel.
+            Choose {MIN_STONES}–{MAX_STONES} power stones to create your personalized Crystal Essence Set with essential oil and glass vessel.
           </p>
         </div>
       </section>
@@ -112,7 +112,7 @@ export default function GiftBoxPage() {
                   Select Your Stones
                 </h2>
                 <p className="font-sans text-warm text-sm">
-                  Choose {MIN_STONES}–{MAX_STONES} stones for your gift box ·{' '}
+                  Choose {MIN_STONES}–{MAX_STONES} stones for your set ·{' '}
                   <span className={cn(
                     'font-medium',
                     selectedStones.length >= MIN_STONES ? 'text-gold-dark' : 'text-warm'
@@ -202,7 +202,7 @@ export default function GiftBoxPage() {
             </div>
           </div>
 
-          {/* Right: Gift Box Summary (Sticky) */}
+          {/* Right: Crystal Essence Set Summary (Sticky) */}
           <div className="lg:col-span-1">
             <div className="lg:sticky lg:top-24 space-y-6">
               {/* Box Preview */}
@@ -221,7 +221,7 @@ export default function GiftBoxPage() {
 
                 <div className="p-5 md:p-6">
                   <h3 className="font-serif text-xl text-dark mb-1">
-                    Your Crystal Gift Box
+                    Your Crystal Essence Set
                   </h3>
                   <p className="text-xs font-sans text-warm-light mb-5">
                     Power stones + Essential oil + Glass vessel
@@ -236,7 +236,7 @@ export default function GiftBoxPage() {
                       <div className="py-6 text-center">
                         <Sparkles size={20} className="mx-auto text-stone mb-2" />
                         <p className="text-xs font-sans text-warm-light">
-                          Choose {MIN_STONES}–{MAX_STONES} stones to<br />build your gift box
+                          Choose {MIN_STONES}–{MAX_STONES} stones to<br />build your set
                         </p>
                       </div>
                     ) : (
@@ -305,7 +305,7 @@ export default function GiftBoxPage() {
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-gold">✦</span>
-                        <span>Luxury gift box with sponge cushion</span>
+                        <span>Luxury box with sponge cushion</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-gold">✦</span>
