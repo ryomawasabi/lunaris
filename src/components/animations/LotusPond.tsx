@@ -24,9 +24,11 @@ interface LotusItem {
 
 interface LotusPondProps {
   className?: string;
+  variant?: 'dark' | 'aqua';
 }
 
-export function LotusPond({ className = '' }: LotusPondProps) {
+export function LotusPond({ className = '', variant = 'dark' }: LotusPondProps) {
+  const isAqua = variant === 'aqua';
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const ripplesRef = useRef<Ripple[]>([]);
   const lotusRef = useRef<LotusItem[]>([]);
@@ -66,7 +68,7 @@ export function LotusPond({ className = '' }: LotusPondProps) {
     // Pad shadow
     ctx.beginPath();
     ctx.arc(2, 2, s, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(10, 40, 30, 0.15)';
+    ctx.fillStyle = isAqua ? 'rgba(100, 160, 200, 0.1)' : 'rgba(10, 40, 30, 0.15)';
     ctx.fill();
 
     // Lilypad circle with notch
@@ -76,14 +78,20 @@ export function LotusPond({ className = '' }: LotusPondProps) {
     ctx.closePath();
 
     const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, s);
-    grad.addColorStop(0, 'rgba(45, 100, 70, 0.55)');
-    grad.addColorStop(0.6, 'rgba(35, 85, 55, 0.45)');
-    grad.addColorStop(1, 'rgba(25, 70, 45, 0.35)');
+    if (isAqua) {
+      grad.addColorStop(0, 'rgba(120, 190, 210, 0.4)');
+      grad.addColorStop(0.6, 'rgba(100, 175, 200, 0.3)');
+      grad.addColorStop(1, 'rgba(80, 160, 190, 0.2)');
+    } else {
+      grad.addColorStop(0, 'rgba(45, 100, 70, 0.55)');
+      grad.addColorStop(0.6, 'rgba(35, 85, 55, 0.45)');
+      grad.addColorStop(1, 'rgba(25, 70, 45, 0.35)');
+    }
     ctx.fillStyle = grad;
     ctx.fill();
 
     // Veins
-    ctx.strokeStyle = 'rgba(60, 120, 80, 0.2)';
+    ctx.strokeStyle = isAqua ? 'rgba(100, 180, 210, 0.15)' : 'rgba(60, 120, 80, 0.2)';
     ctx.lineWidth = 0.5;
     for (let i = 0; i < 5; i++) {
       const a = (i / 5) * Math.PI * 2 + 0.3;
@@ -94,7 +102,7 @@ export function LotusPond({ className = '' }: LotusPondProps) {
     }
 
     ctx.restore();
-  }, []);
+  }, [isAqua]);
 
   // Draw lotus flower
   const drawFlower = useCallback((ctx: CanvasRenderingContext2D, x: number, y: number, scale: number, rot: number, time: number) => {
@@ -116,9 +124,15 @@ export function LotusPond({ className = '' }: LotusPondProps) {
       ctx.ellipse(0, -s * 0.3, s * 0.28, s * 0.55, 0, 0, Math.PI * 2);
 
       const pGrad = ctx.createRadialGradient(0, -s * 0.2, 0, 0, -s * 0.3, s * 0.5);
-      pGrad.addColorStop(0, 'rgba(230, 180, 190, 0.5)');
-      pGrad.addColorStop(0.5, 'rgba(210, 150, 165, 0.4)');
-      pGrad.addColorStop(1, 'rgba(190, 130, 150, 0.25)');
+      if (isAqua) {
+        pGrad.addColorStop(0, 'rgba(160, 210, 230, 0.45)');
+        pGrad.addColorStop(0.5, 'rgba(130, 190, 215, 0.35)');
+        pGrad.addColorStop(1, 'rgba(110, 170, 200, 0.2)');
+      } else {
+        pGrad.addColorStop(0, 'rgba(230, 180, 190, 0.5)');
+        pGrad.addColorStop(0.5, 'rgba(210, 150, 165, 0.4)');
+        pGrad.addColorStop(1, 'rgba(190, 130, 150, 0.25)');
+      }
       ctx.fillStyle = pGrad;
       ctx.fill();
       ctx.restore();
@@ -127,7 +141,7 @@ export function LotusPond({ className = '' }: LotusPondProps) {
     // Center
     ctx.beginPath();
     ctx.arc(0, bob * 0.5, s * 0.2, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(220, 190, 80, 0.45)';
+    ctx.fillStyle = isAqua ? 'rgba(180, 220, 240, 0.4)' : 'rgba(220, 190, 80, 0.45)';
     ctx.fill();
 
     // Center dots
@@ -135,12 +149,12 @@ export function LotusPond({ className = '' }: LotusPondProps) {
       const a = (i / 5) * Math.PI * 2;
       ctx.beginPath();
       ctx.arc(Math.cos(a) * s * 0.1, Math.sin(a) * s * 0.1 + bob * 0.5, 1, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(180, 150, 50, 0.4)';
+      ctx.fillStyle = isAqua ? 'rgba(140, 200, 225, 0.35)' : 'rgba(180, 150, 50, 0.4)';
       ctx.fill();
     }
 
     ctx.restore();
-  }, []);
+  }, [isAqua]);
 
   // Draw lotus bud
   const drawBud = useCallback((ctx: CanvasRenderingContext2D, x: number, y: number, scale: number, rot: number, time: number) => {
@@ -153,7 +167,7 @@ export function LotusPond({ className = '' }: LotusPondProps) {
     ctx.beginPath();
     ctx.moveTo(0, s * 0.8);
     ctx.quadraticCurveTo(s * 0.15, s * 0.2, 0, -s * 0.5 + bob);
-    ctx.strokeStyle = 'rgba(50, 100, 60, 0.35)';
+    ctx.strokeStyle = isAqua ? 'rgba(100, 175, 200, 0.3)' : 'rgba(50, 100, 60, 0.35)';
     ctx.lineWidth = 1.5;
     ctx.stroke();
 
@@ -161,12 +175,16 @@ export function LotusPond({ className = '' }: LotusPondProps) {
     for (let i = -1; i <= 1; i++) {
       ctx.beginPath();
       ctx.ellipse(i * s * 0.12, -s * 0.5 + bob, s * 0.15, s * 0.35, i * 0.15, 0, Math.PI * 2);
-      ctx.fillStyle = i === 0 ? 'rgba(220, 170, 180, 0.45)' : 'rgba(200, 155, 165, 0.35)';
+      if (isAqua) {
+        ctx.fillStyle = i === 0 ? 'rgba(150, 210, 230, 0.4)' : 'rgba(130, 195, 220, 0.3)';
+      } else {
+        ctx.fillStyle = i === 0 ? 'rgba(220, 170, 180, 0.45)' : 'rgba(200, 155, 165, 0.35)';
+      }
       ctx.fill();
     }
 
     ctx.restore();
-  }, []);
+  }, [isAqua]);
 
   // Draw leaf
   const drawLeaf = useCallback((ctx: CanvasRenderingContext2D, x: number, y: number, scale: number, rot: number, time: number) => {
@@ -182,8 +200,13 @@ export function LotusPond({ className = '' }: LotusPondProps) {
     ctx.bezierCurveTo(-s * 0.5, s * 0.3, -s * 0.6, -s * 0.6, 0, -s);
 
     const lGrad = ctx.createLinearGradient(0, -s, 0, s);
-    lGrad.addColorStop(0, 'rgba(40, 90, 55, 0.4)');
-    lGrad.addColorStop(1, 'rgba(30, 75, 45, 0.25)');
+    if (isAqua) {
+      lGrad.addColorStop(0, 'rgba(100, 180, 200, 0.3)');
+      lGrad.addColorStop(1, 'rgba(80, 165, 190, 0.18)');
+    } else {
+      lGrad.addColorStop(0, 'rgba(40, 90, 55, 0.4)');
+      lGrad.addColorStop(1, 'rgba(30, 75, 45, 0.25)');
+    }
     ctx.fillStyle = lGrad;
     ctx.fill();
 
@@ -191,12 +214,12 @@ export function LotusPond({ className = '' }: LotusPondProps) {
     ctx.beginPath();
     ctx.moveTo(0, -s * 0.9);
     ctx.lineTo(0, s * 0.7);
-    ctx.strokeStyle = 'rgba(55, 110, 70, 0.2)';
+    ctx.strokeStyle = isAqua ? 'rgba(100, 185, 210, 0.15)' : 'rgba(55, 110, 70, 0.2)';
     ctx.lineWidth = 0.5;
     ctx.stroke();
 
     ctx.restore();
-  }, []);
+  }, [isAqua]);
 
   // Main animation loop
   useEffect(() => {
@@ -235,9 +258,15 @@ export function LotusPond({ className = '' }: LotusPondProps) {
 
       // Water base gradient
       const waterGrad = ctx.createLinearGradient(0, 0, 0, h);
-      waterGrad.addColorStop(0, 'rgba(15, 35, 55, 0.6)');
-      waterGrad.addColorStop(0.5, 'rgba(20, 50, 65, 0.5)');
-      waterGrad.addColorStop(1, 'rgba(12, 30, 48, 0.6)');
+      if (isAqua) {
+        waterGrad.addColorStop(0, 'rgba(200, 225, 240, 0.35)');
+        waterGrad.addColorStop(0.5, 'rgba(180, 215, 235, 0.25)');
+        waterGrad.addColorStop(1, 'rgba(200, 225, 240, 0.35)');
+      } else {
+        waterGrad.addColorStop(0, 'rgba(15, 35, 55, 0.6)');
+        waterGrad.addColorStop(0.5, 'rgba(20, 50, 65, 0.5)');
+        waterGrad.addColorStop(1, 'rgba(12, 30, 48, 0.6)');
+      }
       ctx.fillStyle = waterGrad;
       ctx.fillRect(0, 0, w, h);
 
@@ -336,7 +365,7 @@ export function LotusPond({ className = '' }: LotusPondProps) {
       cancelAnimationFrame(animId);
       window.removeEventListener('resize', resize);
     };
-  }, [initLotus, drawLilypad, drawFlower, drawBud, drawLeaf]);
+  }, [initLotus, drawLilypad, drawFlower, drawBud, drawLeaf, isAqua]);
 
   // Mouse/touch handlers
   const handlePointerMove = useCallback((e: React.PointerEvent) => {

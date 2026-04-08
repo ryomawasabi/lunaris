@@ -3,6 +3,7 @@
 import { useState, useRef, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { LotusPond } from '@/components/animations/LotusPond';
 
 const SVG_SIZE = 640;
 const CX = SVG_SIZE / 2;
@@ -92,6 +93,7 @@ export default function LotusChakraMap() {
   return (
     <section className="py-20 md:py-28 px-4 bg-cream relative overflow-hidden">
       <style>{lotusStyles}</style>
+      <LotusPond variant="aqua" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-12">
