@@ -146,9 +146,18 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
     return Math.min(vW * 0.14, 22);
   }, [getVessel]);
 
-  // Handle stone changes
+  // Handle stone changes — sync refs with selectedStones
   useEffect(() => {
     const prev = prevStonesRef.current;
+    // Skip if no actual change (React Strict Mode double-fire guard)
+    if (
+      prev.length === selectedStones.length &&
+      prev.every(s => selectedStones.includes(s)) &&
+      selectedStones.every(s => prev.includes(s))
+    ) {
+      return;
+    }
+
     const added = selectedStones.filter(s => !prev.includes(s));
     const removed = prev.filter(s => !selectedStones.includes(s));
     const canvas = canvasRef.current;
@@ -157,11 +166,12 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
     const w = canvas.width / dpr;
     const h = canvas.height / dpr;
 
-    // Remove stones and re-drop remaining
+    // Remove stones for deselected types
     if (removed.length > 0) {
-      const remainingSettled = settledRef.current.filter(o => !removed.includes(o.stoneName));
+      // Keep settled stones that are still selected, convert them to falling
+      const remainingSettled = settledRef.current.filter(o => selectedStones.includes(o.stoneName));
       settledRef.current = [];
-      fallingRef.current = fallingRef.current.filter(o => !removed.includes(o.stoneName));
+      fallingRef.current = fallingRef.current.filter(o => selectedStones.includes(o.stoneName));
       remainingSettled.forEach(s => {
         fallingRef.current.push({
           stoneName: s.stoneName,
@@ -189,7 +199,13 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
     const vessel = getVessel(w, h);
     const floorY = vessel.bottomY - vessel.rimRy - stoneR - 4;
 
+    // Only add stones for truly new types (not already in falling or settled)
     added.forEach(stoneName => {
+      // Guard: skip if pieces for this stone already exist
+      const existsInFalling = fallingRef.current.some(o => o.stoneName === stoneName);
+      const existsInSettled = settledRef.current.some(o => o.stoneName === stoneName);
+      if (existsInFalling || existsInSettled) return;
+
       const color = STONE_GLOW_COLORS[stoneName] || { r: 200, g: 200, b: 200 };
       const baseSeed = Object.keys(STONE_GLOW_COLORS).indexOf(stoneName) * 0.123 + 0.1;
 
