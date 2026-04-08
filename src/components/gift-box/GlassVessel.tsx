@@ -97,7 +97,7 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
   // Get stone radius based on vessel size
   const getStoneRadius = useCallback((w: number, h: number) => {
     const { vW } = getVessel(w, h);
-    return Math.min(vW * 0.13, 20);
+    return Math.min(vW * 0.17, 26);
   }, [getVessel]);
 
   // Handle stone changes — drop multiple pieces per stone type
@@ -140,7 +140,7 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
           vx: (Math.random() - 0.5) * 2,
           vy: Math.random() * 1.5,
           rotation: Math.random() * Math.PI * 2,
-          angularVel: (Math.random() - 0.5) * 0.1,
+          angularVel: (Math.random() - 0.5) * 0.04,
           radius: stoneR * (0.85 + Math.random() * 0.3), // slight size variation
           shape: generateStoneShape(seed),
           opacity: 0,
@@ -395,7 +395,10 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
         stone.x += stone.vx;
         stone.y += stone.vy;
         stone.rotation += stone.angularVel;
-        stone.angularVel *= 0.993;
+        stone.angularVel *= 0.96; // strong angular damping
+        // Clamp angular velocity to prevent wild spinning
+        if (stone.angularVel > 0.06) stone.angularVel = 0.06;
+        if (stone.angularVel < -0.06) stone.angularVel = -0.06;
 
         // Wind sway
         stone.vx += Math.sin(t * 2.5 + stone.shimmerPhase) * 0.02;
@@ -407,12 +410,12 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
           if (stone.x < leftWall) {
             stone.x = leftWall;
             stone.vx = Math.abs(stone.vx) * BOUNCE;
-            stone.angularVel += 0.03;
+            stone.angularVel *= 0.5;
           }
           if (stone.x > rightWall) {
             stone.x = rightWall;
             stone.vx = -Math.abs(stone.vx) * BOUNCE;
-            stone.angularVel -= 0.03;
+            stone.angularVel *= 0.5;
           }
         }
 
@@ -423,10 +426,11 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
           if (Math.abs(stone.vy) < 1.0) {
             stone.phase = 'settled';
             stone.settled = true;
+            stone.angularVel = 0; // stop rotation on settle
             toSettle.push(stone);
           } else {
             stone.vy = -Math.abs(stone.vy) * BOUNCE;
-            stone.angularVel += (Math.random() - 0.5) * 0.05;
+            stone.angularVel *= 0.4; // heavy damping on floor bounce
           }
         }
 
@@ -436,13 +440,9 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
           if (col) {
             stone.x += col.nx * col.overlap * 0.8;
             stone.y += col.ny * col.overlap * 0.8;
-            stone.vx += col.nx * 1.0;
-            stone.vy += col.ny * 0.6;
-            stone.angularVel += (Math.random() - 0.5) * 0.04;
-            // Push settled stone targetY up if stacking
-            if (col.ny < -0.5 && stone.y < other.y) {
-              stone.targetY = Math.min(stone.targetY, other.y - stone.radius - other.radius);
-            }
+            stone.vx += col.nx * 0.6;
+            stone.vy += col.ny * 0.4;
+            stone.angularVel *= 0.3; // strong damping on stone collision
           }
         });
 
@@ -457,10 +457,12 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
             stone.y += col.ny * pushForce;
             other.x -= col.nx * pushForce;
             other.y -= col.ny * pushForce;
-            stone.vx += col.nx * 0.5;
-            stone.vy += col.ny * 0.3;
-            other.vx -= col.nx * 0.5;
-            other.vy -= col.ny * 0.3;
+            stone.vx += col.nx * 0.4;
+            stone.vy += col.ny * 0.2;
+            other.vx -= col.nx * 0.4;
+            other.vy -= col.ny * 0.2;
+            stone.angularVel *= 0.5;
+            other.angularVel *= 0.5;
           }
         }
 
