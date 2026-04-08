@@ -88,10 +88,6 @@ export default function GiftBoxPage() {
     new Set(selectedStones.flatMap((name) => POWER_STONE_EFFECTS[name]?.effects || []))
   );
 
-  const scrollToCreate = () => {
-    document.getElementById('create-set')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <main className="min-h-screen bg-cream">
       {/* Hero */}
