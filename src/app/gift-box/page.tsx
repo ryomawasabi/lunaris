@@ -88,7 +88,7 @@ export default function GiftBoxPage() {
           alt="Crystal gift box collection with power stones and essential oils"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/55" />
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
           <Package size={36} className="text-white/90 mb-4 drop-shadow-lg" />
           <h1 className="font-serif text-4xl md:text-5xl text-white mb-3 drop-shadow-lg">
