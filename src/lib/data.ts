@@ -632,6 +632,38 @@ export const PRODUCTS: Product[] = [
     isBestSeller: true,
     isGiftable: true,
   },
+  {
+    id: "prod_021",
+    slug: "rose-berry-essence-oil",
+    name: "Rose Berry Essence Oil",
+    price: 58,
+    compareAtPrice: 78,
+    category: "Essence Oils",
+    collection: ["Essence Oil", "Love & Harmony"],
+    gemstone: "Rose Quartz",
+    crystalType: "Rose Quartz",
+    crystalEffects: ["Love", "Emotional Healing", "Heart Opening", "Self-Care"],
+    symbolicMeaning:
+      "A nurturing blend of rose and berry botanicals, charged with rose quartz to open the heart chakra and invite unconditional love.",
+    shortDescription:
+      "Crystal-charged aromatherapy oil infused with rose and wild berry essence, paired with rose quartz stones for heart chakra activation.",
+    longDescription:
+      "Rose Berry Essence Oil is a luxurious blend of pure rose extract and wild berry botanicals, each drop carefully crafted to harmonize with the heart chakra. The oil is charged alongside hand-selected rose quartz crystals, infusing every application with the gentle vibration of unconditional love. Rose resonates with yin energy — soft, receptive, and nurturing — while the vibrant berry notes carry a subtle yang spark of joy and vitality. Use it as a meditation aid, add it to your bath ritual, or apply to pulse points throughout the day. The included rose quartz stones can be placed in the glass vessel for continuous crystal infusion. A beautiful bridge between aromatherapy and crystal healing.",
+    materials: [
+      "Pure rose essential oil",
+      "Wild berry botanical extract",
+      "Rose quartz crystal chips",
+      "Glass dropper bottle",
+    ],
+    images: [
+      "/Essence oil/Rose Berry.png",
+    ],
+    badges: ["new"],
+    rating: 4.8,
+    reviewCount: 42,
+    isNew: true,
+    isGiftable: true,
+  },
 ];
 
 export const COLLECTIONS: Collection[] = [
@@ -769,6 +801,13 @@ export const CATEGORIES: Category[] = [
     slug: "home-decor",
     name: "Home Decor",
     image: "https://images.unsplash.com/photo-1615486511262-c7b5e1ab9f11?w=600&h=600&fit=crop&q=80",
+    productCount: 1,
+  },
+  {
+    id: "cat_007",
+    slug: "essence-oils",
+    name: "Essence Oils",
+    image: "/Essence oil/Rose Berry.png",
     productCount: 1,
   },
 ];
