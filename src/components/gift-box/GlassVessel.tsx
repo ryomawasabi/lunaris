@@ -170,7 +170,7 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
     fallingRef.current = fallingRef.current.filter(o => selectedStones.includes(o.stoneName));
     const keptSettled = settledRef.current.filter(o => selectedStones.includes(o.stoneName));
     const removedAny = settledRef.current.length !== keptSettled.length ||
-      [...existingTypes].some(t => !selectedStones.includes(t));
+      Array.from(existingTypes).some(t => !selectedStones.includes(t));
 
     // If any stone was removed, re-drop kept settled stones
     if (removedAny) {
