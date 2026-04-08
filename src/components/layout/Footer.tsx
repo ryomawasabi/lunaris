@@ -134,18 +134,18 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/collections/evil-eye"
+                  href="/collections/essence-oil"
                   className="text-sm text-stone hover:text-cream transition-colors"
                 >
-                  Evil Eye
+                  Essence Oil
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/collections/tree-of-life"
+                  href="/collections/crystal-diffuser"
                   className="text-sm text-stone hover:text-cream transition-colors"
                 >
-                  Tree of Life
+                  Crystal Diffuser
                 </Link>
               </li>
             </ul>
