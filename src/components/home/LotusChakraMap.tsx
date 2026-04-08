@@ -123,9 +123,9 @@ export default function LotusChakraMap() {
               <defs>
                 {chakras.map((ch, i) => (
                   <linearGradient key={`pg-${i}`} id={`lpg${i}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor={ch.color} stopOpacity="0.05" />
-                    <stop offset="50%" stopColor={ch.color} stopOpacity={activeChakra === i ? '0.35' : bloomed ? '0.12' : '0.25'} />
-                    <stop offset="100%" stopColor={ch.color} stopOpacity="0.05" />
+                    <stop offset="0%" stopColor={ch.color} stopOpacity="0.15" />
+                    <stop offset="50%" stopColor={ch.color} stopOpacity={activeChakra === i ? '0.6' : bloomed ? '0.35' : '0.45'} />
+                    <stop offset="100%" stopColor={ch.color} stopOpacity="0.15" />
                   </linearGradient>
                 ))}
                 {chakras.map((ch, i) => (
@@ -166,8 +166,8 @@ export default function LotusChakraMap() {
                     d={petalPath(angles[i], curR, curW, isActive, bloomed)}
                     fill={`url(#lpg${i})`}
                     stroke={ch.color}
-                    strokeWidth={isActive ? 1.5 : bloomed ? 0.6 : 1}
-                    opacity={isActive ? 1 : bloomed ? 0.7 : 0.85}
+                    strokeWidth={isActive ? 2 : bloomed ? 1 : 1.2}
+                    opacity={isActive ? 1 : bloomed ? 0.9 : 0.95}
                     style={{
                       transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)',
                       cursor: bloomed ? 'pointer' : 'default',
