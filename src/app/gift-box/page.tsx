@@ -180,9 +180,6 @@ export default function GiftBoxPage() {
                       <h3 className="font-serif text-sm md:text-base text-dark leading-tight mb-0.5">
                         {name}
                       </h3>
-                      <p className="text-[10px] md:text-xs font-sans text-warm-light mb-2">
-                        {stone.nameJa}
-                      </p>
                       <div className="flex flex-wrap gap-1">
                         {stone.effects.map((effect) => (
                           <span
@@ -256,9 +253,6 @@ export default function GiftBoxPage() {
                             />
                             <div className="flex-1 min-w-0">
                               <p className="text-sm font-serif text-dark truncate">{name}</p>
-                              <p className="text-[10px] font-sans text-warm-light">
-                                {POWER_STONE_EFFECTS[name]?.nameJa}
-                              </p>
                             </div>
                             <button
                               onClick={() => toggleStone(name)}
