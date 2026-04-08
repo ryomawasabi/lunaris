@@ -67,9 +67,9 @@ export const PRODUCTS: Product[] = [
     collection: ["Love & Harmony"],
     gemstone: "Rose Quartz",
     crystalType: "Rose Quartz",
-    crystalEffects: ["Love", "Compassion", "Emotional Healing", "Relationships"],
+    crystalEffects: ["Love", "Self-Worth", "Compassion"],
     symbolicMeaning:
-      "Unconditional love and compassion. A gentle reminder to lead with your heart.",
+      "Attracts love, nurtures self-worth, and opens the heart to compassion.",
     shortDescription:
       "Delicate rose quartz sphere earrings with 14K gold vermeil hooks, crafted for everyday elegance.",
     longDescription:
@@ -127,7 +127,7 @@ export const PRODUCTS: Product[] = [
     collection: ["Prosperity"],
     gemstone: "Citrine",
     crystalType: "Citrine",
-    crystalEffects: ["Prosperity", "Abundance", "Confidence", "Manifestation"],
+    crystalEffects: ["Abundance", "Prosperity", "Career Success"],
     symbolicMeaning:
       "Prosperity and manifested intention. A golden reminder of your innate worth.",
     shortDescription:
@@ -160,7 +160,7 @@ export const PRODUCTS: Product[] = [
     collection: ["Protection"],
     gemstone: "Black Obsidian",
     crystalType: "Black Obsidian",
-    crystalEffects: ["Protection", "Grounding", "Shadow Work", "Truth"],
+    crystalEffects: ["Protection", "Negative Energy Clearing", "Grounding"],
     symbolicMeaning:
       "Deep protection and shadow work. Safe passage through life's darkest passages.",
     shortDescription:
@@ -223,7 +223,7 @@ export const PRODUCTS: Product[] = [
     collection: ["Red String"],
     gemstone: "Carnelian",
     crystalType: "Carnelian",
-    crystalEffects: ["Vitality", "Courage", "Destiny", "Passion"],
+    crystalEffects: ["Motivation", "Vitality", "Creativity"],
     symbolicMeaning:
       "Destiny and divine connection. The invisible thread that binds all meaningful encounters.",
     shortDescription:
@@ -348,7 +348,7 @@ export const PRODUCTS: Product[] = [
     collection: ["Birthstones", "Love & Harmony"],
     gemstone: "Amethyst",
     crystalType: "Amethyst",
-    crystalEffects: ["Intuition", "Calm", "Spiritual Awareness", "Clarity"],
+    crystalEffects: ["Intuition", "Restful Sleep", "Aura Purification"],
     symbolicMeaning:
       "Clarity, calm, and spiritual awareness. A gateway to inner peace and intuition.",
     shortDescription:
@@ -381,7 +381,7 @@ export const PRODUCTS: Product[] = [
     collection: ["Love & Harmony"],
     gemstone: "Aquamarine",
     crystalType: "Aquamarine",
-    crystalEffects: ["Peace", "Communication", "Clarity", "Emotional Balance"],
+    crystalEffects: ["Calm", "Communication", "Emotional Balance"],
     symbolicMeaning:
       "Calm, clarity, and inner peace. The serene depth of water reflecting sky.",
     shortDescription:
@@ -414,7 +414,7 @@ export const PRODUCTS: Product[] = [
     collection: ["Love & Harmony", "Protection"],
     gemstone: "Mixed gemstones",
     crystalType: "Rose Quartz",
-    crystalEffects: ["Love", "Compassion", "Emotional Healing", "Relationships"],
+    crystalEffects: ["Love", "Self-Worth", "Compassion"],
     symbolicMeaning:
       "Complete spiritual alignment across body and spirit. A unified practice of presence.",
     shortDescription:
