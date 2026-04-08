@@ -259,9 +259,9 @@ export function LotusPond({ className = '', variant = 'dark' }: LotusPondProps) 
       // Water base gradient
       const waterGrad = ctx.createLinearGradient(0, 0, 0, h);
       if (isAqua) {
-        waterGrad.addColorStop(0, 'rgba(200, 225, 240, 0.35)');
-        waterGrad.addColorStop(0.5, 'rgba(180, 215, 235, 0.25)');
-        waterGrad.addColorStop(1, 'rgba(200, 225, 240, 0.35)');
+        waterGrad.addColorStop(0, 'rgba(218, 234, 245, 1)');
+        waterGrad.addColorStop(0.5, 'rgba(210, 228, 242, 1)');
+        waterGrad.addColorStop(1, 'rgba(218, 234, 245, 1)');
       } else {
         waterGrad.addColorStop(0, 'rgba(15, 35, 55, 0.6)');
         waterGrad.addColorStop(0.5, 'rgba(20, 50, 65, 0.5)');
