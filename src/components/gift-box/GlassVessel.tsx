@@ -82,9 +82,9 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
   // Cylinder vessel dimensions — tall cylinder
   const getVessel = useCallback((w: number, h: number) => {
     const vW = w * 0.50;
-    const vH = h * 0.78;
+    const vH = h * 0.85;
     const cx = w / 2;
-    const topY = h * 0.06;
+    const topY = h * 0.03;
     const bottomY = topY + vH;
     const rimRx = vW / 2;
     const rimRy = rimRx * 0.20;
@@ -97,7 +97,7 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
   // Get stone radius based on vessel size
   const getStoneRadius = useCallback((w: number, h: number) => {
     const { vW } = getVessel(w, h);
-    return Math.min(vW * 0.17, 26);
+    return Math.min(vW * 0.14, 22);
   }, [getVessel]);
 
   // Handle stone changes — drop multiple pieces per stone type
@@ -111,10 +111,32 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
     const w = canvas.width / dpr;
     const h = canvas.height / dpr;
 
-    // Remove all pieces for removed stone types
+    // Remove all pieces for removed stone types, and re-drop remaining settled stones
     if (removed.length > 0) {
-      settledRef.current = settledRef.current.filter(o => !removed.includes(o.stoneName));
+      const remainingSettled = settledRef.current.filter(o => !removed.includes(o.stoneName));
+      settledRef.current = [];
       fallingRef.current = fallingRef.current.filter(o => !removed.includes(o.stoneName));
+      // Convert remaining settled stones back to falling so they drop naturally
+      remainingSettled.forEach(s => {
+        fallingRef.current.push({
+          stoneName: s.stoneName,
+          color: s.color,
+          x: s.x,
+          y: s.y,
+          vx: 0,
+          vy: 0.5,
+          rotation: s.rotation,
+          angularVel: 0,
+          radius: s.radius,
+          shape: s.shape,
+          opacity: 1,
+          phase: 'falling',
+          settled: false,
+          shimmerPhase: s.shimmerPhase,
+          targetX: s.targetX,
+          targetY: s.targetY,
+        });
+      });
     }
 
     const stoneR = getStoneRadius(w, h);
