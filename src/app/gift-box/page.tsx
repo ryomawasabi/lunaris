@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 
 const STONE_IMAGES: Record<string, string> = {
   'Smoky Quartz': '/stones/smoky-quartz.png',
-  'Aquamarine': 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=400&h=400&fit=crop&q=80',
+  'Aquamarine': '/stones/Aquamarine.png',
   'Amethyst': 'https://images.unsplash.com/photo-1576087503901-06379ab96046?w=400&h=400&fit=crop&q=80',
   'Black Obsidian': 'https://images.unsplash.com/photo-1612542904458-94ce0ec71768?w=400&h=400&fit=crop&q=80',
   'Green Fluorite': 'https://images.unsplash.com/photo-1606567595334-d39972c85dbe?w=400&h=400&fit=crop&q=80',
