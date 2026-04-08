@@ -79,41 +79,28 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
   const timeRef = useRef(0);
   const [ready, setReady] = useState(false);
 
-  // Cylinder vessel dimensions
+  // Cylinder vessel dimensions — tall cylinder
   const getVessel = useCallback((w: number, h: number) => {
-    const vW = w * 0.52;
-    const vH = h * 0.50;
+    const vW = w * 0.50;
+    const vH = h * 0.65;
     const cx = w / 2;
-    const topY = h * 0.22;
+    const topY = h * 0.12;
     const bottomY = topY + vH;
     const rimRx = vW / 2;
-    const rimRy = rimRx * 0.22; // ellipse ratio for perspective
+    const rimRy = rimRx * 0.20;
     return { vW, vH, cx, topY, bottomY, rimRx, rimRy };
   }, []);
 
-  // Settled positions inside vessel
-  const getPositions = useCallback((count: number, w: number, h: number) => {
-    const { vW, cx, bottomY, rimRy } = getVessel(w, h);
-    const stoneR = Math.min(vW * 0.16, 26);
-    const innerBottom = bottomY - rimRy - stoneR - 6;
-    const positions: { x: number; y: number }[] = [];
+  // How many pieces per stone type
+  const PIECES_PER_STONE = 3;
 
-    if (count === 1) {
-      positions.push({ x: cx, y: innerBottom });
-    } else if (count === 2) {
-      const gap = stoneR * 1.4;
-      positions.push({ x: cx - gap, y: innerBottom });
-      positions.push({ x: cx + gap, y: innerBottom });
-    } else if (count === 3) {
-      const gap = stoneR * 1.3;
-      positions.push({ x: cx - gap, y: innerBottom });
-      positions.push({ x: cx + gap, y: innerBottom });
-      positions.push({ x: cx, y: innerBottom - stoneR * 1.8 });
-    }
-    return { positions, stoneR };
+  // Get stone radius based on vessel size
+  const getStoneRadius = useCallback((w: number, h: number) => {
+    const { vW } = getVessel(w, h);
+    return Math.min(vW * 0.13, 20);
   }, [getVessel]);
 
-  // Handle stone changes
+  // Handle stone changes — drop multiple pieces per stone type
   useEffect(() => {
     const prev = prevStonesRef.current;
     const added = selectedStones.filter(s => !prev.includes(s));
@@ -124,52 +111,50 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
     const w = canvas.width / dpr;
     const h = canvas.height / dpr;
 
-    // Remove
+    // Remove all pieces for removed stone types
     if (removed.length > 0) {
       settledRef.current = settledRef.current.filter(o => !removed.includes(o.stoneName));
       fallingRef.current = fallingRef.current.filter(o => !removed.includes(o.stoneName));
     }
 
-    // Recalculate positions for settled stones
-    const { positions, stoneR } = getPositions(selectedStones.length, w, h);
-    settledRef.current.forEach(orb => {
-      const idx = selectedStones.indexOf(orb.stoneName);
-      if (idx >= 0 && idx < positions.length) {
-        orb.targetX = positions[idx].x;
-        orb.targetY = positions[idx].y;
-        orb.radius = stoneR;
+    const stoneR = getStoneRadius(w, h);
+    const vessel = getVessel(w, h);
+    const floorY = vessel.bottomY - vessel.rimRy - stoneR - 4;
+
+    // Add 2-3 falling pieces for each newly selected stone type
+    added.forEach(stoneName => {
+      const color = STONE_GLOW_COLORS[stoneName] || { r: 200, g: 200, b: 200 };
+      const baseSeed = Object.keys(STONE_GLOW_COLORS).indexOf(stoneName) * 0.123 + 0.1;
+
+      for (let p = 0; p < PIECES_PER_STONE; p++) {
+        const seed = baseSeed + p * 0.37;
+        // Stagger the drop — each piece starts a bit higher with slight delay via different startY
+        const startY = -40 - p * 50;
+        const startX = vessel.cx + (Math.random() - 0.5) * vessel.vW * 0.4;
+
+        fallingRef.current.push({
+          stoneName,
+          color,
+          x: startX,
+          y: startY,
+          vx: (Math.random() - 0.5) * 2,
+          vy: Math.random() * 1.5,
+          rotation: Math.random() * Math.PI * 2,
+          angularVel: (Math.random() - 0.5) * 0.1,
+          radius: stoneR * (0.85 + Math.random() * 0.3), // slight size variation
+          shape: generateStoneShape(seed),
+          opacity: 0,
+          phase: 'falling',
+          settled: false,
+          shimmerPhase: Math.random() * Math.PI * 2,
+          targetX: vessel.cx + (Math.random() - 0.5) * vessel.vW * 0.35,
+          targetY: floorY,
+        });
       }
     });
 
-    // Add new falling stones
-    added.forEach(stoneName => {
-      const color = STONE_GLOW_COLORS[stoneName] || { r: 200, g: 200, b: 200 };
-      const idx = selectedStones.indexOf(stoneName);
-      const target = idx < positions.length ? positions[idx] : { x: w / 2, y: h * 0.65 };
-      const seed = Object.keys(STONE_GLOW_COLORS).indexOf(stoneName) * 0.123 + 0.1;
-
-      fallingRef.current.push({
-        stoneName,
-        color,
-        x: target.x + (Math.random() - 0.5) * 30,
-        y: -50,
-        vx: (Math.random() - 0.5) * 1.5,
-        vy: 0,
-        rotation: Math.random() * Math.PI * 2,
-        angularVel: (Math.random() - 0.5) * 0.08,
-        radius: stoneR,
-        shape: generateStoneShape(seed),
-        opacity: 0,
-        phase: 'falling',
-        settled: false,
-        shimmerPhase: Math.random() * Math.PI * 2,
-        targetX: target.x,
-        targetY: target.y,
-      });
-    });
-
     prevStonesRef.current = [...selectedStones];
-  }, [selectedStones, getPositions]);
+  }, [selectedStones, getStoneRadius, getVessel]);
 
   // Animation loop
   useEffect(() => {
@@ -369,88 +354,117 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
       // Draw vessel (back part)
       drawVessel(w, h, t);
 
-      // === Settled stones (animate toward target smoothly) ===
+      // === Draw settled stones with gentle shimmer ===
       settledRef.current.forEach(stone => {
         stone.shimmerPhase += 0.015;
         const shimmer = 0.75 + Math.sin(stone.shimmerPhase) * 0.25;
-        // Smooth lerp to target
-        stone.x += (stone.targetX - stone.x) * 0.08;
-        stone.y += (stone.targetY - stone.y) * 0.08;
         drawStone(stone.x, stone.y, stone.radius, stone.rotation, stone.shape, stone.color, 1, shimmer);
       });
 
-      // === Falling stones ===
+      // === Physics for falling stones ===
+      const floorY = vessel.bottomY - vessel.rimRy;
       const toSettle: FallingStone[] = [];
 
-      fallingRef.current.forEach(stone => {
+      // Collision helper
+      const resolveCollision = (
+        ax: number, ay: number, ar: number,
+        bx: number, by: number, br: number
+      ) => {
+        const dx = ax - bx;
+        const dy = ay - by;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const minDist = ar + br;
+        if (dist < minDist && dist > 0.1) {
+          const nx = dx / dist;
+          const ny = dy / dist;
+          const overlap = minDist - dist;
+          return { nx, ny, overlap };
+        }
+        return null;
+      };
+
+      fallingRef.current.forEach((stone, si) => {
         if (stone.phase !== 'falling') return;
 
-        // Fade in
         stone.opacity = Math.min(1, stone.opacity + 0.04);
 
-        // Physics
+        // Gravity + air resistance
         stone.vy += GRAVITY;
         stone.vy *= AIR_RESIST;
         stone.vx *= FRICTION;
         stone.x += stone.vx;
         stone.y += stone.vy;
         stone.rotation += stone.angularVel;
-        stone.angularVel *= 0.995;
+        stone.angularVel *= 0.993;
 
-        // Gentle wind sway while falling
-        stone.vx += Math.sin(t * 2 + stone.shimmerPhase) * 0.03;
+        // Wind sway
+        stone.vx += Math.sin(t * 2.5 + stone.shimmerPhase) * 0.02;
 
-        // Wall collisions (vessel sides)
+        // Wall collisions
         const leftWall = vessel.cx - halfW + stone.radius + 3;
         const rightWall = vessel.cx + halfW - stone.radius - 3;
         if (stone.y > vessel.topY) {
           if (stone.x < leftWall) {
             stone.x = leftWall;
             stone.vx = Math.abs(stone.vx) * BOUNCE;
-            stone.angularVel += 0.02;
+            stone.angularVel += 0.03;
           }
           if (stone.x > rightWall) {
             stone.x = rightWall;
             stone.vx = -Math.abs(stone.vx) * BOUNCE;
-            stone.angularVel -= 0.02;
+            stone.angularVel -= 0.03;
           }
         }
 
-        // Floor collision (vessel bottom)
-        if (stone.y >= stone.targetY) {
-          stone.y = stone.targetY;
-          if (Math.abs(stone.vy) < 1.2) {
-            // Settle
+        // Floor collision
+        const stoneFloor = floorY - stone.radius - 2;
+        if (stone.y >= stoneFloor) {
+          stone.y = stoneFloor;
+          if (Math.abs(stone.vy) < 1.0) {
             stone.phase = 'settled';
             stone.settled = true;
             toSettle.push(stone);
           } else {
             stone.vy = -Math.abs(stone.vy) * BOUNCE;
-            stone.angularVel += (Math.random() - 0.5) * 0.04;
-            // Move toward target X on bounce
-            stone.vx += (stone.targetX - stone.x) * 0.05;
+            stone.angularVel += (Math.random() - 0.5) * 0.05;
           }
         }
 
-        // Stone-to-stone collision (simple)
+        // Collision with settled stones
         settledRef.current.forEach(other => {
-          const dx = stone.x - other.x;
-          const dy = stone.y - other.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          const minDist = stone.radius + other.radius;
-          if (dist < minDist && dist > 0) {
-            const overlap = minDist - dist;
-            const nx = dx / dist;
-            const ny = dy / dist;
-            stone.x += nx * overlap * 0.7;
-            stone.y += ny * overlap * 0.7;
-            stone.vx += nx * 0.8;
-            stone.vy += ny * 0.5;
-            stone.angularVel += (Math.random() - 0.5) * 0.03;
+          const col = resolveCollision(stone.x, stone.y, stone.radius, other.x, other.y, other.radius);
+          if (col) {
+            stone.x += col.nx * col.overlap * 0.8;
+            stone.y += col.ny * col.overlap * 0.8;
+            stone.vx += col.nx * 1.0;
+            stone.vy += col.ny * 0.6;
+            stone.angularVel += (Math.random() - 0.5) * 0.04;
+            // Push settled stone targetY up if stacking
+            if (col.ny < -0.5 && stone.y < other.y) {
+              stone.targetY = Math.min(stone.targetY, other.y - stone.radius - other.radius);
+            }
           }
         });
 
-        // Draw falling stone
+        // Collision with other falling stones
+        for (let j = si + 1; j < fallingRef.current.length; j++) {
+          const other = fallingRef.current[j];
+          if (other.settled) continue;
+          const col = resolveCollision(stone.x, stone.y, stone.radius, other.x, other.y, other.radius);
+          if (col) {
+            const pushForce = col.overlap * 0.4;
+            stone.x += col.nx * pushForce;
+            stone.y += col.ny * pushForce;
+            other.x -= col.nx * pushForce;
+            other.y -= col.ny * pushForce;
+            stone.vx += col.nx * 0.5;
+            stone.vy += col.ny * 0.3;
+            other.vx -= col.nx * 0.5;
+            other.vy -= col.ny * 0.3;
+          }
+        }
+
+        // Draw
         if (!stone.settled) {
           stone.shimmerPhase += 0.03;
           const shimmer = 0.8 + Math.sin(stone.shimmerPhase) * 0.2;
@@ -458,10 +472,10 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
           // Trail glow
           for (let i = 1; i <= 3; i++) {
             const ty = stone.y - stone.vy * i * 2;
-            const ta = stone.opacity * (0.15 / i);
+            const ta = stone.opacity * (0.12 / i);
             if (ty > 0) {
               ctx.beginPath();
-              ctx.arc(stone.x, ty, stone.radius * (0.6 / i), 0, Math.PI * 2);
+              ctx.arc(stone.x, ty, stone.radius * (0.5 / i), 0, Math.PI * 2);
               ctx.fillStyle = `rgba(${stone.color.r},${stone.color.g},${stone.color.b},${ta})`;
               ctx.fill();
             }
@@ -471,7 +485,7 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
         }
       });
 
-      // Transfer settled
+      // Transfer settled falling stones
       toSettle.forEach(s => {
         settledRef.current.push({
           stoneName: s.stoneName,
@@ -482,8 +496,8 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
           rotation: s.rotation,
           shape: s.shape,
           shimmerPhase: s.shimmerPhase,
-          targetX: s.targetX,
-          targetY: s.targetY,
+          targetX: s.x,
+          targetY: s.y,
         });
       });
       if (toSettle.length > 0) {
