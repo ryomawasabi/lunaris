@@ -8,6 +8,7 @@ import { AnimatedHero } from '@/components/animations/AnimatedHero';
 import LotusChakraMap from '@/components/home/LotusChakraMap';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { FloatingParticles } from '@/components/animations/FloatingParticles';
+import { LotusPond } from '@/components/animations/LotusPond';
 import { SectionDivider } from '@/components/animations/SectionDivider';
 
 export default function Home() {
@@ -258,18 +259,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quote */}
-      <section className="relative py-24 md:py-32 px-4 overflow-hidden">
-        <PlaceholderImage
-          width="w-full"
-          height="h-full"
-          text="Sacred Space"
-          className="absolute inset-0"
-          src="https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=1800&h=800&fit=crop&q=80"
-          alt="Mystical cosmic background"
-        />
-        <div className="absolute inset-0 bg-dark/80" />
-        <FloatingParticles count={15} color="#8BB8D6" />
+      {/* Quote — Lotus Pond */}
+      <section className="relative py-24 md:py-32 px-4 overflow-hidden bg-[#0a1e30]">
+        <LotusPond />
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <ScrollReveal>
             <div className="flex items-center justify-center gap-2 mb-8">

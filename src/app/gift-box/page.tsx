@@ -7,7 +7,7 @@ import { Check, Package, Sparkles, RotateCcw, ShoppingBag } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const STONE_IMAGES: Record<string, string> = {
-  'Smoky Quartz': 'https://images.unsplash.com/photo-1603344204980-4edb0ea63148?w=400&h=400&fit=crop&q=80',
+  'Smoky Quartz': '/stones/smoky-quartz.png',
   'Aquamarine': 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=400&h=400&fit=crop&q=80',
   'Amethyst': 'https://images.unsplash.com/photo-1576087503901-06379ab96046?w=400&h=400&fit=crop&q=80',
   'Black Obsidian': 'https://images.unsplash.com/photo-1612542904458-94ce0ec71768?w=400&h=400&fit=crop&q=80',
