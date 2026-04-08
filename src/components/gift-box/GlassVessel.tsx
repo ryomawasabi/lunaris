@@ -349,29 +349,6 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
       ctx.fillStyle = specGrad;
       ctx.fill();
 
-      // --- Secondary sparkle (animated position) ---
-      const sparkX = Math.sin(t * 1.2 + rotation) * r * 0.25;
-      const sparkY = Math.cos(t * 0.9 + rotation) * r * 0.2;
-      ctx.beginPath();
-      ctx.arc(sparkX, sparkY, r * 0.06, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255,255,255,${0.6 * alpha * shimmer})`;
-      ctx.fill();
-
-      // --- Star sparkle on highlight ---
-      const starAlpha = 0.3 + Math.sin(t * 2 + rotation * 3) * 0.3;
-      if (starAlpha > 0.35) {
-        const sx = -r * 0.15;
-        const sy = -r * 0.22;
-        const sLen = r * 0.15 * starAlpha;
-        ctx.strokeStyle = `rgba(255,255,255,${starAlpha * alpha})`;
-        ctx.lineWidth = 0.8;
-        ctx.beginPath();
-        ctx.moveTo(sx - sLen, sy);
-        ctx.lineTo(sx + sLen, sy);
-        ctx.moveTo(sx, sy - sLen);
-        ctx.lineTo(sx, sy + sLen);
-        ctx.stroke();
-      }
 
       ctx.restore();
     };
