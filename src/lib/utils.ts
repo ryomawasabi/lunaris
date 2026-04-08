@@ -29,7 +29,7 @@ export function getProductsByCollection(slug: string, products: Product[] = STAT
 
   return products.filter((product) =>
     product.collection.some((col) =>
-      COLLECTIONS.find((c) => c.slug === col)?.slug === slug
+      col === collection.name || col.toLowerCase().replace(/\s+&\s+/g, '-').replace(/\s+/g, '-') === slug
     )
   );
 }

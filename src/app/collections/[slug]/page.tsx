@@ -38,9 +38,10 @@ function CollectionDetailContent() {
     if (sortOption) {
       products = filterProducts({ sortBy: sortOption }, allProducts)
       // Filter by collection after sorting
+      const col = COLLECTIONS.find((c) => c.slug === slug)
       products = products.filter((p) =>
         p.collection.some(
-          (col) => COLLECTIONS.find((c) => c.slug === col)?.slug === slug
+          (c) => c === col?.name || c.toLowerCase().replace(/\s+&\s+/g, '-').replace(/\s+/g, '-') === slug
         )
       )
     }
