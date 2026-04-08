@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { POWER_STONE_EFFECTS } from '@/lib/zodiac';
 import { Check, Package, Sparkles, RotateCcw, ShoppingBag } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import GlassVessel from '@/components/gift-box/GlassVessel';
 
 const STONE_IMAGES: Record<string, string> = {
   'Smoky Quartz': '/stones/smoky-quartz.png',
@@ -80,21 +81,33 @@ export default function GiftBoxPage() {
 
   return (
     <main className="min-h-screen bg-cream">
-      {/* Hero */}
-      <section className="relative h-72 md:h-96 overflow-hidden bg-dark">
-        <div className="absolute inset-0 bg-gradient-to-b from-dark/80 via-dark/60 to-dark/90" />
+      {/* Hero with Glass Vessel */}
+      <section className="relative h-[28rem] md:h-[34rem] overflow-hidden bg-dark">
+        <div className="absolute inset-0 bg-gradient-to-b from-dark/90 via-dark/70 to-dark/95" />
         <img
           src="https://images.unsplash.com/photo-1549465220-1a8b9238f1b0?w=1200&h=600&fit=crop&q=80"
           alt="Gift Box"
-          className="absolute inset-0 w-full h-full object-cover opacity-40"
+          className="absolute inset-0 w-full h-full object-cover opacity-20"
         />
-        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
-          <Package size={36} className="text-gold mb-4" />
-          <h1 className="font-serif text-4xl md:text-5xl text-cream mb-3">
-            Create Your Gift Box
-          </h1>
-          <p className="font-sans text-cream/70 text-sm md:text-base max-w-lg">
-            Choose {MIN_STONES}–{MAX_STONES} power stones to create a personalized healing gift set with essential oil and glass vessel.
+        {/* Glass Vessel Animation */}
+        <div className="absolute inset-0 z-[1]">
+          <GlassVessel selectedStones={selectedStones} />
+        </div>
+        {/* Text Overlay */}
+        <div className="relative z-10 h-full flex flex-col items-center justify-between text-center px-4 py-10 md:py-14 pointer-events-none">
+          <div>
+            <Package size={30} className="text-gold mb-3 mx-auto" />
+            <h1 className="font-serif text-3xl md:text-4xl text-cream mb-2">
+              Create Your Gift Box
+            </h1>
+            <p className="font-sans text-cream/60 text-xs md:text-sm max-w-md mx-auto">
+              Choose {MIN_STONES}–{MAX_STONES} power stones · watch them fill your vessel
+            </p>
+          </div>
+          <p className="font-sans text-cream/40 text-[10px] md:text-xs tracking-wider uppercase">
+            {selectedStones.length === 0
+              ? 'Select stones below'
+              : `${selectedStones.length} stone${selectedStones.length > 1 ? 's' : ''} selected`}
           </p>
         </div>
       </section>
