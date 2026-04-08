@@ -123,7 +123,6 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
   const fallingRef = useRef<FallingStone[]>([]);
   const settledRef = useRef<SettledStone[]>([]);
   const particlesRef = useRef<Particle[]>([]);
-  const prevStonesRef = useRef<string[]>([]);
   const timeRef = useRef(0);
   const [ready, setReady] = useState(false);
 
@@ -146,33 +145,37 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
     return Math.min(vW * 0.14, 22);
   }, [getVessel]);
 
-  // Handle stone changes — sync refs with selectedStones
-  useEffect(() => {
-    const prev = prevStonesRef.current;
-    // Skip if no actual change (React Strict Mode double-fire guard)
-    if (
-      prev.length === selectedStones.length &&
-      prev.every(s => selectedStones.includes(s)) &&
-      selectedStones.every(s => prev.includes(s))
-    ) {
-      return;
-    }
+  // Serialize selectedStones for stable comparison
+  const stonesKey = selectedStones.slice().sort().join('|');
 
-    const added = selectedStones.filter(s => !prev.includes(s));
-    const removed = prev.filter(s => !selectedStones.includes(s));
+  // Handle stone changes — direct sync, no diff
+  useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const dpr = window.devicePixelRatio || 1;
     const w = canvas.width / dpr;
     const h = canvas.height / dpr;
+    if (w === 0 || h === 0) return;
 
-    // Remove stones for deselected types
-    if (removed.length > 0) {
-      // Keep settled stones that are still selected, convert them to falling
-      const remainingSettled = settledRef.current.filter(o => selectedStones.includes(o.stoneName));
+    const stoneR = getStoneRadius(w, h);
+    const vessel = getVessel(w, h);
+    const floorY = vessel.bottomY - vessel.rimRy - stoneR - 4;
+
+    // Collect which stone types currently exist in refs
+    const existingTypes = new Set<string>();
+    fallingRef.current.forEach(s => existingTypes.add(s.stoneName));
+    settledRef.current.forEach(s => existingTypes.add(s.stoneName));
+
+    // Remove stones no longer in selectedStones
+    fallingRef.current = fallingRef.current.filter(o => selectedStones.includes(o.stoneName));
+    const keptSettled = settledRef.current.filter(o => selectedStones.includes(o.stoneName));
+    const removedAny = settledRef.current.length !== keptSettled.length ||
+      [...existingTypes].some(t => !selectedStones.includes(t));
+
+    // If any stone was removed, re-drop kept settled stones
+    if (removedAny) {
       settledRef.current = [];
-      fallingRef.current = fallingRef.current.filter(o => selectedStones.includes(o.stoneName));
-      remainingSettled.forEach(s => {
+      keptSettled.forEach(s => {
         fallingRef.current.push({
           stoneName: s.stoneName,
           color: s.color,
@@ -195,16 +198,11 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
       });
     }
 
-    const stoneR = getStoneRadius(w, h);
-    const vessel = getVessel(w, h);
-    const floorY = vessel.bottomY - vessel.rimRy - stoneR - 4;
-
-    // Only add stones for truly new types (not already in falling or settled)
-    added.forEach(stoneName => {
-      // Guard: skip if pieces for this stone already exist
-      const existsInFalling = fallingRef.current.some(o => o.stoneName === stoneName);
-      const existsInSettled = settledRef.current.some(o => o.stoneName === stoneName);
-      if (existsInFalling || existsInSettled) return;
+    // Add new falling stones for types not already present
+    selectedStones.forEach(stoneName => {
+      const alreadyExists = fallingRef.current.some(o => o.stoneName === stoneName) ||
+        settledRef.current.some(o => o.stoneName === stoneName);
+      if (alreadyExists) return;
 
       const color = STONE_GLOW_COLORS[stoneName] || { r: 200, g: 200, b: 200 };
       const baseSeed = Object.keys(STONE_GLOW_COLORS).indexOf(stoneName) * 0.123 + 0.1;
@@ -236,9 +234,8 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
         });
       }
     });
-
-    prevStonesRef.current = [...selectedStones];
-  }, [selectedStones, getStoneRadius, getVessel]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stonesKey]);
 
   // Animation loop
   useEffect(() => {
