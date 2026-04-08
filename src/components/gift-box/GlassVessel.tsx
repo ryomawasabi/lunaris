@@ -354,34 +354,47 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
       // Draw vessel (back part)
       drawVessel(w, h, t);
 
-      // === Draw settled stones with gentle shimmer ===
-      settledRef.current.forEach(stone => {
+      // === Resolve overlaps between settled stones (prevents jitter) ===
+      const floorY = vessel.bottomY - vessel.rimRy;
+      const settled = settledRef.current;
+      for (let i = 0; i < settled.length; i++) {
+        const a = settled[i];
+        // Floor constraint
+        const maxY = floorY - a.radius - 2;
+        if (a.y > maxY) a.y = maxY;
+        // Wall constraints
+        const lw = vessel.cx - halfW + a.radius + 3;
+        const rw = vessel.cx + halfW - a.radius - 3;
+        if (a.x < lw) a.x = lw;
+        if (a.x > rw) a.x = rw;
+        // Push apart from other settled stones
+        for (let j = i + 1; j < settled.length; j++) {
+          const b = settled[j];
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          const minDist = a.radius + b.radius;
+          if (dist < minDist && dist > 0.1) {
+            const nx = dx / dist;
+            const ny = dy / dist;
+            const push = (minDist - dist) * 0.5;
+            a.x += nx * push;
+            a.y += ny * push;
+            b.x -= nx * push;
+            b.y -= ny * push;
+          }
+        }
+      }
+
+      // === Draw settled stones ===
+      settled.forEach(stone => {
         stone.shimmerPhase += 0.015;
         const shimmer = 0.75 + Math.sin(stone.shimmerPhase) * 0.25;
         drawStone(stone.x, stone.y, stone.radius, stone.rotation, stone.shape, stone.color, 1, shimmer);
       });
 
       // === Physics for falling stones ===
-      const floorY = vessel.bottomY - vessel.rimRy;
       const toSettle: FallingStone[] = [];
-
-      // Collision helper
-      const resolveCollision = (
-        ax: number, ay: number, ar: number,
-        bx: number, by: number, br: number
-      ) => {
-        const dx = ax - bx;
-        const dy = ay - by;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        const minDist = ar + br;
-        if (dist < minDist && dist > 0.1) {
-          const nx = dx / dist;
-          const ny = dy / dist;
-          const overlap = minDist - dist;
-          return { nx, ny, overlap };
-        }
-        return null;
-      };
 
       fallingRef.current.forEach((stone, si) => {
         if (stone.phase !== 'falling') return;
@@ -395,10 +408,9 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
         stone.x += stone.vx;
         stone.y += stone.vy;
         stone.rotation += stone.angularVel;
-        stone.angularVel *= 0.96; // strong angular damping
-        // Clamp angular velocity to prevent wild spinning
-        if (stone.angularVel > 0.06) stone.angularVel = 0.06;
-        if (stone.angularVel < -0.06) stone.angularVel = -0.06;
+        stone.angularVel *= 0.94;
+        if (stone.angularVel > 0.05) stone.angularVel = 0.05;
+        if (stone.angularVel < -0.05) stone.angularVel = -0.05;
 
         // Wind sway
         stone.vx += Math.sin(t * 2.5 + stone.shimmerPhase) * 0.02;
@@ -410,12 +422,12 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
           if (stone.x < leftWall) {
             stone.x = leftWall;
             stone.vx = Math.abs(stone.vx) * BOUNCE;
-            stone.angularVel *= 0.5;
+            stone.angularVel *= 0.3;
           }
           if (stone.x > rightWall) {
             stone.x = rightWall;
             stone.vx = -Math.abs(stone.vx) * BOUNCE;
-            stone.angularVel *= 0.5;
+            stone.angularVel *= 0.3;
           }
         }
 
@@ -423,26 +435,44 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
         const stoneFloor = floorY - stone.radius - 2;
         if (stone.y >= stoneFloor) {
           stone.y = stoneFloor;
-          if (Math.abs(stone.vy) < 1.0) {
+          if (Math.abs(stone.vy) < 1.5) {
             stone.phase = 'settled';
             stone.settled = true;
-            stone.angularVel = 0; // stop rotation on settle
+            stone.angularVel = 0;
             toSettle.push(stone);
           } else {
             stone.vy = -Math.abs(stone.vy) * BOUNCE;
-            stone.angularVel *= 0.4; // heavy damping on floor bounce
+            stone.angularVel *= 0.3;
           }
         }
 
-        // Collision with settled stones
-        settledRef.current.forEach(other => {
-          const col = resolveCollision(stone.x, stone.y, stone.radius, other.x, other.y, other.radius);
-          if (col) {
-            stone.x += col.nx * col.overlap * 0.8;
-            stone.y += col.ny * col.overlap * 0.8;
-            stone.vx += col.nx * 0.6;
-            stone.vy += col.ny * 0.4;
-            stone.angularVel *= 0.3; // strong damping on stone collision
+        // Collision with settled stones — only push the falling stone away
+        settled.forEach(other => {
+          const dx = stone.x - other.x;
+          const dy = stone.y - other.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          const minDist = stone.radius + other.radius;
+          if (dist < minDist && dist > 0.1) {
+            const nx = dx / dist;
+            const ny = dy / dist;
+            const overlap = minDist - dist;
+            // Push falling stone out completely
+            stone.x += nx * overlap;
+            stone.y += ny * overlap;
+            // Reflect velocity along collision normal
+            const dot = stone.vx * nx + stone.vy * ny;
+            if (dot < 0) {
+              stone.vx -= 2 * dot * nx * 0.3;
+              stone.vy -= 2 * dot * ny * 0.3;
+            }
+            stone.angularVel *= 0.2;
+            // Settle quickly if slow
+            if (Math.abs(stone.vy) < 1.5 && Math.abs(stone.vx) < 1.0) {
+              stone.phase = 'settled';
+              stone.settled = true;
+              stone.angularVel = 0;
+              toSettle.push(stone);
+            }
           }
         });
 
@@ -450,19 +480,30 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
         for (let j = si + 1; j < fallingRef.current.length; j++) {
           const other = fallingRef.current[j];
           if (other.settled) continue;
-          const col = resolveCollision(stone.x, stone.y, stone.radius, other.x, other.y, other.radius);
-          if (col) {
-            const pushForce = col.overlap * 0.4;
-            stone.x += col.nx * pushForce;
-            stone.y += col.ny * pushForce;
-            other.x -= col.nx * pushForce;
-            other.y -= col.ny * pushForce;
-            stone.vx += col.nx * 0.4;
-            stone.vy += col.ny * 0.2;
-            other.vx -= col.nx * 0.4;
-            other.vy -= col.ny * 0.2;
-            stone.angularVel *= 0.5;
-            other.angularVel *= 0.5;
+          const dx = stone.x - other.x;
+          const dy = stone.y - other.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          const minDist = stone.radius + other.radius;
+          if (dist < minDist && dist > 0.1) {
+            const nx = dx / dist;
+            const ny = dy / dist;
+            const push = (minDist - dist) * 0.5;
+            stone.x += nx * push;
+            stone.y += ny * push;
+            other.x -= nx * push;
+            other.y -= ny * push;
+            // Exchange some velocity
+            const relVx = stone.vx - other.vx;
+            const relVy = stone.vy - other.vy;
+            const relDot = relVx * nx + relVy * ny;
+            if (relDot < 0) {
+              stone.vx -= relDot * nx * 0.3;
+              stone.vy -= relDot * ny * 0.3;
+              other.vx += relDot * nx * 0.3;
+              other.vy += relDot * ny * 0.3;
+            }
+            stone.angularVel *= 0.4;
+            other.angularVel *= 0.4;
           }
         }
 
