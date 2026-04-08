@@ -68,7 +68,7 @@ export function LotusPond({ className = '', variant = 'dark' }: LotusPondProps) 
     // Pad shadow
     ctx.beginPath();
     ctx.arc(2, 2, s, 0, Math.PI * 2);
-    ctx.fillStyle = isAqua ? 'rgba(60, 140, 180, 0.2)' : 'rgba(10, 40, 30, 0.15)';
+    ctx.fillStyle = isAqua ? 'rgba(30, 100, 50, 0.25)' : 'rgba(10, 40, 30, 0.15)';
     ctx.fill();
 
     // Lilypad circle with notch
@@ -79,9 +79,9 @@ export function LotusPond({ className = '', variant = 'dark' }: LotusPondProps) 
 
     const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, s);
     if (isAqua) {
-      grad.addColorStop(0, 'rgba(60, 160, 190, 0.7)');
-      grad.addColorStop(0.6, 'rgba(50, 145, 180, 0.6)');
-      grad.addColorStop(1, 'rgba(40, 130, 170, 0.5)');
+      grad.addColorStop(0, 'rgba(45, 130, 65, 0.8)');
+      grad.addColorStop(0.6, 'rgba(38, 115, 55, 0.7)');
+      grad.addColorStop(1, 'rgba(30, 100, 45, 0.6)');
     } else {
       grad.addColorStop(0, 'rgba(45, 100, 70, 0.55)');
       grad.addColorStop(0.6, 'rgba(35, 85, 55, 0.45)');
@@ -91,7 +91,7 @@ export function LotusPond({ className = '', variant = 'dark' }: LotusPondProps) 
     ctx.fill();
 
     // Veins
-    ctx.strokeStyle = isAqua ? 'rgba(70, 155, 190, 0.3)' : 'rgba(60, 120, 80, 0.2)';
+    ctx.strokeStyle = isAqua ? 'rgba(50, 120, 60, 0.35)' : 'rgba(60, 120, 80, 0.2)';
     ctx.lineWidth = 0.5;
     for (let i = 0; i < 5; i++) {
       const a = (i / 5) * Math.PI * 2 + 0.3;
@@ -125,9 +125,9 @@ export function LotusPond({ className = '', variant = 'dark' }: LotusPondProps) 
 
       const pGrad = ctx.createRadialGradient(0, -s * 0.2, 0, 0, -s * 0.3, s * 0.5);
       if (isAqua) {
-        pGrad.addColorStop(0, 'rgba(100, 185, 220, 0.75)');
-        pGrad.addColorStop(0.5, 'rgba(80, 165, 205, 0.6)');
-        pGrad.addColorStop(1, 'rgba(60, 150, 195, 0.45)');
+        pGrad.addColorStop(0, 'rgba(235, 160, 175, 0.8)');
+        pGrad.addColorStop(0.5, 'rgba(220, 140, 160, 0.65)');
+        pGrad.addColorStop(1, 'rgba(200, 120, 145, 0.5)');
       } else {
         pGrad.addColorStop(0, 'rgba(230, 180, 190, 0.5)');
         pGrad.addColorStop(0.5, 'rgba(210, 150, 165, 0.4)');
@@ -141,7 +141,7 @@ export function LotusPond({ className = '', variant = 'dark' }: LotusPondProps) 
     // Center
     ctx.beginPath();
     ctx.arc(0, bob * 0.5, s * 0.2, 0, Math.PI * 2);
-    ctx.fillStyle = isAqua ? 'rgba(140, 200, 230, 0.7)' : 'rgba(220, 190, 80, 0.45)';
+    ctx.fillStyle = isAqua ? 'rgba(240, 200, 120, 0.7)' : 'rgba(220, 190, 80, 0.45)';
     ctx.fill();
 
     // Center dots
@@ -149,7 +149,7 @@ export function LotusPond({ className = '', variant = 'dark' }: LotusPondProps) 
       const a = (i / 5) * Math.PI * 2;
       ctx.beginPath();
       ctx.arc(Math.cos(a) * s * 0.1, Math.sin(a) * s * 0.1 + bob * 0.5, 1, 0, Math.PI * 2);
-      ctx.fillStyle = isAqua ? 'rgba(100, 180, 215, 0.6)' : 'rgba(180, 150, 50, 0.4)';
+      ctx.fillStyle = isAqua ? 'rgba(220, 180, 90, 0.6)' : 'rgba(180, 150, 50, 0.4)';
       ctx.fill();
     }
 
@@ -167,7 +167,7 @@ export function LotusPond({ className = '', variant = 'dark' }: LotusPondProps) 
     ctx.beginPath();
     ctx.moveTo(0, s * 0.8);
     ctx.quadraticCurveTo(s * 0.15, s * 0.2, 0, -s * 0.5 + bob);
-    ctx.strokeStyle = isAqua ? 'rgba(50, 145, 180, 0.6)' : 'rgba(50, 100, 60, 0.35)';
+    ctx.strokeStyle = isAqua ? 'rgba(45, 120, 55, 0.45)' : 'rgba(50, 100, 60, 0.35)';
     ctx.lineWidth = 1.5;
     ctx.stroke();
 
@@ -176,7 +176,7 @@ export function LotusPond({ className = '', variant = 'dark' }: LotusPondProps) 
       ctx.beginPath();
       ctx.ellipse(i * s * 0.12, -s * 0.5 + bob, s * 0.15, s * 0.35, i * 0.15, 0, Math.PI * 2);
       if (isAqua) {
-        ctx.fillStyle = i === 0 ? 'rgba(90, 185, 215, 0.7)' : 'rgba(75, 170, 205, 0.55)';
+        ctx.fillStyle = i === 0 ? 'rgba(230, 155, 170, 0.75)' : 'rgba(215, 140, 158, 0.6)';
       } else {
         ctx.fillStyle = i === 0 ? 'rgba(220, 170, 180, 0.45)' : 'rgba(200, 155, 165, 0.35)';
       }
@@ -201,8 +201,8 @@ export function LotusPond({ className = '', variant = 'dark' }: LotusPondProps) 
 
     const lGrad = ctx.createLinearGradient(0, -s, 0, s);
     if (isAqua) {
-      lGrad.addColorStop(0, 'rgba(55, 155, 185, 0.6)');
-      lGrad.addColorStop(1, 'rgba(45, 140, 175, 0.45)');
+      lGrad.addColorStop(0, 'rgba(50, 135, 60, 0.75)');
+      lGrad.addColorStop(1, 'rgba(40, 120, 50, 0.6)');
     } else {
       lGrad.addColorStop(0, 'rgba(40, 90, 55, 0.4)');
       lGrad.addColorStop(1, 'rgba(30, 75, 45, 0.25)');
@@ -214,7 +214,7 @@ export function LotusPond({ className = '', variant = 'dark' }: LotusPondProps) 
     ctx.beginPath();
     ctx.moveTo(0, -s * 0.9);
     ctx.lineTo(0, s * 0.7);
-    ctx.strokeStyle = isAqua ? 'rgba(65, 160, 195, 0.3)' : 'rgba(55, 110, 70, 0.2)';
+    ctx.strokeStyle = isAqua ? 'rgba(55, 130, 60, 0.35)' : 'rgba(55, 110, 70, 0.2)';
     ctx.lineWidth = 0.5;
     ctx.stroke();
 
