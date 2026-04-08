@@ -664,6 +664,172 @@ export const PRODUCTS: Product[] = [
     isNew: true,
     isGiftable: true,
   },
+  {
+    id: "prod_022",
+    slug: "chocolate-gourmet-essence-oil",
+    name: "Chocolate Gourmet Essence Oil",
+    price: 62,
+    compareAtPrice: 82,
+    category: "Essence Oils",
+    collection: ["Essence Oil"],
+    gemstone: "Smoky Quartz",
+    crystalType: "Smoky Quartz",
+    crystalEffects: ["Grounding", "Comfort", "Stress Relief", "Warmth"],
+    symbolicMeaning:
+      "A grounding blend of rich cacao and warm spice, charged with smoky quartz to anchor your root chakra and wrap you in comfort.",
+    shortDescription:
+      "Crystal-charged aromatherapy oil infused with cacao and hazelnut essence, paired with smoky quartz stones for root chakra grounding.",
+    longDescription:
+      "Chocolate Gourmet Essence Oil is a decadent blend of pure cacao absolute, warm hazelnut, and a hint of vanilla bean. Each bottle is charged alongside hand-selected smoky quartz crystals, grounding every drop in the stabilizing energy of the root chakra. Cacao has been revered since ancient times as a sacred heart opener, while smoky quartz dissolves stress and negativity. Together they create a deeply comforting ritual — perfect for evening meditation, self-care baths, or moments when you need to feel held by the earth. The included smoky quartz chips can be added to your crystal vessel for continuous infusion.",
+    materials: [
+      "Pure cacao absolute",
+      "Hazelnut botanical extract",
+      "Vanilla bean essence",
+      "Smoky quartz crystal chips",
+      "Glass dropper bottle",
+    ],
+    images: [
+      "/Essence oil/Chocolate Gourmet.png",
+    ],
+    badges: ["new"],
+    rating: 4.7,
+    reviewCount: 31,
+    isNew: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_023",
+    slug: "citrus-mint-essence-oil",
+    name: "Citrus Mint Essence Oil",
+    price: 55,
+    compareAtPrice: 72,
+    category: "Essence Oils",
+    collection: ["Essence Oil", "Prosperity"],
+    gemstone: "Citrine",
+    crystalType: "Citrine",
+    crystalEffects: ["Energy", "Clarity", "Joy", "Manifestation"],
+    symbolicMeaning:
+      "A vibrant blend of citrus and fresh mint, charged with citrine to ignite the solar plexus chakra and awaken joyful energy.",
+    shortDescription:
+      "Crystal-charged aromatherapy oil infused with lemon, orange, and peppermint essence, paired with citrine stones for solar plexus activation.",
+    longDescription:
+      "Citrus Mint Essence Oil bursts with the uplifting energy of sun-ripened lemon, sweet orange, and crisp peppermint. Charged alongside golden citrine crystals, this blend activates the solar plexus chakra — your center of confidence, willpower, and radiant joy. Citrus carries pure yang energy: bright, expansive, and forward-moving, while mint clears stagnant chi and sharpens focus. Use it as a morning ritual to set your intention, diffuse it during work for sustained clarity, or apply to pulse points before any situation that calls for your boldest self. The included citrine chips amplify abundance consciousness with every use.",
+    materials: [
+      "Pure lemon essential oil",
+      "Sweet orange extract",
+      "Peppermint essential oil",
+      "Citrine crystal chips",
+      "Glass dropper bottle",
+    ],
+    images: [
+      "/Essence oil/Citrus mint.png",
+    ],
+    badges: ["new"],
+    rating: 4.9,
+    reviewCount: 56,
+    isNew: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_024",
+    slug: "ocean-vetiver-essence-oil",
+    name: "Ocean Vetiver Essence Oil",
+    price: 60,
+    compareAtPrice: 78,
+    category: "Essence Oils",
+    collection: ["Essence Oil"],
+    gemstone: "Aquamarine",
+    crystalType: "Aquamarine",
+    crystalEffects: ["Calm", "Communication", "Purification", "Flow"],
+    symbolicMeaning:
+      "An oceanic blend of vetiver and sea minerals, charged with aquamarine to open the throat chakra and invite the flow of calm communication.",
+    shortDescription:
+      "Crystal-charged aromatherapy oil infused with vetiver and ocean botanicals, paired with aquamarine stones for throat chakra purification.",
+    longDescription:
+      "Ocean Vetiver Essence Oil captures the serene power of the sea — deep vetiver root grounded by oceanic mineral notes and a whisper of sea grass. Charged alongside pale blue aquamarine crystals, this blend resonates with the throat chakra, the energy center of truthful expression and fluid communication. Vetiver is the ultimate yin essence: deep, earthy, and calming, while aquamarine channels the ocean's endless flow. Together they create a profound sense of peace that settles the nervous system and opens the voice. Ideal for meditation near water, pre-speaking rituals, or any time you need to return to your deepest calm.",
+    materials: [
+      "Pure vetiver essential oil",
+      "Sea mineral extract",
+      "Sea grass botanical essence",
+      "Aquamarine crystal chips",
+      "Glass dropper bottle",
+    ],
+    images: [
+      "/Essence oil/Ocean Vetiver.png",
+    ],
+    badges: ["new"],
+    rating: 4.8,
+    reviewCount: 38,
+    isNew: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_025",
+    slug: "oud-wood-essence-oil",
+    name: "Oud Wood Essence Oil",
+    price: 72,
+    compareAtPrice: 95,
+    category: "Essence Oils",
+    collection: ["Essence Oil", "Protection"],
+    gemstone: "Amethyst",
+    crystalType: "Amethyst",
+    crystalEffects: ["Spiritual Awareness", "Wisdom", "Protection", "Meditation"],
+    symbolicMeaning:
+      "A sacred blend of ancient oud and forest botanicals, charged with amethyst to activate the third eye and crown chakras for deep spiritual connection.",
+    shortDescription:
+      "Crystal-charged aromatherapy oil infused with rare oud wood and forest moss, paired with amethyst stones for crown chakra meditation.",
+    longDescription:
+      "Oud Wood Essence Oil is our most mystical blend, built around the legendary agarwood — one of the rarest and most prized aromatics in the world. Deep oud is layered with forest moss, ancient cedar, and a breath of frankincense, then charged alongside purple amethyst crystals that resonate with the third eye and crown chakras. Oud has been used in spiritual ceremonies across cultures for millennia, valued for its ability to quiet the mind and open the gateway to higher consciousness. This oil is crafted for those who seek depth in their practice — use it during meditation, energy healing sessions, or as an evening ritual to close the day with wisdom and peace.",
+    materials: [
+      "Rare oud wood absolute",
+      "Forest moss extract",
+      "Cedar essential oil",
+      "Frankincense resin essence",
+      "Amethyst crystal chips",
+      "Glass dropper bottle",
+    ],
+    images: [
+      "/Essence oil/Oud Wood.png",
+    ],
+    badges: ["new"],
+    rating: 4.9,
+    reviewCount: 27,
+    isNew: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_026",
+    slug: "white-musk-essence-oil",
+    name: "White Musk Essence Oil",
+    price: 58,
+    compareAtPrice: 75,
+    category: "Essence Oils",
+    collection: ["Essence Oil"],
+    gemstone: "Clear Quartz",
+    crystalType: "Clear Quartz",
+    crystalEffects: ["Clarity", "Amplification", "Purity", "Harmony"],
+    symbolicMeaning:
+      "A pure and ethereal blend of white musk and cotton flower, charged with clear quartz to amplify all chakras and create a sanctuary of clean energy.",
+    shortDescription:
+      "Crystal-charged aromatherapy oil infused with white musk and cotton blossom, paired with clear quartz stones for full-spectrum chakra amplification.",
+    longDescription:
+      "White Musk Essence Oil is the purest expression of our collection — a clean, luminous blend of ethically sourced white musk, soft cotton flower, and a touch of white tea. Charged alongside clear quartz, the master healer crystal that amplifies the energy of all seven chakras simultaneously. White musk embodies the balance point of yin and yang: neither heavy nor light, neither warm nor cool, but perfectly centered. This makes it the ideal everyday essence — one that creates a clean energetic field around you without imposing any particular mood. Use it as your daily signature scent, layer it with other oils in our collection, or diffuse it to purify your living space.",
+    materials: [
+      "Ethically sourced white musk",
+      "Cotton flower extract",
+      "White tea essence",
+      "Clear quartz crystal chips",
+      "Glass dropper bottle",
+    ],
+    images: [
+      "/Essence oil/White Musk.png",
+    ],
+    badges: ["new"],
+    rating: 4.8,
+    reviewCount: 45,
+    isNew: true,
+    isGiftable: true,
+  },
 ];
 
 export const COLLECTIONS: Collection[] = [
@@ -730,7 +896,7 @@ export const COLLECTIONS: Collection[] = [
     image: "/Essence oil/Rose Berry.png",
     symbolism:
       "Aromatic chi, botanical alchemy, sensory healing. The invisible energy of scent as a pathway to chakra balance.",
-    productCount: 3,
+    productCount: 6,
   },
   {
     id: "col_006",
@@ -808,7 +974,7 @@ export const CATEGORIES: Category[] = [
     slug: "essence-oils",
     name: "Essence Oils",
     image: "/Essence oil/Rose Berry.png",
-    productCount: 1,
+    productCount: 6,
   },
 ];
 
