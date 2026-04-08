@@ -24,8 +24,8 @@ export default function Header() {
   const navLinks = [
     { label: 'Shop All', href: '/products' },
     { label: 'Soul Stone Discovery', href: '/crystal-quiz' },
+    { label: 'Gift Box', href: '/gift-box' },
     { label: 'Collections', href: '/collections' },
-    { label: 'Gifts', href: '/gifts' },
     { label: 'About', href: '/about' },
   ];
 
