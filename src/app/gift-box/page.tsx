@@ -9,12 +9,12 @@ import { cn } from '@/lib/utils';
 const STONE_IMAGES: Record<string, string> = {
   'Smoky Quartz': '/stones/smoky-quartz.png',
   'Aquamarine': '/stones/Aquamarine.png',
-  'Amethyst': 'https://images.unsplash.com/photo-1576087503901-06379ab96046?w=400&h=400&fit=crop&q=80',
-  'Black Obsidian': 'https://images.unsplash.com/photo-1612542904458-94ce0ec71768?w=400&h=400&fit=crop&q=80',
-  'Green Fluorite': 'https://images.unsplash.com/photo-1606567595334-d39972c85dbe?w=400&h=400&fit=crop&q=80',
-  'Citrine': 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&h=400&fit=crop&q=80',
-  'Rose Quartz': 'https://images.unsplash.com/photo-1603344797033-f0f4f587ab60?w=400&h=400&fit=crop&q=80',
-  'Carnelian': 'https://images.unsplash.com/photo-1615486511262-c7b5e1ab9f11?w=400&h=400&fit=crop&q=80',
+  'Amethyst': '/stones/Amethyst.png',
+  'Black Obsidian': '/stones/Black Obsidian.png',
+  'Green Fluorite': '/stones/Green Fluorite.png',
+  'Citrine': '/stones/Citrine.png',
+  'Rose Quartz': '/stones/Rose Quartz.png',
+  'Carnelian': '/stones/Carnelian.png',
 };
 
 // Color accents for each stone
