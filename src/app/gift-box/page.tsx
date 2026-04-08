@@ -1,10 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { POWER_STONE_EFFECTS } from '@/lib/zodiac';
-import { Check, Package, Sparkles, ArrowRight, RotateCcw, ShoppingBag } from 'lucide-react';
+import { Check, Package, Sparkles, RotateCcw, ShoppingBag } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const STONE_IMAGES: Record<string, string> = {
