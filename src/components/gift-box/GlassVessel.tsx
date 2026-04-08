@@ -82,9 +82,9 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
   // Cylinder vessel dimensions — tall cylinder
   const getVessel = useCallback((w: number, h: number) => {
     const vW = w * 0.50;
-    const vH = h * 0.65;
+    const vH = h * 0.78;
     const cx = w / 2;
-    const topY = h * 0.12;
+    const topY = h * 0.06;
     const bottomY = topY + vH;
     const rimRx = vW / 2;
     const rimRy = rimRx * 0.20;
