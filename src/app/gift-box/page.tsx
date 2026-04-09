@@ -50,11 +50,63 @@ const STONE_SELECTED_COLORS: Record<string, string> = {
   'Carnelian': 'border-orange-400 ring-orange-300/30',
 };
 
+const ESSENCE_OILS = [
+  {
+    name: 'Rose Berry',
+    image: '/Essence oil/Rose Berry.png',
+    crystal: 'Rose Quartz',
+    note: 'Floral & fruity',
+    color: 'bg-pink-100/60 border-pink-300/40',
+    selectedColor: 'border-pink-400 ring-pink-300/30',
+  },
+  {
+    name: 'Chocolate Gourmet',
+    image: '/Essence oil/Chocolate Gourmet.png',
+    crystal: 'Smoky Quartz',
+    note: 'Rich & warm',
+    color: 'bg-amber-100/60 border-amber-400/40',
+    selectedColor: 'border-amber-500 ring-amber-300/30',
+  },
+  {
+    name: 'Citrus Mint',
+    image: '/Essence oil/Citrus mint.png',
+    crystal: 'Citrine',
+    note: 'Fresh & uplifting',
+    color: 'bg-yellow-100/60 border-yellow-300/40',
+    selectedColor: 'border-yellow-400 ring-yellow-300/30',
+  },
+  {
+    name: 'Ocean Vetiver',
+    image: '/Essence oil/Ocean Vetiver.png',
+    crystal: 'Aquamarine',
+    note: 'Calm & oceanic',
+    color: 'bg-sky-100/60 border-sky-300/40',
+    selectedColor: 'border-sky-400 ring-sky-300/30',
+  },
+  {
+    name: 'Oud Wood',
+    image: '/Essence oil/Oud Wood.png',
+    crystal: 'Amethyst',
+    note: 'Deep & mystical',
+    color: 'bg-purple-100/60 border-purple-300/40',
+    selectedColor: 'border-purple-400 ring-purple-300/30',
+  },
+  {
+    name: 'White Musk',
+    image: '/Essence oil/White Musk.png',
+    crystal: 'Clear Quartz',
+    note: 'Pure & clean',
+    color: 'bg-gray-100/60 border-gray-300/40',
+    selectedColor: 'border-gray-400 ring-gray-300/30',
+  },
+];
+
 const MIN_STONES = 2;
 const MAX_STONES = 3;
 
 export default function GiftBoxPage() {
   const [selectedStones, setSelectedStones] = useState<string[]>([]);
+  const [selectedOil, setSelectedOil] = useState<string | null>(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   const stones = Object.entries(POWER_STONE_EFFECTS);
@@ -71,7 +123,7 @@ export default function GiftBoxPage() {
     });
   };
 
-  const canAddToCart = selectedStones.length >= MIN_STONES;
+  const canAddToCart = selectedStones.length >= MIN_STONES && selectedOil !== null;
 
   const handleAddToCart = () => {
     if (!canAddToCart) return;
@@ -81,6 +133,7 @@ export default function GiftBoxPage() {
 
   const handleReset = () => {
     setSelectedStones([]);
+    setSelectedOil(null);
   };
 
   // Combined effects of selected stones
@@ -212,6 +265,78 @@ export default function GiftBoxPage() {
                 );
               })}
             </div>
+
+            {/* Essence Oil Selection */}
+            <div className="mt-14">
+              <div className="flex items-center justify-between mb-8">
+                <div>
+                  <h2 className="font-serif text-2xl md:text-3xl text-dark mb-1">
+                    Choose Your Essence Oil
+                  </h2>
+                  <p className="font-sans text-warm text-sm">
+                    Select 1 fragrance for your set ·{' '}
+                    <span className={cn(
+                      'font-medium',
+                      selectedOil ? 'text-gold-dark' : 'text-warm'
+                    )}>
+                      {selectedOil ? selectedOil : 'None selected'}
+                    </span>
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {ESSENCE_OILS.map((oil) => {
+                  const isSelected = selectedOil === oil.name;
+
+                  return (
+                    <button
+                      key={oil.name}
+                      onClick={() => setSelectedOil(isSelected ? null : oil.name)}
+                      className={cn(
+                        'group relative rounded-2xl overflow-hidden border-2 transition-all duration-300 text-left',
+                        isSelected
+                          ? `${oil.selectedColor} ring-4 shadow-lg`
+                          : 'border-stone-light/60 hover:border-stone/40 hover:shadow-md'
+                      )}
+                    >
+                      <div className="relative aspect-[4/3] overflow-hidden">
+                        <img
+                          src={oil.image}
+                          alt={oil.name}
+                          className={cn(
+                            'w-full h-full object-cover transition-transform duration-500',
+                            isSelected ? 'scale-105' : 'group-hover:scale-105'
+                          )}
+                        />
+                        {isSelected && (
+                          <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-dark/90 flex items-center justify-center">
+                            <Check size={14} className="text-cream" />
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="p-3 md:p-4">
+                        <h3 className="font-serif text-sm md:text-base text-dark leading-tight mb-0.5">
+                          {oil.name}
+                        </h3>
+                        <p className="text-[10px] font-sans text-warm-light mb-1.5">{oil.note}</p>
+                        <span
+                          className={cn(
+                            'inline-block text-[9px] md:text-[10px] font-sans px-2 py-0.5 rounded-full transition-colors duration-300',
+                            isSelected
+                              ? 'bg-gold/15 text-gold-dark'
+                              : 'bg-stone-light text-warm-light'
+                          )}
+                        >
+                          {oil.crystal}
+                        </span>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
           </div>
 
           {/* Right: Crystal Essence Set Summary (Sticky) */}
@@ -275,6 +400,38 @@ export default function GiftBoxPage() {
                           </div>
                         ))}
                       </div>
+                    )}
+                  </div>
+
+                  {/* Selected Oil */}
+                  <div className="mb-5 pt-4 border-t border-stone-light/40">
+                    <p className="text-[10px] font-sans text-warm-light uppercase tracking-wider mb-3">
+                      Essence Oil
+                    </p>
+                    {selectedOil ? (
+                      <div className="flex items-center gap-3 p-2.5 rounded-xl bg-cream/80 border border-stone-light/40">
+                        <img
+                          src={ESSENCE_OILS.find((o) => o.name === selectedOil)?.image}
+                          alt={selectedOil}
+                          className="w-10 h-10 rounded-lg object-cover"
+                        />
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-serif text-dark truncate">{selectedOil}</p>
+                          <p className="text-[10px] font-sans text-warm-light">
+                            {ESSENCE_OILS.find((o) => o.name === selectedOil)?.note}
+                          </p>
+                        </div>
+                        <button
+                          onClick={() => setSelectedOil(null)}
+                          className="text-warm-light hover:text-dark transition-colors text-xs"
+                        >
+                          ✕
+                        </button>
+                      </div>
+                    ) : (
+                      <p className="text-xs font-sans text-warm-light text-center py-3">
+                        Choose an essence oil below
+                      </p>
                     )}
                   </div>
 
@@ -353,7 +510,9 @@ export default function GiftBoxPage() {
                           <ShoppingBag size={16} />
                           {canAddToCart
                             ? 'Add to Cart'
-                            : `Select ${MIN_STONES - selectedStones.length} more stone${MIN_STONES - selectedStones.length > 1 ? 's' : ''}`
+                            : selectedStones.length < MIN_STONES
+                              ? `Select ${MIN_STONES - selectedStones.length} more stone${MIN_STONES - selectedStones.length > 1 ? 's' : ''}`
+                              : 'Select an essence oil'
                           }
                         </>
                       )}
