@@ -320,17 +320,7 @@ export default function GiftBoxPage() {
                         <h3 className="font-serif text-sm md:text-base text-dark leading-tight mb-0.5">
                           {oil.name}
                         </h3>
-                        <p className="text-[10px] font-sans text-warm-light mb-1.5">{oil.note}</p>
-                        <span
-                          className={cn(
-                            'inline-block text-[9px] md:text-[10px] font-sans px-2 py-0.5 rounded-full transition-colors duration-300',
-                            isSelected
-                              ? 'bg-gold/15 text-gold-dark'
-                              : 'bg-stone-light text-warm-light'
-                          )}
-                        >
-                          {oil.crystal}
-                        </span>
+                        <p className="text-[10px] font-sans text-warm-light">{oil.note}</p>
                       </div>
                     </button>
                   );
