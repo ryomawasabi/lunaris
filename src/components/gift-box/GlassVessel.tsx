@@ -420,57 +420,71 @@ export default function GlassVessel({ selectedStones, selectedOil = null, classN
       ctx.fillStyle = bodyGrad;
       ctx.fill();
 
-      // --- Essence Oil glow overlay ---
+      // --- Essence Oil glow — outline around vessel edges ---
       const currentOil = selectedOilRef.current;
       if (currentOil && OIL_GLOW_COLORS[currentOil]) {
         const oilColor = OIL_GLOW_COLORS[currentOil];
-        const pulse = 0.18 + Math.sin(t * 0.8) * 0.06;
+        const pulse = 0.45 + Math.sin(t * 0.8) * 0.15;
+        const cr = `${oilColor.r},${oilColor.g},${oilColor.b}`;
 
-        // Inner radial glow from center of vessel
-        const oilGlowCenter = ctx.createRadialGradient(
-          cx, topY + (bottomY - topY) * 0.55, 0,
-          cx, topY + (bottomY - topY) * 0.55, halfW * 1.1
+        ctx.save();
+
+        // Glowing left wall
+        for (let i = 0; i < 3; i++) {
+          const spread = (i + 1) * 6;
+          ctx.beginPath();
+          ctx.moveTo(cx - halfW, topY + rimRy);
+          ctx.lineTo(cx - halfW, bottomY - rimRy);
+          ctx.strokeStyle = `rgba(${cr},${pulse * (0.3 - i * 0.08)})`;
+          ctx.lineWidth = spread;
+          ctx.stroke();
+        }
+
+        // Glowing right wall
+        for (let i = 0; i < 3; i++) {
+          const spread = (i + 1) * 6;
+          ctx.beginPath();
+          ctx.moveTo(cx + halfW, topY + rimRy);
+          ctx.lineTo(cx + halfW, bottomY - rimRy);
+          ctx.strokeStyle = `rgba(${cr},${pulse * (0.3 - i * 0.08)})`;
+          ctx.lineWidth = spread;
+          ctx.stroke();
+        }
+
+        // Glowing top rim
+        for (let i = 0; i < 3; i++) {
+          const spread = (i + 1) * 5;
+          ctx.beginPath();
+          ctx.ellipse(cx, topY, rimRx, rimRy, 0, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(${cr},${pulse * (0.35 - i * 0.1)})`;
+          ctx.lineWidth = spread;
+          ctx.stroke();
+        }
+
+        // Glowing bottom rim
+        for (let i = 0; i < 3; i++) {
+          const spread = (i + 1) * 5;
+          ctx.beginPath();
+          ctx.ellipse(cx, bottomY, rimRx, rimRy, 0, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(${cr},${pulse * (0.25 - i * 0.07)})`;
+          ctx.lineWidth = spread;
+          ctx.stroke();
+        }
+
+        // Soft outer halo around entire vessel
+        const haloGrad = ctx.createRadialGradient(
+          cx, topY + (bottomY - topY) * 0.5, halfW * 0.8,
+          cx, topY + (bottomY - topY) * 0.5, halfW * 2.2
         );
-        oilGlowCenter.addColorStop(0, `rgba(${oilColor.r},${oilColor.g},${oilColor.b},${pulse + 0.1})`);
-        oilGlowCenter.addColorStop(0.4, `rgba(${oilColor.r},${oilColor.g},${oilColor.b},${pulse * 0.7})`);
-        oilGlowCenter.addColorStop(0.8, `rgba(${oilColor.r},${oilColor.g},${oilColor.b},${pulse * 0.3})`);
-        oilGlowCenter.addColorStop(1, `rgba(${oilColor.r},${oilColor.g},${oilColor.b},0)`);
-
+        haloGrad.addColorStop(0, `rgba(${cr},${pulse * 0.12})`);
+        haloGrad.addColorStop(0.5, `rgba(${cr},${pulse * 0.05})`);
+        haloGrad.addColorStop(1, `rgba(${cr},0)`);
         ctx.beginPath();
-        ctx.ellipse(cx, topY, rimRx, rimRy, 0, Math.PI, Math.PI * 2);
-        ctx.lineTo(cx + halfW, bottomY);
-        ctx.ellipse(cx, bottomY, rimRx, rimRy, 0, 0, Math.PI);
-        ctx.lineTo(cx - halfW, topY);
-        ctx.fillStyle = oilGlowCenter;
+        ctx.ellipse(cx, topY + (bottomY - topY) * 0.5, halfW * 2.2, (bottomY - topY) * 0.8, 0, 0, Math.PI * 2);
+        ctx.fillStyle = haloGrad;
         ctx.fill();
 
-        // Second pass for stronger center glow
-        const oilGlowInner = ctx.createRadialGradient(
-          cx, topY + (bottomY - topY) * 0.5, 0,
-          cx, topY + (bottomY - topY) * 0.5, halfW * 0.7
-        );
-        oilGlowInner.addColorStop(0, `rgba(${oilColor.r},${oilColor.g},${oilColor.b},${pulse * 0.4})`);
-        oilGlowInner.addColorStop(1, `rgba(${oilColor.r},${oilColor.g},${oilColor.b},0)`);
-        ctx.beginPath();
-        ctx.ellipse(cx, topY, rimRx, rimRy, 0, Math.PI, Math.PI * 2);
-        ctx.lineTo(cx + halfW, bottomY);
-        ctx.ellipse(cx, bottomY, rimRx, rimRy, 0, 0, Math.PI);
-        ctx.lineTo(cx - halfW, topY);
-        ctx.fillStyle = oilGlowInner;
-        ctx.fill();
-
-        // Outer glow halo around vessel
-        const outerGlow = ctx.createRadialGradient(
-          cx, topY + (bottomY - topY) * 0.5, halfW * 0.6,
-          cx, topY + (bottomY - topY) * 0.5, halfW * 1.8
-        );
-        outerGlow.addColorStop(0, `rgba(${oilColor.r},${oilColor.g},${oilColor.b},${pulse * 0.35})`);
-        outerGlow.addColorStop(0.5, `rgba(${oilColor.r},${oilColor.g},${oilColor.b},${pulse * 0.15})`);
-        outerGlow.addColorStop(1, `rgba(${oilColor.r},${oilColor.g},${oilColor.b},0)`);
-        ctx.beginPath();
-        ctx.ellipse(cx, topY + (bottomY - topY) * 0.5, halfW * 1.8, (bottomY - topY) * 0.7, 0, 0, Math.PI * 2);
-        ctx.fillStyle = outerGlow;
-        ctx.fill();
+        ctx.restore();
       }
 
       // --- Glass thickness effect (double wall) ---
