@@ -112,18 +112,30 @@ interface Particle {
   color: { r: number; g: number; b: number };
 }
 
+const OIL_GLOW_COLORS: Record<string, { r: number; g: number; b: number }> = {
+  'Rose Berry': { r: 235, g: 140, b: 170 },
+  'Chocolate Gourmet': { r: 180, g: 120, b: 70 },
+  'Citrus Mint': { r: 240, g: 210, b: 60 },
+  'Ocean Vetiver': { r: 100, g: 190, b: 230 },
+  'Oud Wood': { r: 150, g: 110, b: 200 },
+  'White Musk': { r: 220, g: 225, b: 240 },
+};
+
 interface GlassVesselProps {
   selectedStones: string[];
+  selectedOil?: string | null;
   className?: string;
 }
 
-export default function GlassVessel({ selectedStones, className = '' }: GlassVesselProps) {
+export default function GlassVessel({ selectedStones, selectedOil = null, className = '' }: GlassVesselProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animRef = useRef<number>(0);
   const fallingRef = useRef<FallingStone[]>([]);
   const settledRef = useRef<SettledStone[]>([]);
   const particlesRef = useRef<Particle[]>([]);
   const timeRef = useRef(0);
+  const selectedOilRef = useRef<string | null>(selectedOil);
+  selectedOilRef.current = selectedOil;
   const [ready, setReady] = useState(false);
 
   // Cylinder vessel dimensions
@@ -407,6 +419,42 @@ export default function GlassVessel({ selectedStones, className = '' }: GlassVes
       ctx.lineTo(cx - halfW, topY);
       ctx.fillStyle = bodyGrad;
       ctx.fill();
+
+      // --- Essence Oil glow overlay ---
+      const currentOil = selectedOilRef.current;
+      if (currentOil && OIL_GLOW_COLORS[currentOil]) {
+        const oilColor = OIL_GLOW_COLORS[currentOil];
+        const pulse = 0.06 + Math.sin(t * 0.8) * 0.025;
+
+        // Inner radial glow from center of vessel
+        const oilGlowCenter = ctx.createRadialGradient(
+          cx, topY + (bottomY - topY) * 0.55, 0,
+          cx, topY + (bottomY - topY) * 0.55, halfW * 1.1
+        );
+        oilGlowCenter.addColorStop(0, `rgba(${oilColor.r},${oilColor.g},${oilColor.b},${pulse + 0.06})`);
+        oilGlowCenter.addColorStop(0.5, `rgba(${oilColor.r},${oilColor.g},${oilColor.b},${pulse})`);
+        oilGlowCenter.addColorStop(1, `rgba(${oilColor.r},${oilColor.g},${oilColor.b},0)`);
+
+        ctx.beginPath();
+        ctx.ellipse(cx, topY, rimRx, rimRy, 0, Math.PI, Math.PI * 2);
+        ctx.lineTo(cx + halfW, bottomY);
+        ctx.ellipse(cx, bottomY, rimRx, rimRy, 0, 0, Math.PI);
+        ctx.lineTo(cx - halfW, topY);
+        ctx.fillStyle = oilGlowCenter;
+        ctx.fill();
+
+        // Outer glow halo around vessel
+        const outerGlow = ctx.createRadialGradient(
+          cx, topY + (bottomY - topY) * 0.5, halfW * 0.6,
+          cx, topY + (bottomY - topY) * 0.5, halfW * 1.8
+        );
+        outerGlow.addColorStop(0, `rgba(${oilColor.r},${oilColor.g},${oilColor.b},${pulse * 0.5})`);
+        outerGlow.addColorStop(1, `rgba(${oilColor.r},${oilColor.g},${oilColor.b},0)`);
+        ctx.beginPath();
+        ctx.ellipse(cx, topY + (bottomY - topY) * 0.5, halfW * 1.8, (bottomY - topY) * 0.7, 0, 0, Math.PI * 2);
+        ctx.fillStyle = outerGlow;
+        ctx.fill();
+      }
 
       // --- Glass thickness effect (double wall) ---
       // Outer left wall

@@ -346,7 +346,7 @@ export default function GiftBoxPage() {
               <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-stone-light/60 overflow-hidden">
                 {/* Glass Vessel Animation */}
                 <div className="relative aspect-[4/3] bg-gradient-to-b from-[#1a1a2e] via-[#16213e] to-[#0f0f1a] overflow-hidden">
-                  <GlassVessel selectedStones={selectedStones} />
+                  <GlassVessel selectedStones={selectedStones} selectedOil={selectedOil} />
                   <div className="absolute bottom-3 left-3 z-10">
                     <span className="inline-block text-[10px] font-sans px-2.5 py-1 rounded-full bg-dark/70 text-cream backdrop-blur-sm">
                       {selectedStones.length === 0
