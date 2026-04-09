@@ -424,15 +424,16 @@ export default function GlassVessel({ selectedStones, selectedOil = null, classN
       const currentOil = selectedOilRef.current;
       if (currentOil && OIL_GLOW_COLORS[currentOil]) {
         const oilColor = OIL_GLOW_COLORS[currentOil];
-        const pulse = 0.06 + Math.sin(t * 0.8) * 0.025;
+        const pulse = 0.18 + Math.sin(t * 0.8) * 0.06;
 
         // Inner radial glow from center of vessel
         const oilGlowCenter = ctx.createRadialGradient(
           cx, topY + (bottomY - topY) * 0.55, 0,
           cx, topY + (bottomY - topY) * 0.55, halfW * 1.1
         );
-        oilGlowCenter.addColorStop(0, `rgba(${oilColor.r},${oilColor.g},${oilColor.b},${pulse + 0.06})`);
-        oilGlowCenter.addColorStop(0.5, `rgba(${oilColor.r},${oilColor.g},${oilColor.b},${pulse})`);
+        oilGlowCenter.addColorStop(0, `rgba(${oilColor.r},${oilColor.g},${oilColor.b},${pulse + 0.1})`);
+        oilGlowCenter.addColorStop(0.4, `rgba(${oilColor.r},${oilColor.g},${oilColor.b},${pulse * 0.7})`);
+        oilGlowCenter.addColorStop(0.8, `rgba(${oilColor.r},${oilColor.g},${oilColor.b},${pulse * 0.3})`);
         oilGlowCenter.addColorStop(1, `rgba(${oilColor.r},${oilColor.g},${oilColor.b},0)`);
 
         ctx.beginPath();
@@ -443,12 +444,28 @@ export default function GlassVessel({ selectedStones, selectedOil = null, classN
         ctx.fillStyle = oilGlowCenter;
         ctx.fill();
 
+        // Second pass for stronger center glow
+        const oilGlowInner = ctx.createRadialGradient(
+          cx, topY + (bottomY - topY) * 0.5, 0,
+          cx, topY + (bottomY - topY) * 0.5, halfW * 0.7
+        );
+        oilGlowInner.addColorStop(0, `rgba(${oilColor.r},${oilColor.g},${oilColor.b},${pulse * 0.4})`);
+        oilGlowInner.addColorStop(1, `rgba(${oilColor.r},${oilColor.g},${oilColor.b},0)`);
+        ctx.beginPath();
+        ctx.ellipse(cx, topY, rimRx, rimRy, 0, Math.PI, Math.PI * 2);
+        ctx.lineTo(cx + halfW, bottomY);
+        ctx.ellipse(cx, bottomY, rimRx, rimRy, 0, 0, Math.PI);
+        ctx.lineTo(cx - halfW, topY);
+        ctx.fillStyle = oilGlowInner;
+        ctx.fill();
+
         // Outer glow halo around vessel
         const outerGlow = ctx.createRadialGradient(
           cx, topY + (bottomY - topY) * 0.5, halfW * 0.6,
           cx, topY + (bottomY - topY) * 0.5, halfW * 1.8
         );
-        outerGlow.addColorStop(0, `rgba(${oilColor.r},${oilColor.g},${oilColor.b},${pulse * 0.5})`);
+        outerGlow.addColorStop(0, `rgba(${oilColor.r},${oilColor.g},${oilColor.b},${pulse * 0.35})`);
+        outerGlow.addColorStop(0.5, `rgba(${oilColor.r},${oilColor.g},${oilColor.b},${pulse * 0.15})`);
         outerGlow.addColorStop(1, `rgba(${oilColor.r},${oilColor.g},${oilColor.b},0)`);
         ctx.beginPath();
         ctx.ellipse(cx, topY + (bottomY - topY) * 0.5, halfW * 1.8, (bottomY - topY) * 0.7, 0, 0, Math.PI * 2);
