@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createProduct } from '@/lib/supabase/admin-actions'
 import { getAdminCollections, getAdminCategories } from '@/lib/supabase/admin-actions'
-import { ArrowLeft, CheckCircle, Upload, X, ImageIcon, Loader2 } from 'lucide-react'
+import { ArrowLeft, CheckCircle, Upload, X, ImageIcon, Loader2, Plus } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 function generateSlug(name: string): string {
@@ -48,6 +48,10 @@ export default function NewProductPage() {
   const [categories, setCategories] = useState<CategoryItem[]>([])
   const [images, setImages] = useState<ImageItem[]>([])
   const [imageUrlInput, setImageUrlInput] = useState('')
+  const [showNewCategory, setShowNewCategory] = useState(false)
+  const [newCategoryName, setNewCategoryName] = useState('')
+  const [showNewCollection, setShowNewCollection] = useState(false)
+  const [newCollectionName, setNewCollectionName] = useState('')
 
   const [formData, setFormData] = useState({
     name: '',
@@ -281,27 +285,83 @@ export default function NewProductPage() {
             <div>
               <label className={labelClass}>Name *</label>
               <input type="text" value={formData.name} onChange={handleNameChange} required className={inputClass} placeholder="e.g. Amethyst Protection Bracelet" />
-            </div>
-            <div>
-              <label className={labelClass}>Slug *</label>
-              <input type="text" value={formData.slug} onChange={(e) => setFormData((prev) => ({ ...prev, slug: e.target.value }))} required className={inputClass} />
+              {formData.slug && (
+                <p className="text-[11px] font-sans text-warm-light mt-1">
+                  URL: /products/<span className="text-warm">{formData.slug}</span>
+                </p>
+              )}
             </div>
             <div>
               <label className={labelClass}>Price *</label>
-              <input type="number" step="0.01" min="0" value={formData.price} onChange={(e) => setFormData((prev) => ({ ...prev, price: e.target.value }))} required className={inputClass} placeholder="128" />
+              <input type="number" step="0.01" min="0" value={formData.price} onChange={(e) => setFormData((prev) => ({ ...prev, price: e.target.value }))} required className={inputClass} placeholder="55" />
             </div>
             <div>
-              <label className={labelClass}>Compare At Price</label>
-              <input type="number" step="0.01" min="0" value={formData.compareAtPrice} onChange={(e) => setFormData((prev) => ({ ...prev, compareAtPrice: e.target.value }))} className={inputClass} placeholder="168" />
+              <label className={labelClass}>
+                Category *
+              </label>
+              {!showNewCategory ? (
+                <div className="flex gap-2">
+                  <select value={formData.category} onChange={(e) => setFormData((prev) => ({ ...prev, category: e.target.value }))} required className={cn(inputClass, 'flex-1')}>
+                    <option value="">Select category</option>
+                    {categories.map((cat) => (
+                      <option key={cat.id} value={cat.name}>{cat.name}</option>
+                    ))}
+                  </select>
+                  <button
+                    type="button"
+                    onClick={() => setShowNewCategory(true)}
+                    className="px-3 py-2 bg-stone-light text-warm rounded-lg hover:bg-stone transition-colors flex-shrink-0"
+                    title="Add new category"
+                  >
+                    <Plus size={18} />
+                  </button>
+                </div>
+              ) : (
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={newCategoryName}
+                    onChange={(e) => setNewCategoryName(e.target.value)}
+                    className={cn(inputClass, 'flex-1')}
+                    placeholder="New category name"
+                    autoFocus
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (newCategoryName.trim()) {
+                        const name = newCategoryName.trim()
+                        const newCat = {
+                          id: `temp_${Date.now()}`,
+                          name,
+                          slug: generateSlug(name),
+                        }
+                        setCategories((prev) => [...prev, newCat])
+                        setFormData((prev) => ({ ...prev, category: name }))
+                        setNewCategoryName('')
+                        setShowNewCategory(false)
+                      }
+                    }}
+                    className="px-4 py-2 bg-dark text-cream text-sm font-sans font-medium rounded-lg hover:bg-charcoal transition-colors"
+                  >
+                    Add
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => { setShowNewCategory(false); setNewCategoryName('') }}
+                    className="px-3 py-2 bg-stone-light text-warm rounded-lg hover:bg-stone transition-colors"
+                  >
+                    <X size={16} />
+                  </button>
+                </div>
+              )}
             </div>
             <div>
-              <label className={labelClass}>Category *</label>
-              <select value={formData.category} onChange={(e) => setFormData((prev) => ({ ...prev, category: e.target.value }))} required className={inputClass}>
-                <option value="">Select category</option>
-                {categories.map((cat) => (
-                  <option key={cat.id} value={cat.name}>{cat.name}</option>
-                ))}
-              </select>
+              <label className={labelClass}>
+                Compare At Price
+                <span className="text-warm-light font-normal ml-1">(original price for discount display)</span>
+              </label>
+              <input type="number" step="0.01" min="0" value={formData.compareAtPrice} onChange={(e) => setFormData((prev) => ({ ...prev, compareAtPrice: e.target.value }))} className={inputClass} placeholder="e.g. 78 (shows as strikethrough)" />
             </div>
             <div>
               <label className={labelClass}>Gemstone *</label>
@@ -458,6 +518,54 @@ export default function NewProductPage() {
                   </label>
                 ))}
               </div>
+              {!showNewCollection ? (
+                <button
+                  type="button"
+                  onClick={() => setShowNewCollection(true)}
+                  className="mt-3 flex items-center gap-1.5 text-xs font-sans text-warm hover:text-dark transition-colors"
+                >
+                  <Plus size={14} />
+                  Add new collection
+                </button>
+              ) : (
+                <div className="flex gap-2 mt-3">
+                  <input
+                    type="text"
+                    value={newCollectionName}
+                    onChange={(e) => setNewCollectionName(e.target.value)}
+                    className={cn(inputClass, 'flex-1 !py-1.5 text-sm')}
+                    placeholder="New collection name"
+                    autoFocus
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (newCollectionName.trim()) {
+                        const name = newCollectionName.trim()
+                        const newCol = {
+                          id: `temp_${Date.now()}`,
+                          name,
+                          slug: generateSlug(name),
+                        }
+                        setCollections((prev) => [...prev, newCol])
+                        setFormData((prev) => ({ ...prev, collection: [...prev.collection, name] }))
+                        setNewCollectionName('')
+                        setShowNewCollection(false)
+                      }
+                    }}
+                    className="px-3 py-1.5 bg-dark text-cream text-xs font-sans font-medium rounded-lg hover:bg-charcoal transition-colors"
+                  >
+                    Add
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => { setShowNewCollection(false); setNewCollectionName('') }}
+                    className="px-2 py-1.5 bg-stone-light text-warm rounded-lg hover:bg-stone transition-colors"
+                  >
+                    <X size={14} />
+                  </button>
+                </div>
+              )}
             </div>
             <div>
               <label className={labelClass}>Product Flags</label>
