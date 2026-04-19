@@ -18,7 +18,7 @@ export function AsSeenIn() {
           {publications.map((publication) => (
             <div
               key={publication}
-              className="text-stone/60 font-sans text-sm md:text-base uppercase tracking-wider hover:text-stone transition-colors"
+              className="text-warm/60 font-sans text-sm md:text-base uppercase tracking-wider hover:text-warm transition-colors"
             >
               {publication}
             </div>

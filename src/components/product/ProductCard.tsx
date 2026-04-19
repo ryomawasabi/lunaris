@@ -140,7 +140,7 @@ export function ProductCard({ product }: ProductCardProps) {
           )}
 
           {/* Symbolic Meaning */}
-          <p className="text-xs text-stone mb-4 flex-1 line-clamp-2">
+          <p className="text-xs text-warm mb-4 flex-1 line-clamp-2">
             {product.symbolicMeaning}
           </p>
 

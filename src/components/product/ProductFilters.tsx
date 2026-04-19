@@ -87,7 +87,7 @@ export function ProductFilters({ className }: ProductFiltersProps) {
                 }
                 className="w-4 h-4 rounded border-stone accent-gold cursor-pointer"
               />
-              <span className="ml-3 text-sm text-stone group-hover:text-dark transition-colors">
+              <span className="ml-3 text-sm text-warm group-hover:text-dark transition-colors">
                 {category.name}
               </span>
             </label>
@@ -109,7 +109,7 @@ export function ProductFilters({ className }: ProductFiltersProps) {
                 }
                 className="w-4 h-4 rounded border-stone accent-gold cursor-pointer"
               />
-              <span className="ml-3 text-sm text-stone group-hover:text-dark transition-colors">
+              <span className="ml-3 text-sm text-warm group-hover:text-dark transition-colors">
                 {collection.name}
               </span>
             </label>
@@ -138,7 +138,7 @@ export function ProductFilters({ className }: ProductFiltersProps) {
                 }
                 className="w-4 h-4 rounded-full border-stone accent-gold cursor-pointer"
               />
-              <span className="ml-3 text-sm text-stone group-hover:text-dark transition-colors">
+              <span className="ml-3 text-sm text-warm group-hover:text-dark transition-colors">
                 {range.label}
               </span>
             </label>

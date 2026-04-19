@@ -54,7 +54,7 @@ export function StarRating({
     <div className={cn("flex items-center gap-2", className)}>
       <div className="flex gap-0.5">{stars}</div>
       {showCount && count !== undefined && (
-        <span className="text-xs text-stone ml-1">({count})</span>
+        <span className="text-xs text-warm ml-1">({count})</span>
       )}
     </div>
   );

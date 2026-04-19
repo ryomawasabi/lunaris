@@ -38,7 +38,7 @@ export function BrandValues() {
                 <h3 className="font-serif text-lg text-dark mb-3">
                   {value.title}
                 </h3>
-                <p className="font-sans text-sm text-stone leading-relaxed">
+                <p className="font-sans text-sm text-warm leading-relaxed">
                   {value.description}
                 </p>
               </div>

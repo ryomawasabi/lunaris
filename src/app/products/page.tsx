@@ -100,11 +100,11 @@ function ProductsContent() {
                 <>
                   {/* Results Count */}
                   <div className="mb-6 flex items-center justify-between">
-                    <p className="text-sm text-stone">
+                    <p className="text-sm text-warm">
                       Showing {filteredProducts.length} of {products.length} products
                     </p>
                     {/* Mobile Filters */}
-                    <div className="lg:hidden text-xs text-stone">
+                    <div className="lg:hidden text-xs text-warm">
                       {(category || collection || priceRange || sort) && (
                         <Link
                           href="/products"
@@ -123,7 +123,7 @@ function ProductsContent() {
                   <h3 className="font-serif text-xl text-dark mb-2">
                     No products found
                   </h3>
-                  <p className="text-stone mb-6">
+                  <p className="text-warm mb-6">
                     Try adjusting your filters or browse all products
                   </p>
                   <Link

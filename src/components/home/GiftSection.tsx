@@ -24,26 +24,26 @@ export function GiftSection() {
               Share Positive Karma
             </h2>
 
-            <p className="font-sans text-stone mb-6 leading-relaxed">
+            <p className="font-sans text-warm mb-6 leading-relaxed">
               Gift a piece of spiritual protection to someone you love. Each YINYANG GUARDIAN piece carries intention and sacred energy, making it more than a gift&mdash;it&apos;s a blessing.
             </p>
 
             <div className="space-y-3 mb-8">
               <div className="flex items-start gap-3">
                 <div className="w-1.5 h-1.5 bg-gold rounded-full mt-2 flex-shrink-0" />
-                <p className="font-sans text-stone text-sm">
+                <p className="font-sans text-warm text-sm">
                   <span className="font-medium">Sacred Gift Wrapping</span> - Presented in our ritual-blessed packaging
                 </p>
               </div>
               <div className="flex items-start gap-3">
                 <div className="w-1.5 h-1.5 bg-gold rounded-full mt-2 flex-shrink-0" />
-                <p className="font-sans text-stone text-sm">
+                <p className="font-sans text-warm text-sm">
                   <span className="font-medium">Personal Blessing</span> - Add your own intention note to amplify the energy
                 </p>
               </div>
               <div className="flex items-start gap-3">
                 <div className="w-1.5 h-1.5 bg-gold rounded-full mt-2 flex-shrink-0" />
-                <p className="font-sans text-stone text-sm">
+                <p className="font-sans text-warm text-sm">
                   <span className="font-medium">Spirit Guide Card</span> - Explains the spiritual properties and how to activate the piece
                 </p>
               </div>
