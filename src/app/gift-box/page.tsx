@@ -6,6 +6,7 @@ import { POWER_STONE_EFFECTS } from '@/lib/zodiac';
 import { Check, Package, Sparkles, RotateCcw, ShoppingBag, ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import GlassVessel from '@/components/gift-box/GlassVessel';
+import { useCart } from '@/components/providers/CartProvider';
 
 const SHOWCASE_IMAGES = [
   '/Crystal Essence/crystal-essence-product 1.png',
@@ -105,6 +106,7 @@ const MIN_STONES = 2;
 const MAX_STONES = 3;
 
 export default function GiftBoxPage() {
+  const { addItem } = useCart();
   const [selectedStones, setSelectedStones] = useState<string[]>([]);
   const [selectedOil, setSelectedOil] = useState<string | null>(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -147,6 +149,15 @@ export default function GiftBoxPage() {
 
   const handleAddToCart = () => {
     if (!canAddToCart) return;
+    const stonesLabel = selectedStones.join(', ');
+    const oilLabel = selectedOil || '';
+    addItem({
+      id: `crystal-essence-${stonesLabel}-${oilLabel}`.replace(/\s+/g, '-').toLowerCase(),
+      slug: 'gift-box',
+      name: `Crystal Essence Set (${stonesLabel} + ${oilLabel})`,
+      price: 150,
+      image: '/Crystal Essence/crystal-essence-product 1.png',
+    });
     setShowConfirmation(true);
     setTimeout(() => setShowConfirmation(false), 3000);
   };
