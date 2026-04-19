@@ -31,6 +31,7 @@ export default function AdminProductsPage() {
   const [error, setError] = useState<string | null>(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [filterStatus, setFilterStatus] = useState<'all' | 'active' | 'hidden'>('all')
+  const [filterCategory, setFilterCategory] = useState<string>('all')
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null)
   const [actionLoading, setActionLoading] = useState<string | null>(null)
 
@@ -50,15 +51,20 @@ export default function AdminProductsPage() {
     fetchProducts()
   }, [fetchProducts])
 
+  // Get unique categories
+  const categories = Array.from(new Set(products.map((p) => p.category))).sort()
+
   const filteredProducts = products.filter((product) => {
     const matchesSearch =
       product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.slug.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.category.toLowerCase().includes(searchQuery.toLowerCase())
 
-    if (filterStatus === 'hidden') return matchesSearch && !product.is_active
-    if (filterStatus === 'active') return matchesSearch && product.is_active
-    return matchesSearch
+    const matchesCategory = filterCategory === 'all' || product.category === filterCategory
+
+    if (filterStatus === 'hidden') return matchesSearch && matchesCategory && !product.is_active
+    if (filterStatus === 'active') return matchesSearch && matchesCategory && product.is_active
+    return matchesSearch && matchesCategory
   })
 
   const activeCount = products.filter((p) => p.is_active).length
@@ -161,40 +167,71 @@ export default function AdminProductsPage() {
       </div>
 
       {/* Filter Tabs */}
-      <div className="flex gap-2 flex-wrap">
-        <button
-          onClick={() => setFilterStatus('all')}
-          className={cn(
-            'px-4 py-2 rounded-lg text-sm font-sans font-medium transition-colors',
-            filterStatus === 'all'
-              ? 'bg-dark text-cream'
-              : 'bg-stone-light text-warm hover:bg-stone'
-          )}
-        >
-          All ({products.length})
-        </button>
-        <button
-          onClick={() => setFilterStatus('active')}
-          className={cn(
-            'px-4 py-2 rounded-lg text-sm font-sans font-medium transition-colors',
-            filterStatus === 'active'
-              ? 'bg-emerald-600 text-white'
-              : 'bg-stone-light text-warm hover:bg-stone'
-          )}
-        >
-          Active ({activeCount})
-        </button>
-        <button
-          onClick={() => setFilterStatus('hidden')}
-          className={cn(
-            'px-4 py-2 rounded-lg text-sm font-sans font-medium transition-colors',
-            filterStatus === 'hidden'
-              ? 'bg-gray-600 text-white'
-              : 'bg-stone-light text-warm hover:bg-stone'
-          )}
-        >
-          Hidden ({hiddenCount})
-        </button>
+      <div className="flex flex-col sm:flex-row gap-3">
+        <div className="flex gap-2 flex-wrap">
+          <button
+            onClick={() => setFilterStatus('all')}
+            className={cn(
+              'px-4 py-2 rounded-lg text-sm font-sans font-medium transition-colors',
+              filterStatus === 'all'
+                ? 'bg-dark text-cream'
+                : 'bg-stone-light text-warm hover:bg-stone'
+            )}
+          >
+            All ({products.length})
+          </button>
+          <button
+            onClick={() => setFilterStatus('active')}
+            className={cn(
+              'px-4 py-2 rounded-lg text-sm font-sans font-medium transition-colors',
+              filterStatus === 'active'
+                ? 'bg-emerald-600 text-white'
+                : 'bg-stone-light text-warm hover:bg-stone'
+            )}
+          >
+            Active ({activeCount})
+          </button>
+          <button
+            onClick={() => setFilterStatus('hidden')}
+            className={cn(
+              'px-4 py-2 rounded-lg text-sm font-sans font-medium transition-colors',
+              filterStatus === 'hidden'
+                ? 'bg-gray-600 text-white'
+                : 'bg-stone-light text-warm hover:bg-stone'
+            )}
+          >
+            Hidden ({hiddenCount})
+          </button>
+        </div>
+
+        {/* Category Filter */}
+        <div className="flex gap-2 flex-wrap">
+          <button
+            onClick={() => setFilterCategory('all')}
+            className={cn(
+              'px-4 py-2 rounded-lg text-sm font-sans font-medium transition-colors border',
+              filterCategory === 'all'
+                ? 'bg-gold/10 border-gold/40 text-gold-dark'
+                : 'bg-white border-stone-light text-warm hover:border-stone'
+            )}
+          >
+            All Categories
+          </button>
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setFilterCategory(cat)}
+              className={cn(
+                'px-4 py-2 rounded-lg text-sm font-sans font-medium transition-colors border',
+                filterCategory === cat
+                  ? 'bg-gold/10 border-gold/40 text-gold-dark'
+                  : 'bg-white border-stone-light text-warm hover:border-stone'
+              )}
+            >
+              {cat} ({products.filter((p) => p.category === cat).length})
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="relative">
