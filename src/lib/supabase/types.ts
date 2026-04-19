@@ -57,6 +57,8 @@ export type DbProduct = {
   category: string
   collection: string[]
   gemstone: string
+  crystal_type: string
+  crystal_effects: string[]
   symbolic_meaning: string
   short_description: string
   long_description: string
@@ -82,6 +84,8 @@ export type DbProductInsert = {
   category: string
   collection?: string[]
   gemstone: string
+  crystal_type?: string
+  crystal_effects?: string[]
   symbolic_meaning: string
   short_description: string
   long_description: string

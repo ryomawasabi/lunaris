@@ -1,37 +1,120 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
-import { Plus, Search, Eye, EyeOff, Package, PackageX, Trash2 } from 'lucide-react'
-import { useProductStatus } from '@/components/providers/ProductStatusProvider'
+import { Plus, Search, Eye, EyeOff, Trash2, Pencil, RefreshCw, AlertCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { getAdminProducts, deleteProduct as deleteProductAction, toggleProductActive } from '@/lib/supabase/admin-actions'
+
+interface DbProduct {
+  id: string
+  slug: string
+  name: string
+  price: number
+  compare_at_price: number | null
+  category: string
+  collection: string[]
+  gemstone: string
+  images: string[]
+  is_active: boolean
+  is_best_seller: boolean
+  is_new: boolean
+  rating: number
+  review_count: number
+  created_at: string
+}
 
 export default function AdminProductsPage() {
-  const { products, getStatus, toggleHidden, toggleSoldOut, deleteProduct } = useProductStatus()
+  const [products, setProducts] = useState<DbProduct[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
   const [searchQuery, setSearchQuery] = useState('')
-  const [filterStatus, setFilterStatus] = useState<'all' | 'active' | 'hidden' | 'soldout'>('all')
+  const [filterStatus, setFilterStatus] = useState<'all' | 'active' | 'hidden'>('all')
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null)
+  const [actionLoading, setActionLoading] = useState<string | null>(null)
+
+  const fetchProducts = useCallback(async () => {
+    setLoading(true)
+    setError(null)
+    const result = await getAdminProducts()
+    if (result.success) {
+      setProducts(result.data)
+    } else {
+      setError(result.error || 'Failed to load products')
+    }
+    setLoading(false)
+  }, [])
+
+  useEffect(() => {
+    fetchProducts()
+  }, [fetchProducts])
 
   const filteredProducts = products.filter((product) => {
-    const status = getStatus(product.id)
     const matchesSearch =
       product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.slug.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.category.toLowerCase().includes(searchQuery.toLowerCase())
 
-    if (filterStatus === 'hidden') return matchesSearch && status.isHidden
-    if (filterStatus === 'soldout') return matchesSearch && status.isSoldOut
-    if (filterStatus === 'active') return matchesSearch && !status.isHidden && !status.isSoldOut
+    if (filterStatus === 'hidden') return matchesSearch && !product.is_active
+    if (filterStatus === 'active') return matchesSearch && product.is_active
     return matchesSearch
   })
 
-  const hiddenCount = products.filter(p => getStatus(p.id).isHidden).length
-  const soldOutCount = products.filter(p => getStatus(p.id).isSoldOut).length
-  const activeCount = products.filter(p => !getStatus(p.id).isHidden && !getStatus(p.id).isSoldOut).length
+  const activeCount = products.filter((p) => p.is_active).length
+  const hiddenCount = products.filter((p) => !p.is_active).length
 
-  const handleDelete = (productId: string) => {
-    deleteProduct(productId)
+  const handleToggleActive = async (productId: string, currentActive: boolean) => {
+    setActionLoading(productId)
+    const result = await toggleProductActive(productId, !currentActive)
+    if (result.success) {
+      setProducts((prev) =>
+        prev.map((p) =>
+          p.id === productId ? { ...p, is_active: !currentActive } : p
+        )
+      )
+    } else {
+      alert(result.error || 'Failed to toggle product status')
+    }
+    setActionLoading(null)
+  }
+
+  const handleDelete = async (productId: string) => {
+    setActionLoading(productId)
+    const result = await deleteProductAction(productId)
+    if (result.success) {
+      setProducts((prev) => prev.filter((p) => p.id !== productId))
+    } else {
+      alert(result.error || 'Failed to delete product')
+    }
     setDeleteConfirm(null)
+    setActionLoading(null)
+  }
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-20">
+        <RefreshCw className="animate-spin text-warm" size={24} />
+        <span className="ml-3 text-warm font-sans">Loading products...</span>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="p-6 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
+        <AlertCircle className="text-red-600 mt-0.5 flex-shrink-0" size={20} />
+        <div>
+          <p className="text-red-900 text-sm font-sans font-medium">Failed to load products</p>
+          <p className="text-red-700 text-sm font-sans mt-1">{error}</p>
+          <button
+            onClick={fetchProducts}
+            className="mt-3 px-4 py-2 bg-red-600 text-white text-sm font-sans font-medium rounded-lg hover:bg-red-700 transition-colors"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -40,16 +123,25 @@ export default function AdminProductsPage() {
         <div>
           <h1 className="font-serif text-3xl text-dark mb-2">Products</h1>
           <p className="text-warm font-sans">
-            Manage your product inventory and details
+            Manage your product inventory ({products.length} total)
           </p>
         </div>
-        <Link
-          href="/admin/products/new"
-          className="flex items-center gap-2 px-4 py-2 bg-dark text-cream font-sans font-medium rounded-lg hover:bg-charcoal transition-colors"
-        >
-          <Plus size={18} />
-          Add Product
-        </Link>
+        <div className="flex gap-2">
+          <button
+            onClick={fetchProducts}
+            className="flex items-center gap-2 px-4 py-2 bg-stone-light text-dark font-sans font-medium rounded-lg hover:bg-stone transition-colors"
+          >
+            <RefreshCw size={16} />
+            Refresh
+          </button>
+          <Link
+            href="/admin/products/new"
+            className="flex items-center gap-2 px-4 py-2 bg-dark text-cream font-sans font-medium rounded-lg hover:bg-charcoal transition-colors"
+          >
+            <Plus size={18} />
+            Add Product
+          </Link>
+        </div>
       </div>
 
       {/* Filter Tabs */}
@@ -86,17 +178,6 @@ export default function AdminProductsPage() {
           )}
         >
           Hidden ({hiddenCount})
-        </button>
-        <button
-          onClick={() => setFilterStatus('soldout')}
-          className={cn(
-            'px-4 py-2 rounded-lg text-sm font-sans font-medium transition-colors',
-            filterStatus === 'soldout'
-              ? 'bg-amber-600 text-white'
-              : 'bg-stone-light text-warm hover:bg-stone'
-          )}
-        >
-          Sold Out ({soldOutCount})
         </button>
       </div>
 
@@ -135,14 +216,14 @@ export default function AdminProductsPage() {
             </thead>
             <tbody>
               {filteredProducts.map((product) => {
-                const status = getStatus(product.id)
                 const isConfirmingDelete = deleteConfirm === product.id
+                const isLoading = actionLoading === product.id
                 return (
                   <tr
                     key={product.id}
                     className={cn(
                       'border-b border-stone-light transition-colors',
-                      status.isHidden
+                      !product.is_active
                         ? 'bg-gray-50 opacity-60'
                         : isConfirmingDelete
                           ? 'bg-red-50'
@@ -158,7 +239,7 @@ export default function AdminProductsPage() {
                             alt={product.name}
                             className={cn(
                               'w-10 h-10 rounded object-cover',
-                              status.isHidden && 'grayscale'
+                              !product.is_active && 'grayscale'
                             )}
                           />
                         )}
@@ -173,9 +254,16 @@ export default function AdminProductsPage() {
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <p className="font-sans font-medium text-dark">
-                        ${product.price}
-                      </p>
+                      <div>
+                        <p className="font-sans font-medium text-dark">
+                          ${product.price}
+                        </p>
+                        {product.compare_at_price && (
+                          <p className="text-xs text-warm-light font-sans line-through">
+                            ${product.compare_at_price}
+                          </p>
+                        )}
+                      </div>
                     </td>
                     <td className="px-6 py-4">
                       <p className="text-sm font-sans text-warm">
@@ -184,17 +272,23 @@ export default function AdminProductsPage() {
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex flex-wrap gap-1.5">
-                        {status.isHidden ? (
+                        {!product.is_active ? (
                           <span className="inline-block px-3 py-1 rounded-full text-xs font-sans font-medium bg-gray-200 text-gray-600">
                             Hidden
-                          </span>
-                        ) : status.isSoldOut ? (
-                          <span className="inline-block px-3 py-1 rounded-full text-xs font-sans font-medium bg-amber-100 text-amber-700">
-                            Sold Out
                           </span>
                         ) : (
                           <span className="inline-block px-3 py-1 rounded-full text-xs font-sans font-medium bg-emerald-100 text-emerald-700">
                             Active
+                          </span>
+                        )}
+                        {product.is_best_seller && (
+                          <span className="inline-block px-3 py-1 rounded-full text-xs font-sans font-medium bg-amber-100 text-amber-700">
+                            Bestseller
+                          </span>
+                        )}
+                        {product.is_new && (
+                          <span className="inline-block px-3 py-1 rounded-full text-xs font-sans font-medium bg-blue-100 text-blue-700">
+                            New
                           </span>
                         )}
                       </div>
@@ -204,9 +298,10 @@ export default function AdminProductsPage() {
                         <div className="flex items-center justify-center gap-2">
                           <button
                             onClick={() => handleDelete(product.id)}
-                            className="px-3 py-1.5 rounded-lg text-xs font-sans font-medium bg-red-600 text-white hover:bg-red-700 transition-colors"
+                            disabled={isLoading}
+                            className="px-3 py-1.5 rounded-lg text-xs font-sans font-medium bg-red-600 text-white hover:bg-red-700 transition-colors disabled:opacity-50"
                           >
-                            Delete
+                            {isLoading ? 'Deleting...' : 'Confirm'}
                           </button>
                           <button
                             onClick={() => setDeleteConfirm(null)}
@@ -217,29 +312,25 @@ export default function AdminProductsPage() {
                         </div>
                       ) : (
                         <div className="flex items-center justify-center gap-2">
-                          <button
-                            onClick={() => toggleHidden(product.id)}
-                            className={cn(
-                              'p-2 rounded-lg transition-colors',
-                              status.isHidden
-                                ? 'bg-gray-200 text-gray-600 hover:bg-gray-300'
-                                : 'bg-stone-light text-warm hover:bg-stone'
-                            )}
-                            title={status.isHidden ? 'Show product' : 'Hide product'}
+                          <Link
+                            href={`/admin/products/${product.id}/edit`}
+                            className="p-2 rounded-lg bg-stone-light text-warm hover:bg-blue-100 hover:text-blue-600 transition-colors"
+                            title="Edit product"
                           >
-                            {status.isHidden ? <EyeOff size={16} /> : <Eye size={16} />}
-                          </button>
+                            <Pencil size={16} />
+                          </Link>
                           <button
-                            onClick={() => toggleSoldOut(product.id)}
+                            onClick={() => handleToggleActive(product.id, product.is_active)}
+                            disabled={isLoading}
                             className={cn(
-                              'p-2 rounded-lg transition-colors',
-                              status.isSoldOut
-                                ? 'bg-amber-200 text-amber-700 hover:bg-amber-300'
-                                : 'bg-stone-light text-warm hover:bg-stone'
+                              'p-2 rounded-lg transition-colors disabled:opacity-50',
+                              !product.is_active
+                                ? 'bg-gray-200 text-gray-600 hover:bg-emerald-100 hover:text-emerald-600'
+                                : 'bg-stone-light text-warm hover:bg-gray-200 hover:text-gray-600'
                             )}
-                            title={status.isSoldOut ? 'Mark as in stock' : 'Mark as sold out'}
+                            title={product.is_active ? 'Hide product' : 'Show product'}
                           >
-                            {status.isSoldOut ? <PackageX size={16} /> : <Package size={16} />}
+                            {product.is_active ? <Eye size={16} /> : <EyeOff size={16} />}
                           </button>
                           <button
                             onClick={() => setDeleteConfirm(product.id)}
