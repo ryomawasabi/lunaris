@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { Plus, Search, Eye, EyeOff, Trash2, Pencil, RefreshCw, AlertCircle, Ban, ShoppingBag } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { getAdminProducts, deleteProduct as deleteProductAction, toggleProductActive, toggleProductSoldOut } from '@/lib/supabase/admin-actions'
+import { getAdminProducts } from '@/lib/supabase/admin-actions'
 
 interface DbProduct {
   id: string
@@ -72,41 +72,66 @@ export default function AdminProductsPage() {
 
   const handleToggleActive = async (productId: string, currentActive: boolean) => {
     setActionLoading(productId)
-    const result = await toggleProductActive(productId, !currentActive)
-    if (result.success) {
-      setProducts((prev) =>
-        prev.map((p) =>
-          p.id === productId ? { ...p, is_active: !currentActive } : p
+    try {
+      const res = await fetch(`/api/admin/products/${productId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ is_active: !currentActive }),
+      })
+      const result = await res.json()
+      if (result.success) {
+        setProducts((prev) =>
+          prev.map((p) =>
+            p.id === productId ? { ...p, is_active: !currentActive } : p
+          )
         )
-      )
-    } else {
-      alert(result.error || 'Failed to toggle product status')
+      } else {
+        alert(result.error || 'Failed to toggle product status')
+      }
+    } catch (err) {
+      alert('Network error: ' + (err instanceof Error ? err.message : 'Unknown'))
     }
     setActionLoading(null)
   }
 
   const handleToggleSoldOut = async (productId: string, currentSoldOut: boolean) => {
     setActionLoading(productId)
-    const result = await toggleProductSoldOut(productId, !currentSoldOut)
-    if (result.success) {
-      setProducts((prev) =>
-        prev.map((p) =>
-          p.id === productId ? { ...p, is_sold_out: !currentSoldOut } : p
+    try {
+      const res = await fetch(`/api/admin/products/${productId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ is_sold_out: !currentSoldOut }),
+      })
+      const result = await res.json()
+      if (result.success) {
+        setProducts((prev) =>
+          prev.map((p) =>
+            p.id === productId ? { ...p, is_sold_out: !currentSoldOut } : p
+          )
         )
-      )
-    } else {
-      alert(result.error || 'Failed to toggle sold-out status')
+      } else {
+        alert(result.error || 'Failed to toggle sold-out status')
+      }
+    } catch (err) {
+      alert('Network error: ' + (err instanceof Error ? err.message : 'Unknown'))
     }
     setActionLoading(null)
   }
 
   const handleDelete = async (productId: string) => {
     setActionLoading(productId)
-    const result = await deleteProductAction(productId)
-    if (result.success) {
-      setProducts((prev) => prev.filter((p) => p.id !== productId))
-    } else {
-      alert(result.error || 'Failed to delete product')
+    try {
+      const res = await fetch(`/api/admin/products/${productId}`, {
+        method: 'DELETE',
+      })
+      const result = await res.json()
+      if (result.success) {
+        setProducts((prev) => prev.filter((p) => p.id !== productId))
+      } else {
+        alert(result.error || 'Failed to delete product')
+      }
+    } catch (err) {
+      alert('Network error: ' + (err instanceof Error ? err.message : 'Unknown'))
     }
     setDeleteConfirm(null)
     setActionLoading(null)
