@@ -2,7 +2,10 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import PlaceholderImage from '@/components/layout/PlaceholderImage';
 import { CollectionCard } from '@/components/collection/CollectionCard';
-import { COLLECTIONS } from '@/lib/data';
+import { getCollections } from '@/lib/supabase/queries';
+import { COLLECTIONS as FALLBACK_COLLECTIONS } from '@/lib/data';
+
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Collections | YINYANG GUARDIAN',
@@ -13,7 +16,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function CollectionsPage() {
+export default async function CollectionsPage() {
+  let collections = await getCollections()
+  if (collections.length === 0) {
+    collections = FALLBACK_COLLECTIONS
+  }
+
   return (
     <div className="min-h-screen bg-cream">
       {/* Hero Section */}
@@ -50,7 +58,7 @@ export default function CollectionsPage() {
       {/* Collections Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {COLLECTIONS.map((collection) => (
+          {collections.map((collection) => (
             <CollectionCard key={collection.id} collection={collection} />
           ))}
         </div>

@@ -2,7 +2,7 @@
 
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { X } from 'lucide-react';
-import { CATEGORIES, COLLECTIONS } from '@/lib/data';
+import { useProductStatus } from '@/components/providers/ProductStatusProvider';
 import { cn } from '@/lib/utils';
 
 interface ProductFiltersProps {
@@ -28,6 +28,7 @@ export function ProductFilters({ className }: ProductFiltersProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const { categories, collections } = useProductStatus();
 
   const currentCategory = searchParams.get('category');
   const currentCollection = searchParams.get('collection');
@@ -76,7 +77,7 @@ export function ProductFilters({ className }: ProductFiltersProps) {
       <div className="mb-8 pb-8 border-b border-stone-light">
         <h3 className="text-sm font-sans font-medium text-dark mb-4">Category</h3>
         <div className="space-y-3">
-          {CATEGORIES.map((category) => (
+          {categories.map((category) => (
             <label key={category.id} className="flex items-center cursor-pointer group">
               <input
                 type="checkbox"
@@ -98,7 +99,7 @@ export function ProductFilters({ className }: ProductFiltersProps) {
       <div className="mb-8 pb-8 border-b border-stone-light">
         <h3 className="text-sm font-sans font-medium text-dark mb-4">Collection</h3>
         <div className="space-y-3">
-          {COLLECTIONS.map((collection) => (
+          {collections.map((collection) => (
             <label key={collection.id} className="flex items-center cursor-pointer group">
               <input
                 type="checkbox"

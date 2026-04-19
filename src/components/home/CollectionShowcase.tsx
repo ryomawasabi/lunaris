@@ -1,10 +1,14 @@
+'use client'
+
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { CollectionCard } from "@/components/collection/CollectionCard";
-import { COLLECTIONS } from "@/lib/data";
+import { useProductStatus } from "@/components/providers/ProductStatusProvider";
 
 export function CollectionShowcase() {
+  const { collections } = useProductStatus();
+
   // Show first 4 featured collections
-  const featuredCollections = COLLECTIONS.slice(0, 4);
+  const featuredCollections = collections.slice(0, 4);
 
   return (
     <section className="py-16 md:py-24 px-6 md:px-12 bg-cream">

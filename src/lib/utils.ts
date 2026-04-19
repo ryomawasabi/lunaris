@@ -1,5 +1,5 @@
 import { Product, Collection } from "./types";
-import { PRODUCTS as STATIC_PRODUCTS, COLLECTIONS } from "./data";
+import { PRODUCTS as STATIC_PRODUCTS, COLLECTIONS as STATIC_COLLECTIONS } from "./data";
 
 /**
  * Merge class names with proper precedence
@@ -23,8 +23,8 @@ export function formatPrice(price: number): string {
 /**
  * Get all products in a specific collection
  */
-export function getProductsByCollection(slug: string, products: Product[] = STATIC_PRODUCTS): Product[] {
-  const collection = COLLECTIONS.find((c) => c.slug === slug);
+export function getProductsByCollection(slug: string, products: Product[] = STATIC_PRODUCTS, collections: Collection[] = STATIC_COLLECTIONS): Product[] {
+  const collection = collections.find((c) => c.slug === slug);
   if (!collection) return [];
 
   return products.filter((product) =>
@@ -55,8 +55,8 @@ export function getProductBySlug(slug: string, products: Product[] = STATIC_PROD
 /**
  * Get a single collection by its slug
  */
-export function getCollectionBySlug(slug: string): Collection | undefined {
-  return COLLECTIONS.find((collection) => collection.slug === slug);
+export function getCollectionBySlug(slug: string, collections: Collection[] = STATIC_COLLECTIONS): Collection | undefined {
+  return collections.find((collection) => collection.slug === slug);
 }
 
 /**
@@ -131,7 +131,7 @@ export function filterProducts(options: {
   minPrice?: number;
   maxPrice?: number;
   sortBy?: "price-asc" | "price-desc" | "rating" | "newest" | "bestsellers";
-}, products: Product[] = STATIC_PRODUCTS): Product[] {
+}, products: Product[] = STATIC_PRODUCTS, collections: Collection[] = STATIC_COLLECTIONS): Product[] {
   let filtered = [...products];
 
   // Filter by category
@@ -148,7 +148,7 @@ export function filterProducts(options: {
     filtered = filtered.filter((product) =>
       product.collection.some(
         (col) =>
-          COLLECTIONS.find((c) => c.slug === col)?.slug ===
+          collections.find((c) => c.slug === col)?.slug ===
           options.collection?.toLowerCase()
       )
     );

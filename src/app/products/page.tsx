@@ -4,7 +4,6 @@ import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { Suspense } from 'react'
 import { ChevronRight } from 'lucide-react'
-import { CATEGORIES, COLLECTIONS } from '@/lib/data'
 import { filterProducts } from '@/lib/utils'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { ProductGrid } from '@/components/product/ProductGrid'
@@ -12,7 +11,7 @@ import { ProductFilters } from '@/components/product/ProductFilters'
 import { useProductStatus } from '@/components/providers/ProductStatusProvider'
 
 function ProductsContent() {
-  const { products } = useProductStatus()
+  const { products, categories, collections } = useProductStatus()
   const searchParams = useSearchParams()
 
   const category = searchParams.get('category') || undefined
@@ -37,11 +36,11 @@ function ProductsContent() {
     minPrice,
     maxPrice,
     sortBy: sortValue,
-  }, products)
+  }, products, collections)
 
   // Get active collection/category for title
-  const activeCollection = COLLECTIONS.find((c) => c.slug === collection)
-  const activeCategory = CATEGORIES.find((c) => c.slug === category)
+  const activeCollection = collections.find((c) => c.slug === collection)
+  const activeCategory = categories.find((c) => c.slug === category)
 
   const pageTitle = activeCollection
     ? activeCollection.name

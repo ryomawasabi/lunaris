@@ -1,10 +1,14 @@
+'use client'
+
 import Link from "next/link";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import PlaceholderImage from "@/components/layout/PlaceholderImage";
-import { CATEGORIES } from "@/lib/data";
+import { useProductStatus } from "@/components/providers/ProductStatusProvider";
 import { cn } from "@/lib/utils";
 
 export function ShopByCategory() {
+  const { categories } = useProductStatus();
+
   return (
     <section className="py-16 md:py-24 px-6 md:px-12 bg-white">
       <div className="max-w-7xl mx-auto">
@@ -17,7 +21,7 @@ export function ShopByCategory() {
         <div className={cn(
           "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
         )}>
-          {CATEGORIES.map((category) => (
+          {categories.map((category) => (
             <Link
               key={category.id}
               href={`/products?category=${category.slug}`}

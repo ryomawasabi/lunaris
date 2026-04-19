@@ -8,23 +8,22 @@ import PlaceholderImage from '@/components/layout/PlaceholderImage'
 import { ProductGrid } from '@/components/product/ProductGrid'
 import { CollectionSort } from '@/components/collection/CollectionSort'
 import { getCollectionBySlug, getProductsByCollection, filterProducts } from '@/lib/utils'
-import { COLLECTIONS } from '@/lib/data'
 import { useProductStatus } from '@/components/providers/ProductStatusProvider'
 
 function CollectionDetailContent() {
   const params = useParams()
   const searchParams = useSearchParams()
-  const { products: allProducts } = useProductStatus()
+  const { products: allProducts, collections } = useProductStatus()
   const slug = params.slug as string
 
-  const collection = getCollectionBySlug(slug)
+  const collection = getCollectionBySlug(slug, collections)
 
   if (!collection) {
     notFound()
   }
 
   // Get products for this collection from context
-  let products = getProductsByCollection(slug, allProducts)
+  let products = getProductsByCollection(slug, allProducts, collections)
 
   // Apply sorting based on searchParams
   const sortBy = searchParams.get('sort') || 'featured'
@@ -36,9 +35,9 @@ function CollectionDetailContent() {
     else if (sortBy === 'newest') sortOption = 'newest'
 
     if (sortOption) {
-      products = filterProducts({ sortBy: sortOption }, allProducts)
+      products = filterProducts({ sortBy: sortOption }, allProducts, collections)
       // Filter by collection after sorting
-      const col = COLLECTIONS.find((c) => c.slug === slug)
+      const col = collections.find((c) => c.slug === slug)
       products = products.filter((p) =>
         p.collection.some(
           (c) => c === col?.name || c.toLowerCase().replace(/\s+&\s+/g, '-').replace(/\s+/g, '-') === slug
