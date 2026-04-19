@@ -537,7 +537,7 @@ export default function GiftBoxPage() {
                   {/* Price & CTA */}
                   <div className="space-y-3">
                     <div className="flex items-baseline justify-between">
-                      <span className="font-serif text-2xl text-dark">¥4,980</span>
+                      <span className="font-serif text-2xl text-dark">$150</span>
                       <span className="text-xs font-sans text-warm-light">Tax included</span>
                     </div>
 
@@ -720,7 +720,7 @@ function ProductShowcase() {
             {/* Price & CTA */}
             <div className="flex items-center gap-6">
               <div>
-                <span className="font-serif text-3xl text-dark">¥4,980</span>
+                <span className="font-serif text-3xl text-dark">$150</span>
                 <span className="text-xs font-sans text-warm-light ml-2">Tax included</span>
               </div>
               <button
