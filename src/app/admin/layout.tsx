@@ -10,7 +10,6 @@ import {
   Grid3x3,
   Layers,
   Loader,
-  Gem,
 } from 'lucide-react'
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
@@ -56,11 +55,6 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       label: 'Categories',
       href: '/admin/categories',
       icon: Grid3x3,
-    },
-    {
-      label: 'Stones',
-      href: '/admin/stones',
-      icon: Gem,
     },
   ]
 

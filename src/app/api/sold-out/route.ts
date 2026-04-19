@@ -5,21 +5,23 @@ export async function GET() {
   try {
     const supabase = createServerSupabaseClient()
 
-    // Fetch sold-out products (essence oils)
-    const { data: products } = await supabase
+    // Fetch sold-out essence oils
+    const { data: oils } = await supabase
       .from('products')
-      .select('name, slug, is_sold_out')
+      .select('name, slug')
+      .eq('category', 'Essence Oils')
       .eq('is_sold_out', true)
 
-    // Fetch sold-out stones
+    // Fetch sold-out stones (now in products table with category 'Stones')
     const { data: stones } = await supabase
-      .from('stones')
-      .select('name, is_sold_out')
+      .from('products')
+      .select('name, slug')
+      .eq('category', 'Stones')
       .eq('is_sold_out', true)
 
     return NextResponse.json({
-      soldOutProducts: (products || []).map((p) => p.name),
-      soldOutSlugs: (products || []).map((p) => p.slug),
+      soldOutProducts: (oils || []).map((p) => p.name),
+      soldOutSlugs: (oils || []).map((p) => p.slug),
       soldOutStones: (stones || []).map((s) => s.name),
     })
   } catch (error) {
