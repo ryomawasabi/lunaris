@@ -133,8 +133,8 @@ export async function createProduct(formData: FormData): Promise<ActionResult> {
     const category = formData.get('category') as string
     const collectionStr = formData.get('collection') as string
     const collection = collectionStr ? collectionStr.split(',').map((s) => s.trim()).filter(Boolean) : []
-    const gemstone = formData.get('gemstone') as string
-    const crystalType = (formData.get('crystalType') as string) || gemstone
+    const gemstone = (formData.get('gemstone') as string) || ''
+    const crystalType = (formData.get('crystalType') as string) || gemstone || ''
     const crystalEffectsStr = formData.get('crystalEffects') as string
     const crystalEffects = crystalEffectsStr ? crystalEffectsStr.split(',').map((s) => s.trim()).filter(Boolean) : []
     const symbolicMeaning = formData.get('symbolicMeaning') as string
@@ -217,8 +217,8 @@ export async function updateProduct(id: string, formData: FormData): Promise<Act
     const category = formData.get('category') as string
     const collectionStr = formData.get('collection') as string
     const collection = collectionStr ? collectionStr.split(',').map((s) => s.trim()).filter(Boolean) : []
-    const gemstone = formData.get('gemstone') as string
-    const crystalType = (formData.get('crystalType') as string) || gemstone
+    const gemstone = (formData.get('gemstone') as string) || ''
+    const crystalType = (formData.get('crystalType') as string) || gemstone || ''
     const crystalEffectsStr = formData.get('crystalEffects') as string
     const crystalEffects = crystalEffectsStr ? crystalEffectsStr.split(',').map((s) => s.trim()).filter(Boolean) : []
     const symbolicMeaning = formData.get('symbolicMeaning') as string

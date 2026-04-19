@@ -270,8 +270,8 @@ export default function EditProductPage() {
               </select>
             </div>
             <div>
-              <label className={labelClass}>Gemstone *</label>
-              <input type="text" value={formData.gemstone} onChange={(e) => setFormData((prev) => ({ ...prev, gemstone: e.target.value }))} required className={inputClass} />
+              <label className={labelClass}>Gemstone</label>
+              <input type="text" value={formData.gemstone} onChange={(e) => setFormData((prev) => ({ ...prev, gemstone: e.target.value }))} className={inputClass} placeholder="(optional)" />
             </div>
             <div>
               <label className={labelClass}>Crystal Type</label>

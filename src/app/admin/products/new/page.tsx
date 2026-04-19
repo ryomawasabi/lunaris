@@ -364,8 +364,8 @@ export default function NewProductPage() {
               <input type="number" step="0.01" min="0" value={formData.compareAtPrice} onChange={(e) => setFormData((prev) => ({ ...prev, compareAtPrice: e.target.value }))} className={inputClass} placeholder="e.g. 78 (shows as strikethrough)" />
             </div>
             <div>
-              <label className={labelClass}>Gemstone *</label>
-              <input type="text" value={formData.gemstone} onChange={(e) => setFormData((prev) => ({ ...prev, gemstone: e.target.value }))} required className={inputClass} placeholder="e.g. Amethyst" />
+              <label className={labelClass}>Gemstone</label>
+              <input type="text" value={formData.gemstone} onChange={(e) => setFormData((prev) => ({ ...prev, gemstone: e.target.value }))} className={inputClass} placeholder="e.g. Amethyst (optional)" />
             </div>
             <div>
               <label className={labelClass}>Crystal Type</label>
