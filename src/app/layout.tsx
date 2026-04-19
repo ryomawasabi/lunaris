@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import AnnouncementBar from "@/components/layout/AnnouncementBar";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { AuthProvider } from "@/components/auth/AuthProvider";
@@ -46,7 +45,6 @@ export default function RootLayout({
           <ProductStatusProvider>
             <CartProvider>
               <LenisProvider>
-                <AnnouncementBar />
                 <Header />
                 {children}
                 <CartDrawer />

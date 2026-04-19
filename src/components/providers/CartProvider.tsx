@@ -93,6 +93,11 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const clearCart = useCallback(() => {
     setItems([])
+    try {
+      localStorage.removeItem(CART_STORAGE_KEY)
+    } catch (e) {
+      console.error('Failed to clear cart storage:', e)
+    }
   }, [])
 
   const itemCount = items.reduce((sum, item) => sum + item.quantity, 0)
