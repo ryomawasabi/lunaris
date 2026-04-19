@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Heart } from "lucide-react";
+import { Heart, ShoppingBag } from "lucide-react";
 import { Product } from "@/lib/types";
 import { formatPrice } from "@/lib/utils";
 import PlaceholderImage from "@/components/layout/PlaceholderImage";
@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/Badge";
 import { StarRating } from "@/components/ui/StarRating";
 import { cn } from "@/lib/utils";
 import { useProductStatusSafe } from "@/components/providers/ProductStatusProvider";
+import { useCart } from "@/components/providers/CartProvider";
 
 interface ProductCardProps {
   product: Product;
@@ -17,7 +18,9 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   const [isFavorited, setIsFavorited] = useState(false);
+  const [addedFeedback, setAddedFeedback] = useState(false);
   const productStatus = useProductStatusSafe();
+  const { addItem } = useCart();
   const status = productStatus?.getStatus(product.id);
   const isSoldOut = status?.isSoldOut || product.isSoldOut;
   const isHidden = status?.isHidden || product.isHidden;
@@ -33,6 +36,21 @@ export function ProductCard({ product }: ProductCardProps) {
   if (product.isNew) badgesToShow.push({ variant: "new", label: "New" });
   if (product.isGiftable) badgesToShow.push({ variant: "giftable", label: "Giftable" });
   if (hasComparePrice) badgesToShow.push({ variant: "sale", label: "Sale" });
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (isSoldOut) return;
+    addItem({
+      id: product.id,
+      slug: product.slug,
+      name: product.name,
+      price: product.price,
+      image: product.images[0] || '',
+    });
+    setAddedFeedback(true);
+    setTimeout(() => setAddedFeedback(false), 1500);
+  };
 
   return (
     <Link href={`/products/${product.slug}`}>
@@ -82,6 +100,22 @@ export function ProductCard({ product }: ProductCardProps) {
               className={cn("w-5 h-5 transition-colors", isFavorited ? "fill-red-500 text-red-500" : "text-dark")}
             />
           </button>
+
+          {/* Quick Add to Cart - Bottom */}
+          {!isSoldOut && (
+            <button
+              onClick={handleAddToCart}
+              className={cn(
+                "absolute bottom-0 left-0 right-0 py-3 flex items-center justify-center gap-2 font-sans text-xs font-medium uppercase tracking-wider z-10 transition-all duration-300",
+                addedFeedback
+                  ? "bg-emerald-600 text-white translate-y-0"
+                  : "bg-dark/90 text-cream translate-y-full group-hover:translate-y-0"
+              )}
+            >
+              <ShoppingBag size={14} />
+              {addedFeedback ? 'Added!' : 'Quick Add'}
+            </button>
+          )}
         </div>
 
         {/* Content */}
@@ -99,9 +133,11 @@ export function ProductCard({ product }: ProductCardProps) {
           )}
 
           {/* Gemstone Tag */}
-          <p className="text-xs text-warm uppercase tracking-wider mb-2">
-            {product.gemstone}
-          </p>
+          {product.gemstone && (
+            <p className="text-xs text-warm uppercase tracking-wider mb-2">
+              {product.gemstone}
+            </p>
+          )}
 
           {/* Symbolic Meaning */}
           <p className="text-xs text-stone mb-4 flex-1 line-clamp-2">

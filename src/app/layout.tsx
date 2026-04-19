@@ -5,7 +5,9 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { AuthProvider } from "@/components/auth/AuthProvider";
 import { ProductStatusProvider } from "@/components/providers/ProductStatusProvider";
+import { CartProvider } from "@/components/providers/CartProvider";
 import { LenisProvider } from "@/components/providers/LenisProvider";
+import { CartDrawer } from "@/components/cart/CartDrawer";
 
 export const metadata: Metadata = {
   title: "YINYANG GUARDIAN | Meaningful Luxury Jewelry",
@@ -42,12 +44,15 @@ export default function RootLayout({
       <body className="bg-cream antialiased">
         <AuthProvider>
           <ProductStatusProvider>
-            <LenisProvider>
-              <AnnouncementBar />
-              <Header />
-              {children}
-              <Footer />
-            </LenisProvider>
+            <CartProvider>
+              <LenisProvider>
+                <AnnouncementBar />
+                <Header />
+                {children}
+                <CartDrawer />
+                <Footer />
+              </LenisProvider>
+            </CartProvider>
           </ProductStatusProvider>
         </AuthProvider>
       </body>

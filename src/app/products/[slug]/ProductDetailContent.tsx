@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { useParams } from 'next/navigation'
@@ -14,11 +15,14 @@ import { ProductGrid } from '@/components/product/ProductGrid'
 import { ImageGallery } from '@/components/product/ImageGallery'
 import { QuantitySelector } from '@/components/product/QuantitySelector'
 import { useProductStatus } from '@/components/providers/ProductStatusProvider'
+import { useCart } from '@/components/providers/CartProvider'
 
 export default function ProductDetailContent() {
   const params = useParams()
   const slug = params.slug as string
   const { products } = useProductStatus()
+  const { addItem } = useCart()
+  const [quantity, setQuantity] = useState(1)
 
   const product = getProductBySlug(slug, products)
 
@@ -145,13 +149,27 @@ export default function ProductDetailContent() {
               {/* Quantity Selector */}
               <div className="mb-6">
                 <p className="text-sm font-sans font-medium text-dark mb-3">Quantity</p>
-                <QuantitySelector />
+                <QuantitySelector onQuantityChange={setQuantity} />
               </div>
 
               {/* Action Buttons */}
               <div className="space-y-3 mb-8">
-                <Button variant="gold" size="lg" className="w-full">
-                  Add to Cart
+                <Button
+                  variant="gold"
+                  size="lg"
+                  className="w-full"
+                  onClick={() => {
+                    addItem({
+                      id: product.id,
+                      slug: product.slug,
+                      name: product.name,
+                      price: product.price,
+                      image: product.images[0] || '',
+                    }, quantity)
+                  }}
+                  disabled={product.isSoldOut}
+                >
+                  {product.isSoldOut ? 'Sold Out' : 'Add to Cart'}
                 </Button>
                 <Button variant="secondary" size="lg" className="w-full">
                   Add to Wishlist

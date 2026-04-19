@@ -4,13 +4,14 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Search, User, Heart, ShoppingBag, Menu, X, LogOut } from 'lucide-react';
 import { useAuth } from '@/components/auth/AuthProvider';
+import { useCart } from '@/components/providers/CartProvider';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [cartCount] = useState(0);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const { user, isAdmin, isLoading, signOut } = useAuth();
+  const { itemCount, setCartOpen } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -130,14 +131,15 @@ export default function Header() {
             </button>
             <div className="relative">
               <button
+                onClick={() => setCartOpen(true)}
                 aria-label="Shopping bag"
                 className="text-dark hover:text-gold transition-colors"
               >
                 <ShoppingBag size={20} />
               </button>
-              {cartCount > 0 && (
+              {itemCount > 0 && (
                 <span className="absolute -top-2 -right-2 bg-gold text-dark text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
-                  {cartCount}
+                  {itemCount}
                 </span>
               )}
             </div>
@@ -172,12 +174,16 @@ export default function Header() {
               <Search size={20} />
             </button>
             <div className="relative">
-              <button aria-label="Shopping bag" className="text-dark">
+              <button
+                onClick={() => setCartOpen(true)}
+                aria-label="Shopping bag"
+                className="text-dark"
+              >
                 <ShoppingBag size={20} />
               </button>
-              {cartCount > 0 && (
+              {itemCount > 0 && (
                 <span className="absolute -top-2 -right-2 bg-gold text-dark text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
-                  {cartCount}
+                  {itemCount}
                 </span>
               )}
             </div>
