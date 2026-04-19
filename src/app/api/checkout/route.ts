@@ -29,17 +29,37 @@ export async function POST(req: NextRequest) {
     // Build absolute URL for redirects
     const origin = req.headers.get('origin') || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
 
-    const line_items = (items as CheckoutItem[]).map((item) => ({
-      price_data: {
-        currency: 'usd',
-        product_data: {
-          name: item.name,
-          ...(item.image && { images: [item.image.startsWith('/') ? `${origin}${item.image}` : item.image] }),
+    const line_items = (items as CheckoutItem[]).map((item) => {
+      // Build product image URL, encoding spaces and special characters
+      let images: string[] | undefined
+      if (item.image) {
+        try {
+          const rawUrl = item.image.startsWith('/')
+            ? `${origin}${item.image}`
+            : item.image
+          const url = new URL(rawUrl)
+          url.pathname = url.pathname
+            .split('/')
+            .map((segment) => encodeURIComponent(segment))
+            .join('/')
+          images = [url.toString()]
+        } catch {
+          // Skip invalid image URLs rather than failing checkout
+        }
+      }
+
+      return {
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: item.name,
+            ...(images && { images }),
+          },
+          unit_amount: Math.round(item.price * 100), // Stripe uses cents
         },
-        unit_amount: Math.round(item.price * 100), // Stripe uses cents
-      },
-      quantity: item.quantity,
-    }))
+        quantity: item.quantity,
+      }
+    })
 
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
