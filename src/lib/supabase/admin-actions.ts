@@ -377,3 +377,118 @@ export async function toggleProductActive(id: string, isActive: boolean): Promis
     }
   }
 }
+
+/**
+ * Toggle product sold-out status (admin only)
+ */
+export async function toggleProductSoldOut(id: string, isSoldOut: boolean): Promise<ActionResult> {
+  try {
+    const isUserAdmin = await isAdmin()
+    if (!isUserAdmin) {
+      return { success: false, error: 'Unauthorized. Admin access required.' }
+    }
+
+    const supabase = createServerSupabaseClient()
+
+    const { data: product } = await supabase
+      .from('products')
+      .select('slug')
+      .eq('id', id)
+      .single()
+
+    const { data, error } = await supabase
+      .from('products')
+      .update({
+        is_sold_out: isSoldOut,
+        updated_at: new Date().toISOString(),
+      })
+      .eq('id', id)
+
+    if (error) {
+      console.error('Database error:', error)
+      return {
+        success: false,
+        error: `Failed to toggle sold-out status: ${error.message}`,
+      }
+    }
+
+    revalidatePath('/')
+    revalidatePath('/products')
+    revalidatePath('/admin/products')
+    revalidatePath('/gift-box')
+    if (product?.slug) {
+      revalidatePath(`/products/${product.slug}`)
+    }
+
+    return { success: true, data }
+  } catch (error) {
+    console.error('Error in toggleProductSoldOut:', error)
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'An unexpected error occurred',
+    }
+  }
+}
+
+/**
+ * Get all stones (admin)
+ */
+export async function getAdminStones() {
+  try {
+    const supabase = createServerSupabaseClient()
+    const { data, error } = await supabase
+      .from('stones')
+      .select('*')
+      .order('name', { ascending: true })
+
+    if (error) {
+      return { success: false, error: error.message, data: [] }
+    }
+
+    return { success: true, data: data || [] }
+  } catch (error) {
+    console.error('Error in getAdminStones:', error)
+    return { success: false, error: 'An unexpected error occurred', data: [] }
+  }
+}
+
+/**
+ * Toggle stone sold-out status (admin only)
+ */
+export async function toggleStoneSoldOut(id: string, isSoldOut: boolean): Promise<ActionResult> {
+  try {
+    const isUserAdmin = await isAdmin()
+    if (!isUserAdmin) {
+      return { success: false, error: 'Unauthorized. Admin access required.' }
+    }
+
+    const supabase = createServerSupabaseClient()
+
+    const { data, error } = await supabase
+      .from('stones')
+      .update({
+        is_sold_out: isSoldOut,
+        updated_at: new Date().toISOString(),
+      })
+      .eq('id', id)
+
+    if (error) {
+      console.error('Database error:', error)
+      return {
+        success: false,
+        error: `Failed to toggle stone sold-out status: ${error.message}`,
+      }
+    }
+
+    revalidatePath('/gift-box')
+    revalidatePath('/admin/stones')
+
+    return { success: true, data }
+  } catch (error) {
+    console.error('Error in toggleStoneSoldOut:', error)
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'An unexpected error occurred',
+    }
+  }
+}

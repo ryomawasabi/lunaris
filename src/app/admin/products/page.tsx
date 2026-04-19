@@ -2,9 +2,9 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
-import { Plus, Search, Eye, EyeOff, Trash2, Pencil, RefreshCw, AlertCircle } from 'lucide-react'
+import { Plus, Search, Eye, EyeOff, Trash2, Pencil, RefreshCw, AlertCircle, Ban, ShoppingBag } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { getAdminProducts, deleteProduct as deleteProductAction, toggleProductActive } from '@/lib/supabase/admin-actions'
+import { getAdminProducts, deleteProduct as deleteProductAction, toggleProductActive, toggleProductSoldOut } from '@/lib/supabase/admin-actions'
 
 interface DbProduct {
   id: string
@@ -17,6 +17,7 @@ interface DbProduct {
   gemstone: string
   images: string[]
   is_active: boolean
+  is_sold_out: boolean
   is_best_seller: boolean
   is_new: boolean
   rating: number
@@ -74,6 +75,21 @@ export default function AdminProductsPage() {
       )
     } else {
       alert(result.error || 'Failed to toggle product status')
+    }
+    setActionLoading(null)
+  }
+
+  const handleToggleSoldOut = async (productId: string, currentSoldOut: boolean) => {
+    setActionLoading(productId)
+    const result = await toggleProductSoldOut(productId, !currentSoldOut)
+    if (result.success) {
+      setProducts((prev) =>
+        prev.map((p) =>
+          p.id === productId ? { ...p, is_sold_out: !currentSoldOut } : p
+        )
+      )
+    } else {
+      alert(result.error || 'Failed to toggle sold-out status')
     }
     setActionLoading(null)
   }
@@ -281,6 +297,11 @@ export default function AdminProductsPage() {
                             Active
                           </span>
                         )}
+                        {product.is_sold_out && (
+                          <span className="inline-block px-3 py-1 rounded-full text-xs font-sans font-medium bg-red-100 text-red-700">
+                            Sold Out
+                          </span>
+                        )}
                         {product.is_best_seller && (
                           <span className="inline-block px-3 py-1 rounded-full text-xs font-sans font-medium bg-amber-100 text-amber-700">
                             Bestseller
@@ -319,6 +340,19 @@ export default function AdminProductsPage() {
                           >
                             <Pencil size={16} />
                           </Link>
+                          <button
+                            onClick={() => handleToggleSoldOut(product.id, product.is_sold_out)}
+                            disabled={isLoading}
+                            className={cn(
+                              'p-2 rounded-lg transition-colors disabled:opacity-50',
+                              product.is_sold_out
+                                ? 'bg-red-100 text-red-600 hover:bg-emerald-100 hover:text-emerald-600'
+                                : 'bg-stone-light text-warm hover:bg-red-100 hover:text-red-600'
+                            )}
+                            title={product.is_sold_out ? 'Mark as in stock' : 'Mark as sold out'}
+                          >
+                            {product.is_sold_out ? <Ban size={16} /> : <ShoppingBag size={16} />}
+                          </button>
                           <button
                             onClick={() => handleToggleActive(product.id, product.is_active)}
                             disabled={isLoading}

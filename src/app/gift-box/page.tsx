@@ -108,10 +108,30 @@ export default function GiftBoxPage() {
   const [selectedStones, setSelectedStones] = useState<string[]>([]);
   const [selectedOil, setSelectedOil] = useState<string | null>(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [soldOutStones, setSoldOutStones] = useState<string[]>([]);
+  const [soldOutOils, setSoldOutOils] = useState<string[]>([]);
+
+  // Fetch sold-out status from API
+  useEffect(() => {
+    fetch('/api/sold-out')
+      .then((res) => res.json())
+      .then((data) => {
+        setSoldOutStones(data.soldOutStones || []);
+        // Map product names to oil names (remove " Essence Oil" suffix)
+        const oilNames = (data.soldOutProducts || []).map((name: string) =>
+          name.replace(' Essence Oil', '')
+        );
+        setSoldOutOils(oilNames);
+      })
+      .catch(() => {
+        // Silently fail - items will show as available
+      });
+  }, []);
 
   const stones = Object.entries(POWER_STONE_EFFECTS);
 
   const toggleStone = (name: string) => {
+    if (soldOutStones.includes(name)) return;
     setSelectedStones((prev) => {
       if (prev.includes(name)) {
         return prev.filter((s) => s !== name);
@@ -201,19 +221,23 @@ export default function GiftBoxPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {stones.map(([name, stone]) => {
                 const isSelected = selectedStones.includes(name);
+                const isSoldOut = soldOutStones.includes(name);
                 const isMaxReached = selectedStones.length >= MAX_STONES && !isSelected;
+                const isDisabled = isMaxReached || isSoldOut;
 
                 return (
                   <button
                     key={name}
                     onClick={() => toggleStone(name)}
-                    disabled={isMaxReached}
+                    disabled={isDisabled}
                     className={cn(
                       'group relative rounded-2xl overflow-hidden border-2 transition-all duration-300 text-left',
                       isSelected
                         ? `${STONE_SELECTED_COLORS[name]} ring-4 shadow-lg`
-                        : `border-stone-light/60 hover:border-stone/40 hover:shadow-md`,
-                      isMaxReached && 'opacity-40 cursor-not-allowed'
+                        : isSoldOut
+                          ? 'border-gray-200 opacity-70 cursor-not-allowed'
+                          : `border-stone-light/60 hover:border-stone/40 hover:shadow-md`,
+                      isMaxReached && !isSoldOut && 'opacity-40 cursor-not-allowed'
                     )}
                   >
                     {/* Image */}
@@ -223,9 +247,18 @@ export default function GiftBoxPage() {
                         alt={name}
                         className={cn(
                           'w-full h-full object-cover transition-transform duration-500',
-                          isSelected ? 'scale-105' : 'group-hover:scale-105'
+                          isSelected ? 'scale-105' : 'group-hover:scale-105',
+                          isSoldOut && 'grayscale opacity-60'
                         )}
                       />
+                      {/* Sold out overlay */}
+                      {isSoldOut && (
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                          <span className="px-3 py-1.5 rounded-full bg-dark/80 text-cream text-[10px] font-sans font-medium tracking-wider backdrop-blur-sm">
+                            SOLD OUT
+                          </span>
+                        </div>
+                      )}
                       {/* Selection indicator */}
                       {isSelected && (
                         <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-dark/90 flex items-center justify-center">
@@ -233,16 +266,21 @@ export default function GiftBoxPage() {
                         </div>
                       )}
                       {/* Color overlay on hover */}
-                      <div className={cn(
-                        'absolute inset-0 transition-opacity duration-300',
-                        isSelected ? 'opacity-10' : 'opacity-0 group-hover:opacity-10',
-                        STONE_COLORS[name]
-                      )} />
+                      {!isSoldOut && (
+                        <div className={cn(
+                          'absolute inset-0 transition-opacity duration-300',
+                          isSelected ? 'opacity-10' : 'opacity-0 group-hover:opacity-10',
+                          STONE_COLORS[name]
+                        )} />
+                      )}
                     </div>
 
                     {/* Info */}
                     <div className="p-3 md:p-4">
-                      <h3 className="font-serif text-sm md:text-base text-dark leading-tight mb-0.5">
+                      <h3 className={cn(
+                        'font-serif text-sm md:text-base leading-tight mb-0.5',
+                        isSoldOut ? 'text-gray-400' : 'text-dark'
+                      )}>
                         {name}
                       </h3>
                       <div className="flex flex-wrap gap-1">
@@ -251,9 +289,11 @@ export default function GiftBoxPage() {
                             key={effect}
                             className={cn(
                               'inline-block text-[9px] md:text-[10px] font-sans px-2 py-0.5 rounded-full transition-colors duration-300',
-                              isSelected
-                                ? 'bg-gold/15 text-gold-dark'
-                                : 'bg-stone-light text-warm-light'
+                              isSoldOut
+                                ? 'bg-gray-100 text-gray-400'
+                                : isSelected
+                                  ? 'bg-gold/15 text-gold-dark'
+                                  : 'bg-stone-light text-warm-light'
                             )}
                           >
                             {effect}
@@ -288,16 +328,23 @@ export default function GiftBoxPage() {
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {ESSENCE_OILS.map((oil) => {
                   const isSelected = selectedOil === oil.name;
+                  const isSoldOut = soldOutOils.includes(oil.name);
 
                   return (
                     <button
                       key={oil.name}
-                      onClick={() => setSelectedOil(isSelected ? null : oil.name)}
+                      onClick={() => {
+                        if (isSoldOut) return;
+                        setSelectedOil(isSelected ? null : oil.name);
+                      }}
+                      disabled={isSoldOut}
                       className={cn(
                         'group relative rounded-2xl overflow-hidden border-2 transition-all duration-300 text-left',
                         isSelected
                           ? `${oil.selectedColor} ring-4 shadow-lg`
-                          : 'border-stone-light/60 hover:border-stone/40 hover:shadow-md'
+                          : isSoldOut
+                            ? 'border-gray-200 opacity-70 cursor-not-allowed'
+                            : 'border-stone-light/60 hover:border-stone/40 hover:shadow-md'
                       )}
                     >
                       <div className="relative aspect-[4/3] overflow-hidden">
@@ -306,9 +353,17 @@ export default function GiftBoxPage() {
                           alt={oil.name}
                           className={cn(
                             'w-full h-full object-cover transition-transform duration-500',
-                            isSelected ? 'scale-105' : 'group-hover:scale-105'
+                            isSelected ? 'scale-105' : 'group-hover:scale-105',
+                            isSoldOut && 'grayscale opacity-60'
                           )}
                         />
+                        {isSoldOut && (
+                          <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                            <span className="px-3 py-1.5 rounded-full bg-dark/80 text-cream text-[10px] font-sans font-medium tracking-wider backdrop-blur-sm">
+                              SOLD OUT
+                            </span>
+                          </div>
+                        )}
                         {isSelected && (
                           <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-dark/90 flex items-center justify-center">
                             <Check size={14} className="text-cream" />
@@ -317,10 +372,16 @@ export default function GiftBoxPage() {
                       </div>
 
                       <div className="p-3 md:p-4">
-                        <h3 className="font-serif text-sm md:text-base text-dark leading-tight mb-0.5">
+                        <h3 className={cn(
+                          'font-serif text-sm md:text-base leading-tight mb-0.5',
+                          isSoldOut ? 'text-gray-400' : 'text-dark'
+                        )}>
                           {oil.name}
                         </h3>
-                        <p className="text-[10px] font-sans text-warm-light">{oil.note}</p>
+                        <p className={cn(
+                          'text-[10px] font-sans',
+                          isSoldOut ? 'text-gray-400' : 'text-warm-light'
+                        )}>{oil.note}</p>
                       </div>
                     </button>
                   );

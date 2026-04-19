@@ -71,6 +71,15 @@ export type DbProduct = {
   is_new: boolean
   is_giftable: boolean
   is_active: boolean
+  is_sold_out: boolean
+  created_at: string
+  updated_at: string
+}
+
+export type DbStone = {
+  id: string
+  name: string
+  is_sold_out: boolean
   created_at: string
   updated_at: string
 }
@@ -98,6 +107,7 @@ export type DbProductInsert = {
   is_new?: boolean
   is_giftable?: boolean
   is_active?: boolean
+  is_sold_out?: boolean
   created_at?: string
   updated_at?: string
 }
