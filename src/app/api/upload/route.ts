@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createServerSupabaseClient } from '@/lib/supabase/server'
+import { createClient } from '@supabase/supabase-js'
 import { isAdmin } from '@/lib/supabase/queries'
 
 export const dynamic = 'force-dynamic'
@@ -38,7 +38,11 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const supabase = createServerSupabaseClient()
+    // Use service role client for storage operations
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    )
 
     // Generate unique filename
     const ext = file.name.split('.').pop()?.toLowerCase() || 'png'
