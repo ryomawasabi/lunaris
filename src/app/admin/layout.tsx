@@ -10,6 +10,7 @@ import {
   Grid3x3,
   Layers,
   Loader,
+  ShoppingCart,
 } from 'lucide-react'
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
@@ -40,6 +41,11 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       label: 'Dashboard',
       href: '/admin',
       icon: LayoutDashboard,
+    },
+    {
+      label: 'Orders',
+      href: '/admin/orders',
+      icon: ShoppingCart,
     },
     {
       label: 'Products',
