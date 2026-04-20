@@ -44,6 +44,18 @@ export async function POST(req: NextRequest) {
     }
 
     const supabase = createServerSupabaseClient()
+
+    // Check for duplicate name
+    const { data: existing } = await supabase
+      .from('categories')
+      .select('id')
+      .eq('name', name)
+      .maybeSingle()
+
+    if (existing) {
+      return NextResponse.json({ error: 'A category with this name already exists' }, { status: 400 })
+    }
+
     const { data, error } = await supabase
       .from('categories')
       .insert({ name, slug, image: image || null, product_count: 0 })
@@ -76,6 +88,14 @@ export async function PATCH(req: NextRequest) {
     }
 
     const supabase = createServerSupabaseClient()
+
+    // Get old name before updating (to update products referencing it)
+    const { data: oldCat } = await supabase
+      .from('categories')
+      .select('name')
+      .eq('id', id)
+      .single()
+
     const updates: Record<string, unknown> = {}
     if (name !== undefined) updates.name = name
     if (slug !== undefined) updates.slug = slug
@@ -90,6 +110,14 @@ export async function PATCH(req: NextRequest) {
 
     if (error) {
       return NextResponse.json({ error: error.message }, { status: 500 })
+    }
+
+    // If name changed, update all products referencing the old name
+    if (name && oldCat && oldCat.name !== name) {
+      await supabase
+        .from('products')
+        .update({ category: name, updated_at: new Date().toISOString() })
+        .eq('category', oldCat.name)
     }
 
     return NextResponse.json({ category: data })

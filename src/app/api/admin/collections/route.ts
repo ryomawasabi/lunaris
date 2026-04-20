@@ -44,6 +44,18 @@ export async function POST(req: NextRequest) {
     }
 
     const supabase = createServerSupabaseClient()
+
+    // Check for duplicate name
+    const { data: existing } = await supabase
+      .from('collections')
+      .select('id')
+      .eq('name', name)
+      .maybeSingle()
+
+    if (existing) {
+      return NextResponse.json({ error: 'A collection with this name already exists' }, { status: 400 })
+    }
+
     const { data, error } = await supabase
       .from('collections')
       .insert({
@@ -84,6 +96,15 @@ export async function PATCH(req: NextRequest) {
       return NextResponse.json({ error: 'ID is required' }, { status: 400 })
     }
 
+    const supabase = createServerSupabaseClient()
+
+    // Get old name before updating (to update products referencing it)
+    const { data: oldCol } = await supabase
+      .from('collections')
+      .select('name')
+      .eq('id', id)
+      .single()
+
     // Only allow known fields
     const allowed: Record<string, unknown> = {}
     const fields = ['name', 'slug', 'tagline', 'description', 'long_description', 'image', 'symbolism']
@@ -92,7 +113,6 @@ export async function PATCH(req: NextRequest) {
     }
     allowed.updated_at = new Date().toISOString()
 
-    const supabase = createServerSupabaseClient()
     const { data, error } = await supabase
       .from('collections')
       .update(allowed)
@@ -102,6 +122,26 @@ export async function PATCH(req: NextRequest) {
 
     if (error) {
       return NextResponse.json({ error: error.message }, { status: 500 })
+    }
+
+    // If name changed, update all products referencing the old name in their collection array
+    if (updates.name && oldCol && oldCol.name !== updates.name) {
+      const { data: products } = await supabase
+        .from('products')
+        .select('id, collection')
+        .contains('collection', [oldCol.name])
+
+      if (products) {
+        for (const p of products) {
+          const updatedCollection = (p.collection || []).map(
+            (c: string) => c === oldCol.name ? updates.name as string : c
+          )
+          await supabase
+            .from('products')
+            .update({ collection: updatedCollection, updated_at: new Date().toISOString() })
+            .eq('id', p.id)
+        }
+      }
     }
 
     return NextResponse.json({ collection: data })

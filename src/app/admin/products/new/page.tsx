@@ -191,6 +191,11 @@ export default function NewProductPage() {
     e.preventDefault()
     setSubmitError(null)
 
+    if (!formData.slug.trim() || formData.slug.trim() === '-') {
+      setSubmitError('Product name generates an invalid URL slug. Please use a name with letters or numbers.')
+      return
+    }
+
     const imageUrls = images.filter((img) => img.url && !img.uploading).map((img) => img.url)
     if (imageUrls.length === 0) {
       setSubmitError('Please add at least one product image')
