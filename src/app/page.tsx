@@ -10,8 +10,10 @@ import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { FloatingParticles } from '@/components/animations/FloatingParticles';
 import { LotusPond } from '@/components/animations/LotusPond';
 import { SectionDivider } from '@/components/animations/SectionDivider';
+import { useLanguage } from '@/components/providers/LanguageProvider';
 
 export default function Home() {
+  const { t } = useLanguage();
   return (
     <main className="min-h-screen bg-cream">
 
@@ -29,16 +31,13 @@ export default function Home() {
           <ScrollReveal>
             <Moon className="w-8 h-8 text-gold mx-auto mb-8 opacity-60" />
             <h2 className="font-serif text-3xl md:text-5xl text-cream font-light leading-relaxed mb-8">
-              Where yin meets yang, balance is born
-              <span className="text-gold">&mdash;</span>
-              <br className="hidden md:block" />
-              and through balance, we <em className="text-gold">transform</em>.
+              {t('home.opening.quote')}
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
             <div className="h-px w-24 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-8" />
             <p className="font-sans text-base md:text-lg text-cream/60 leading-relaxed max-w-2xl mx-auto">
-              YINYANG GUARDIAN was born from the ancient philosophy of duality — the dance of light and shadow, stillness and motion. Each piece channels the harmony of opposing forces through chakra-aligned gemstones and sacred design.
+              {t('home.opening.description')}
             </p>
           </ScrollReveal>
         </div>
@@ -56,8 +55,8 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold mb-4">The Way of Balance</p>
-              <h2 className="font-serif text-3xl md:text-5xl text-dark font-light">Yin, Yang &amp; the Path Between</h2>
+              <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold mb-4">{t('home.wayOfBalance.label')}</p>
+              <h2 className="font-serif text-3xl md:text-5xl text-dark font-light">{t('home.wayOfBalance.title')}</h2>
             </div>
           </ScrollReveal>
 
@@ -65,21 +64,21 @@ export default function Home() {
             {[
               {
                 icon: Sparkles,
-                title: 'Yin Energy',
-                subtitle: 'Receptive Flow',
-                description: 'The yin within each piece draws from lunar energy, water elements, and feminine crystals — creating a vessel of intuition, calm, and deep inner wisdom.',
+                title: t('home.yinEnergy.title'),
+                subtitle: t('home.yinEnergy.subtitle'),
+                description: t('home.yinEnergy.description'),
               },
               {
                 icon: Shield,
-                title: 'Yang Energy',
-                subtitle: 'Active Force',
-                description: 'The yang force channels solar power, fire elements, and protective stones — forging shields of confidence, vitality, and outward strength.',
+                title: t('home.yangEnergy.title'),
+                subtitle: t('home.yangEnergy.subtitle'),
+                description: t('home.yangEnergy.description'),
               },
               {
                 icon: Flame,
-                title: 'Chakra Harmony',
-                subtitle: 'Energy Alignment',
-                description: 'Where yin and yang converge, the seven chakras align. Each piece is tuned to specific energy centers, creating a bridge between your physical body and spiritual self.',
+                title: t('home.chakraHarmony.title'),
+                subtitle: t('home.chakraHarmony.subtitle'),
+                description: t('home.chakraHarmony.description'),
               },
             ].map((pillar, index) => {
               const Icon = pillar.icon;
@@ -175,11 +174,11 @@ export default function Home() {
         <div className="relative z-10 max-w-3xl mx-auto text-center px-4">
           <ScrollReveal>
             <h2 className="font-serif text-4xl md:text-6xl text-white font-light leading-tight mb-6" style={{ textShadow: '0 2px 20px rgba(90,142,174,0.3)' }}>
-              Soul Stone<br />Discovery
+              {t('home.soulStone.title')}
             </h2>
             <div className="h-px w-20 bg-gradient-to-r from-transparent via-[#5A8EAE] to-transparent mx-auto mb-6" />
             <p className="font-sans text-base md:text-lg text-[#8BB8D6]/70 leading-relaxed max-w-xl mx-auto mb-10">
-              The stars hold the key to your crystal alignment. Enter your birth date and uncover the gemstones that resonate with your unique celestial energy.
+              {t('home.soulStone.description')}
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
@@ -188,11 +187,11 @@ export default function Home() {
               className="group inline-flex items-center gap-3 px-10 py-4 rounded-full border border-[#5A8EAE]/40 bg-[#5A8EAE]/10 text-white font-sans text-sm tracking-wider hover:bg-[#5A8EAE]/20 hover:border-[#5A8EAE]/60 transition-all duration-500 backdrop-blur-sm"
             >
               <Sparkles className="w-4 h-4 text-[#8BB8D6] group-hover:scale-110 transition-transform" />
-              Discover Your Soul Stone
+              {t('home.soulStone.cta')}
               <span className="text-[#8BB8D6]/60 group-hover:translate-x-1 transition-transform">&rarr;</span>
             </a>
             <p className="font-sans text-xs text-[#5A8EAE]/40 mt-6 tracking-wider">
-              FREE · TAKES 30 SECONDS
+              {t('home.soulStone.free')}
             </p>
           </ScrollReveal>
         </div>
@@ -220,19 +219,19 @@ export default function Home() {
               <ScrollReveal direction="right">
                 <div className="flex items-center gap-3 mb-6">
                   <Gem className="w-5 h-5 text-mystic-star" />
-                  <p className="font-sans text-xs uppercase tracking-[0.25em] text-mystic-star">The Alchemy</p>
+                  <p className="font-sans text-xs uppercase tracking-[0.25em] text-mystic-star">{t('home.alchemy.label')}</p>
                 </div>
                 <h2 className="font-serif text-3xl md:text-4xl text-cream font-light leading-snug mb-6">
-                  Each crystal carries the balance of earth and cosmos within
+                  {t('home.alchemy.title')}
                 </h2>
               </ScrollReveal>
               <ScrollReveal direction="right" delay={0.2}>
                 <div className="space-y-5 text-cream/60 font-sans text-sm leading-relaxed">
                   <p>
-                    We select each stone for its chakra resonance and elemental alignment. Cool blue lapis for the third eye, warm carnelian for the sacral center, grounding garnet for the root — every crystal is chosen to restore balance where you need it most.
+                    {t('home.alchemy.desc1')}
                   </p>
                   <p>
-                    Our artisans work with the rhythms of yin and yang, pairing masculine metals with feminine stones, creating pieces where opposing energies meet in perfect equilibrium. The result is jewelry that doesn&apos;t just adorn — it <em>realigns</em>.
+                    {t('home.alchemy.desc2')}
                   </p>
                 </div>
               </ScrollReveal>
@@ -240,17 +239,17 @@ export default function Home() {
                 <div className="mt-8 flex items-center gap-6">
                   <div className="text-center">
                     <p className="font-serif text-3xl text-gold">100+</p>
-                    <p className="font-sans text-[10px] uppercase tracking-wider text-cream/40 mt-1">Crystal Varieties</p>
+                    <p className="font-sans text-[10px] uppercase tracking-wider text-cream/40 mt-1">{t('home.alchemy.crystalVarieties')}</p>
                   </div>
                   <div className="w-px h-10 bg-cream/10" />
                   <div className="text-center">
                     <p className="font-serif text-3xl text-gold">48h</p>
-                    <p className="font-sans text-[10px] uppercase tracking-wider text-cream/40 mt-1">Balancing Time</p>
+                    <p className="font-sans text-[10px] uppercase tracking-wider text-cream/40 mt-1">{t('home.alchemy.balancingTime')}</p>
                   </div>
                   <div className="w-px h-10 bg-cream/10" />
                   <div className="text-center">
                     <p className="font-serif text-3xl text-gold">7</p>
-                    <p className="font-sans text-[10px] uppercase tracking-wider text-cream/40 mt-1">Chakra Points</p>
+                    <p className="font-sans text-[10px] uppercase tracking-wider text-cream/40 mt-1">{t('home.alchemy.chakraPoints')}</p>
                   </div>
                 </div>
               </ScrollReveal>
@@ -270,12 +269,12 @@ export default function Home() {
               <Star className="w-3 h-3 text-mystic-star" />
             </div>
             <blockquote className="font-serif text-2xl md:text-4xl lg:text-5xl text-cream font-light leading-relaxed italic">
-              &ldquo;In the balance of yin and yang, all things find their true nature. Wear the harmony, become the harmony.&rdquo;
+              &ldquo;{t('home.wisdom.quote')}&rdquo;
             </blockquote>
             <div className="mt-10 flex items-center justify-center gap-4">
               <div className="h-px w-8 bg-gold/40" />
               <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold">
-                Ancient Wisdom of Balance
+                {t('home.wisdom.label')}
               </p>
               <div className="h-px w-8 bg-gold/40" />
             </div>
@@ -289,17 +288,17 @@ export default function Home() {
           <div className="max-w-2xl mx-auto text-center">
             <Sparkles className="w-6 h-6 text-gold mx-auto mb-6" />
             <h2 className="font-serif text-3xl md:text-4xl text-dark font-light mb-6">
-              Find Your Balance
+              {t('home.findBalance.title')}
             </h2>
             <p className="font-sans text-base text-warm leading-relaxed mb-10">
-              Explore our chakra-aligned collections and discover the crystals that restore harmony to your energy centers.
+              {t('home.findBalance.description')}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button href="/products" variant="primary" size="lg">
-                Explore Collections
+                {t('home.findBalance.exploreCollections')}
               </Button>
               <Button href="/gifts" variant="secondary" size="lg">
-                Gift Balance
+                {t('home.findBalance.giftBalance')}
               </Button>
             </div>
           </div>

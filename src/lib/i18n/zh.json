@@ -121,6 +121,54 @@
     },
     "asSeenIn": {
       "title": "受精神社区信赖"
+    },
+    "opening": {
+      "quote": "当阴遇见阳，平衡由此诞生——通过平衡，我们得以蜕变。",
+      "description": "YINYANG GUARDIAN 源于二元论的古老哲学——光与影、静与动的舞蹈。每件珠宝都通过脉轮对齐的宝石和神圣的设计，诠释着对立力量的和谐。"
+    },
+    "wayOfBalance": {
+      "label": "平衡之道",
+      "title": "阴、阳及其之间的路径"
+    },
+    "yinEnergy": {
+      "title": "阴的能量",
+      "subtitle": "接纳的流动",
+      "description": "每件珠宝中的阴汲取月亮能量、水的元素和女性水晶——创造直觉、宁静和深刻内在智慧的容器。"
+    },
+    "yangEnergy": {
+      "title": "阳的能量",
+      "subtitle": "主动的力量",
+      "description": "阳的力量引导太阳能、火的元素和保护之石——铸造自信、活力和向外力量的盾牌。"
+    },
+    "chakraHarmony": {
+      "title": "脉轮和谐",
+      "subtitle": "能量对齐",
+      "description": "在阴阳汇聚之处，七个脉轮对齐。每件珠宝都与特定的能量中心相调和，在您的物质身体和精神自我之间建立桥梁。"
+    },
+    "soulStone": {
+      "title": "灵魂石探索",
+      "description": "星辰掌握着您水晶对齐的钥匙。输入您的出生日期，发现与您独特天体能量共鸣的宝石。",
+      "cta": "发现您的灵魂石",
+      "free": "免费 · 仅需30秒"
+    },
+    "alchemy": {
+      "label": "炼金术",
+      "title": "每块水晶都蕴含着地球与宇宙的平衡",
+      "desc1": "我们精心挑选每块石头，从脉轮共鸣和元素对齐的角度出发。为第三眼选择清爽的蓝色青金石，为骶骨中心选择温暖的红玛瑙，为根脉轮选择接地的石榴石——每种水晶都被精心选择，以在您最需要的地方恢复平衡。",
+      "desc2": "我们的工匠遵循阴阳的韵律工作，将阳性金属与阴性石头配对，创造出对立能量在完美平衡中相遇的珠宝。结果不仅仅是装饰——这是重新对齐。",
+      "crystalVarieties": "水晶品种",
+      "balancingTime": "平衡时间",
+      "chakraPoints": "脉轮要点"
+    },
+    "wisdom": {
+      "quote": "在阴阳的平衡中，万物找到其真实本质。穿上和谐，成为和谐。",
+      "label": "平衡的古老智慧"
+    },
+    "findBalance": {
+      "title": "找到您的平衡",
+      "description": "探索我们的脉轮对齐系列，发现能够为您的能量中心恢复和谐的水晶。",
+      "exploreCollections": "探索系列",
+      "giftBalance": "赠送平衡"
     }
   },
   "products": {
@@ -338,6 +386,135 @@
     "title": "我们的系列",
     "subtitle": "按精神意图策划，为您的旅程设计。"
   },
+  "heroAnim": {
+    "tagline": "古老智慧与现代神秘主义的相遇之处",
+    "hoverHint": "将光标悬停在符号上以探索"
+  },
+  "yinYangNav": {
+    "shop": "购物",
+    "discover": "发现",
+    "newArrivals": "新品上市",
+    "collections": "系列",
+    "soulStoneDiscovery": "灵魂石探索",
+    "gifts": "礼赠",
+    "about": "关于我们",
+    "shopAll": "全部商品"
+  },
+  "announcement": {
+    "msg1": "用您佩戴的每块水晶对齐您的脉轮",
+    "msg2": "阴阳平衡 — 在日月之下精心打造",
+    "msg3": "$150以上订单免运费"
+  },
+  "productCard": {
+    "soldOut": "已售完",
+    "quickAdd": "快速添加",
+    "added": "已添加！",
+    "addToFavorites": "添加到收藏夹",
+    "bestSeller": "畅销品",
+    "new": "新品",
+    "giftable": "可礼赠",
+    "sale": "促销"
+  },
+  "collectionCard": {
+    "explore": "探索"
+  },
+  "collectionSort": {
+    "piecesCount": "该系列中有 {count} 件珠宝",
+    "pieceCount": "该系列中有 1 件珠宝",
+    "sortBy": "排序",
+    "featured": "推荐",
+    "priceLowHigh": "价格：低到高",
+    "priceHighLow": "价格：高到低",
+    "newest": "最新"
+  },
+  "chakraMap": {
+    "label": "能量指南",
+    "title": "脉轮 × 水晶地图",
+    "hoverToBloom": "悬停以绽放",
+    "recommendedStones": "推荐的石头",
+    "shopCollection": "购买 {name} 系列",
+    "lotusMandala": "莲花曼陀罗",
+    "hoverPetal": "将光标悬停在花瓣上以探索每个脉轮及其水晶。",
+    "bringCursor": "将光标靠近以观看莲花绽放。",
+    "clickPetal": "点击花瓣以购买其系列",
+    "crown": { "name": "顶轮", "subtitle": "宇宙意识", "desc": "精神觉醒、启蒙及与宇宙意识的连接。" },
+    "thirdEye": { "name": "眉心轮", "subtitle": "内在视力", "desc": "直觉、洞察力及超越物质世界的视野能力。" },
+    "throat": { "name": "喉轮", "subtitle": "真实表达", "desc": "沟通、自我表达及说出真实的自己。" },
+    "heart": { "name": "心轮", "subtitle": "无条件的爱", "desc": "爱、同情、治愈及与所有生灵的和谐。" },
+    "solarPlexus": { "name": "太阳神经丛", "subtitle": "个人力量", "desc": "自信、意志力及个人蜕变之火。" },
+    "sacral": { "name": "骶骨轮", "subtitle": "创意流动", "desc": "创意、情感、热情及活着的喜悦。" },
+    "root": { "name": "根轮", "subtitle": "基础", "desc": "稳定、扎根、安全及与地球的连接。" }
+  },
+  "quiz": {
+    "title": "灵魂石探索",
+    "introText": "星辰已对齐以指引您。输入您的出生日期，发现与您独特天体能量共鸣的水晶。",
+    "beginJourney": "开始您的旅程",
+    "whenBorn": "您何时出生？",
+    "birthDateReveals": "您的出生日期揭示您的黄道带能量和水晶对齐。",
+    "month": "月份",
+    "day": "日期",
+    "year": "年份",
+    "yearOptional": "年份为可选项",
+    "invalidDate": "请输入有效的出生日期。",
+    "revealCrystals": "揭示我的水晶",
+    "goBack": "← 返回",
+    "readingStars": "正在读星...",
+    "aligningEnergy": "正在对齐您的天体能量",
+    "crystalAlignment": "您的水晶对齐",
+    "recommendedPieces": "为您推荐的 {crystal} 珠宝",
+    "celestialCollection": "您的天体系列",
+    "allPiecesAligned": "与您的 {sign} 能量对齐的所有 YINYANG GUARDIAN 珠宝",
+    "exploreAllCrystals": "探索所有水晶",
+    "tryAnotherDate": "尝试其他日期",
+    "element": "{element} 元素"
+  },
+  "giftBox": {
+    "heroTitle": "创建您的水晶精油套装",
+    "heroDescription": "选择 {min}–{max} 块力量石，创建您的个性化水晶精油套装，包括精油和玻璃容器。",
+    "selectStones": "选择您的石头",
+    "chooseStones": "为您的套装选择 {min}–{max} 块石头",
+    "selected": "已选择 {count} 块",
+    "reset": "重置",
+    "soldOut": "已售完",
+    "chooseOil": "选择您的精油",
+    "selectFragrance": "为您的套装选择 1 种香氛",
+    "noneSelected": "未选择",
+    "yourSet": "您的水晶精油套装",
+    "setContents": "力量石 + 精油 + 玻璃容器",
+    "selectedStones": "已选择的石头（{count}/{max}）",
+    "chooseToBuild": "选择 {min}–{max} 块石头以构建您的套装",
+    "essenceOil": "精油",
+    "chooseOilBelow": "在下方选择精油",
+    "combinedEnergy": "综合能量",
+    "setIncludes": "套装包含",
+    "powerStones": "{min}–{max} 块精选力量石",
+    "purifyingOil": "净化精油",
+    "glassVessel": "玻璃展示容器",
+    "luxuryBox": "含海绵垫片的奢华盒",
+    "energyGuide": "水晶能量指南卡",
+    "taxIncluded": "包含税费",
+    "addToCart": "加入购物车",
+    "addedToCart": "已加入购物车",
+    "selectMoreStones": "再选择 {count} 块石头",
+    "selectOil": "选择精油",
+    "notSureStones": "不确定选哪些石头？",
+    "takeQuiz": "进行灵魂石探索测验 →",
+    "signatureCollection": "标志系列",
+    "crystalEssenceSet": "水晶精油套装",
+    "productDescription": "一套豪华套装，包含精心挑选的力量石、水晶能量精油和玻璃展示容器，全部呈现在含保护海绵垫片的高级礼品盒中。选择您自己的石头组合，创建与您独特能量相共鸣的套装。",
+    "eachSetIncludes": "每套包含",
+    "stonesLabel": "2–3 块力量石",
+    "stonesDesc": "精心挑选的天然水晶",
+    "oilLabel": "精油",
+    "oilDesc": "水晶能量芳疗混合",
+    "vesselLabel": "玻璃容器",
+    "vesselDesc": "您的石头的展示容器",
+    "boxLabel": "高级礼品盒",
+    "boxDesc": "含海绵垫片的奢华盒",
+    "createYourSet": "创建您的套装",
+    "selectStonesBelow": "在下方选择石头",
+    "stonesInVessel": "容器中的 {count} 块石头"
+  },
   "legal": {
     "privacyPolicy": "隐私政策",
     "termsOfService": "服务条款",
@@ -375,7 +552,7 @@
       },
       "changes": {
         "title": "对本隐私政策的更改",
-        "description": "我们可能会不时更新本隐私政策以反映我们实践或适用法律的更改。我们将通过在我们的网站上发布更新的政策和更新\"最后更新\"日期来通知您任何重大更改。"
+        "description": "我们可能会不时更新本隐私政策以反映我们实践或适用法律的更改。我们将通过在我们的网站上发布更新的政策和更新「最后更新」日期来通知您任何重大更改。"
       },
       "contact": {
         "title": "联系我们",
@@ -384,7 +561,7 @@
     },
     "termsOfServiceContent": {
       "title": "服务条款",
-      "introduction": "这些服务条款（\"条款\"）规定您对 YINYANG GUARDIAN 网站和服务的访问和使用。访问或使用我们的网站即表示您同意受这些条款的约束。如果您不同意这些条款的任何部分，请勿使用我们的网站。",
+      "introduction": "这些服务条款（「条款」）规定您对 YINYANG GUARDIAN 网站和服务的访问和使用。访问或使用我们的网站即表示您同意受这些条款的约束。如果您不同意这些条款的任何部分，请勿使用我们的网站。",
       "useOfWebsite": {
         "title": "网站使用",
         "description": "您同意仅为合法目的使用本网站，以及以不侵犯他人权利或限制其使用和享受网站的方式使用。禁止的行为包括骚扰或对任何人造成困扰或不便、发送淫秽或冒犯性内容、中断我们网站内的正常对话流程、以及尝试获得我们系统的未授权访问。"
@@ -423,7 +600,7 @@
       },
       "disclaimers": {
         "title": "免责声明",
-        "description": "本网站及其内容均按\"原样\"提供，不附带任何形式的明示或暗示保证。我们不保证网站不会中断、无错误或无病毒。虽然我们努力提供准确的精神和治愈信息，但这些声明未经科学证明。水晶无意诊断、治疗、治愈或预防任何医疗状况。如有医疗问题，请咨询医疗专业人士。"
+        "description": "本网站及其内容均按「原样」提供，不附带任何形式的明示或暗示保证。我们不保证网站不会中断、无错误或无病毒。虽然我们努力提供准确的精神和治愈信息，但这些声明未经科学证明。水晶无意诊断、治疗、治愈或预防任何医疗状况。如有医疗问题，请咨询医疗专业人士。"
       },
       "modifications": {
         "title": "对条款的修改",

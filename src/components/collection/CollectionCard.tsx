@@ -1,12 +1,16 @@
+'use client';
+
 import Link from "next/link";
 import PlaceholderImage from "@/components/layout/PlaceholderImage";
 import { Collection } from "@/lib/types";
+import { useLanguage } from '@/components/providers/LanguageProvider';
 
 interface CollectionCardProps {
   collection: Collection;
 }
 
 export function CollectionCard({ collection }: CollectionCardProps) {
+  const { t } = useLanguage();
   return (
     <Link href={`/collections/${collection.slug}`}>
       <div className="group relative overflow-hidden aspect-square md:aspect-auto md:h-96">
@@ -27,7 +31,7 @@ export function CollectionCard({ collection }: CollectionCardProps) {
             {collection.tagline}
           </p>
           <button className="text-cream text-sm font-sans font-medium uppercase tracking-wider hover:text-gold transition-colors inline-flex items-center gap-2 w-fit">
-            Explore
+            {t('collectionCard.explore')}
             <span className="text-lg">→</span>
           </button>
         </div>

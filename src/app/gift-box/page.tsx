@@ -7,6 +7,7 @@ import { Check, Package, Sparkles, RotateCcw, ShoppingBag, ChevronLeft, ChevronR
 import { cn } from '@/lib/utils';
 import GlassVessel from '@/components/gift-box/GlassVessel';
 import { useCart } from '@/components/providers/CartProvider';
+import { useLanguage } from '@/components/providers/LanguageProvider';
 
 const SHOWCASE_IMAGES = [
   '/Crystal Essence/crystal-essence-product 1.png',
@@ -106,6 +107,7 @@ const MIN_STONES = 2;
 const MAX_STONES = 3;
 
 export default function GiftBoxPage() {
+  const { t } = useLanguage();
   const { addItem } = useCart();
   const [selectedStones, setSelectedStones] = useState<string[]>([]);
   const [selectedOil, setSelectedOil] = useState<string | null>(null);
@@ -185,10 +187,10 @@ export default function GiftBoxPage() {
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
           <Package size={36} className="text-white/90 mb-4 drop-shadow-lg" />
           <h1 className="font-serif text-4xl md:text-5xl text-white mb-3 drop-shadow-lg">
-            Create Your Crystal Essence Set
+            {t('giftBox.heroTitle')}
           </h1>
           <p className="font-sans text-white/80 text-sm md:text-base max-w-lg drop-shadow-md">
-            Choose {MIN_STONES}–{MAX_STONES} power stones to create your personalized Crystal Essence Set with essential oil and glass vessel.
+            {t('giftBox.heroDescription', { min: MIN_STONES, max: MAX_STONES })}
           </p>
         </div>
       </section>
@@ -205,15 +207,15 @@ export default function GiftBoxPage() {
             <div className="flex items-center justify-between mb-8">
               <div>
                 <h2 className="font-serif text-2xl md:text-3xl text-dark mb-1">
-                  Select Your Stones
+                  {t('giftBox.selectStones')}
                 </h2>
                 <p className="font-sans text-warm text-sm">
-                  Choose {MIN_STONES}–{MAX_STONES} stones for your set ·{' '}
+                  {t('giftBox.chooseStones', { min: MIN_STONES, max: MAX_STONES })} ·{' '}
                   <span className={cn(
                     'font-medium',
                     selectedStones.length >= MIN_STONES ? 'text-gold-dark' : 'text-warm'
                   )}>
-                    {selectedStones.length} selected
+                    {t('giftBox.selected', { count: selectedStones.length })}
                   </span>
                 </p>
               </div>
@@ -223,7 +225,7 @@ export default function GiftBoxPage() {
                   className="flex items-center gap-1.5 text-xs font-sans text-warm hover:text-dark transition-colors"
                 >
                   <RotateCcw size={12} />
-                  Reset
+                  {t('giftBox.reset')}
                 </button>
               )}
             </div>
@@ -266,7 +268,7 @@ export default function GiftBoxPage() {
                       {isSoldOut && (
                         <div className="absolute inset-0 flex items-center justify-center bg-black/20">
                           <span className="px-3 py-1.5 rounded-full bg-dark/80 text-cream text-[10px] font-sans font-medium tracking-wider backdrop-blur-sm">
-                            SOLD OUT
+                            {t('giftBox.soldOut')}
                           </span>
                         </div>
                       )}
@@ -322,15 +324,15 @@ export default function GiftBoxPage() {
               <div className="flex items-center justify-between mb-8">
                 <div>
                   <h2 className="font-serif text-2xl md:text-3xl text-dark mb-1">
-                    Choose Your Essence Oil
+                    {t('giftBox.chooseOil')}
                   </h2>
                   <p className="font-sans text-warm text-sm">
-                    Select 1 fragrance for your set ·{' '}
+                    {t('giftBox.selectFragrance')} ·{' '}
                     <span className={cn(
                       'font-medium',
                       selectedOil ? 'text-gold-dark' : 'text-warm'
                     )}>
-                      {selectedOil ? selectedOil : 'None selected'}
+                      {selectedOil ? selectedOil : t('giftBox.noneSelected')}
                     </span>
                   </p>
                 </div>
@@ -371,7 +373,7 @@ export default function GiftBoxPage() {
                         {isSoldOut && (
                           <div className="absolute inset-0 flex items-center justify-center bg-black/20">
                             <span className="px-3 py-1.5 rounded-full bg-dark/80 text-cream text-[10px] font-sans font-medium tracking-wider backdrop-blur-sm">
-                              SOLD OUT
+                              {t('giftBox.soldOut')}
                             </span>
                           </div>
                         )}
@@ -412,30 +414,30 @@ export default function GiftBoxPage() {
                   <div className="absolute bottom-3 left-3 z-10">
                     <span className="inline-block text-[10px] font-sans px-2.5 py-1 rounded-full bg-dark/70 text-cream backdrop-blur-sm">
                       {selectedStones.length === 0
-                        ? 'Select stones below'
-                        : `${selectedStones.length} stone${selectedStones.length > 1 ? 's' : ''} in vessel`}
+                        ? t('giftBox.selectStonesBelow')
+                        : t('giftBox.stonesInVessel', { count: selectedStones.length })}
                     </span>
                   </div>
                 </div>
 
                 <div className="p-5 md:p-6">
                   <h3 className="font-serif text-xl text-dark mb-1">
-                    Your Crystal Essence Set
+                    {t('giftBox.yourSet')}
                   </h3>
                   <p className="text-xs font-sans text-warm-light mb-5">
-                    Power stones + Essential oil + Glass vessel
+                    {t('giftBox.setContents')}
                   </p>
 
                   {/* Selected Stones */}
                   <div className="mb-5">
                     <p className="text-[10px] font-sans text-warm-light uppercase tracking-wider mb-3">
-                      Selected Stones ({selectedStones.length}/{MAX_STONES})
+                      {t('giftBox.selectedStones', { count: selectedStones.length, max: MAX_STONES })}
                     </p>
                     {selectedStones.length === 0 ? (
                       <div className="py-6 text-center">
                         <Sparkles size={20} className="mx-auto text-stone mb-2" />
                         <p className="text-xs font-sans text-warm-light">
-                          Choose {MIN_STONES}–{MAX_STONES} stones to<br />build your set
+                          {t('giftBox.chooseToBuild', { min: MIN_STONES, max: MAX_STONES })}
                         </p>
                       </div>
                     ) : (
@@ -468,7 +470,7 @@ export default function GiftBoxPage() {
                   {/* Selected Oil */}
                   <div className="mb-5 pt-4 border-t border-stone-light/40">
                     <p className="text-[10px] font-sans text-warm-light uppercase tracking-wider mb-3">
-                      Essence Oil
+                      {t('giftBox.essenceOil')}
                     </p>
                     {selectedOil ? (
                       <div className="flex items-center gap-3 p-2.5 rounded-xl bg-cream/80 border border-stone-light/40">
@@ -492,7 +494,7 @@ export default function GiftBoxPage() {
                       </div>
                     ) : (
                       <p className="text-xs font-sans text-warm-light text-center py-3">
-                        Choose an essence oil below
+                        {t('giftBox.chooseOilBelow')}
                       </p>
                     )}
                   </div>
@@ -501,7 +503,7 @@ export default function GiftBoxPage() {
                   {combinedEffects.length > 0 && (
                     <div className="mb-5 pt-4 border-t border-stone-light/40">
                       <p className="text-[10px] font-sans text-warm-light uppercase tracking-wider mb-2">
-                        Combined Energy
+                        {t('giftBox.combinedEnergy')}
                       </p>
                       <div className="flex flex-wrap gap-1.5">
                         {combinedEffects.map((effect) => (
@@ -519,28 +521,28 @@ export default function GiftBoxPage() {
                   {/* Includes */}
                   <div className="mb-6 pt-4 border-t border-stone-light/40">
                     <p className="text-[10px] font-sans text-warm-light uppercase tracking-wider mb-3">
-                      Set Includes
+                      {t('giftBox.setIncludes')}
                     </p>
                     <div className="space-y-2 text-xs font-sans text-warm">
                       <div className="flex items-center gap-2">
                         <span className="text-gold">✦</span>
-                        <span>{MIN_STONES}–{MAX_STONES} selected power stones</span>
+                        <span>{t('giftBox.powerStones', { min: MIN_STONES, max: MAX_STONES })}</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-gold">✦</span>
-                        <span>Purifying essential oil</span>
+                        <span>{t('giftBox.purifyingOil')}</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-gold">✦</span>
-                        <span>Glass display vessel</span>
+                        <span>{t('giftBox.glassVessel')}</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-gold">✦</span>
-                        <span>Luxury box with sponge cushion</span>
+                        <span>{t('giftBox.luxuryBox')}</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-gold">✦</span>
-                        <span>Crystal energy guide card</span>
+                        <span>{t('giftBox.energyGuide')}</span>
                       </div>
                     </div>
                   </div>
@@ -549,7 +551,7 @@ export default function GiftBoxPage() {
                   <div className="space-y-3">
                     <div className="flex items-baseline justify-between">
                       <span className="font-serif text-2xl text-dark">$150</span>
-                      <span className="text-xs font-sans text-warm-light">Tax included</span>
+                      <span className="text-xs font-sans text-warm-light">{t('giftBox.taxIncluded')}</span>
                     </div>
 
                     <button
@@ -565,16 +567,16 @@ export default function GiftBoxPage() {
                       {showConfirmation ? (
                         <>
                           <Check size={16} />
-                          Added to Cart
+                          {t('giftBox.addedToCart')}
                         </>
                       ) : (
                         <>
                           <ShoppingBag size={16} />
                           {canAddToCart
-                            ? 'Add to Cart'
+                            ? t('giftBox.addToCart')
                             : selectedStones.length < MIN_STONES
-                              ? `Select ${MIN_STONES - selectedStones.length} more stone${MIN_STONES - selectedStones.length > 1 ? 's' : ''}`
-                              : 'Select an essence oil'
+                              ? t('giftBox.selectMoreStones', { count: MIN_STONES - selectedStones.length })
+                              : t('giftBox.selectOil')
                           }
                         </>
                       )}
@@ -592,10 +594,10 @@ export default function GiftBoxPage() {
                   <Sparkles size={18} className="text-gold flex-shrink-0" />
                   <div>
                     <p className="text-sm font-serif text-dark group-hover:text-gold transition-colors">
-                      Not sure which stones?
+                      {t('giftBox.notSureStones')}
                     </p>
                     <p className="text-[11px] font-sans text-warm-light">
-                      Take the Soul Stone Discovery quiz →
+                      {t('giftBox.takeQuiz')}
                     </p>
                   </div>
                 </div>
@@ -610,6 +612,7 @@ export default function GiftBoxPage() {
 }
 
 function ProductShowcase() {
+  const { t } = useLanguage();
   const [currentImage, setCurrentImage] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
@@ -690,29 +693,26 @@ function ProductShowcase() {
           {/* Right: Product Info */}
           <div>
             <p className="text-[11px] font-sans text-gold-dark uppercase tracking-[0.2em] mb-3">
-              Signature Collection
+              {t('giftBox.signatureCollection')}
             </p>
             <h2 className="font-serif text-3xl md:text-4xl text-dark mb-4 leading-tight">
-              Crystal Essence Set
+              {t('giftBox.crystalEssenceSet')}
             </h2>
             <p className="font-sans text-warm text-sm md:text-base leading-relaxed mb-8">
-              A luxurious set featuring hand-selected power stones, a crystal-charged
-              essential oil, and a glass display vessel — all presented in a premium
-              gift box with a protective sponge cushion. Choose your own combination
-              of stones to create a set that resonates with your unique energy.
+              {t('giftBox.productDescription')}
             </p>
 
             {/* What's Included */}
             <div className="space-y-3 mb-8">
               <p className="text-[10px] font-sans text-warm-light uppercase tracking-[0.15em]">
-                Each Set Includes
+                {t('giftBox.eachSetIncludes')}
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {[
-                  { icon: '◇', label: '2–3 Power Stones', desc: 'Hand-selected natural crystals' },
-                  { icon: '◈', label: 'Essence Oil', desc: 'Crystal-charged aromatherapy blend' },
-                  { icon: '○', label: 'Glass Vessel', desc: 'Display vessel for your stones' },
-                  { icon: '□', label: 'Premium Gift Box', desc: 'Luxury box with sponge cushion' },
+                  { icon: '◇', label: t('giftBox.stonesLabel'), desc: t('giftBox.stonesDesc') },
+                  { icon: '◈', label: t('giftBox.oilLabel'), desc: t('giftBox.oilDesc') },
+                  { icon: '○', label: t('giftBox.vesselLabel'), desc: t('giftBox.vesselDesc') },
+                  { icon: '□', label: t('giftBox.boxLabel'), desc: t('giftBox.boxDesc') },
                 ].map((item) => (
                   <div
                     key={item.label}
@@ -732,14 +732,14 @@ function ProductShowcase() {
             <div className="flex items-center gap-6">
               <div>
                 <span className="font-serif text-3xl text-dark">$150</span>
-                <span className="text-xs font-sans text-warm-light ml-2">Tax included</span>
+                <span className="text-xs font-sans text-warm-light ml-2">{t('giftBox.taxIncluded')}</span>
               </div>
               <button
                 onClick={scrollToCreate}
                 className="flex items-center gap-2 px-8 py-3.5 rounded-full bg-dark text-cream font-sans text-sm tracking-wider hover:bg-charcoal transition-all duration-300 shadow-md hover:shadow-lg"
               >
                 <Sparkles size={16} />
-                Create Your Set
+                {t('giftBox.createYourSet')}
                 <ChevronDown size={14} className="ml-1" />
               </button>
             </div>

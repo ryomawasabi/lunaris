@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { getZodiacFromDate, getMatchingCrystalTypes, POWER_STONE_EFFECTS } from '@/lib/zodiac';
 import type { ZodiacSign } from '@/lib/zodiac';
 import { useProductStatus } from '@/components/providers/ProductStatusProvider';
+import { useLanguage } from '@/components/providers/LanguageProvider';
 import type { Product } from '@/lib/types';
 import { Sparkles, ArrowRight, RotateCcw, Calendar, ShoppingBag } from 'lucide-react';
 import { ZodiacWheel } from './ZodiacWheel';
@@ -18,6 +19,7 @@ interface MatchedProduct {
 }
 
 export function CrystalQuiz() {
+  const { t } = useLanguage();
   const [step, setStep] = useState<Step>('intro');
   const [month, setMonth] = useState('');
   const [day, setDay] = useState('');
@@ -55,7 +57,7 @@ export function CrystalQuiz() {
     const d = parseInt(day);
 
     if (!month || !day || m < 1 || m > 12 || d < 1 || d > 31) {
-      setError('Please enter a valid date of birth.');
+      setError(t('quiz.invalidDate'));
       return;
     }
 
@@ -75,17 +77,16 @@ export function CrystalQuiz() {
         <div className="min-h-[80vh] flex flex-col items-center justify-center px-4 text-center animate-fade-in-up">
           <div className="mb-8 text-6xl opacity-80">✦</div>
           <h1 className="font-serif text-4xl md:text-6xl text-dark mb-6 leading-tight">
-            Soul Stone<br />Discovery
+            {t('quiz.title')}
           </h1>
           <p className="font-sans text-warm max-w-lg text-base md:text-lg mb-12 leading-relaxed">
-            The stars have aligned to guide you. Enter your date of birth and
-            uncover the crystals that resonate with your unique celestial energy.
+            {t('quiz.introText')}
           </p>
           <button
             onClick={() => setStep('input')}
             className="group flex items-center gap-3 px-8 py-4 bg-dark text-cream font-sans text-sm tracking-wider rounded-full hover:bg-charcoal transition-all duration-300"
           >
-            Begin Your Journey
+            {t('quiz.beginJourney')}
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
@@ -96,17 +97,17 @@ export function CrystalQuiz() {
         <div className="min-h-[80vh] flex flex-col items-center justify-center px-4 text-center animate-fade-in-up">
           <Calendar size={32} className="text-gold mb-6" />
           <h2 className="font-serif text-3xl md:text-5xl text-dark mb-3">
-            When were you born?
+            {t('quiz.whenBorn')}
           </h2>
           <p className="font-sans text-warm mb-10 text-sm md:text-base">
-            Your birth date reveals your zodiac energy and crystal alignment.
+            {t('quiz.birthDateReveals')}
           </p>
 
           <div className="flex items-center gap-3 md:gap-4 mb-6">
             {/* Month */}
             <div className="flex flex-col items-center">
               <label className="text-xs font-sans text-warm-light mb-2 tracking-wider uppercase">
-                Month
+                {t('quiz.month')}
               </label>
               <input
                 type="number"
@@ -124,7 +125,7 @@ export function CrystalQuiz() {
             {/* Day */}
             <div className="flex flex-col items-center">
               <label className="text-xs font-sans text-warm-light mb-2 tracking-wider uppercase">
-                Day
+                {t('quiz.day')}
               </label>
               <input
                 type="number"
@@ -142,7 +143,7 @@ export function CrystalQuiz() {
             {/* Year (optional) */}
             <div className="flex flex-col items-center">
               <label className="text-xs font-sans text-warm-light mb-2 tracking-wider uppercase">
-                Year
+                {t('quiz.year')}
               </label>
               <input
                 type="number"
@@ -156,7 +157,7 @@ export function CrystalQuiz() {
             </div>
           </div>
 
-          <p className="text-xs font-sans text-warm-light mb-8">Year is optional</p>
+          <p className="text-xs font-sans text-warm-light mb-8">{t('quiz.yearOptional')}</p>
 
           {error && (
             <p className="text-red-400 text-sm font-sans mb-4">{error}</p>
@@ -167,14 +168,14 @@ export function CrystalQuiz() {
             className="group flex items-center gap-3 px-8 py-4 bg-dark text-cream font-sans text-sm tracking-wider rounded-full hover:bg-charcoal transition-all duration-300"
           >
             <Sparkles size={16} />
-            Reveal My Crystals
+            {t('quiz.revealCrystals')}
           </button>
 
           <button
             onClick={() => setStep('intro')}
             className="mt-6 text-xs font-sans text-warm-light hover:text-warm transition-colors"
           >
-            ← Go back
+            {t('quiz.goBack')}
           </button>
         </div>
       )}
@@ -186,10 +187,10 @@ export function CrystalQuiz() {
             <ZodiacWheel highlightSign={result.name} size={300} />
           </div>
           <p className="font-serif text-2xl md:text-3xl text-[#8BB8D6] animate-fade-in-up">
-            Reading the stars...
+            {t('quiz.readingStars')}
           </p>
           <p className="font-sans text-sm text-[#5A8EAE]/60 mt-3 tracking-wider uppercase">
-            Aligning your celestial energy
+            {t('quiz.aligningEnergy')}
           </p>
         </div>
       )}
@@ -214,7 +215,7 @@ export function CrystalQuiz() {
                 {result.name}
               </h2>
               <p className="font-sans text-sm md:text-base text-[#8BB8D6] tracking-[0.2em] uppercase mb-6">
-                {result.dateRange} · {result.element} Element
+                {result.dateRange} · {t('quiz.element', { element: result.element })}
               </p>
               <p className="font-serif text-2xl md:text-3xl text-[#8BB8D6]/80 italic mb-10">
                 &ldquo;{result.energy}&rdquo;
@@ -234,7 +235,7 @@ export function CrystalQuiz() {
           {/* Crystal Recommendations */}
           <div className="mb-16">
             <h3 className="font-serif text-2xl md:text-3xl text-dark text-center mb-8">
-              Your Crystal Alignment
+              {t('quiz.crystalAlignment')}
             </h3>
             <div className="space-y-6">
               {result.crystals.map((crystal, i) => {
@@ -284,7 +285,7 @@ export function CrystalQuiz() {
                     {crystalProducts.length > 0 && (
                       <div className="mt-5 pt-5 border-t border-stone-light/60">
                         <p className="text-xs font-sans text-warm-light uppercase tracking-wider mb-4">
-                          Recommended {crystal.name} pieces for you
+                          {t('quiz.recommendedPieces', { crystal: crystal.name })}
                         </p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                           {crystalProducts.map(({ product }) => (
@@ -338,10 +339,10 @@ export function CrystalQuiz() {
               <div className="text-center mb-8">
                 <ShoppingBag size={24} className="mx-auto text-gold mb-3" />
                 <h3 className="font-serif text-2xl md:text-3xl text-dark mb-2">
-                  Your Celestial Collection
+                  {t('quiz.celestialCollection')}
                 </h3>
                 <p className="font-sans text-warm text-sm">
-                  All YINYANG GUARDIAN pieces aligned with your {result.name} energy
+                  {t('quiz.allPiecesAligned', { sign: result.name })}
                 </p>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -398,7 +399,7 @@ export function CrystalQuiz() {
               href="/products"
               className="inline-flex items-center gap-3 px-8 py-4 bg-dark text-cream font-sans text-sm tracking-wider rounded-full hover:bg-charcoal transition-all duration-300"
             >
-              Explore All Crystals
+              {t('quiz.exploreAllCrystals')}
               <ArrowRight size={16} />
             </Link>
             <div>
@@ -413,7 +414,7 @@ export function CrystalQuiz() {
                 className="inline-flex items-center gap-2 mt-4 text-sm font-sans text-warm-light hover:text-warm transition-colors"
               >
                 <RotateCcw size={14} />
-                Try another date
+                {t('quiz.tryAnotherDate')}
               </button>
             </div>
           </div>

@@ -2,6 +2,7 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/components/providers/LanguageProvider';
 
 interface CollectionSortProps {
   productCount: number;
@@ -10,6 +11,7 @@ interface CollectionSortProps {
 export function CollectionSort({ productCount }: CollectionSortProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { t } = useLanguage();
   const currentSort = searchParams.get('sort') || 'featured';
 
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -28,12 +30,12 @@ export function CollectionSort({ productCount }: CollectionSortProps) {
   return (
     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 py-8 border-b border-stone">
       <p className="font-sans text-sm text-warm uppercase tracking-wider">
-        {productCount} piece{productCount !== 1 ? 's' : ''} in this collection
+        {productCount === 1 ? t('collectionSort.pieceCount') : t('collectionSort.piecesCount', { count: productCount })}
       </p>
 
       <div className="flex items-center gap-3">
         <label htmlFor="sort" className="font-sans text-sm text-warm uppercase tracking-wider">
-          Sort by
+          {t('collectionSort.sortBy')}
         </label>
         <select
           id="sort"
@@ -47,10 +49,10 @@ export function CollectionSort({ productCount }: CollectionSortProps) {
             "cursor-pointer"
           )}
         >
-          <option value="featured">Featured</option>
-          <option value="price-asc">Price: Low to High</option>
-          <option value="price-desc">Price: High to Low</option>
-          <option value="newest">Newest</option>
+          <option value="featured">{t('collectionSort.featured')}</option>
+          <option value="price-asc">{t('collectionSort.priceLowHigh')}</option>
+          <option value="price-desc">{t('collectionSort.priceHighLow')}</option>
+          <option value="newest">{t('collectionSort.newest')}</option>
         </select>
       </div>
     </div>

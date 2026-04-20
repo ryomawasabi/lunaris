@@ -121,6 +121,54 @@
     },
     "asSeenIn": {
       "title": "Trusted by Spiritual Communities"
+    },
+    "opening": {
+      "quote": "Where yin meets yang, balance is born — and through balance, we transform.",
+      "description": "YINYANG GUARDIAN was born from the ancient philosophy of duality — the dance of light and shadow, stillness and motion. Each piece channels the harmony of opposing forces through chakra-aligned gemstones and sacred design."
+    },
+    "wayOfBalance": {
+      "label": "The Way of Balance",
+      "title": "Yin, Yang & the Path Between"
+    },
+    "yinEnergy": {
+      "title": "Yin Energy",
+      "subtitle": "Receptive Flow",
+      "description": "The yin within each piece draws from lunar energy, water elements, and feminine crystals — creating a vessel of intuition, calm, and deep inner wisdom."
+    },
+    "yangEnergy": {
+      "title": "Yang Energy",
+      "subtitle": "Active Force",
+      "description": "The yang force channels solar power, fire elements, and protective stones — forging shields of confidence, vitality, and outward strength."
+    },
+    "chakraHarmony": {
+      "title": "Chakra Harmony",
+      "subtitle": "Energy Alignment",
+      "description": "Where yin and yang converge, the seven chakras align. Each piece is tuned to specific energy centers, creating a bridge between your physical body and spiritual self."
+    },
+    "soulStone": {
+      "title": "Soul Stone Discovery",
+      "description": "The stars hold the key to your crystal alignment. Enter your birth date and uncover the gemstones that resonate with your unique celestial energy.",
+      "cta": "Discover Your Soul Stone",
+      "free": "FREE · TAKES 30 SECONDS"
+    },
+    "alchemy": {
+      "label": "The Alchemy",
+      "title": "Each crystal carries the balance of earth and cosmos within",
+      "desc1": "We select each stone for its chakra resonance and elemental alignment. Cool blue lapis for the third eye, warm carnelian for the sacral center, grounding garnet for the root — every crystal is chosen to restore balance where you need it most.",
+      "desc2": "Our artisans work with the rhythms of yin and yang, pairing masculine metals with feminine stones, creating pieces where opposing energies meet in perfect equilibrium. The result is jewelry that doesn't just adorn — it realigns.",
+      "crystalVarieties": "Crystal Varieties",
+      "balancingTime": "Balancing Time",
+      "chakraPoints": "Chakra Points"
+    },
+    "wisdom": {
+      "quote": "In the balance of yin and yang, all things find their true nature. Wear the harmony, become the harmony.",
+      "label": "Ancient Wisdom of Balance"
+    },
+    "findBalance": {
+      "title": "Find Your Balance",
+      "description": "Explore our chakra-aligned collections and discover the crystals that restore harmony to your energy centers.",
+      "exploreCollections": "Explore Collections",
+      "giftBalance": "Gift Balance"
     }
   },
   "products": {
@@ -337,6 +385,135 @@
   "collections": {
     "title": "Our Collections",
     "subtitle": "Curated by spiritual intention, designed for your journey."
+  },
+  "heroAnim": {
+    "tagline": "Where ancient wisdom meets modern mysticism",
+    "hoverHint": "Hover the symbol to explore"
+  },
+  "yinYangNav": {
+    "shop": "SHOP",
+    "discover": "DISCOVER",
+    "newArrivals": "New Arrivals",
+    "collections": "Collections",
+    "soulStoneDiscovery": "Soul Stone Discovery",
+    "gifts": "Gifts",
+    "about": "About",
+    "shopAll": "Shop All"
+  },
+  "announcement": {
+    "msg1": "Align Your Chakras with Every Crystal You Wear",
+    "msg2": "Yin-Yang Balance — Crafted Under Sun & Moon",
+    "msg3": "Free Shipping on Orders Over $150"
+  },
+  "productCard": {
+    "soldOut": "Sold Out",
+    "quickAdd": "Quick Add",
+    "added": "Added!",
+    "addToFavorites": "Add to favorites",
+    "bestSeller": "Best Seller",
+    "new": "New",
+    "giftable": "Giftable",
+    "sale": "Sale"
+  },
+  "collectionCard": {
+    "explore": "Explore"
+  },
+  "collectionSort": {
+    "piecesCount": "{count} pieces in this collection",
+    "pieceCount": "1 piece in this collection",
+    "sortBy": "Sort by",
+    "featured": "Featured",
+    "priceLowHigh": "Price: Low to High",
+    "priceHighLow": "Price: High to Low",
+    "newest": "Newest"
+  },
+  "chakraMap": {
+    "label": "Energy Guide",
+    "title": "Chakra × Crystal Map",
+    "hoverToBloom": "Hover to Bloom",
+    "recommendedStones": "Recommended Stones",
+    "shopCollection": "Shop {name} Collection",
+    "lotusMandala": "Lotus Mandala",
+    "hoverPetal": "Hover over a petal to explore each chakra and its crystals.",
+    "bringCursor": "Bring your cursor close to watch the lotus bloom.",
+    "clickPetal": "Click a petal to shop its collection",
+    "crown": { "name": "Crown", "subtitle": "Cosmic Consciousness", "desc": "Spiritual awakening, enlightenment, and connection to universal consciousness." },
+    "thirdEye": { "name": "Third Eye", "subtitle": "Inner Vision", "desc": "Intuition, insight, and the ability to see beyond the physical world." },
+    "throat": { "name": "Throat", "subtitle": "True Expression", "desc": "Communication, self-expression, and speaking your authentic truth." },
+    "heart": { "name": "Heart", "subtitle": "Unconditional Love", "desc": "Love, compassion, healing, and harmony with all living beings." },
+    "solarPlexus": { "name": "Solar Plexus", "subtitle": "Personal Power", "desc": "Confidence, willpower, and the fire of personal transformation." },
+    "sacral": { "name": "Sacral", "subtitle": "Creative Flow", "desc": "Creativity, emotion, passion, and the joy of being alive." },
+    "root": { "name": "Root", "subtitle": "Foundation", "desc": "Stability, grounding, safety, and connection to the earth." }
+  },
+  "quiz": {
+    "title": "Soul Stone Discovery",
+    "introText": "The stars have aligned to guide you. Enter your date of birth and uncover the crystals that resonate with your unique celestial energy.",
+    "beginJourney": "Begin Your Journey",
+    "whenBorn": "When were you born?",
+    "birthDateReveals": "Your birth date reveals your zodiac energy and crystal alignment.",
+    "month": "Month",
+    "day": "Day",
+    "year": "Year",
+    "yearOptional": "Year is optional",
+    "invalidDate": "Please enter a valid date of birth.",
+    "revealCrystals": "Reveal My Crystals",
+    "goBack": "← Go back",
+    "readingStars": "Reading the stars...",
+    "aligningEnergy": "Aligning your celestial energy",
+    "crystalAlignment": "Your Crystal Alignment",
+    "recommendedPieces": "Recommended {crystal} pieces for you",
+    "celestialCollection": "Your Celestial Collection",
+    "allPiecesAligned": "All YINYANG GUARDIAN pieces aligned with your {sign} energy",
+    "exploreAllCrystals": "Explore All Crystals",
+    "tryAnotherDate": "Try another date",
+    "element": "{element} Element"
+  },
+  "giftBox": {
+    "heroTitle": "Create Your Crystal Essence Set",
+    "heroDescription": "Choose {min}–{max} power stones to create your personalized Crystal Essence Set with essential oil and glass vessel.",
+    "selectStones": "Select Your Stones",
+    "chooseStones": "Choose {min}–{max} stones for your set",
+    "selected": "{count} selected",
+    "reset": "Reset",
+    "soldOut": "SOLD OUT",
+    "chooseOil": "Choose Your Essence Oil",
+    "selectFragrance": "Select 1 fragrance for your set",
+    "noneSelected": "None selected",
+    "yourSet": "Your Crystal Essence Set",
+    "setContents": "Power stones + Essential oil + Glass vessel",
+    "selectedStones": "Selected Stones ({count}/{max})",
+    "chooseToBuild": "Choose {min}–{max} stones to build your set",
+    "essenceOil": "Essence Oil",
+    "chooseOilBelow": "Choose an essence oil below",
+    "combinedEnergy": "Combined Energy",
+    "setIncludes": "Set Includes",
+    "powerStones": "{min}–{max} selected power stones",
+    "purifyingOil": "Purifying essential oil",
+    "glassVessel": "Glass display vessel",
+    "luxuryBox": "Luxury box with sponge cushion",
+    "energyGuide": "Crystal energy guide card",
+    "taxIncluded": "Tax included",
+    "addToCart": "Add to Cart",
+    "addedToCart": "Added to Cart",
+    "selectMoreStones": "Select {count} more stone(s)",
+    "selectOil": "Select an essence oil",
+    "notSureStones": "Not sure which stones?",
+    "takeQuiz": "Take the Soul Stone Discovery quiz →",
+    "signatureCollection": "Signature Collection",
+    "crystalEssenceSet": "Crystal Essence Set",
+    "productDescription": "A luxurious set featuring hand-selected power stones, a crystal-charged essential oil, and a glass display vessel — all presented in a premium gift box with a protective sponge cushion. Choose your own combination of stones to create a set that resonates with your unique energy.",
+    "eachSetIncludes": "Each Set Includes",
+    "stonesLabel": "2–3 Power Stones",
+    "stonesDesc": "Hand-selected natural crystals",
+    "oilLabel": "Essence Oil",
+    "oilDesc": "Crystal-charged aromatherapy blend",
+    "vesselLabel": "Glass Vessel",
+    "vesselDesc": "Display vessel for your stones",
+    "boxLabel": "Premium Gift Box",
+    "boxDesc": "Luxury box with sponge cushion",
+    "createYourSet": "Create Your Set",
+    "selectStonesBelow": "Select stones below",
+    "stonesInVessel": "{count} stone(s) in vessel"
   },
   "legal": {
     "privacyPolicy": "Privacy Policy",

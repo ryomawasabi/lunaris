@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback } from 'react';
 import Link from 'next/link';
+import { useLanguage } from '@/components/providers/LanguageProvider';
 
 const SIZE = 400;
 const HALF = SIZE / 2;
@@ -17,18 +18,6 @@ const CC = {
 // S-curve path for yin-yang
 const sPath = `M ${HALF} 0 A ${HALF / 2} ${HALF / 2} 0 0 1 ${HALF} ${HALF} A ${HALF / 2} ${HALF / 2} 0 0 0 ${HALF} ${SIZE}`;
 const rightClip = `${sPath} L ${SIZE} ${SIZE} L ${SIZE} 0 Z`;
-
-const leftItems = [
-  { icon: '✦', label: 'New Arrivals', href: '/products?sort=newest' },
-  { icon: '◈', label: 'Collections', href: '/collections' },
-  { icon: '☾', label: 'Soul Stone Discovery', href: '/crystal-quiz' },
-];
-
-const rightItems = [
-  { icon: '✧', label: 'Gifts', href: '/gifts' },
-  { icon: '◇', label: 'About', href: '/about' },
-  { icon: '○', label: 'Shop All', href: '/products' },
-];
 
 function NavLink({ icon, label, href, side }: { icon: string; label: string; href: string; side: 'left' | 'right' }) {
   const isDark = side === 'right';
@@ -68,8 +57,21 @@ function NavLink({ icon, label, href, side }: { icon: string; label: string; hre
 }
 
 export default function YinYangNav() {
+  const { t } = useLanguage();
   const [open, setOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const leftItems = [
+    { icon: '✦', label: t('yinYangNav.newArrivals'), href: '/products?sort=newest' },
+    { icon: '◈', label: t('yinYangNav.collections'), href: '/collections' },
+    { icon: '☾', label: t('yinYangNav.soulStoneDiscovery'), href: '/crystal-quiz' },
+  ];
+
+  const rightItems = [
+    { icon: '✧', label: t('yinYangNav.gifts'), href: '/gifts' },
+    { icon: '◇', label: t('yinYangNav.about'), href: '/about' },
+    { icon: '○', label: t('yinYangNav.shopAll'), href: '/products' },
+  ];
 
   const handleEnter = useCallback(() => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -161,7 +163,7 @@ export default function YinYangNav() {
           opacity: open ? 1 : 0,
           transition: 'opacity 0.4s ease 0.2s',
           fontFamily: 'Inter, system-ui, sans-serif',
-        }}>SHOP</div>
+        }}>{t('yinYangNav.shop')}</div>
         {/* Nav items */}
         <div style={{
           display: 'flex',
@@ -221,7 +223,7 @@ export default function YinYangNav() {
           opacity: open ? 1 : 0,
           transition: 'opacity 0.4s ease 0.2s',
           fontFamily: 'Inter, system-ui, sans-serif',
-        }}>DISCOVER</div>
+        }}>{t('yinYangNav.discover')}</div>
         {/* Nav items */}
         <div style={{
           display: 'flex',

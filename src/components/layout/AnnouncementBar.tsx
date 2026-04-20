@@ -1,14 +1,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-
-const MESSAGES = [
-  'Align Your Chakras with Every Crystal You Wear',
-  'Yin-Yang Balance — Crafted Under Sun &amp; Moon',
-  'Free Shipping on Orders Over $150',
-];
+import { useLanguage } from '@/components/providers/LanguageProvider';
 
 export default function AnnouncementBar() {
+  const { t } = useLanguage();
+  const MESSAGES = [
+    t('announcement.msg1'),
+    t('announcement.msg2'),
+    t('announcement.msg3'),
+  ];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {

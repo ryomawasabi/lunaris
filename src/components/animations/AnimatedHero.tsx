@@ -2,8 +2,10 @@
 
 import { motion } from 'framer-motion'
 import YinYangNav from '@/components/layout/YinYangNav'
+import { useLanguage } from '@/components/providers/LanguageProvider'
 
 export function AnimatedHero() {
+  const { t } = useLanguage()
   return (
     <section className="relative min-h-[70vh] md:min-h-[85vh] overflow-hidden bg-cream flex flex-col items-center justify-center px-4">
       {/* Subtle radial glow behind the yin-yang */}
@@ -29,7 +31,7 @@ export function AnimatedHero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.5 }}
       >
-        Where ancient wisdom meets modern mysticism
+        {t('heroAnim.tagline')}
       </motion.p>
 
       {/* Yin-Yang Navigation */}
@@ -61,7 +63,7 @@ export function AnimatedHero() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 1.4 }}
       >
-        Hover the symbol to explore
+        {t('heroAnim.hoverHint')}
       </motion.p>
     </section>
   )

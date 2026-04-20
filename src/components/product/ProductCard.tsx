@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 import { useProductStatusSafe } from "@/components/providers/ProductStatusProvider";
 import { useCart } from "@/components/providers/CartProvider";
 import { useWishlist } from "@/components/providers/WishlistProvider";
+import { useLanguage } from '@/components/providers/LanguageProvider';
 
 interface ProductCardProps {
   product: Product;
@@ -19,6 +20,7 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   const [addedFeedback, setAddedFeedback] = useState(false);
+  const { t } = useLanguage();
   const productStatus = useProductStatusSafe();
   const { addItem } = useCart();
   const { isInWishlist, toggleWishlist } = useWishlist();
@@ -34,10 +36,10 @@ export function ProductCard({ product }: ProductCardProps) {
 
   // Determine which badges to show
   const badgesToShow: Array<{ variant: 'bestseller' | 'new' | 'giftable' | 'sale'; label: string }> = [];
-  if (product.isBestSeller) badgesToShow.push({ variant: "bestseller", label: "Best Seller" });
-  if (product.isNew) badgesToShow.push({ variant: "new", label: "New" });
-  if (product.isGiftable) badgesToShow.push({ variant: "giftable", label: "Giftable" });
-  if (hasComparePrice) badgesToShow.push({ variant: "sale", label: "Sale" });
+  if (product.isBestSeller) badgesToShow.push({ variant: "bestseller", label: t('productCard.bestSeller') });
+  if (product.isNew) badgesToShow.push({ variant: "new", label: t('productCard.new') });
+  if (product.isGiftable) badgesToShow.push({ variant: "giftable", label: t('productCard.giftable') });
+  if (hasComparePrice) badgesToShow.push({ variant: "sale", label: t('productCard.sale') });
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -73,7 +75,7 @@ export function ProductCard({ product }: ProductCardProps) {
           {isSoldOut && (
             <div className="absolute inset-0 flex items-center justify-center bg-dark/20 z-20">
               <span className="bg-dark/80 text-cream px-4 py-2 font-sans text-sm font-semibold uppercase tracking-wider rounded">
-                Sold Out
+                {t('productCard.soldOut')}
               </span>
             </div>
           )}
@@ -97,7 +99,7 @@ export function ProductCard({ product }: ProductCardProps) {
               toggleWishlist(product.id);
             }}
             className="absolute top-4 right-4 p-2 rounded-full bg-white/80 hover:bg-white transition-colors z-10"
-            aria-label="Add to favorites"
+            aria-label={t('productCard.addToFavorites')}
           >
             <Heart
               className={cn("w-5 h-5 transition-colors", isFavorited ? "fill-red-500 text-red-500" : "text-dark")}
@@ -116,7 +118,7 @@ export function ProductCard({ product }: ProductCardProps) {
               )}
             >
               <ShoppingBag size={14} />
-              {addedFeedback ? 'Added!' : 'Quick Add'}
+              {addedFeedback ? t('productCard.added') : t('productCard.quickAdd')}
             </button>
           )}
         </div>

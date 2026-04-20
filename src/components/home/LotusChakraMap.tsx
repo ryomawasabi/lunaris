@@ -4,6 +4,7 @@ import { useState, useRef, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { LotusPond } from '@/components/animations/LotusPond';
+import { useLanguage } from '@/components/providers/LanguageProvider';
 
 const SVG_SIZE = 640;
 const CX = SVG_SIZE / 2;
@@ -14,24 +15,25 @@ const PETAL_R_BUD = 65;
 const PETAL_W_OPEN = 85;
 const PETAL_W_BUD = 22;
 
-const chakras = [
-  { name: 'Crown', subtitle: 'Cosmic Consciousness', color: '#B8A0D8', stones: ['Amethyst', 'Clear Quartz'], desc: 'Spiritual awakening, enlightenment, and connection to universal consciousness.', link: '/products?category=crown' },
-  { name: 'Third Eye', subtitle: 'Inner Vision', color: '#7B8EC8', stones: ['Lapis Lazuli', 'Sodalite'], desc: 'Intuition, insight, and the ability to see beyond the physical world.', link: '/products?category=third-eye' },
-  { name: 'Throat', subtitle: 'True Expression', color: '#6AB8D0', stones: ['Aquamarine', 'Turquoise'], desc: 'Communication, self-expression, and speaking your authentic truth.', link: '/products?category=throat' },
-  { name: 'Heart', subtitle: 'Unconditional Love', color: '#6CC88C', stones: ['Rose Quartz', 'Green Aventurine'], desc: 'Love, compassion, healing, and harmony with all living beings.', link: '/products?category=heart' },
-  { name: 'Solar Plexus', subtitle: 'Personal Power', color: '#E8D060', stones: ['Citrine', 'Tiger Eye'], desc: 'Confidence, willpower, and the fire of personal transformation.', link: '/products?category=solar-plexus' },
-  { name: 'Sacral', subtitle: 'Creative Flow', color: '#E8A060', stones: ['Carnelian', 'Orange Calcite'], desc: 'Creativity, emotion, passion, and the joy of being alive.', link: '/products?category=sacral' },
-  { name: 'Root', subtitle: 'Foundation', color: '#D06868', stones: ['Garnet', 'Red Jasper'], desc: 'Stability, grounding, safety, and connection to the earth.', link: '/products?category=root' },
-];
-
 const angles = [-90, -38.6, 12.9, 64.3, 115.7, 167.1, 218.6];
 
 export default function LotusChakraMap() {
   const router = useRouter();
+  const { t } = useLanguage();
   const [activeChakra, setActiveChakra] = useState<number | null>(null);
   const [bloomed, setBloomed] = useState(false);
   const bloomTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
+
+  const chakras = [
+    { name: t('chakraMap.crown.name'), subtitle: t('chakraMap.crown.subtitle'), color: '#B8A0D8', stones: ['Amethyst', 'Clear Quartz'], desc: t('chakraMap.crown.desc'), link: '/products?category=crown' },
+    { name: t('chakraMap.thirdEye.name'), subtitle: t('chakraMap.thirdEye.subtitle'), color: '#7B8EC8', stones: ['Lapis Lazuli', 'Sodalite'], desc: t('chakraMap.thirdEye.desc'), link: '/products?category=third-eye' },
+    { name: t('chakraMap.throat.name'), subtitle: t('chakraMap.throat.subtitle'), color: '#6AB8D0', stones: ['Aquamarine', 'Turquoise'], desc: t('chakraMap.throat.desc'), link: '/products?category=throat' },
+    { name: t('chakraMap.heart.name'), subtitle: t('chakraMap.heart.subtitle'), color: '#6CC88C', stones: ['Rose Quartz', 'Green Aventurine'], desc: t('chakraMap.heart.desc'), link: '/products?category=heart' },
+    { name: t('chakraMap.solarPlexus.name'), subtitle: t('chakraMap.solarPlexus.subtitle'), color: '#E8D060', stones: ['Citrine', 'Tiger Eye'], desc: t('chakraMap.solarPlexus.desc'), link: '/products?category=solar-plexus' },
+    { name: t('chakraMap.sacral.name'), subtitle: t('chakraMap.sacral.subtitle'), color: '#E8A060', stones: ['Carnelian', 'Orange Calcite'], desc: t('chakraMap.sacral.desc'), link: '/products?category=sacral' },
+    { name: t('chakraMap.root.name'), subtitle: t('chakraMap.root.subtitle'), color: '#D06868', stones: ['Garnet', 'Red Jasper'], desc: t('chakraMap.root.desc'), link: '/products?category=root' },
+  ];
 
   const curR = bloomed ? PETAL_R_OPEN : PETAL_R_BUD;
   const curW = bloomed ? PETAL_W_OPEN : PETAL_W_BUD;
@@ -98,8 +100,8 @@ export default function LotusChakraMap() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-12">
-          <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold mb-4">Energy Guide</p>
-          <h2 className="font-serif text-3xl md:text-5xl text-dark font-light">Chakra &times; Crystal Map</h2>
+          <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold mb-4">{t('chakraMap.label')}</p>
+          <h2 className="font-serif text-3xl md:text-5xl text-dark font-light">Chakra &times; {t('chakraMap.title')}</h2>
           <div className="h-px w-16 mx-auto mt-5" style={{ background: 'linear-gradient(90deg, transparent, #5A8EAE, transparent)' }} />
         </div>
 
@@ -117,7 +119,7 @@ export default function LotusChakraMap() {
               whiteSpace: 'nowrap', textAlign: 'center',
               opacity: bloomed ? 0 : 0.6, transition: 'opacity 0.6s ease', pointerEvents: 'none', zIndex: 5,
             }}>
-              <p className="font-sans text-xs text-warm tracking-widest uppercase">Hover to Bloom</p>
+              <p className="font-sans text-xs text-warm tracking-widest uppercase">{t('chakraMap.hoverToBloom')}</p>
             </div>
 
             <svg width={SVG_SIZE} height={SVG_SIZE} viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`} style={{ position: 'absolute', top: 0, left: 0 }}>
@@ -277,7 +279,7 @@ export default function LotusChakraMap() {
                 <p className="font-sans text-sm text-warm leading-relaxed mb-5 font-light">
                   {chakras[activeChakra].desc}
                 </p>
-                <p className="font-sans text-[11px] text-gold tracking-widest uppercase font-semibold mb-3">Recommended Stones</p>
+                <p className="font-sans text-[11px] text-gold tracking-widest uppercase font-semibold mb-3">{t('chakraMap.recommendedStones')}</p>
                 <div className="flex gap-2 flex-wrap mb-6">
                   {chakras[activeChakra].stones.map((s) => (
                     <span key={s} className="font-sans text-sm text-dark"
@@ -292,7 +294,7 @@ export default function LotusChakraMap() {
                   className="inline-flex items-center gap-2 font-sans text-sm font-medium transition-all duration-300 group"
                   style={{ color: chakras[activeChakra].color }}>
                   <span className="border-b border-current pb-0.5 group-hover:pb-1 transition-all duration-300">
-                    Shop {chakras[activeChakra].name} Collection
+                    {t('chakraMap.shopCollection', { name: chakras[activeChakra].name })}
                   </span>
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="group-hover:translate-x-1 transition-transform duration-300">
                     <path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -301,13 +303,13 @@ export default function LotusChakraMap() {
               </>
             ) : (
               <div className="text-center">
-                <p className="font-sans text-[11px] text-gold tracking-widest uppercase mb-3">Lotus Mandala</p>
+                <p className="font-sans text-[11px] text-gold tracking-widest uppercase mb-3">{t('chakraMap.lotusMandala')}</p>
                 <p className="font-serif text-3xl text-stone mb-4">&#10048;</p>
                 <p className="font-sans text-base text-warm font-light leading-relaxed mb-4">
-                  {bloomed ? 'Hover over a petal to explore\neach chakra and its crystals.' : 'Bring your cursor close\nto watch the lotus bloom.'}
+                  {bloomed ? t('chakraMap.hoverPetal') : t('chakraMap.bringCursor')}
                 </p>
                 <p className="font-sans text-sm text-gold/80 font-medium">
-                  Click a petal to shop its collection
+                  {t('chakraMap.clickPetal')}
                 </p>
               </div>
             )}
