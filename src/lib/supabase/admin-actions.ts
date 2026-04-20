@@ -1,5 +1,6 @@
 'use server'
 
+import { createClient } from '@supabase/supabase-js'
 import { createServerSupabaseClient } from './server'
 import { isAdmin } from './queries'
 import { revalidatePath } from 'next/cache'
@@ -12,11 +13,22 @@ type ActionResult = {
 }
 
 /**
+ * Create a Supabase client with service role key for admin write operations.
+ * This bypasses RLS policies which block anon key writes.
+ */
+function createAdminSupabaseClient() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  )
+}
+
+/**
  * Refresh product_count for all categories and collections
  */
 async function refreshProductCounts() {
   try {
-    const supabase = createServerSupabaseClient()
+    const supabase = createAdminSupabaseClient()
 
     // Get all active products
     const { data: products } = await supabase
@@ -175,7 +187,7 @@ export async function createProduct(formData: FormData): Promise<ActionResult> {
       return { success: false, error: 'Unauthorized. Admin access required.' }
     }
 
-    const supabase = createServerSupabaseClient()
+    const supabase = createAdminSupabaseClient()
 
     const slug = formData.get('slug') as string
     const name = formData.get('name') as string
@@ -262,7 +274,7 @@ export async function updateProduct(id: string, formData: FormData): Promise<Act
       return { success: false, error: 'Unauthorized. Admin access required.' }
     }
 
-    const supabase = createServerSupabaseClient()
+    const supabase = createAdminSupabaseClient()
 
     const slug = formData.get('slug') as string
     const name = formData.get('name') as string
@@ -354,7 +366,7 @@ export async function deleteProduct(id: string): Promise<ActionResult> {
       return { success: false, error: 'Unauthorized. Admin access required.' }
     }
 
-    const supabase = createServerSupabaseClient()
+    const supabase = createAdminSupabaseClient()
 
     const { data: product } = await supabase
       .from('products')
@@ -399,7 +411,7 @@ export async function toggleProductActive(id: string, isActive: boolean): Promis
       return { success: false, error: 'Unauthorized. Admin access required.' }
     }
 
-    const supabase = createServerSupabaseClient()
+    const supabase = createAdminSupabaseClient()
 
     const { data: product } = await supabase
       .from('products')
@@ -450,7 +462,7 @@ export async function toggleProductSoldOut(id: string, isSoldOut: boolean): Prom
       return { success: false, error: 'Unauthorized. Admin access required.' }
     }
 
-    const supabase = createServerSupabaseClient()
+    const supabase = createAdminSupabaseClient()
 
     const { data: product } = await supabase
       .from('products')
