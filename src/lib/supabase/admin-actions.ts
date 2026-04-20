@@ -12,6 +12,59 @@ type ActionResult = {
 }
 
 /**
+ * Refresh product_count for all categories and collections
+ */
+async function refreshProductCounts() {
+  try {
+    const supabase = createServerSupabaseClient()
+
+    // Get all active products
+    const { data: products } = await supabase
+      .from('products')
+      .select('category, collection')
+      .eq('is_active', true)
+
+    if (!products) return
+
+    // Count products per category
+    const catCounts: Record<string, number> = {}
+    for (const p of products) {
+      if (p.category) {
+        catCounts[p.category] = (catCounts[p.category] || 0) + 1
+      }
+    }
+
+    // Count products per collection
+    const colCounts: Record<string, number> = {}
+    for (const p of products) {
+      for (const c of (p.collection || [])) {
+        colCounts[c] = (colCounts[c] || 0) + 1
+      }
+    }
+
+    // Update categories
+    const { data: cats } = await supabase.from('categories').select('id, name')
+    if (cats) {
+      for (const cat of cats) {
+        const count = catCounts[cat.name] || 0
+        await supabase.from('categories').update({ product_count: count }).eq('id', cat.id)
+      }
+    }
+
+    // Update collections
+    const { data: cols } = await supabase.from('collections').select('id, name')
+    if (cols) {
+      for (const col of cols) {
+        const count = colCounts[col.name] || 0
+        await supabase.from('collections').update({ product_count: count }).eq('id', col.id)
+      }
+    }
+  } catch (err) {
+    console.error('Error refreshing product counts:', err)
+  }
+}
+
+/**
  * Get all products for admin (including inactive)
  */
 export async function getAdminProducts() {
@@ -186,6 +239,9 @@ export async function createProduct(formData: FormData): Promise<ActionResult> {
     revalidatePath(`/products/${slug}`)
     revalidatePath('/admin/products')
 
+    // Update product counts on categories/collections
+    await refreshProductCounts()
+
     return { success: true, data }
   } catch (error) {
     console.error('Error in createProduct:', error)
@@ -275,6 +331,9 @@ export async function updateProduct(id: string, formData: FormData): Promise<Act
     revalidatePath(`/products/${slug}`)
     revalidatePath('/admin/products')
 
+    // Update product counts on categories/collections
+    await refreshProductCounts()
+
     return { success: true, data }
   } catch (error) {
     console.error('Error in updateProduct:', error)
@@ -316,6 +375,9 @@ export async function deleteProduct(id: string): Promise<ActionResult> {
     if (product?.slug) {
       revalidatePath(`/products/${product.slug}`)
     }
+
+    // Update product counts on categories/collections
+    await refreshProductCounts()
 
     return { success: true }
   } catch (error) {

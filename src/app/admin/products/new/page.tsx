@@ -328,16 +328,29 @@ export default function NewProductPage() {
                   />
                   <button
                     type="button"
-                    onClick={() => {
+                    onClick={async () => {
                       if (newCategoryName.trim()) {
                         const name = newCategoryName.trim()
-                        const newCat = {
-                          id: `temp_${Date.now()}`,
-                          name,
-                          slug: generateSlug(name),
+                        const slug = generateSlug(name)
+                        try {
+                          const res = await fetch('/api/admin/categories', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ name, slug }),
+                          })
+                          const data = await res.json()
+                          if (data.category) {
+                            setCategories((prev) => [...prev, data.category])
+                            setFormData((prev) => ({ ...prev, category: name }))
+                          } else {
+                            // Fallback: add locally
+                            setCategories((prev) => [...prev, { id: `temp_${Date.now()}`, name, slug }])
+                            setFormData((prev) => ({ ...prev, category: name }))
+                          }
+                        } catch {
+                          setCategories((prev) => [...prev, { id: `temp_${Date.now()}`, name, slug }])
+                          setFormData((prev) => ({ ...prev, category: name }))
                         }
-                        setCategories((prev) => [...prev, newCat])
-                        setFormData((prev) => ({ ...prev, category: name }))
                         setNewCategoryName('')
                         setShowNewCategory(false)
                       }
@@ -539,16 +552,28 @@ export default function NewProductPage() {
                   />
                   <button
                     type="button"
-                    onClick={() => {
+                    onClick={async () => {
                       if (newCollectionName.trim()) {
                         const name = newCollectionName.trim()
-                        const newCol = {
-                          id: `temp_${Date.now()}`,
-                          name,
-                          slug: generateSlug(name),
+                        const slug = generateSlug(name)
+                        try {
+                          const res = await fetch('/api/admin/collections', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ name, slug }),
+                          })
+                          const data = await res.json()
+                          if (data.collection) {
+                            setCollections((prev) => [...prev, data.collection])
+                            setFormData((prev) => ({ ...prev, collection: [...prev.collection, name] }))
+                          } else {
+                            setCollections((prev) => [...prev, { id: `temp_${Date.now()}`, name, slug }])
+                            setFormData((prev) => ({ ...prev, collection: [...prev.collection, name] }))
+                          }
+                        } catch {
+                          setCollections((prev) => [...prev, { id: `temp_${Date.now()}`, name, slug }])
+                          setFormData((prev) => ({ ...prev, collection: [...prev.collection, name] }))
                         }
-                        setCollections((prev) => [...prev, newCol])
-                        setFormData((prev) => ({ ...prev, collection: [...prev.collection, name] }))
                         setNewCollectionName('')
                         setShowNewCollection(false)
                       }
