@@ -168,6 +168,10 @@ export default function EditProductPage() {
 
     setSubmitting(true)
 
+    console.log('[SUBMIT DEBUG] formData.isBestSeller:', formData.isBestSeller)
+    console.log('[SUBMIT DEBUG] formData.isNew:', formData.isNew)
+    console.log('[SUBMIT DEBUG] formData.isGiftable:', formData.isGiftable)
+
     const fd = new FormData()
     fd.set('slug', formData.slug)
     fd.set('name', formData.name)
