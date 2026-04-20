@@ -377,7 +377,7 @@ export default function EditProductPage() {
               <label className={labelClass}>Product Flags</label>
               <div className="space-y-3">
                 <label className="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" checked={formData.isBestSeller} onChange={(e) => setFormData((prev) => ({ ...prev, isBestSeller: e.target.checked }))} className="w-4 h-4 rounded border-stone-light cursor-pointer accent-gold" />
+                  <input type="checkbox" checked={formData.isBestSeller} onChange={(e) => { console.log('[CHECKBOX] Best Seller clicked, e.target.checked:', e.target.checked); setFormData((prev) => ({ ...prev, isBestSeller: e.target.checked })) }} className="w-4 h-4 rounded border-stone-light cursor-pointer accent-gold" />
                   <span className="font-sans text-sm text-dark">Best Seller</span>
                 </label>
                 <label className="flex items-center gap-2 cursor-pointer">
