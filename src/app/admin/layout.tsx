@@ -13,6 +13,7 @@ import {
   ShoppingCart,
   Globe,
   BarChart3,
+  Settings,
 } from 'lucide-react'
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
@@ -73,6 +74,11 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       label: 'SEO',
       href: '/admin/seo',
       icon: Globe,
+    },
+    {
+      label: 'Settings',
+      href: '/admin/settings',
+      icon: Settings,
     },
   ]
 

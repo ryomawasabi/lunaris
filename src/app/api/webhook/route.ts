@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { createClient } from '@supabase/supabase-js'
+import { sendOrderConfirmation } from '@/lib/email/order-confirmation'
 
 export const dynamic = 'force-dynamic'
 
@@ -107,6 +108,23 @@ export async function POST(req: NextRequest) {
         // Log for manual review
       } else {
         console.log('Order saved successfully for session:', session.id)
+
+        // Send order confirmation email (non-blocking)
+        const customerEmail = session.customer_details?.email || session.customer_email
+        if (customerEmail) {
+          sendOrderConfirmation({
+            customerEmail,
+            customerName: session.customer_details?.name || '',
+            items: items.map(i => ({ name: i.name || 'Item', quantity: i.quantity || 1, price: i.price })),
+            subtotal,
+            shippingCost,
+            total,
+            currency: session.currency || 'usd',
+            shippingAddress: shippingAddress,
+          }).catch((err) => {
+            console.error('Email send error (non-blocking):', err)
+          })
+        }
       }
     } catch (err) {
       console.error('Error processing checkout session:', err)

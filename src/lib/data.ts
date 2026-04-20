@@ -193,6 +193,247 @@ export const PRODUCTS: Product[] = [
     isNew: true,
     isGiftable: true,
   },
+  {
+    id: "prod_027",
+    slug: "rose-quartz-divination-sphere",
+    name: "Rose Quartz Divination Sphere",
+    price: 159,
+    category: "Crystal Balls",
+    collection: ["Crystal Ball", "Love & Harmony"],
+    gemstone: "Rose Quartz",
+    crystalType: "Rose Quartz",
+    crystalEffects: ["Love", "Emotional Healing", "Compassion", "Inner Peace"],
+    symbolicMeaning:
+      "A sphere of unconditional love — rose quartz opens the heart chakra and invites gentle healing energy into your divination practice.",
+    shortDescription:
+      "Hand-polished rose quartz crystal ball for heart-centered divination, meditation, and emotional healing rituals.",
+    longDescription:
+      "The Rose Quartz Divination Sphere is a masterpiece of crystalline compassion, hand-polished from a single piece of premium rose quartz. Its soft pink luminescence carries the gentle vibration of unconditional love, making it the ideal companion for heart-centered scrying and meditation. Rose quartz has been revered across cultures as the stone of the heart — the ancient Greeks associated it with Aphrodite, while Chinese feng shui masters use it to attract love and harmonize relationships. Place this sphere in your sacred space to radiate a constant field of emotional healing energy, or hold it during meditation to dissolve emotional wounds and open yourself to deeper self-love.",
+    materials: [
+      "Natural rose quartz sphere",
+      "Velvet ritual cloth",
+      "Wooden display stand",
+    ],
+    images: [
+      "/crystal Ball/Image_2026-04-20_190638_587.png",
+    ],
+    badges: ["new"],
+    rating: 4.9,
+    reviewCount: 18,
+    isNew: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_028",
+    slug: "malachite-vision-sphere",
+    name: "Malachite Vision Sphere",
+    price: 159,
+    category: "Crystal Balls",
+    collection: ["Crystal Ball", "Protection"],
+    gemstone: "Malachite",
+    crystalType: "Malachite",
+    crystalEffects: ["Transformation", "Protection", "Abundance", "Insight"],
+    symbolicMeaning:
+      "Deep green malachite channels the transformative power of nature — a guardian stone that absorbs negative energy and reveals hidden truths.",
+    shortDescription:
+      "Hand-polished malachite crystal ball for transformative divination, protection rituals, and abundance manifestation.",
+    longDescription:
+      "The Malachite Vision Sphere radiates with deep, swirling greens reminiscent of ancient forests and sacred groves. Malachite is one of the oldest known protective stones — Egyptian pharaohs lined their headdresses with it, believing it granted the power to see into the spiritual realm. This sphere harnesses that same transformative energy, making it an exceptional tool for scrying sessions focused on personal growth and breaking through stagnant patterns. Its vibrant green frequency activates the heart and solar plexus chakras simultaneously, creating a powerful bridge between love and personal power. Use it in abundance rituals to amplify your manifestation practice, or place it near your workspace to shield against electromagnetic and emotional pollution.",
+    materials: [
+      "Natural malachite sphere",
+      "Velvet ritual cloth",
+      "Wooden display stand",
+    ],
+    images: [
+      "/crystal Ball/Image_2026-04-20_190646_587.png",
+    ],
+    badges: ["new"],
+    rating: 4.8,
+    reviewCount: 14,
+    isNew: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_029",
+    slug: "aquamarine-serenity-sphere",
+    name: "Aquamarine Serenity Sphere",
+    price: 159,
+    category: "Crystal Balls",
+    collection: ["Crystal Ball", "Calm & Clarity"],
+    gemstone: "Aquamarine",
+    crystalType: "Aquamarine",
+    crystalEffects: ["Serenity", "Communication", "Courage", "Clarity"],
+    symbolicMeaning:
+      "The pale blue of aquamarine holds the calm of the ocean depths — a stone of courage and clear communication that soothes the throat chakra.",
+    shortDescription:
+      "Hand-polished aquamarine crystal ball for serene divination, throat chakra activation, and clarity rituals.",
+    longDescription:
+      "The Aquamarine Serenity Sphere captures the tranquil essence of still ocean waters within its luminous pale blue form. Aquamarine — literally 'water of the sea' — has been a sailor's talisman for millennia, believed to calm waves and ensure safe passage. In your divination practice, this sphere brings that same calming energy, clearing mental chatter and opening channels of intuitive communication. The stone resonates deeply with the throat chakra, making it especially powerful for those seeking to speak their truth or develop clairaudient abilities. Hold this sphere during meditation to enter a state of profound serenity, or use it in scrying sessions when you need answers that require emotional detachment and crystalline clarity.",
+    materials: [
+      "Natural aquamarine sphere",
+      "Velvet ritual cloth",
+      "Wooden display stand",
+    ],
+    images: [
+      "/crystal Ball/Image_2026-04-20_190651_065.png",
+    ],
+    badges: ["new"],
+    rating: 4.9,
+    reviewCount: 22,
+    isNew: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_030",
+    slug: "red-jasper-grounding-sphere",
+    name: "Red Jasper Grounding Sphere",
+    price: 159,
+    category: "Crystal Balls",
+    collection: ["Crystal Ball", "Grounding"],
+    gemstone: "Red Jasper",
+    crystalType: "Red Jasper",
+    crystalEffects: ["Grounding", "Stability", "Endurance", "Vitality"],
+    symbolicMeaning:
+      "Red jasper embodies the primal energy of the earth — a nurturing stone of endurance and stability that roots you firmly in the present moment.",
+    shortDescription:
+      "Hand-polished red jasper crystal ball for grounding divination, root chakra activation, and vitality rituals.",
+    longDescription:
+      "The Red Jasper Grounding Sphere is forged from the earth's deepest foundations, its rich terracotta surface a testament to millions of years of geological alchemy. Known as the 'Stone of Endurance,' red jasper was carried by warriors and shamans alike for its ability to channel the earth's stabilizing force. This sphere activates the root chakra with powerful grounding energy, making it the ideal tool for divination sessions when you feel scattered or unmoored. Its warm, steady vibration creates a protective anchor point during deep scrying, preventing spiritual drift and keeping you firmly connected to your physical body. Place it in the southern corner of your space to ignite the flame of motivation, or hold it when you need the courage to face difficult truths revealed in your practice.",
+    materials: [
+      "Natural red jasper sphere",
+      "Velvet ritual cloth",
+      "Wooden display stand",
+    ],
+    images: [
+      "/crystal Ball/Image_2026-04-20_190657_200.png",
+    ],
+    badges: ["new"],
+    rating: 4.7,
+    reviewCount: 16,
+    isNew: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_031",
+    slug: "clear-quartz-oracle-sphere",
+    name: "Clear Quartz Oracle Sphere",
+    price: 159,
+    category: "Crystal Balls",
+    collection: ["Crystal Ball", "Calm & Clarity"],
+    gemstone: "Clear Quartz",
+    crystalType: "Clear Quartz",
+    crystalEffects: ["Amplification", "Clarity", "Manifestation", "Healing"],
+    symbolicMeaning:
+      "The master healer — clear quartz amplifies intention and energy, serving as the purest window into the unseen realms of consciousness.",
+    shortDescription:
+      "Hand-polished clear quartz crystal ball for pure divination, energy amplification, and full-spectrum healing rituals.",
+    longDescription:
+      "The Clear Quartz Oracle Sphere is the quintessential divination tool, revered by seers and mystics throughout recorded history. Clear quartz — the 'Master Healer' — possesses the unique ability to amplify any energy or intention directed through it, making it the most versatile crystal sphere in existence. Its pristine transparency serves as a blank canvas for the third eye, allowing visions to form with remarkable clarity during scrying sessions. This sphere resonates with all seven chakras simultaneously, creating a unified energetic field that enhances every aspect of your spiritual practice. Whether you are a seasoned scryer or beginning your journey into crystal divination, the Clear Quartz Oracle Sphere will meet you exactly where you are and elevate your practice to new heights.",
+    materials: [
+      "Natural clear quartz sphere",
+      "Velvet ritual cloth",
+      "Wooden display stand",
+    ],
+    images: [
+      "/crystal Ball/Image_2026-04-20_190702_273.png",
+    ],
+    badges: ["new", "bestseller"],
+    rating: 4.9,
+    reviewCount: 37,
+    isNew: true,
+    isBestSeller: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_032",
+    slug: "amethyst-intuition-sphere",
+    name: "Amethyst Intuition Sphere",
+    price: 159,
+    category: "Crystal Balls",
+    collection: ["Crystal Ball", "Spiritual Growth"],
+    gemstone: "Amethyst",
+    crystalType: "Amethyst",
+    crystalEffects: ["Intuition", "Spiritual Awareness", "Protection", "Wisdom"],
+    symbolicMeaning:
+      "Amethyst opens the crown chakra gateway — the stone of spiritual wisdom that deepens intuition and guards against psychic attack.",
+    shortDescription:
+      "Hand-polished amethyst crystal ball for intuitive divination, crown chakra awakening, and spiritual protection rituals.",
+    longDescription:
+      "The Amethyst Intuition Sphere is a breathtaking vessel of spiritual wisdom, its deep purple depths swirling with the energy of higher consciousness. Amethyst has been the stone of royalty and spirituality since ancient times — Greek legend tells of Dionysus creating the purple crystal to protect the pure-hearted maiden Amethystos. This sphere activates the third eye and crown chakras simultaneously, creating a powerful conduit for psychic visions and spiritual downloads during scrying sessions. Its natural protective frequency shields your energy field from negativity while you explore the deepest layers of consciousness. Place this sphere in your meditation space to create an atmosphere of sacred wisdom, or work with it during full moon rituals to amplify your intuitive gifts to their highest potential.",
+    materials: [
+      "Natural amethyst sphere",
+      "Velvet ritual cloth",
+      "Wooden display stand",
+    ],
+    images: [
+      "/crystal Ball/Image_2026-04-20_190706_386.png",
+    ],
+    badges: ["new"],
+    rating: 4.8,
+    reviewCount: 29,
+    isNew: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_033",
+    slug: "rose-quartz-heart-oracle",
+    name: "Rose Quartz Heart Oracle",
+    price: 159,
+    category: "Crystal Balls",
+    collection: ["Crystal Ball", "Love & Harmony"],
+    gemstone: "Rose Quartz",
+    crystalType: "Rose Quartz",
+    crystalEffects: ["Self-Love", "Forgiveness", "Emotional Balance", "Trust"],
+    symbolicMeaning:
+      "A deeper expression of rose quartz energy — this oracle sphere specializes in matters of the heart, revealing pathways to forgiveness and self-acceptance.",
+    shortDescription:
+      "Hand-polished rose quartz oracle sphere for love-centered divination, emotional balance, and self-acceptance rituals.",
+    longDescription:
+      "The Rose Quartz Heart Oracle is a luminous sphere of pure emotional alchemy, hand-selected for its exceptional pink clarity and energy. While its sister sphere focuses on the broad spectrum of love energy, this oracle stone specializes in the deeper work of emotional healing — the kind that transforms wounds into wisdom and grief into grace. Its resonance reaches the innermost chambers of the heart chakra, gently dissolving layers of emotional armor built up over lifetimes. Work with this sphere when seeking guidance on matters of love and relationship, whether romantic, familial, or the most important relationship of all — the one with yourself. Its gentle energy creates a safe container for vulnerability during scrying sessions, allowing repressed emotions to surface and be transformed into sources of strength.",
+    materials: [
+      "Natural rose quartz sphere",
+      "Velvet ritual cloth",
+      "Wooden display stand",
+    ],
+    images: [
+      "/crystal Ball/Image_2026-04-20_190710_943.png",
+    ],
+    badges: ["new"],
+    rating: 4.9,
+    reviewCount: 21,
+    isNew: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_034",
+    slug: "obsidian-shadow-sphere",
+    name: "Obsidian Shadow Sphere",
+    price: 159,
+    category: "Crystal Balls",
+    collection: ["Crystal Ball", "Protection"],
+    gemstone: "Obsidian",
+    crystalType: "Obsidian",
+    crystalEffects: ["Protection", "Truth", "Shadow Work", "Grounding"],
+    symbolicMeaning:
+      "Born from volcanic fire — obsidian is the mirror of the soul, fearlessly revealing hidden truths and providing impenetrable psychic protection.",
+    shortDescription:
+      "Hand-polished obsidian crystal ball for deep shadow work, psychic protection, and truth-revealing divination rituals.",
+    longDescription:
+      "The Obsidian Shadow Sphere is the most powerful protective stone in our crystal ball collection, born from the rapid cooling of volcanic lava — fire transformed into glass in an instant. Ancient Mesoamerican priests used obsidian mirrors for divination, believing the stone's perfect darkness served as a portal to the spirit world. This sphere carries that same raw, uncompromising energy, making it the ultimate tool for shadow work and truth-seeking scrying sessions. Obsidian does not soften its revelations; it shows you exactly what you need to see, no matter how uncomfortable. It creates an impenetrable shield around your energy field, absorbing and transmuting negativity on contact. Work with this sphere during new moon rituals to confront and integrate your shadow self, or keep it near your front door to guard your home against negative energies and unwanted spiritual visitors.",
+    materials: [
+      "Natural obsidian sphere",
+      "Velvet ritual cloth",
+      "Wooden display stand",
+    ],
+    images: [
+      "/crystal Ball/Image_2026-04-20_190714_600.png",
+    ],
+    badges: ["new"],
+    rating: 4.8,
+    reviewCount: 25,
+    isNew: true,
+    isGiftable: true,
+  },
 ];
 
 export const COLLECTIONS: Collection[] = [

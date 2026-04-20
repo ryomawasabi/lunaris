@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase/server'
+import { isAdmin } from '@/lib/supabase/queries'
 
 export const dynamic = 'force-dynamic'
 
@@ -30,6 +31,11 @@ interface OrderRow {
 }
 
 export async function GET(req: NextRequest) {
+  const adminCheck = await isAdmin()
+  if (!adminCheck) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
+
   const { searchParams } = new URL(req.url)
   const range = searchParams.get('range') || '30d'
 

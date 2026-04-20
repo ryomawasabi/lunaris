@@ -5,6 +5,7 @@ import Footer from "@/components/layout/Footer";
 import { AuthProvider } from "@/components/auth/AuthProvider";
 import { ProductStatusProvider } from "@/components/providers/ProductStatusProvider";
 import { CartProvider } from "@/components/providers/CartProvider";
+import { WishlistProvider } from "@/components/providers/WishlistProvider";
 import { LenisProvider } from "@/components/providers/LenisProvider";
 import { CartDrawer } from "@/components/cart/CartDrawer";
 
@@ -44,12 +45,14 @@ export default function RootLayout({
         <AuthProvider>
           <ProductStatusProvider>
             <CartProvider>
-              <LenisProvider>
-                <Header />
-                {children}
-                <CartDrawer />
-                <Footer />
-              </LenisProvider>
+              <WishlistProvider>
+                <LenisProvider>
+                  <Header />
+                  {children}
+                  <CartDrawer />
+                  <Footer />
+                </LenisProvider>
+              </WishlistProvider>
             </CartProvider>
           </ProductStatusProvider>
         </AuthProvider>

@@ -25,6 +25,7 @@
     "react": "^18",
     "react-dom": "^18",
     "recharts": "^2.12.7",
+    "resend": "^6.12.0",
     "stripe": "^22.0.2",
     "victory-vendor": "^37.3.6"
   },

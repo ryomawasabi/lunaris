@@ -11,19 +11,21 @@ import { StarRating } from "@/components/ui/StarRating";
 import { cn } from "@/lib/utils";
 import { useProductStatusSafe } from "@/components/providers/ProductStatusProvider";
 import { useCart } from "@/components/providers/CartProvider";
+import { useWishlist } from "@/components/providers/WishlistProvider";
 
 interface ProductCardProps {
   product: Product;
 }
 
 export function ProductCard({ product }: ProductCardProps) {
-  const [isFavorited, setIsFavorited] = useState(false);
   const [addedFeedback, setAddedFeedback] = useState(false);
   const productStatus = useProductStatusSafe();
   const { addItem } = useCart();
+  const { isInWishlist, toggleWishlist } = useWishlist();
   const status = productStatus?.getStatus(product.id);
   const isSoldOut = status?.isSoldOut || product.isSoldOut;
   const isHidden = status?.isHidden || product.isHidden;
+  const isFavorited = isInWishlist(product.id);
 
   // Don't render hidden products
   if (isHidden) return null;
@@ -91,7 +93,8 @@ export function ProductCard({ product }: ProductCardProps) {
           <button
             onClick={(e) => {
               e.preventDefault();
-              setIsFavorited(!isFavorited);
+              e.stopPropagation();
+              toggleWishlist(product.id);
             }}
             className="absolute top-4 right-4 p-2 rounded-full bg-white/80 hover:bg-white transition-colors z-10"
             aria-label="Add to favorites"

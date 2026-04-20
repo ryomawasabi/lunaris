@@ -5,13 +5,17 @@ import Link from 'next/link';
 import { Search, User, Heart, ShoppingBag, Menu, X, LogOut } from 'lucide-react';
 import { useAuth } from '@/components/auth/AuthProvider';
 import { useCart } from '@/components/providers/CartProvider';
+import { useWishlist } from '@/components/providers/WishlistProvider';
+import SearchModal from '@/components/search/SearchModal';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const { user, isAdmin, isLoading, signOut } = useAuth();
   const { itemCount, setCartOpen } = useCart();
+  const { wishlistCount } = useWishlist();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,6 +68,7 @@ export default function Header() {
           {/* Right Icons */}
           <div className="flex items-center gap-6 ml-8">
             <button
+              onClick={() => setSearchOpen(true)}
               aria-label="Search"
               className="text-dark hover:text-gold transition-colors"
             >
@@ -123,12 +128,18 @@ export default function Header() {
               </Link>
             )}
 
-            <button
+            <Link
+              href="/wishlist"
               aria-label="Wishlist"
-              className="text-dark hover:text-gold transition-colors"
+              className="relative text-dark hover:text-gold transition-colors"
             >
               <Heart size={20} />
-            </button>
+              {wishlistCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-gold text-dark text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
+                  {wishlistCount}
+                </span>
+              )}
+            </Link>
             <div className="relative">
               <button
                 onClick={() => setCartOpen(true)}
@@ -168,6 +179,7 @@ export default function Header() {
 
           <div className="flex items-center gap-4">
             <button
+              onClick={() => setSearchOpen(true)}
               aria-label="Search"
               className="text-dark"
             >
@@ -226,13 +238,25 @@ export default function Header() {
                   <User size={20} />
                 </Link>
               )}
-              <button aria-label="Wishlist" className="text-dark">
+              <Link
+                href="/wishlist"
+                aria-label="Wishlist"
+                className="relative text-dark"
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 <Heart size={20} />
-              </button>
+                {wishlistCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-gold text-dark text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
+                    {wishlistCount}
+                  </span>
+                )}
+              </Link>
             </div>
           </div>
         )}
       </div>
+
+      <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   );
 }
