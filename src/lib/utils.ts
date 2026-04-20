@@ -60,10 +60,15 @@ export function getCollectionBySlug(slug: string, collections: Collection[] = ST
 }
 
 /**
- * Get all best-selling products
+ * Get all best-selling products.
+ * A product is considered a best seller if it has the isBestSeller flag
+ * OR belongs to the "Bestseller" collection.
  */
 export function getBestSellers(products: Product[] = STATIC_PRODUCTS): Product[] {
-  return products.filter((product) => product.isBestSeller === true).sort(
+  return products.filter((product) =>
+    product.isBestSeller === true ||
+    product.collection.some((col) => col.toLowerCase() === 'bestseller')
+  ).sort(
     (a, b) => b.reviewCount - a.reviewCount
   );
 }

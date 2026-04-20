@@ -524,10 +524,19 @@ export default function NewProductPage() {
                       type="checkbox"
                       checked={formData.collection.includes(col.name)}
                       onChange={(e) => {
+                        const isBestsellerCol = col.name.toLowerCase() === 'bestseller'
                         if (e.target.checked) {
-                          setFormData((prev) => ({ ...prev, collection: [...prev.collection, col.name] }))
+                          setFormData((prev) => ({
+                            ...prev,
+                            collection: [...prev.collection, col.name],
+                            ...(isBestsellerCol ? { isBestSeller: true } : {}),
+                          }))
                         } else {
-                          setFormData((prev) => ({ ...prev, collection: prev.collection.filter((c) => c !== col.name) }))
+                          setFormData((prev) => ({
+                            ...prev,
+                            collection: prev.collection.filter((c) => c !== col.name),
+                            ...(isBestsellerCol ? { isBestSeller: false } : {}),
+                          }))
                         }
                       }}
                       className="w-4 h-4 rounded border-stone-light cursor-pointer accent-gold"
@@ -601,7 +610,19 @@ export default function NewProductPage() {
               <label className={labelClass}>Product Flags</label>
               <div className="space-y-3">
                 <label className="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" checked={formData.isBestSeller} onChange={(e) => setFormData((prev) => ({ ...prev, isBestSeller: e.target.checked }))} className="w-4 h-4 rounded border-stone-light cursor-pointer accent-gold" />
+                  <input type="checkbox" checked={formData.isBestSeller} onChange={(e) => {
+                    const checked = e.target.checked
+                    const bestsellerColName = collections.find((c: { name: string }) => c.name.toLowerCase() === 'bestseller')?.name
+                    setFormData((prev) => ({
+                      ...prev,
+                      isBestSeller: checked,
+                      ...(bestsellerColName ? {
+                        collection: checked
+                          ? (prev.collection.includes(bestsellerColName) ? prev.collection : [...prev.collection, bestsellerColName])
+                          : prev.collection.filter((c) => c !== bestsellerColName),
+                      } : {}),
+                    }))
+                  }} className="w-4 h-4 rounded border-stone-light cursor-pointer accent-gold" />
                   <span className="font-sans text-sm text-dark">Best Seller</span>
                 </label>
                 <label className="flex items-center gap-2 cursor-pointer">

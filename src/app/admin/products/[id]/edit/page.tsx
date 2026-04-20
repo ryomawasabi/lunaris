@@ -168,10 +168,6 @@ export default function EditProductPage() {
 
     setSubmitting(true)
 
-    console.log('[SUBMIT DEBUG] formData.isBestSeller:', formData.isBestSeller)
-    console.log('[SUBMIT DEBUG] formData.isNew:', formData.isNew)
-    console.log('[SUBMIT DEBUG] formData.isGiftable:', formData.isGiftable)
-
     const fd = new FormData()
     fd.set('slug', formData.slug)
     fd.set('name', formData.name)
@@ -363,8 +359,20 @@ export default function EditProductPage() {
                       type="checkbox"
                       checked={formData.collection.includes(col.name)}
                       onChange={(e) => {
-                        if (e.target.checked) setFormData((prev) => ({ ...prev, collection: [...prev.collection, col.name] }))
-                        else setFormData((prev) => ({ ...prev, collection: prev.collection.filter((c) => c !== col.name) }))
+                        const isBestsellerCol = col.name.toLowerCase() === 'bestseller'
+                        if (e.target.checked) {
+                          setFormData((prev) => ({
+                            ...prev,
+                            collection: [...prev.collection, col.name],
+                            ...(isBestsellerCol ? { isBestSeller: true } : {}),
+                          }))
+                        } else {
+                          setFormData((prev) => ({
+                            ...prev,
+                            collection: prev.collection.filter((c) => c !== col.name),
+                            ...(isBestsellerCol ? { isBestSeller: false } : {}),
+                          }))
+                        }
                       }}
                       className="w-4 h-4 rounded border-stone-light cursor-pointer accent-gold"
                     />
@@ -377,7 +385,19 @@ export default function EditProductPage() {
               <label className={labelClass}>Product Flags</label>
               <div className="space-y-3">
                 <label className="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" checked={formData.isBestSeller} onChange={(e) => { console.log('[CHECKBOX] Best Seller clicked, e.target.checked:', e.target.checked); setFormData((prev) => ({ ...prev, isBestSeller: e.target.checked })) }} className="w-4 h-4 rounded border-stone-light cursor-pointer accent-gold" />
+                  <input type="checkbox" checked={formData.isBestSeller} onChange={(e) => {
+                    const checked = e.target.checked
+                    const bestsellerColName = collections.find((c) => c.name.toLowerCase() === 'bestseller')?.name
+                    setFormData((prev) => ({
+                      ...prev,
+                      isBestSeller: checked,
+                      ...(bestsellerColName ? {
+                        collection: checked
+                          ? (prev.collection.includes(bestsellerColName) ? prev.collection : [...prev.collection, bestsellerColName])
+                          : prev.collection.filter((c) => c !== bestsellerColName),
+                      } : {}),
+                    }))
+                  }} className="w-4 h-4 rounded border-stone-light cursor-pointer accent-gold" />
                   <span className="font-sans text-sm text-dark">Best Seller</span>
                 </label>
                 <label className="flex items-center gap-2 cursor-pointer">
