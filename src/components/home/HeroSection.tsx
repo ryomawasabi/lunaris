@@ -1,7 +1,12 @@
+'use client'
+
 import PlaceholderImage from "@/components/layout/PlaceholderImage";
 import { Button } from "@/components/ui/Button";
+import { useLanguage } from '@/components/providers/LanguageProvider';
 
 export function HeroSection() {
+  const { t } = useLanguage();
+
   return (
     <section className="relative w-full overflow-hidden">
       {/* Background Image */}
@@ -22,11 +27,11 @@ export function HeroSection() {
       {/* Content */}
       <div className="absolute inset-0 flex flex-col items-center justify-center px-6 md:px-12 text-center">
         <h1 className="font-serif text-4xl md:text-6xl text-cream mb-6 max-w-3xl leading-tight">
-          Awaken Your Spiritual Energy
+          {t('home.hero.title')}
         </h1>
 
         <p className="font-sans text-cream/90 text-base md:text-lg max-w-2xl mb-8 leading-relaxed">
-          Sacred jewelry infused with ancient wisdom and cosmic energy. Channel protection, attract fortune, and align your chakras with every piece you wear.
+          {t('home.hero.description')}
         </p>
 
         <Button
@@ -35,7 +40,7 @@ export function HeroSection() {
           size="lg"
           className="uppercase font-medium tracking-wider"
         >
-          Explore the Collection
+          {t('home.hero.cta')}
         </Button>
       </div>
     </section>

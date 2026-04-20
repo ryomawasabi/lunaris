@@ -6,9 +6,11 @@ import { getBestSellers } from '@/lib/utils';
 import { Button } from '@/components/ui/Button';
 import PlaceholderImage from '@/components/layout/PlaceholderImage';
 import { useProductStatus } from '@/components/providers/ProductStatusProvider';
+import { useLanguage } from '@/components/providers/LanguageProvider';
 
 export function FeaturedTeaser() {
   const { products, getStatus } = useProductStatus();
+  const { t } = useLanguage();
 
   // Filter out hidden products, then get best sellers
   const visibleProducts = products.filter((p) => {
@@ -24,10 +26,10 @@ export function FeaturedTeaser() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-gold/[0.03]" />
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-16">
-          <p className="font-sans text-xs uppercase tracking-[0.25em] text-mystic-star mb-4">Bestseller</p>
-          <h2 className="font-serif text-3xl md:text-5xl text-cream font-light">Most Loved Pieces</h2>
+          <p className="font-sans text-xs uppercase tracking-[0.25em] text-mystic-star mb-4">{t('home.featured.badge')}</p>
+          <h2 className="font-serif text-3xl md:text-5xl text-cream font-light">{t('home.featured.title')}</h2>
           <p className="font-sans text-sm text-cream/50 mt-4 max-w-lg mx-auto">
-            Our most cherished crystals, chosen by our community for their powerful energy and timeless beauty.
+            {t('home.featured.description')}
           </p>
         </div>
 
@@ -45,7 +47,7 @@ export function FeaturedTeaser() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="font-sans text-xs text-cream uppercase tracking-wider">View Details</span>
+                  <span className="font-sans text-xs text-cream uppercase tracking-wider">{t('home.featured.viewDetails')}</span>
                   <ArrowRight className="w-4 h-4 text-cream" />
                 </div>
               </div>
@@ -61,7 +63,7 @@ export function FeaturedTeaser() {
 
         <div className="text-center mt-12">
           <Button href="/products" variant="secondary" size="lg">
-            Explore All Pieces
+            {t('home.featured.exploreAll')}
           </Button>
         </div>
       </div>

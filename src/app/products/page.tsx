@@ -9,9 +9,11 @@ import { SectionTitle } from '@/components/ui/SectionTitle'
 import { ProductGrid } from '@/components/product/ProductGrid'
 import { ProductFilters } from '@/components/product/ProductFilters'
 import { useProductStatus } from '@/components/providers/ProductStatusProvider'
+import { useLanguage } from '@/components/providers/LanguageProvider'
 
 function ProductsContent() {
   const { products, categories, collections } = useProductStatus()
+  const { t } = useLanguage()
   const searchParams = useSearchParams()
 
   const category = searchParams.get('category') || undefined
@@ -46,12 +48,12 @@ function ProductsContent() {
     ? activeCollection.name
     : activeCategory
       ? activeCategory.name
-      : 'All Jewelry'
+      : t('products.allJewelry')
 
   const pageSubtitle = activeCollection
-    ? 'Collection'
+    ? t('products.collection')
     : activeCategory
-      ? 'Category'
+      ? t('products.category')
       : undefined
 
   return (
@@ -60,10 +62,10 @@ function ProductsContent() {
       <div className="px-4 md:px-6 lg:px-8 py-6 border-b border-stone-light">
         <div className="max-w-7xl mx-auto flex items-center gap-2 text-sm">
           <Link href="/" className="text-stone hover:text-dark transition-colors">
-            Home
+            {t('products.breadcrumb')}
           </Link>
           <ChevronRight className="w-4 h-4 text-stone" />
-          <span className="text-dark font-medium">Products</span>
+          <span className="text-dark font-medium">{t('products.title')}</span>
           {(activeCollection || activeCategory) && (
             <>
               <ChevronRight className="w-4 h-4 text-stone" />
@@ -101,7 +103,7 @@ function ProductsContent() {
                   {/* Results Count */}
                   <div className="mb-6 flex items-center justify-between">
                     <p className="text-sm text-warm">
-                      Showing {filteredProducts.length} of {products.length} products
+                      {t('products.showingProducts', { count: filteredProducts.length, total: products.length })}
                     </p>
                     {/* Mobile Filters */}
                     <div className="lg:hidden text-xs text-warm">
@@ -110,7 +112,7 @@ function ProductsContent() {
                           href="/products"
                           className="text-warm hover:text-dark transition-colors font-medium"
                         >
-                          Clear Filters
+                          {t('products.clearFilters')}
                         </Link>
                       )}
                     </div>
@@ -121,16 +123,16 @@ function ProductsContent() {
               ) : (
                 <div className="text-center py-16">
                   <h3 className="font-serif text-xl text-dark mb-2">
-                    No products found
+                    {t('products.noProducts')}
                   </h3>
                   <p className="text-warm mb-6">
-                    Try adjusting your filters or browse all products
+                    {t('products.noProductsDescription')}
                   </p>
                   <Link
                     href="/products"
                     className="inline-flex items-center justify-center px-6 py-3 bg-dark text-cream hover:bg-charcoal transition-colors text-sm font-sans font-medium uppercase tracking-wider"
                   >
-                    View All Products
+                    {t('products.viewAllProducts')}
                   </Link>
                 </div>
               )}

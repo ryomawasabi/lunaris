@@ -4,12 +4,14 @@ import { useEffect } from 'react'
 import Link from 'next/link'
 import { X, Minus, Plus, ShoppingBag, Trash2 } from 'lucide-react'
 import { useCart } from '@/components/providers/CartProvider'
+import { useLanguage } from '@/components/providers/LanguageProvider'
 import { formatPrice } from '@/lib/utils'
 import { cn } from '@/lib/utils'
 import PlaceholderImage from '@/components/layout/PlaceholderImage'
 
 export function CartDrawer() {
   const { items, itemCount, total, removeItem, updateQuantity, isCartOpen, setCartOpen } = useCart()
+  const { t } = useLanguage()
 
   // Lock body scroll when open
   useEffect(() => {
@@ -46,7 +48,7 @@ export function CartDrawer() {
           <div className="flex items-center gap-3">
             <ShoppingBag size={20} className="text-dark" />
             <h2 className="font-serif text-xl text-dark">
-              Your Cart ({itemCount})
+              {t('cart.yourCart')} ({itemCount})
             </h2>
           </div>
           <button
@@ -62,9 +64,9 @@ export function CartDrawer() {
           {items.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center">
               <ShoppingBag size={48} className="text-stone mb-4" />
-              <p className="font-serif text-lg text-dark mb-2">Your cart is empty</p>
+              <p className="font-serif text-lg text-dark mb-2">{t('cart.emptyCart')}</p>
               <p className="font-sans text-sm text-warm mb-6">
-                Discover our crystal-infused essence oils
+                {t('cart.discoverEssenceOils')}
               </p>
               <button
                 onClick={() => setCartOpen(false)}
@@ -73,7 +75,7 @@ export function CartDrawer() {
                   href="/products"
                   className="px-6 py-3 bg-dark text-cream font-sans text-sm font-medium uppercase tracking-wider hover:bg-charcoal transition-colors"
                 >
-                  Shop Now
+                  {t('cart.shopNow')}
                 </Link>
               </button>
             </div>
@@ -141,11 +143,11 @@ export function CartDrawer() {
           <div className="border-t border-stone-light px-6 py-5 space-y-4">
             {/* Subtotal */}
             <div className="flex items-center justify-between">
-              <span className="font-sans text-sm text-warm">Subtotal</span>
+              <span className="font-sans text-sm text-warm">{t('cart.subtotal')}</span>
               <span className="font-serif text-lg text-dark">{formatPrice(total)}</span>
             </div>
             <p className="font-sans text-xs text-warm">
-              Shipping calculated at checkout
+              {t('cart.shippingCalculated')}
             </p>
 
             {/* Checkout Button */}
@@ -154,7 +156,7 @@ export function CartDrawer() {
               onClick={() => setCartOpen(false)}
               className="block w-full px-6 py-3.5 bg-dark text-cream text-center font-sans text-sm font-medium uppercase tracking-wider hover:bg-charcoal transition-colors"
             >
-              View Cart & Checkout
+              {t('cart.viewCartCheckout')}
             </Link>
 
             {/* Continue Shopping */}
@@ -162,7 +164,7 @@ export function CartDrawer() {
               onClick={() => setCartOpen(false)}
               className="w-full text-center font-sans text-sm text-warm hover:text-dark transition-colors"
             >
-              Continue Shopping
+              {t('cart.continueShopping')}
             </button>
           </div>
         )}

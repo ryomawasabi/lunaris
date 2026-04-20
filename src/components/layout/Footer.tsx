@@ -1,8 +1,13 @@
+'use client';
+
 import Link from 'next/link';
 import { Instagram, Facebook, MapPin, Twitter } from 'lucide-react';
+import { useLanguage } from '@/components/providers/LanguageProvider';
+import LanguageSwitcher from '@/components/layout/LanguageSwitcher';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
 
   return (
     <footer className="bg-dark text-cream texture-noise-dark">
@@ -15,9 +20,9 @@ export default function Footer() {
               YINYANG GUARDIAN
             </h2>
             <p className="text-sm text-stone mb-8 leading-relaxed">
-              Chakra-aligned crystal jewelry inspired by the ancient wisdom of yin and yang, crafted to restore balance and harmony.
+              {t('footer.brandDescription')}
             </p>
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-6 mb-6">
               <a
                 href="https://instagram.com"
                 aria-label="Instagram"
@@ -47,18 +52,19 @@ export default function Footer() {
                 <Twitter size={20} />
               </a>
             </div>
+            <LanguageSwitcher variant="dark" />
           </div>
 
           {/* Column 2: Shop */}
           <div>
-            <h3 className="font-serif text-lg mb-6 text-gold">Shop</h3>
+            <h3 className="font-serif text-lg mb-6 text-gold">{t('footer.shop')}</h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="/products?type=necklaces"
                   className="text-sm text-stone hover:text-cream transition-colors"
                 >
-                  Necklaces
+                  {t('footer.necklaces')}
                 </Link>
               </li>
               <li>
@@ -66,7 +72,7 @@ export default function Footer() {
                   href="/products?type=bracelets"
                   className="text-sm text-stone hover:text-cream transition-colors"
                 >
-                  Bracelets
+                  {t('footer.bracelets')}
                 </Link>
               </li>
               <li>
@@ -74,7 +80,7 @@ export default function Footer() {
                   href="/products?type=earrings"
                   className="text-sm text-stone hover:text-cream transition-colors"
                 >
-                  Earrings
+                  {t('footer.earrings')}
                 </Link>
               </li>
               <li>
@@ -82,7 +88,7 @@ export default function Footer() {
                   href="/products?type=rings"
                   className="text-sm text-stone hover:text-cream transition-colors"
                 >
-                  Rings
+                  {t('footer.rings')}
                 </Link>
               </li>
               <li>
@@ -90,7 +96,7 @@ export default function Footer() {
                   href="/products?sort=newest"
                   className="text-sm text-stone hover:text-cream transition-colors"
                 >
-                  New Arrivals
+                  {t('footer.newArrivals')}
                 </Link>
               </li>
               <li>
@@ -98,7 +104,7 @@ export default function Footer() {
                   href="/products?sort=bestselling"
                   className="text-sm text-stone hover:text-cream transition-colors"
                 >
-                  Best Sellers
+                  {t('footer.bestSellers')}
                 </Link>
               </li>
             </ul>
@@ -106,14 +112,14 @@ export default function Footer() {
 
           {/* Column 3: Collections */}
           <div>
-            <h3 className="font-serif text-lg mb-6 text-gold">Collections</h3>
+            <h3 className="font-serif text-lg mb-6 text-gold">{t('footer.collections')}</h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="/collections/protection"
                   className="text-sm text-stone hover:text-cream transition-colors"
                 >
-                  Protection
+                  {t('footer.protection')}
                 </Link>
               </li>
               <li>
@@ -121,7 +127,7 @@ export default function Footer() {
                   href="/collections/love-harmony"
                   className="text-sm text-stone hover:text-cream transition-colors"
                 >
-                  Love & Harmony
+                  {t('footer.loveHarmony')}
                 </Link>
               </li>
               <li>
@@ -129,7 +135,7 @@ export default function Footer() {
                   href="/collections/prosperity"
                   className="text-sm text-stone hover:text-cream transition-colors"
                 >
-                  Prosperity
+                  {t('footer.prosperity')}
                 </Link>
               </li>
               <li>
@@ -137,7 +143,7 @@ export default function Footer() {
                   href="/collections/essence-oil"
                   className="text-sm text-stone hover:text-cream transition-colors"
                 >
-                  Essence Oil
+                  {t('footer.essenceOil')}
                 </Link>
               </li>
               <li>
@@ -145,7 +151,7 @@ export default function Footer() {
                   href="/collections/crystal-diffuser"
                   className="text-sm text-stone hover:text-cream transition-colors"
                 >
-                  Crystal Diffuser
+                  {t('footer.crystalDiffuser')}
                 </Link>
               </li>
             </ul>
@@ -153,14 +159,14 @@ export default function Footer() {
 
           {/* Column 4: Help */}
           <div>
-            <h3 className="font-serif text-lg mb-6 text-gold">Help</h3>
+            <h3 className="font-serif text-lg mb-6 text-gold">{t('footer.help')}</h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="/faq"
                   className="text-sm text-stone hover:text-cream transition-colors"
                 >
-                  FAQ
+                  {t('footer.faq')}
                 </Link>
               </li>
               <li>
@@ -168,7 +174,7 @@ export default function Footer() {
                   href="/shipping-returns"
                   className="text-sm text-stone hover:text-cream transition-colors"
                 >
-                  Shipping & Returns
+                  {t('footer.shippingReturns')}
                 </Link>
               </li>
               <li>
@@ -176,7 +182,7 @@ export default function Footer() {
                   href="/size-guide"
                   className="text-sm text-stone hover:text-cream transition-colors"
                 >
-                  Size Guide
+                  {t('footer.sizeGuide')}
                 </Link>
               </li>
               <li>
@@ -184,7 +190,7 @@ export default function Footer() {
                   href="/contact"
                   className="text-sm text-stone hover:text-cream transition-colors"
                 >
-                  Contact
+                  {t('footer.contact')}
                 </Link>
               </li>
               <li>
@@ -192,7 +198,7 @@ export default function Footer() {
                   href="/about"
                   className="text-sm text-stone hover:text-cream transition-colors"
                 >
-                  About Us
+                  {t('footer.aboutUs')}
                 </Link>
               </li>
             </ul>
@@ -205,12 +211,12 @@ export default function Footer() {
         <div className="max-w-8xl mx-auto px-4 md:px-8 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-stone">
             <p>
-              &copy; {currentYear} YINYANG GUARDIAN. All rights reserved.
+              &copy; {currentYear} YINYANG GUARDIAN. {t('footer.allRightsReserved')}
             </p>
 
             {/* Payment Icons */}
             <div className="flex items-center gap-4">
-              <span className="text-[10px] uppercase tracking-wider">Secure Payments:</span>
+              <span className="text-[10px] uppercase tracking-wider">{t('footer.securePayments')}</span>
               <div className="flex gap-3 text-xs font-semibold">
                 <span className="px-2 py-1 border border-warm/30 rounded">Visa</span>
                 <span className="px-2 py-1 border border-warm/30 rounded">MC</span>
@@ -225,13 +231,13 @@ export default function Footer() {
                 href="/privacy"
                 className="hover:text-cream transition-colors"
               >
-                Privacy Policy
+                {t('footer.privacyPolicy')}
               </Link>
               <Link
                 href="/terms"
                 className="hover:text-cream transition-colors"
               >
-                Terms of Service
+                {t('footer.termsOfService')}
               </Link>
               <Link
                 href="/legal/tokutei"

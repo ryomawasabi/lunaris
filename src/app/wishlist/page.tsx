@@ -4,12 +4,14 @@ import Link from 'next/link'
 import { Heart, ChevronRight } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useWishlist } from '@/components/providers/WishlistProvider'
+import { useLanguage } from '@/components/providers/LanguageProvider'
 import { Product } from '@/lib/types'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { ProductGrid } from '@/components/product/ProductGrid'
 
 export default function WishlistPage() {
   const { wishlist, isLoading } = useWishlist()
+  const { t } = useLanguage()
   const [products, setProducts] = useState<Product[]>([])
   const [loadingProducts, setLoadingProducts] = useState(false)
 
@@ -45,10 +47,10 @@ export default function WishlistPage() {
       <div className="px-4 md:px-6 lg:px-8 py-6 border-b border-stone-light">
         <div className="max-w-7xl mx-auto flex items-center gap-2 text-sm">
           <Link href="/" className="text-stone hover:text-dark transition-colors">
-            Home
+            {t('common.home')}
           </Link>
           <ChevronRight className="w-4 h-4 text-stone" />
-          <span className="text-dark font-medium">Wishlist</span>
+          <span className="text-dark font-medium">{t('nav.wishlist')}</span>
         </div>
       </div>
 
@@ -57,7 +59,7 @@ export default function WishlistPage() {
         <div className="max-w-7xl mx-auto">
           {/* Title Section */}
           <div className="mb-12">
-            <SectionTitle title="My Wishlist" align="left" />
+            <SectionTitle title={t('wishlist.myWishlist')} align="left" />
           </div>
 
           {/* Content */}
@@ -72,7 +74,7 @@ export default function WishlistPage() {
               {/* Results Count */}
               <div className="mb-6">
                 <p className="text-sm text-warm">
-                  {products.length} {products.length === 1 ? 'item' : 'items'} in your wishlist
+                  {t('wishlist.itemsCount', { count: products.length })}
                 </p>
               </div>
 
@@ -85,16 +87,16 @@ export default function WishlistPage() {
                 <Heart className="w-16 h-16 text-stone-light" />
               </div>
               <h3 className="font-serif text-2xl text-dark mb-3">
-                Your wishlist is empty
+                {t('wishlist.emptyWishlist')}
               </h3>
               <p className="text-warm mb-8 max-w-md mx-auto">
-                Save your favorite pieces to your wishlist and we&apos;ll help you remember them
+                {t('wishlist.emptyWishlistDescription')}
               </p>
               <Link
                 href="/products"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-dark text-cream hover:bg-charcoal transition-colors text-sm font-sans font-medium uppercase tracking-wider rounded-lg"
               >
-                Start Exploring
+                {t('wishlist.startExploring')}
                 <span>→</span>
               </Link>
             </div>

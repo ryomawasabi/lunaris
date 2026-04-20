@@ -5,17 +5,19 @@ import { ProductGrid } from "@/components/product/ProductGrid";
 import { getNewArrivals } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { useProductStatus } from "@/components/providers/ProductStatusProvider";
+import { useLanguage } from '@/components/providers/LanguageProvider';
 
 export function NewArrivals() {
   const { products } = useProductStatus();
+  const { t } = useLanguage();
   const newArrivals = getNewArrivals(products).slice(0, 4);
 
   return (
     <section className="py-16 md:py-24 px-6 md:px-12 bg-cream">
       <div className="max-w-7xl mx-auto">
         <SectionTitle
-          subtitle="Newly Blessed"
-          title="New Arrivals"
+          subtitle={t('home.newArrivals.section')}
+          title={t('home.newArrivals.title')}
           align="center"
         />
 
@@ -27,7 +29,7 @@ export function NewArrivals() {
             variant="secondary"
             size="md"
           >
-            View All New Arrivals
+            {t('home.newArrivals.viewAll')}
           </Button>
         </div>
       </div>

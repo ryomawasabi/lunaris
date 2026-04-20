@@ -6,9 +6,11 @@ import { SectionTitle } from '@/components/ui/SectionTitle';
 import { Button } from '@/components/ui/Button';
 import { ProductGrid } from '@/components/product/ProductGrid';
 import { useProductStatus } from '@/components/providers/ProductStatusProvider';
+import { useLanguage } from '@/components/providers/LanguageProvider';
 
 export default function GiftsPage() {
   const { products } = useProductStatus();
+  const { t } = useLanguage();
 
   const giftFeatures = [
     {
@@ -30,19 +32,19 @@ export default function GiftsPage() {
   ];
 
   const occasions = [
-    { icon: Heart, label: 'Birthday', value: 'birthday' },
-    { icon: Calendar, label: 'Anniversary', value: 'anniversary' },
-    { icon: Trophy, label: 'Graduation', value: 'graduation' },
-    { icon: Zap, label: "Mother's Day", value: 'mothers-day' },
-    { icon: Gift, label: 'Just Because', value: 'just-because' },
-    { icon: BookOpen, label: 'Thank You', value: 'thank-you' },
+    { icon: Heart, label: t('gifts.birthday'), value: 'birthday' },
+    { icon: Calendar, label: t('gifts.anniversary'), value: 'anniversary' },
+    { icon: Trophy, label: t('gifts.graduation'), value: 'graduation' },
+    { icon: Zap, label: t('gifts.mothersDay'), value: 'mothers-day' },
+    { icon: Gift, label: t('gifts.justBecause'), value: 'just-because' },
+    { icon: BookOpen, label: t('gifts.thankYou'), value: 'thank-you' },
   ];
 
   const priceRanges = [
-    { label: 'Under $75', min: 0, max: 75 },
-    { label: '$75 - $150', min: 75, max: 150 },
-    { label: '$150 - $250', min: 150, max: 250 },
-    { label: 'Premium ($250+)', min: 250, max: Infinity },
+    { label: t('gifts.under75'), min: 0, max: 75 },
+    { label: t('gifts.price75to150'), min: 75, max: 150 },
+    { label: t('gifts.price150to250'), min: 150, max: 250 },
+    { label: t('gifts.premiumPrice'), min: 250, max: Infinity },
   ];
 
   // Get giftable products from context
@@ -62,10 +64,10 @@ export default function GiftsPage() {
         />
         <div className="absolute inset-0 bg-dark/40 flex flex-col items-center justify-center space-y-4">
           <h1 className="font-serif text-4xl md:text-5xl text-cream text-center font-light">
-            Gift the Power of Balance
+            {t('gifts.title')}
           </h1>
           <p className="text-cream/90 text-center text-lg max-w-2xl px-4">
-            Share more than jewelry — gift chakra alignment, yin-yang harmony, and the ancient wisdom of crystal healing.
+            {t('gifts.subtitle')}
           </p>
         </div>
       </section>
@@ -73,7 +75,7 @@ export default function GiftsPage() {
       {/* Gift Features */}
       <section className="py-16 md:py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <SectionTitle title="Why Gift Balance" align="center" />
+          <SectionTitle title={t('gifts.whyGiftBalance')} align="center" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             {giftFeatures.map((feature, index) => {
               const Icon = feature.icon;
@@ -94,7 +96,7 @@ export default function GiftsPage() {
       {/* Gift by Occasion */}
       <section className="py-16 md:py-20 px-4 bg-stone-light texture-noise-light">
         <div className="max-w-6xl mx-auto">
-          <SectionTitle title="Gift by Occasion" align="center" />
+          <SectionTitle title={t('gifts.giftByOccasion')} align="center" />
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {occasions.map((occasion, index) => {
               const Icon = occasion.icon;
@@ -117,7 +119,7 @@ export default function GiftsPage() {
       {/* Gift by Price */}
       <section className="py-16 md:py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <SectionTitle title="Gift by Price" align="center" />
+          <SectionTitle title={t('gifts.giftByPrice')} align="center" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {priceRanges.map((range, index) => (
               <Button
@@ -136,9 +138,9 @@ export default function GiftsPage() {
       {/* Most Giftable Products */}
       <section className="py-16 md:py-20 px-4 bg-stone-light texture-noise-light">
         <div className="max-w-6xl mx-auto">
-          <SectionTitle title="Most Harmonious Gift Pieces" align="center" />
+          <SectionTitle title={t('gifts.mostHarmonious')} align="center" />
           <p className="text-center text-warm mb-12 max-w-2xl mx-auto">
-            Chakra-aligned selections perfect for sharing balanced energy. Each piece harmonizes specific energy centers and comes with a crystal alignment guide.
+            {t('gifts.mostHarmoniousSubtitle')}
           </p>
           <ProductGrid products={giftableProducts} columns={4} />
         </div>

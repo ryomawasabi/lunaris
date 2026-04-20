@@ -4,17 +4,19 @@ import { useState } from 'react';
 import { Heart } from 'lucide-react';
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import PlaceholderImage from "@/components/layout/PlaceholderImage";
+import { useLanguage } from '@/components/providers/LanguageProvider';
 import { cn } from '@/lib/utils';
 
 export function UGCSection() {
   const tiles = Array.from({ length: 6 }, (_, i) => i + 1);
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const { t } = useLanguage();
 
   return (
     <section className="py-16 md:py-24 px-6 md:px-12 bg-white">
       <div className="max-w-7xl mx-auto">
         <SectionTitle
-          title="Channeling Energy"
+          title={t('home.ugc.title')}
           subtitle="#YINYANGGUARDIAN"
           align="center"
         />

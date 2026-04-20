@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import Link from 'next/link'
 import { X, Search as SearchIcon, Loader } from 'lucide-react'
 import Image from 'next/image'
+import { useLanguage } from '@/components/providers/LanguageProvider'
 
 interface Product {
   id: string
@@ -20,6 +21,7 @@ interface SearchModalProps {
 }
 
 export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
+  const { t } = useLanguage()
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<Product[]>([])
   const [loading, setLoading] = useState(false)
@@ -119,7 +121,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
               <input
                 ref={inputRef}
                 type="text"
-                placeholder="Search products..."
+                placeholder={t('search.placeholder')}
                 value={query}
                 onChange={(e) => handleQueryChange(e.target.value)}
                 className="w-full px-6 py-4 border-b border-stone-light font-sans text-lg text-dark bg-white focus:outline-none focus:border-gold transition-colors"
@@ -142,7 +144,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
         <div className="bg-white px-6 pb-8 max-h-[70vh] overflow-y-auto">
           {query && results.length === 0 && !loading && (
             <div className="py-12 text-center">
-              <p className="font-sans text-sm text-warm">No products found matching &ldquo;{query}&rdquo;</p>
+              <p className="font-sans text-sm text-warm">{t('search.noResults', { query })}</p>
             </div>
           )}
 
@@ -193,7 +195,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
           {!query && (
             <div className="py-12 text-center">
-              <p className="font-sans text-sm text-warm">Start typing to search products...</p>
+              <p className="font-sans text-sm text-warm">{t('search.startTyping')}</p>
             </div>
           )}
         </div>

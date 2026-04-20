@@ -7,6 +7,7 @@ import { ProductStatusProvider } from "@/components/providers/ProductStatusProvi
 import { CartProvider } from "@/components/providers/CartProvider";
 import { WishlistProvider } from "@/components/providers/WishlistProvider";
 import { LenisProvider } from "@/components/providers/LenisProvider";
+import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import { CartDrawer } from "@/components/cart/CartDrawer";
 
 export const metadata: Metadata = {
@@ -43,18 +44,20 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-cream antialiased">
         <AuthProvider>
-          <ProductStatusProvider>
-            <CartProvider>
-              <WishlistProvider>
-                <LenisProvider>
-                  <Header />
-                  {children}
-                  <CartDrawer />
-                  <Footer />
-                </LenisProvider>
-              </WishlistProvider>
-            </CartProvider>
-          </ProductStatusProvider>
+          <LanguageProvider>
+            <ProductStatusProvider>
+              <CartProvider>
+                <WishlistProvider>
+                  <LenisProvider>
+                    <Header />
+                    {children}
+                    <CartDrawer />
+                    <Footer />
+                  </LenisProvider>
+                </WishlistProvider>
+              </CartProvider>
+            </ProductStatusProvider>
+          </LanguageProvider>
         </AuthProvider>
       </body>
     </html>

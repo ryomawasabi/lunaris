@@ -2,10 +2,12 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/Button';
+import { useLanguage } from '@/components/providers/LanguageProvider';
 
 export function NewsletterSection() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const { t } = useLanguage();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,17 +23,17 @@ export function NewsletterSection() {
     <section className="py-16 md:py-24 px-6 md:px-12 bg-dark text-cream texture-noise-dark">
       <div className="max-w-2xl mx-auto text-center">
         <h2 className="font-serif text-3xl md:text-4xl mb-4">
-          Join the Yin-Yang Circle
+          {t('home.newsletter.title')}
         </h2>
 
         <p className="font-sans text-cream/90 text-base mb-8 leading-relaxed">
-          Receive chakra alignment guides, yin-yang balance rituals, and early access to new crystal pieces. Join thousands of seekers on their path to harmony.
+          {t('home.newsletter.description')}
         </p>
 
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 mb-4">
           <input
             type="email"
-            placeholder="Enter your email"
+            placeholder={t('home.newsletter.emailPlaceholder')}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -43,20 +45,20 @@ export function NewsletterSection() {
             size="md"
             className="bg-cream text-dark hover:bg-cream/90"
           >
-            Subscribe
+            {t('home.newsletter.submitButton')}
           </Button>
         </form>
 
         {submitted && (
           <p className="text-cream/80 text-sm font-sans mb-4">
-            Thank you for subscribing! Check your email for a special welcome offer.
+            {t('home.newsletter.successMessage')}
           </p>
         )}
 
         <p className="font-sans text-cream/60 text-xs">
-          By subscribing, you agree to our{' '}
+          {t('home.newsletter.agreement')}{' '}
           <a href="/privacy" className="text-gold hover:text-gold/80 transition-colors underline">
-            Privacy Policy
+            {t('home.newsletter.privacyPolicyLink')}
           </a>
         </p>
       </div>

@@ -5,9 +5,11 @@ import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { CheckCircle, Package, ArrowRight, Search, Loader2 } from 'lucide-react'
 import { useCart } from '@/components/providers/CartProvider'
+import { useLanguage } from '@/components/providers/LanguageProvider'
 
 function CheckoutSuccessContent() {
   const { clearCart } = useCart()
+  const { t } = useLanguage()
   const searchParams = useSearchParams()
   const [orderInfo, setOrderInfo] = useState<{ orderId: string; email: string } | null>(null)
 
@@ -56,21 +58,21 @@ function CheckoutSuccessContent() {
             <CheckCircle size={40} className="text-emerald-600" />
           </div>
           <h1 className="font-serif text-3xl md:text-4xl text-dark mb-4">
-            Thank You!
+            {t('checkout.thankYou')}
           </h1>
           <p className="font-sans text-warm text-lg">
-            Your order has been placed successfully.
+            {t('checkout.orderPlaced')}
           </p>
         </div>
 
         {/* Order ID */}
         {orderInfo && (
           <div className="bg-gold/5 border border-gold/20 rounded-lg p-4 mb-6">
-            <p className="font-sans text-xs text-warm uppercase tracking-wider mb-1">Your Order ID</p>
+            <p className="font-sans text-xs text-warm uppercase tracking-wider mb-1">{t('checkout.yourOrderID')}</p>
             <p className="font-serif text-2xl text-dark tracking-wider">
               #{orderInfo.orderId.slice(0, 8).toUpperCase()}
             </p>
-            <p className="font-sans text-xs text-warm mt-1">Save this to track your order</p>
+            <p className="font-sans text-xs text-warm mt-1">{t('checkout.saveForTracking')}</p>
           </div>
         )}
 
@@ -78,11 +80,10 @@ function CheckoutSuccessContent() {
         <div className="bg-white border border-stone-light rounded-lg p-6 mb-8">
           <div className="flex items-center gap-3 justify-center mb-4">
             <Package size={20} className="text-warm" />
-            <span className="font-sans text-sm text-warm">What happens next?</span>
+            <span className="font-sans text-sm text-warm">{t('checkout.whatHappensNext')}</span>
           </div>
           <p className="font-sans text-sm text-dark leading-relaxed">
-            You&apos;ll receive an email confirmation shortly with your order details.
-            We&apos;ll notify you when your order ships.
+            {t('checkout.nextSteps')}
           </p>
         </div>
 
@@ -92,7 +93,7 @@ function CheckoutSuccessContent() {
             href="/products"
             className="inline-flex items-center gap-2 px-8 py-3.5 bg-dark text-cream font-sans text-sm font-medium uppercase tracking-wider hover:bg-charcoal transition-colors"
           >
-            Continue Shopping
+            {t('checkout.continueShopping')}
             <ArrowRight size={16} />
           </Link>
           <Link
@@ -100,7 +101,7 @@ function CheckoutSuccessContent() {
             className="inline-flex items-center gap-2 text-sm font-sans text-warm hover:text-dark transition-colors"
           >
             <Search size={14} />
-            Track Your Order
+            {t('checkout.trackOrder')}
           </Link>
         </div>
       </div>

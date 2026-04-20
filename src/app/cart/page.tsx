@@ -4,11 +4,13 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Minus, Plus, Trash2, ShoppingBag, ArrowLeft, Loader2 } from 'lucide-react'
 import { useCart } from '@/components/providers/CartProvider'
+import { useLanguage } from '@/components/providers/LanguageProvider'
 import { formatPrice } from '@/lib/utils'
 import PlaceholderImage from '@/components/layout/PlaceholderImage'
 
 export default function CartPage() {
   const { items, itemCount, total, removeItem, updateQuantity } = useCart()
+  const { t } = useLanguage()
   const [loading, setLoading] = useState(false)
 
   const handleCheckout = async () => {
@@ -51,15 +53,15 @@ export default function CartPage() {
       <main className="min-h-screen bg-cream">
         <div className="max-w-4xl mx-auto px-4 py-24 text-center">
           <ShoppingBag size={64} className="text-stone mx-auto mb-6" />
-          <h1 className="font-serif text-3xl text-dark mb-4">Your cart is empty</h1>
+          <h1 className="font-serif text-3xl text-dark mb-4">{t('cart.emptyCart')}</h1>
           <p className="font-sans text-warm mb-8">
-            Looks like you haven&apos;t added anything to your cart yet.
+            {t('cart.emptyCartDescription')}
           </p>
           <Link
             href="/products"
             className="inline-flex items-center gap-2 px-8 py-3.5 bg-dark text-cream font-sans text-sm font-medium uppercase tracking-wider hover:bg-charcoal transition-colors"
           >
-            Start Shopping
+            {t('cart.startShopping')}
           </Link>
         </div>
       </main>
@@ -76,10 +78,10 @@ export default function CartPage() {
             className="inline-flex items-center gap-2 text-sm font-sans text-warm hover:text-dark transition-colors mb-4"
           >
             <ArrowLeft size={16} />
-            Continue Shopping
+            {t('cart.continueShopping')}
           </Link>
           <h1 className="font-serif text-3xl md:text-4xl text-dark">
-            Shopping Cart ({itemCount})
+            {t('cart.cartTitle')} ({itemCount})
           </h1>
         </div>
 
@@ -90,7 +92,7 @@ export default function CartPage() {
             {!freeShipping && (
               <div className="mb-8 p-4 bg-gold/5 border border-gold/20 rounded-lg">
                 <p className="font-sans text-sm text-dark mb-2">
-                  You&apos;re {formatPrice(shippingThreshold - total)} away from free shipping!
+                  {t('cart.freeShippingThreshold', { amount: formatPrice(shippingThreshold - total) })}
                 </p>
                 <div className="w-full bg-stone-light rounded-full h-2">
                   <div
@@ -103,7 +105,7 @@ export default function CartPage() {
             {freeShipping && (
               <div className="mb-8 p-4 bg-emerald-50 border border-emerald-200 rounded-lg">
                 <p className="font-sans text-sm text-emerald-800 font-medium">
-                  You qualify for free shipping!
+                  {t('cart.qualifiesForFreeShipping')}
                 </p>
               </div>
             )}
@@ -183,23 +185,23 @@ export default function CartPage() {
           {/* Order Summary */}
           <div className="lg:col-span-1">
             <div className="bg-white border border-stone-light rounded-lg p-6 sticky top-24">
-              <h2 className="font-serif text-xl text-dark mb-6">Order Summary</h2>
+              <h2 className="font-serif text-xl text-dark mb-6">{t('cart.orderSummary')}</h2>
 
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between font-sans text-sm">
-                  <span className="text-warm">Subtotal</span>
+                  <span className="text-warm">{t('cart.subtotal')}</span>
                   <span className="text-dark">{formatPrice(total)}</span>
                 </div>
                 <div className="flex justify-between font-sans text-sm">
-                  <span className="text-warm">Shipping</span>
+                  <span className="text-warm">{t('cart.shipping')}</span>
                   <span className="text-dark">
-                    {freeShipping ? 'Free' : 'Calculated at checkout'}
+                    {freeShipping ? t('cart.free') : t('cart.calculatedAtCheckout')}
                   </span>
                 </div>
               </div>
 
               <div className="flex justify-between py-4 border-t border-stone-light mb-6">
-                <span className="font-serif text-lg text-dark">Total</span>
+                <span className="font-serif text-lg text-dark">{t('cart.total')}</span>
                 <span className="font-serif text-lg text-dark">{formatPrice(total)}</span>
               </div>
 
@@ -209,11 +211,11 @@ export default function CartPage() {
                 className="w-full px-6 py-3.5 bg-dark text-cream font-sans text-sm font-medium uppercase tracking-wider hover:bg-charcoal transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {loading && <Loader2 className="animate-spin" size={16} />}
-                {loading ? 'Redirecting...' : 'Proceed to Checkout'}
+                {loading ? 'Redirecting...' : t('cart.proceedToCheckout')}
               </button>
 
               <p className="font-sans text-xs text-warm text-center mt-4">
-                Secure checkout powered by Stripe
+                {t('cart.secureCheckout')}
               </p>
             </div>
           </div>

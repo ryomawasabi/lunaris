@@ -1,0 +1,458 @@
+{
+  "nav": {
+    "shopAll": "Shop All",
+    "soulStoneDiscovery": "Soul Stone Discovery",
+    "crystalEssence": "Crystal Essence",
+    "collections": "Collections",
+    "about": "About",
+    "search": "Search",
+    "userAccount": "User account",
+    "signedInAs": "Signed in as",
+    "adminDashboard": "Admin Dashboard",
+    "signOut": "Sign Out",
+    "signIn": "Sign in",
+    "wishlist": "Wishlist",
+    "shoppingBag": "Shopping bag"
+  },
+  "footer": {
+    "brandDescription": "Chakra-aligned crystal jewelry inspired by the ancient wisdom of yin and yang, crafted to restore balance and harmony.",
+    "shop": "Shop",
+    "necklaces": "Necklaces",
+    "bracelets": "Bracelets",
+    "earrings": "Earrings",
+    "rings": "Rings",
+    "newArrivals": "New Arrivals",
+    "bestSellers": "Best Sellers",
+    "collections": "Collections",
+    "protection": "Protection",
+    "loveHarmony": "Love & Harmony",
+    "prosperity": "Prosperity",
+    "essenceOil": "Essence Oil",
+    "crystalDiffuser": "Crystal Diffuser",
+    "help": "Help",
+    "faq": "FAQ",
+    "shippingReturns": "Shipping & Returns",
+    "sizeGuide": "Size Guide",
+    "contact": "Contact",
+    "aboutUs": "About Us",
+    "allRightsReserved": "All rights reserved.",
+    "securePayments": "Secure Payments:",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  },
+  "home": {
+    "hero": {
+      "title": "Awaken Your Spiritual Energy",
+      "description": "Sacred jewelry infused with ancient wisdom and cosmic energy. Channel protection, attract fortune, and align your chakras with every piece you wear.",
+      "cta": "Explore the Collection"
+    },
+    "brandValues": {
+      "blessed": {
+        "title": "Blessed & Purified",
+        "description": "Each piece is energetically cleansed and activated through our sacred ritual process to amplify its natural power and intention."
+      },
+      "sacred": {
+        "title": "Sacred Gemstones",
+        "description": "Sourced ethically from around the world, our crystals are selected for their authentic energy and genuine healing properties."
+      },
+      "karmic": {
+        "title": "Karmic Gifting",
+        "description": "Gift with intention. Every purchase includes guidance on channeling the crystal's energy and creating meaningful connections."
+      },
+      "energy": {
+        "title": "Energy Guarantee",
+        "description": "Feel the difference within 30 days or return it. We stand behind the transformative power of every piece we create."
+      }
+    },
+    "newsletter": {
+      "title": "Join the Yin-Yang Circle",
+      "description": "Get exclusive access to limited editions, spiritual guidance, and special offers from our inner circle.",
+      "emailPlaceholder": "Enter your email",
+      "submitButton": "Subscribe",
+      "successMessage": "Thank you for subscribing! Check your email for a special welcome offer.",
+      "agreement": "By subscribing, you agree to our",
+      "privacyPolicyLink": "Privacy Policy"
+    },
+    "bestSellers": {
+      "section": "Most Powerful Pieces",
+      "title": "Best Sellers",
+      "viewAll": "View All Best Sellers"
+    },
+    "newArrivals": {
+      "section": "Newly Blessed",
+      "title": "New Arrivals",
+      "viewAll": "View All New Arrivals"
+    },
+    "shopByCategory": {
+      "browse": "Browse",
+      "title": "Shop by Category",
+      "subtitle": "Products"
+    },
+    "collectionShowcase": {
+      "title": "Sacred Collections",
+      "subtitle": "Shop by Spiritual Intention"
+    },
+    "gift": {
+      "title": "Share Positive Karma",
+      "description": "Gifts that resonate with meaning and intention, wrapped in blessing and presented with purpose.",
+      "wrapping": {
+        "title": "Sacred Gift Wrapping",
+        "description": "Presented in our ritual-blessed packaging"
+      },
+      "blessing": {
+        "title": "Personal Blessing",
+        "description": "Add your own intention note to amplify the energy"
+      },
+      "card": {
+        "title": "Spirit Guide Card",
+        "description": "Explains the spiritual properties and how to activate the piece"
+      },
+      "cta": "Shop Gifts"
+    },
+    "featured": {
+      "badge": "Bestseller",
+      "title": "Most Loved Pieces",
+      "description": "Our most cherished crystals, chosen by our community for their powerful energy and timeless beauty.",
+      "viewDetails": "View Details",
+      "exploreAll": "Explore All Pieces"
+    },
+    "ugc": {
+      "title": "Channeling Energy"
+    },
+    "asSeenIn": {
+      "title": "Trusted by Spiritual Communities"
+    }
+  },
+  "products": {
+    "breadcrumb": "Home",
+    "title": "Products",
+    "allJewelry": "All Jewelry",
+    "category": "Category",
+    "collection": "Collection",
+    "showingProducts": "Showing {count} of {total} products",
+    "clearFilters": "Clear Filters",
+    "noProducts": "No products found",
+    "noProductsDescription": "Try adjusting your filters or browse all products",
+    "viewAllProducts": "View All Products",
+    "sortBy": "Sort By",
+    "sortFeatured": "Featured",
+    "sortPriceLow": "Price: Low to High",
+    "sortPriceHigh": "Price: High to Low",
+    "sortNewest": "Newest",
+    "sortBestSelling": "Best Selling",
+    "priceRange": "Price Range",
+    "priceUnder75": "Under $75",
+    "price75to150": "$75 - $150",
+    "price150to250": "$150 - $250",
+    "priceOver250": "Over $250",
+    "clearPriceFilter": "Clear Price Filter",
+    "clearAllFilters": "Clear All Filters"
+  },
+  "productDetail": {
+    "breadcrumb": "Products",
+    "badgeBestSeller": "Best Seller",
+    "badgeNew": "New",
+    "reviews": "{rating} out of 5 • {count} reviews",
+    "saveAmount": "Save {amount}",
+    "quantity": "Quantity",
+    "addToCart": "Add to Cart",
+    "soldOut": "Sold Out",
+    "addToWishlist": "Add to Wishlist",
+    "freeShipping": "Complimentary shipping on orders over $150",
+    "easyReturns": "30-day easy returns",
+    "satisfactionGuaranteed": "satisfaction guaranteed",
+    "whyYouLoveIt": "Why You'll Love It",
+    "gemstones": {
+      "title": "Genuine Gemstones",
+      "description": "Ethically sourced crystals with authentic energy and proven healing properties that resonate with your intention."
+    },
+    "handcrafted": {
+      "title": "Handcrafted",
+      "description": "Each piece is carefully created by skilled artisans who understand the sacred nature of crystal work."
+    },
+    "meaningfulDesign": {
+      "title": "Meaningful Design",
+      "description": "Every element is intentionally chosen to channel specific energy and align with your spiritual journey."
+    },
+    "symbolismMeaning": "Symbolism & Meaning",
+    "customerReviews": "Customer Reviews",
+    "reviewsSummary": "{rating}/5 based on {count} reviews",
+    "viewAllReviews": "View All Reviews",
+    "youMayAlsoLike": "You May Also Like"
+  },
+  "cart": {
+    "emptyCart": "Your cart is empty",
+    "emptyCartDescription": "Looks like you haven't added anything to your cart yet.",
+    "startShopping": "Start Shopping",
+    "cartTitle": "Shopping Cart",
+    "continueShopping": "Continue Shopping",
+    "freeShippingThreshold": "You're {amount} away from free shipping!",
+    "qualifiesForFreeShipping": "You qualify for free shipping!",
+    "orderSummary": "Order Summary",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "free": "Free",
+    "calculatedAtCheckout": "Calculated at checkout",
+    "total": "Total",
+    "proceedToCheckout": "Proceed to Checkout",
+    "secureCheckout": "Secure checkout powered by Stripe",
+    "yourCart": "Your Cart",
+    "discoverEssenceOils": "Discover our crystal-infused essence oils",
+    "shopNow": "Shop Now",
+    "shippingCalculated": "Shipping calculated at checkout",
+    "viewCartCheckout": "View Cart & Checkout"
+  },
+  "checkout": {
+    "thankYou": "Thank You!",
+    "orderPlaced": "Your order has been placed successfully.",
+    "yourOrderID": "Your Order ID",
+    "saveForTracking": "Save this to track your order",
+    "whatHappensNext": "What happens next?",
+    "nextSteps": "You'll receive an email confirmation shortly with your order details. We'll notify you when your order ships.",
+    "continueShopping": "Continue Shopping",
+    "trackOrder": "Track Your Order"
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signInDescription": "Access your YINYANG GUARDIAN account",
+    "pleaseComplete": "Please complete the verification.",
+    "email": "Email",
+    "password": "Password",
+    "signingIn": "Signing in...",
+    "or": "OR",
+    "noAccount": "Don't have an account?",
+    "createAccount": "Create Account",
+    "createAccountDescription": "Join YINYANG GUARDIAN for meaningful jewelry",
+    "accountCreated": "Account created successfully!",
+    "redirecting": "Redirecting to sign in...",
+    "fullName": "Full Name",
+    "passwordRecommendation": "At least 8 characters recommended",
+    "haveAccount": "Already have an account?"
+  },
+  "wishlist": {
+    "myWishlist": "My Wishlist",
+    "itemsCount": "{count} item(s) in your wishlist",
+    "emptyWishlist": "Your wishlist is empty",
+    "emptyWishlistDescription": "Save your favorite pieces to your wishlist and we'll help you remember them",
+    "startExploring": "Start Exploring"
+  },
+  "orders": {
+    "backToStore": "Back to Store",
+    "trackYourOrder": "Track Your Order",
+    "trackDescription": "Enter your email and order ID to check the status of your order.",
+    "emailAddress": "Email Address",
+    "orderID": "Order ID",
+    "orderIDDescription": "The 8-character code from your confirmation page.",
+    "lookingUp": "Looking up...",
+    "trackOrderButton": "Track Order",
+    "orderNotFound": "Order not found",
+    "orderNumber": "Order #{id}",
+    "placedOn": "Placed on {date}",
+    "orderConfirmed": "Order Confirmed",
+    "shipped": "Shipped",
+    "delivered": "Delivered",
+    "items": "Items",
+    "shippingTo": "Shipping To"
+  },
+  "search": {
+    "placeholder": "Search products...",
+    "noResults": "No products found matching \"{query}\"",
+    "startTyping": "Start typing to search products..."
+  },
+  "about": {
+    "aboutUs": "About Us",
+    "philosophyTitle": "Our Philosophy",
+    "philosophyDescription": "We believe that true balance comes from honoring both the ancient wisdom of crystals and the modern journey of self-discovery. Each piece we create is infused with intention, crafted with care, and blessed to support your spiritual evolution.",
+    "chakraTitle": "Chakra-Aligned Crystals",
+    "chakraDescription": "We carefully select and pair gemstones to resonate with each energy center, helping you restore balance and unlock your natural vitality.",
+    "yinYangTitle": "Yin-Yang Sourcing",
+    "yinYangDescription": "Our ethical sourcing practices honor both the earth that provides these treasures and the artisans who craft them with reverence.",
+    "balancedTitle": "Balanced Design",
+    "balancedDescription": "Every design element—from color harmony to geometric balance—channels the yin-yang principle of complementary forces in perfect equilibrium.",
+    "activationTitle": "Energetic Activation",
+    "activationDescription": "Through our sacred ritual process, every piece is purified and charged to amplify its natural energy and support your intentions.",
+    "chakraStonesLabel": "Chakra Stones",
+    "balancingHoursLabel": "Balancing Hours",
+    "energyCentersLabel": "Energy Centers",
+    "discoverBalance": "Discover Your Balance",
+    "discoverBalanceDescription": "Find the crystals that align with your chakras and restore your flow.",
+    "exploreCollections": "Explore Collections"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to common questions about our crystals, ordering, and spiritual practices.",
+    "orderingShipping": "Ordering & Shipping",
+    "returnsExchanges": "Returns & Exchanges",
+    "productCare": "Product & Care",
+    "gifting": "Gifting",
+    "q1": "How long does shipping take?",
+    "a1": "We typically ship within 2-3 business days. Domestic orders arrive within 5-7 business days, while international orders may take 10-21 business days depending on location.",
+    "q2": "Do you offer international shipping?",
+    "a2": "Yes! We ship to most countries worldwide. Shipping costs and delivery times vary by location. You'll see all options during checkout.",
+    "q3": "What is your return policy?",
+    "a3": "We offer a 30-day money-back guarantee on all unworn items in original packaging. If your crystal doesn't resonate with you, simply return it for a full refund.",
+    "q4": "Can I exchange a product?",
+    "a4": "Absolutely. Exchanges are free for items within 30 days of purchase. Contact our customer service team to arrange your exchange.",
+    "q5": "How do I care for my crystal jewelry?",
+    "a5": "Keep your pieces away from extreme heat, chemicals, and prolonged sunlight. Clean gently with a soft cloth. We recommend monthly cleansing under moonlight or with sage to maintain their energetic properties.",
+    "q6": "Are your crystals genuine?",
+    "a6": "Yes, every piece features authentic gemstones sourced ethically from around the world. We verify the authenticity and energetic properties of all our crystals.",
+    "q7": "How should I activate my crystal?",
+    "a7": "Hold your piece in your hands and set a clear intention. You can also place it on your body, sleep with it, or meditate with it. Each crystal comes with a Spirit Guide Card explaining its specific activation process.",
+    "q8": "Can I give these as gifts?",
+    "a8": "Crystals make beautiful, meaningful gifts! We offer complimentary gift wrapping, a personal blessing card, and a Spirit Guide Card to help your loved one connect with the crystal's energy.",
+    "q9": "Do you offer bulk orders for events?",
+    "a9": "Yes! For large orders or special events, please contact our customer service team. We offer special pricing for bulk purchases and corporate gifting.",
+    "q10": "What if my piece arrives damaged?",
+    "a10": "We take great care in packaging every order. If your piece arrives damaged, contact us immediately with photos, and we'll send a replacement right away at no charge.",
+    "stillHaveQuestions": "Still have questions?",
+    "contactUs": "Reach out to our customer service team at support@yinyanaguardian.com or through our contact form. We're here to help!"
+  },
+  "gifts": {
+    "title": "Gift the Power of Balance",
+    "subtitle": "Thoughtfully chosen crystals to inspire, heal, and transform.",
+    "whyGiftBalance": "Why Gift Balance",
+    "whyDescription": "Crystals are gifts of intention. When you give a piece from YINYANG GUARDIAN, you're not just gifting jewelry—you're sharing healing energy, spiritual support, and a meaningful connection.",
+    "wrappingTitle": "Sacred Gift Wrapping",
+    "wrappingDescription": "Each gift arrives beautifully presented in our ritual-blessed packaging, ready to make an unforgettable impression.",
+    "cardTitle": "Personal Blessing Card",
+    "cardDescription": "Add your own intention and message. Your words amplify the crystal's energy and create a deeper connection.",
+    "guideTitle": "Spirit Guide Card",
+    "guideDescription": "Explains the crystal's healing properties, chakra alignment, and how to activate its energy.",
+    "giftByOccasion": "Gift by Occasion",
+    "birthday": "Birthday",
+    "anniversary": "Anniversary",
+    "graduation": "Graduation",
+    "mothersDay": "Mother's Day",
+    "justBecause": "Just Because",
+    "thankYou": "Thank You",
+    "giftByPrice": "Gift by Price",
+    "under75": "Under $75",
+    "price75to150": "$75 - $150",
+    "price150to250": "$150 - $250",
+    "premiumPrice": "Premium ($250+)",
+    "mostHarmonious": "Most Harmonious Gift Pieces",
+    "mostHarmoniousSubtitle": "Our bestselling crystals chosen for their versatile energy and timeless appeal."
+  },
+  "collections": {
+    "title": "Our Collections",
+    "subtitle": "Curated by spiritual intention, designed for your journey."
+  },
+  "legal": {
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "lastUpdated": "Last updated",
+    "privacyPolicyContent": {
+      "title": "Privacy Policy",
+      "introduction": "At YINYANG GUARDIAN, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.",
+      "informationWeCollect": {
+        "title": "Information We Collect",
+        "description": "We collect information you provide directly to us, such as when you create an account, make a purchase, subscribe to our newsletter, or contact us for customer support. This includes your name, email address, phone number, mailing address, payment information, and any other information you choose to provide. We also automatically collect certain information about your device and how you interact with our website, including your IP address, browser type, pages visited, and the time and date of your visit."
+      },
+      "howWeUseInformation": {
+        "title": "How We Use Your Information",
+        "description": "We use the information we collect to process your orders, send you transactional emails, respond to your inquiries, send you marketing communications (with your consent), improve our website and services, prevent fraud, and comply with legal obligations. We may also use your information to personalize your experience and recommend products that align with your interests."
+      },
+      "sharingYourInformation": {
+        "title": "Sharing Your Information",
+        "description": "We do not sell, trade, or rent your personal information to third parties. We may share your information with service providers who assist us in operating our website and conducting our business, such as payment processors, shipping companies, and email service providers. We may also disclose your information if required by law or to protect our rights, privacy, safety, or property."
+      },
+      "dataRetention": {
+        "title": "Data Retention",
+        "description": "We retain your personal information for as long as necessary to fulfill the purposes for which we collected it, including to satisfy any legal, accounting, or reporting requirements. The length of retention depends on the context of the processing and our legal obligations."
+      },
+      "security": {
+        "title": "Security",
+        "description": "We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is completely secure, and we cannot guarantee absolute security."
+      },
+      "yourRights": {
+        "title": "Your Rights",
+        "description": "Depending on your location, you may have certain rights regarding your personal information, such as the right to access, correct, delete, or port your data. To exercise these rights, please contact us at privacy@yinyanaguardian.com. We will respond to your request within the timeframe required by applicable law."
+      },
+      "thirdPartyLinks": {
+        "title": "Third-Party Links",
+        "description": "Our website may contain links to third-party websites. We are not responsible for the privacy practices or content of these external sites. We encourage you to review their privacy policies before providing any personal information."
+      },
+      "changes": {
+        "title": "Changes to This Privacy Policy",
+        "description": "We may update this Privacy Policy from time to time to reflect changes in our practices or applicable laws. We will notify you of any significant changes by posting the updated policy on our website and updating the 'Last Updated' date."
+      },
+      "contact": {
+        "title": "Contact Us",
+        "description": "If you have any questions about this Privacy Policy or our privacy practices, please contact us at privacy@yinyanaguardian.com or through our contact form."
+      }
+    },
+    "termsOfServiceContent": {
+      "title": "Terms of Service",
+      "introduction": "These Terms of Service ('Terms') govern your access to and use of the YINYANG GUARDIAN website and services. By accessing or using our website, you agree to be bound by these Terms. If you do not agree with any part of these Terms, please do not use our website.",
+      "useOfWebsite": {
+        "title": "Use of Website",
+        "description": "You agree to use this website only for lawful purposes and in a way that does not infringe upon the rights of others or restrict their use and enjoyment of the website. Prohibited behavior includes harassing or causing distress or inconvenience to any person, transmitting obscene or offensive content, disrupting the normal flow of dialogue within our website, and attempting to gain unauthorized access to our systems."
+      },
+      "intellectualProperty": {
+        "title": "Intellectual Property Rights",
+        "description": "All content on our website, including text, graphics, logos, images, and software, is the property of YINYANG GUARDIAN or its content suppliers and is protected by international copyright laws. You may not reproduce, distribute, transmit, modify, or create derivative works of any content without our prior written permission."
+      },
+      "productInformation": {
+        "title": "Product Information",
+        "description": "We strive to provide accurate descriptions and pricing for all products. However, we do not warrant that product descriptions, pricing, or other content is accurate, complete, or error-free. We reserve the right to correct any errors and to refuse or cancel any orders. Product colors may appear different due to your device's display settings."
+      },
+      "pricing": {
+        "title": "Pricing and Availability",
+        "description": "All prices are subject to change without notice. We reserve the right to limit quantities and discontinue any product at any time. Prices are valid only for orders placed through our website. We are not responsible for any pricing errors or typographical mistakes."
+      },
+      "orderAcceptance": {
+        "title": "Order Acceptance",
+        "description": "We reserve the right to accept or refuse any order. We may require verification of information and may cancel orders that appear to involve fraud or illegal activity. By placing an order, you represent and warrant that you are at least 18 years old and have the authority to enter into these Terms."
+      },
+      "paymentTerms": {
+        "title": "Payment Terms",
+        "description": "Payment must be received in full before your order is processed. We accept major credit cards, debit cards, and other payment methods as indicated on our website. You agree to pay all charges incurred by your account. All payment information is processed securely through our payment processor, Stripe."
+      },
+      "shipping": {
+        "title": "Shipping and Delivery",
+        "description": "We ship orders within 2-3 business days. Shipping times and costs vary based on your location. We are not responsible for any delays caused by shipping carriers or customs. Risk of loss passes to you upon delivery to the shipping carrier. International orders may be subject to customs duties and taxes."
+      },
+      "returns": {
+        "title": "Returns and Refunds",
+        "description": "We offer a 30-day money-back guarantee on all unworn items in original packaging. To initiate a return, contact our customer service team. Once we receive and inspect your return, we will process your refund within 7-10 business days. Shipping costs for returns are the customer's responsibility unless the return is due to our error or a defective product."
+      },
+      "limitationOfLiability": {
+        "title": "Limitation of Liability",
+        "description": "To the fullest extent permitted by law, YINYANG GUARDIAN shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including lost profits, lost revenue, or loss of data, even if advised of the possibility of such damages. Our total liability for any claim shall not exceed the amount you paid for the product or service."
+      },
+      "disclaimers": {
+        "title": "Disclaimers",
+        "description": "This website and its content are provided 'as is' without any warranties of any kind, either express or implied. We do not warrant that the website will be uninterrupted, error-free, or free of viruses. While we make efforts to present accurate spiritual and healing information, these claims are not scientifically proven. Crystals are not intended to diagnose, treat, cure, or prevent any medical condition. Please consult a healthcare professional for medical concerns."
+      },
+      "modifications": {
+        "title": "Modifications to Terms",
+        "description": "We reserve the right to modify these Terms at any time. Changes will be effective immediately upon posting to our website. Your continued use of the website following the posting of revised Terms means that you accept and agree to the changes."
+      },
+      "governing": {
+        "title": "Governing Law",
+        "description": "These Terms are governed by and construed in accordance with the laws of the jurisdiction in which YINYANG GUARDIAN operates, without regard to its conflict of law provisions."
+      },
+      "contact": {
+        "title": "Contact Us",
+        "description": "If you have any questions about these Terms of Service, please contact us at legal@yinyanaguardian.com or through our contact form."
+      }
+    }
+  },
+  "common": {
+    "home": "Home",
+    "loading": "Loading...",
+    "error": "Error",
+    "tryAgain": "Try again",
+    "remove": "Remove",
+    "save": "Save",
+    "cancel": "Cancel",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "viewDetails": "View Details",
+    "learnMore": "Learn More",
+    "items": "items"
+  }
+}

@@ -5,11 +5,13 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Turnstile } from '@marsidev/react-turnstile'
 import { createClient } from '@/lib/supabase/client'
+import { useLanguage } from '@/components/providers/LanguageProvider'
 import { Mail, Lock, User as UserIcon, AlertCircle, Loader, CheckCircle, Eye, EyeOff } from 'lucide-react'
 
 export default function SignupPage() {
   const router = useRouter()
   const supabase = createClient()
+  const { t } = useLanguage()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -25,7 +27,7 @@ export default function SignupPage() {
     setError('')
 
     if (!captchaToken) {
-      setError('Please complete the verification.')
+      setError(t('auth.pleaseComplete'))
       return
     }
 
@@ -78,9 +80,9 @@ export default function SignupPage() {
       <div className="max-w-md mx-auto px-4 py-20">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="font-serif text-4xl text-dark mb-2">Create Account</h1>
+          <h1 className="font-serif text-4xl text-dark mb-2">{t('auth.createAccount')}</h1>
           <p className="text-warm font-sans text-sm">
-            Join YINYANG GUARDIAN for meaningful jewelry
+            {t('auth.createAccountDescription')}
           </p>
         </div>
 
@@ -90,10 +92,10 @@ export default function SignupPage() {
             <CheckCircle className="text-emerald-600 mt-0.5 flex-shrink-0" size={20} />
             <div>
               <p className="text-emerald-900 text-sm font-sans font-medium mb-1">
-                Account created successfully!
+                {t('auth.accountCreated')}
               </p>
               <p className="text-emerald-700 text-sm font-sans">
-                Redirecting to sign in...
+                {t('auth.redirecting')}
               </p>
             </div>
           </div>
@@ -116,7 +118,7 @@ export default function SignupPage() {
                 htmlFor="fullName"
                 className="block text-sm font-sans font-medium text-dark mb-2"
               >
-                Full Name
+                {t('auth.fullName')}
               </label>
               <div className="relative">
                 <UserIcon className="absolute left-3 top-3.5 text-warm-light" size={18} />
@@ -138,7 +140,7 @@ export default function SignupPage() {
                 htmlFor="email"
                 className="block text-sm font-sans font-medium text-dark mb-2"
               >
-                Email
+                {t('auth.email')}
               </label>
               <div className="relative">
                 <Mail className="absolute left-3 top-3.5 text-warm-light" size={18} />
@@ -160,7 +162,7 @@ export default function SignupPage() {
                 htmlFor="password"
                 className="block text-sm font-sans font-medium text-dark mb-2"
               >
-                Password
+                {t('auth.password')}
               </label>
               <div className="relative">
                 <Lock className="absolute left-3 top-3.5 text-warm-light" size={18} />
@@ -182,7 +184,7 @@ export default function SignupPage() {
                 </button>
               </div>
               <p className="text-xs text-warm-light font-sans mt-2">
-                At least 8 characters recommended
+                {t('auth.passwordRecommendation')}
               </p>
             </div>
 
@@ -209,10 +211,10 @@ export default function SignupPage() {
               {isLoading ? (
                 <>
                   <Loader size={18} className="animate-spin" />
-                  Creating account...
+                  {t('auth.createAccount')}
                 </>
               ) : (
-                'Create Account'
+                t('auth.createAccount')
               )}
             </button>
           </form>
@@ -221,20 +223,20 @@ export default function SignupPage() {
         {/* Divider */}
         <div className="my-6 flex items-center gap-4">
           <div className="flex-1 h-px bg-stone-light"></div>
-          <span className="text-warm-light text-xs font-sans">OR</span>
+          <span className="text-warm-light text-xs font-sans">{t('auth.or')}</span>
           <div className="flex-1 h-px bg-stone-light"></div>
         </div>
 
         {/* Sign In Link */}
         <div className="text-center">
           <p className="text-dark text-sm font-sans mb-2">
-            Already have an account?
+            {t('auth.haveAccount')}
           </p>
           <Link
             href="/login"
             className="text-gold hover:text-gold-dark font-sans font-medium transition-colors"
           >
-            Sign In
+            {t('auth.signIn')}
           </Link>
         </div>
       </div>

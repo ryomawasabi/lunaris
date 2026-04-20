@@ -1,0 +1,458 @@
+{
+  "nav": {
+    "shopAll": "전체 상품",
+    "soulStoneDiscovery": "Soul Stone Discovery",
+    "crystalEssence": "Crystal Essence",
+    "collections": "컬렉션",
+    "about": "소개",
+    "search": "검색",
+    "userAccount": "사용자 계정",
+    "signedInAs": "로그인한 계정",
+    "adminDashboard": "관리자 대시보드",
+    "signOut": "로그아웃",
+    "signIn": "로그인",
+    "wishlist": "위시리스트",
+    "shoppingBag": "장바구니"
+  },
+  "footer": {
+    "brandDescription": "음양의 고대 지혜에 영감을 받은 차크라 정렬 크리스탈 주얼리로, 균형과 조화를 회복하기 위해 제작되었습니다.",
+    "shop": "쇼핑",
+    "necklaces": "목걸이",
+    "bracelets": "팔찌",
+    "earrings": "귀걸이",
+    "rings": "반지",
+    "newArrivals": "신상품",
+    "bestSellers": "베스트셀러",
+    "collections": "컬렉션",
+    "protection": "보호",
+    "loveHarmony": "사랑 & 조화",
+    "prosperity": "번영",
+    "essenceOil": "Essence Oil",
+    "crystalDiffuser": "Crystal Diffuser",
+    "help": "도움말",
+    "faq": "자주 묻는 질문",
+    "shippingReturns": "배송 & 반품",
+    "sizeGuide": "사이즈 가이드",
+    "contact": "문의",
+    "aboutUs": "회사 소개",
+    "allRightsReserved": "모든 권리가 보호됩니다.",
+    "securePayments": "안전한 결제:",
+    "privacyPolicy": "개인정보 보호정책",
+    "termsOfService": "서비스 약관"
+  },
+  "home": {
+    "hero": {
+      "title": "영적 에너지를 깨우세요",
+      "description": "고대의 지혜와 우주의 에너지로 가득 찬 신성한 주얼리입니다. 보호를 채우고, 행운을 끌어당기고, 매일 입는 각 조각으로 차크라를 정렬하세요.",
+      "cta": "컬렉션 탐색"
+    },
+    "brandValues": {
+      "blessed": {
+        "title": "축복받고 정화된",
+        "description": "각 조각은 자연스러운 에너지와 의도를 증폭시키기 위해 신성한 의식 과정을 통해 에너지적으로 정화되고 활성화됩니다."
+      },
+      "sacred": {
+        "title": "신성한 보석",
+        "description": "전 세계에서 윤리적으로 공급되는 우리의 크리스탈은 진정한 에너지와 입증된 치유 특성을 위해 선택됩니다."
+      },
+      "karmic": {
+        "title": "업보적 선물",
+        "description": "의도를 담아 선물하세요. 모든 구매에는 크리스탈의 에너지를 활용하고 의미 있는 연결을 만드는 방법에 대한 지침이 포함되어 있습니다."
+      },
+      "energy": {
+        "title": "에너지 보증",
+        "description": "30일 이내에 차이를 느끼거나 반품할 수 있습니다. 우리는 우리가 만드는 모든 조각의 변혁적 힘을 뒷받침합니다."
+      }
+    },
+    "newsletter": {
+      "title": "음양 서클에 참여하세요",
+      "description": "제한판, 영적 지도, 그리고 우리 내부 서클의 특별한 오퍼에 독점적으로 접근하세요.",
+      "emailPlaceholder": "이메일 주소 입력",
+      "submitButton": "구독",
+      "successMessage": "구독해주셔서 감사합니다! 특별한 환영 오퍼를 위해 이메일을 확인해주세요.",
+      "agreement": "구독함으로써 다음에 동의합니다:",
+      "privacyPolicyLink": "개인정보 보호정책"
+    },
+    "bestSellers": {
+      "section": "가장 강력한 조각",
+      "title": "베스트셀러",
+      "viewAll": "모든 베스트셀러 보기"
+    },
+    "newArrivals": {
+      "section": "새로 축복받은",
+      "title": "신상품",
+      "viewAll": "모든 신상품 보기"
+    },
+    "shopByCategory": {
+      "browse": "둘러보기",
+      "title": "카테고리별로 쇼핑하기",
+      "subtitle": "상품"
+    },
+    "collectionShowcase": {
+      "title": "신성한 컬렉션",
+      "subtitle": "영적 의도에 따라 쇼핑하기"
+    },
+    "gift": {
+      "title": "긍정적인 업보 공유",
+      "description": "의미와 의도로 울리는 선물이며, 축복으로 포장되어 목적을 가지고 제시됩니다.",
+      "wrapping": {
+        "title": "신성한 선물 포장",
+        "description": "의식으로 축복받은 포장으로 제시됩니다"
+      },
+      "blessing": {
+        "title": "개인 축복",
+        "description": "자신의 의도 노트를 추가하여 에너지를 증폭시킵니다"
+      },
+      "card": {
+        "title": "Spirit Guide Card",
+        "description": "영적 특성을 설명하고 조각을 활성화하는 방법을 설명합니다"
+      },
+      "cta": "선물 쇼핑"
+    },
+    "featured": {
+      "badge": "베스트셀러",
+      "title": "가장 사랑받는 조각",
+      "description": "우리 커뮤니티에 의해 강력한 에너지와 시대를 초월한 아름다움으로 선택된 가장 소중한 크리스탈입니다.",
+      "viewDetails": "자세히 보기",
+      "exploreAll": "모든 조각 탐색"
+    },
+    "ugc": {
+      "title": "에너지 채널링"
+    },
+    "asSeenIn": {
+      "title": "영적 커뮤니티에서 신뢰"
+    }
+  },
+  "products": {
+    "breadcrumb": "홈",
+    "title": "상품",
+    "allJewelry": "모든 주얼리",
+    "category": "카테고리",
+    "collection": "컬렉션",
+    "showingProducts": "{count}개 중 {total}개 상품 표시",
+    "clearFilters": "필터 제거",
+    "noProducts": "찾은 상품이 없습니다",
+    "noProductsDescription": "필터를 조정하거나 모든 상품을 둘러보세요",
+    "viewAllProducts": "모든 상품 보기",
+    "sortBy": "정렬",
+    "sortFeatured": "추천",
+    "sortPriceLow": "가격: 낮음부터 높음",
+    "sortPriceHigh": "가격: 높음부터 낮음",
+    "sortNewest": "최신",
+    "sortBestSelling": "베스트셀러",
+    "priceRange": "가격대",
+    "priceUnder75": "$75 미만",
+    "price75to150": "$75 - $150",
+    "price150to250": "$150 - $250",
+    "priceOver250": "$250 이상",
+    "clearPriceFilter": "가격 필터 제거",
+    "clearAllFilters": "모든 필터 제거"
+  },
+  "productDetail": {
+    "breadcrumb": "상품",
+    "badgeBestSeller": "베스트셀러",
+    "badgeNew": "신상품",
+    "reviews": "{rating}점 중 만점 • {count}개 리뷰",
+    "saveAmount": "{amount} 절약",
+    "quantity": "수량",
+    "addToCart": "장바구니에 추가",
+    "soldOut": "품절",
+    "addToWishlist": "위시리스트에 추가",
+    "freeShipping": "$150 이상의 주문 시 무료 배송",
+    "easyReturns": "30일 간편 반품",
+    "satisfactionGuaranteed": "만족도 보장",
+    "whyYouLoveIt": "이것을 사랑할 이유",
+    "gemstones": {
+      "title": "진정한 보석",
+      "description": "윤리적으로 공급되는 진정한 에너지와 입증된 치유 특성을 가진 크리스탈로 당신의 의도에 울립니다."
+    },
+    "handcrafted": {
+      "title": "수제",
+      "description": "각 조각은 크리스탈 작업의 신성한 본질을 이해하는 숙련된 장인들에 의해 주의 깊게 만들어집니다."
+    },
+    "meaningfulDesign": {
+      "title": "의미 있는 디자인",
+      "description": "모든 요소는 특정 에너지를 활용하고 영적 여정에 맞추기 위해 의도적으로 선택됩니다."
+    },
+    "symbolismMeaning": "상징 & 의미",
+    "customerReviews": "고객 리뷰",
+    "reviewsSummary": "{count}개 리뷰를 바탕으로 {rating}/5",
+    "viewAllReviews": "모든 리뷰 보기",
+    "youMayAlsoLike": "다른 상품도 보세요"
+  },
+  "cart": {
+    "emptyCart": "장바구니가 비어있습니다",
+    "emptyCartDescription": "아직 장바구니에 추가한 항목이 없는 것 같습니다.",
+    "startShopping": "쇼핑 시작",
+    "cartTitle": "장바구니",
+    "continueShopping": "계속 쇼핑",
+    "freeShippingThreshold": "무료 배송까지 {amount} 남았습니다!",
+    "qualifiesForFreeShipping": "무료 배송 조건을 만족하셨습니다!",
+    "orderSummary": "주문 요약",
+    "subtotal": "소계",
+    "shipping": "배송",
+    "free": "무료",
+    "calculatedAtCheckout": "체크아웃 시 계산됨",
+    "total": "합계",
+    "proceedToCheckout": "결제로 진행",
+    "secureCheckout": "Stripe로 제공되는 안전한 결제",
+    "yourCart": "당신의 장바구니",
+    "discoverEssenceOils": "크리스탈이 주입된 에센셜 오일을 발견하세요",
+    "shopNow": "지금 쇼핑",
+    "shippingCalculated": "배송료는 체크아웃 시 계산됩니다",
+    "viewCartCheckout": "장바구니 보기 & 결제"
+  },
+  "checkout": {
+    "thankYou": "감사합니다!",
+    "orderPlaced": "주문이 성공적으로 접수되었습니다.",
+    "yourOrderID": "주문 ID",
+    "saveForTracking": "주문 추적을 위해 저장하세요",
+    "whatHappensNext": "다음은 어떻게 되나요?",
+    "nextSteps": "곧 주문 세부 정보가 포함된 이메일 확인을 받으실 것입니다. 주문이 배송될 때 알려드리겠습니다.",
+    "continueShopping": "계속 쇼핑",
+    "trackOrder": "주문 추적"
+  },
+  "auth": {
+    "signIn": "로그인",
+    "signInDescription": "YINYANG GUARDIAN 계정에 접근",
+    "pleaseComplete": "인증을 완료해주세요.",
+    "email": "이메일",
+    "password": "비밀번호",
+    "signingIn": "로그인 중...",
+    "or": "또는",
+    "noAccount": "계정이 없으신가요?",
+    "createAccount": "계정 생성",
+    "createAccountDescription": "의미 있는 주얼리를 위해 YINYANG GUARDIAN에 참여하세요",
+    "accountCreated": "계정이 성공적으로 생성되었습니다!",
+    "redirecting": "로그인 화면으로 리디렉션 중...",
+    "fullName": "성명",
+    "passwordRecommendation": "최소 8자 권장",
+    "haveAccount": "이미 계정이 있으신가요?"
+  },
+  "wishlist": {
+    "myWishlist": "내 위시리스트",
+    "itemsCount": "위시리스트에 {count}개 항목",
+    "emptyWishlist": "위시리스트가 비어있습니다",
+    "emptyWishlistDescription": "좋아하는 조각을 위시리스트에 저장하시면 기억하는 데 도움을 드리겠습니다",
+    "startExploring": "탐색 시작"
+  },
+  "orders": {
+    "backToStore": "상점으로 돌아가기",
+    "trackYourOrder": "주문 추적",
+    "trackDescription": "이메일과 주문 ID를 입력하여 주문 상태를 확인하세요.",
+    "emailAddress": "이메일 주소",
+    "orderID": "주문 ID",
+    "orderIDDescription": "확인 페이지의 8자 코드입니다.",
+    "lookingUp": "조회 중...",
+    "trackOrderButton": "주문 추적",
+    "orderNotFound": "주문을 찾을 수 없습니다",
+    "orderNumber": "주문 #{id}",
+    "placedOn": "{date}에 주문됨",
+    "orderConfirmed": "주문 확인됨",
+    "shipped": "배송됨",
+    "delivered": "배달됨",
+    "items": "항목",
+    "shippingTo": "배송처"
+  },
+  "search": {
+    "placeholder": "상품 검색...",
+    "noResults": "\"{query}\"와 일치하는 상품을 찾을 수 없습니다",
+    "startTyping": "상품을 검색하려면 입력을 시작하세요..."
+  },
+  "about": {
+    "aboutUs": "소개",
+    "philosophyTitle": "우리의 철학",
+    "philosophyDescription": "우리는 진정한 균형은 크리스탈의 고대 지혜와 자기 발견의 현대적 여정을 모두 존중할 때 나온다고 믿습니다. 우리가 만드는 각 조각은 의도로 가득 차 있으며, 배려로 제작되고, 영적 진화를 지지하기 위해 축복받습니다.",
+    "chakraTitle": "차크라 정렬 크리스탈",
+    "chakraDescription": "우리는 각 에너지 센터와 울리도록 보석을 신중하게 선택하고 짝지어 균형을 회복하고 자연스러운 생명력을 활성화하도록 돕습니다.",
+    "yinYangTitle": "음양 공급",
+    "yinYangDescription": "우리의 윤리적 공급 관행은 이러한 보물을 제공하는 지구와 경외심으로 그것들을 제작하는 장인들을 모두 존중합니다.",
+    "balancedTitle": "균형잡힌 디자인",
+    "balancedDescription": "색상 조화에서 기하학적 균형에 이르기까지 모든 디자인 요소는 완벽한 평형 상태의 상보적 힘의 음양 원리를 채웁니다.",
+    "activationTitle": "에너지 활성화",
+    "activationDescription": "우리의 신성한 의식 과정을 통해 모든 조각은 정화되고 자연 에너지를 증폭시키고 의도를 지지하도록 충전됩니다.",
+    "chakraStonesLabel": "차크라 스톤",
+    "balancingHoursLabel": "균형 조정 시간",
+    "energyCentersLabel": "에너지 센터",
+    "discoverBalance": "당신의 균형 발견",
+    "discoverBalanceDescription": "차크라와 맞는 크리스탈을 찾아 흐름을 회복하세요.",
+    "exploreCollections": "컬렉션 탐색"
+  },
+  "faq": {
+    "title": "자주 묻는 질문",
+    "subtitle": "크리스탈, 주문 및 영적 관행에 대한 일반적인 질문의 답을 찾으세요.",
+    "orderingShipping": "주문 & 배송",
+    "returnsExchanges": "반품 & 교환",
+    "productCare": "상품 & 관리",
+    "gifting": "선물",
+    "q1": "배송에는 얼마나 걸립니까?",
+    "a1": "일반적으로 2-3 영업일 이내에 배송합니다. 국내 주문은 5-7 영업일 이내에 도착하며, 국제 주문은 위치에 따라 10-21 영업일이 소요될 수 있습니다.",
+    "q2": "국제 배송을 하나요?",
+    "a2": "네! 전 세계 대부분의 국가로 배송합니다. 배송 비용과 배송 시간은 위치에 따라 다릅니다. 체크아웃 중에 모든 옵션을 확인할 수 있습니다.",
+    "q3": "반품 정책은 무엇입니까?",
+    "a3": "원래 포장에 미착용 상품에 대해 30일 환불 보증을 제공합니다. 크리스탈이 당신과 맞지 않으면 전액 환불을 위해 반품하세요.",
+    "q4": "제품을 교환할 수 있습니까?",
+    "a4": "물론입니다. 구매 후 30일 이내의 항목에 대해서는 교환이 무료입니다. 고객 서비스 팀에 문의하여 교환을 준비하세요.",
+    "q5": "크리스탈 주얼리를 어떻게 관리합니까?",
+    "a5": "극단적인 열, 화학 물질, 장시간의 햇빛으로부터 조각을 보호하세요. 부드러운 천으로 부드럽게 청소하세요. 에너지 특성을 유지하기 위해 월 1회 달빛 아래 또는 세이지로 정화할 것을 권장합니다.",
+    "q6": "크리스탈이 진정합니까?",
+    "a6": "네, 모든 조각은 전 세계에서 윤리적으로 공급되는 진정한 보석입니다. 우리는 모든 크리스탈의 신뢰성과 에너지 특성을 확인합니다.",
+    "q7": "크리스탈을 어떻게 활성화합니까?",
+    "a7": "조각을 손에 들고 명확한 의도를 설정하세요. 또한 몸에 올려놓거나, 그것으로 자면서 명상할 수 있습니다. 각 크리스탈에는 특정 활성화 과정을 설명하는 Spirit Guide Card가 함께 제공됩니다.",
+    "q8": "이것을 선물로 줄 수 있습니까?",
+    "a8": "크리스탈은 아름답고 의미 있는 선물입니다! 우리는 무료 선물 포장, 개인 축복 카드, 그리고 당신의 사랑하는 사람이 크리스탈의 에너지와 연결하도록 돕는 Spirit Guide Card를 제공합니다.",
+    "q9": "행사를 위해 대량 주문을 하나요?",
+    "a9": "네! 대량 주문이나 특별 행사의 경우 고객 서비스 팀에 문의하세요. 대량 구매 및 기업 선물에 대한 특별 가격을 제공합니다.",
+    "q10": "조각이 손상된 상태로 도착하면 어떻게 하나요?",
+    "a10": "우리는 모든 주문의 포장을 신중하게 합니다. 조각이 손상된 상태로 도착하면 사진과 함께 즉시 연락 주시면 무료로 교체품을 바로 보내드립니다.",
+    "stillHaveQuestions": "여전히 질문이 있으신가요?",
+    "contactUs": "support@yinyanaguardian.com에서 고객 서비스 팀에 문의하거나 문의 양식을 통해 연락하세요. 도움을 드리겠습니다!"
+  },
+  "gifts": {
+    "title": "균형의 힘을 선물하세요",
+    "subtitle": "영감을 주고, 치유하고, 변화시킬 신중하게 선택된 크리스탈입니다.",
+    "whyGiftBalance": "균형을 선물하는 이유",
+    "whyDescription": "크리스탈은 의도의 선물입니다. YINYANG GUARDIAN의 조각을 선물할 때, 당신은 단지 주얼리를 선물하는 것이 아니라 치유 에너지, 영적 지지, 그리고 의미 있는 연결을 공유하는 것입니다.",
+    "wrappingTitle": "신성한 선물 포장",
+    "wrappingDescription": "각 선물은 우리의 의식으로 축복받은 포장에 아름답게 제시되어 잊을 수 없는 인상을 남깁니다.",
+    "cardTitle": "개인 축복 카드",
+    "cardDescription": "자신의 의도와 메시지를 추가하세요. 당신의 말은 크리스탈의 에너지를 증폭시키고 더 깊은 연결을 만듭니다.",
+    "guideTitle": "Spirit Guide Card",
+    "guideDescription": "크리스탈의 치유 특성, 차크라 정렬, 그리고 그 에너지를 활성화하는 방법을 설명합니다.",
+    "giftByOccasion": "행사별 선물",
+    "birthday": "생일",
+    "anniversary": "기념일",
+    "graduation": "졸업",
+    "mothersDay": "어머니 날",
+    "justBecause": "그냥",
+    "thankYou": "감사",
+    "giftByPrice": "가격별 선물",
+    "under75": "$75 미만",
+    "price75to150": "$75 - $150",
+    "price150to250": "$150 - $250",
+    "premiumPrice": "프리미엄 ($250 이상)",
+    "mostHarmonious": "가장 조화로운 선물 조각",
+    "mostHarmoniousSubtitle": "다양한 에너지와 시대를 초월한 매력으로 선택된 베스트셀링 크리스탈입니다."
+  },
+  "collections": {
+    "title": "우리의 컬렉션",
+    "subtitle": "영적 의도에 따라 선별되고, 당신의 여정을 위해 디자인되었습니다."
+  },
+  "legal": {
+    "privacyPolicy": "개인정보 보호정책",
+    "termsOfService": "서비스 약관",
+    "lastUpdated": "마지막 업데이트",
+    "privacyPolicyContent": {
+      "title": "개인정보 보호정책",
+      "introduction": "YINYANG GUARDIAN에서는 귀하의 개인정보 보호에 최선을 다하고 있습니다. 본 개인정보 보호정책은 당사 웹사이트를 방문하고 당사 서비스를 이용할 때 귀하의 정보를 수집, 사용, 공개 및 보호하는 방식을 설명합니다.",
+      "informationWeCollect": {
+        "title": "수집하는 정보",
+        "description": "당사는 귀하가 계정을 생성하거나, 구매를 하거나, 뉴스레터를 구독하거나, 고객 지원을 위해 당사에 문의할 때 직접 제공하는 정보를 수집합니다. 여기에는 이름, 이메일 주소, 전화번호, 우편 주소, 결제 정보, 그리고 귀하가 제공하기로 선택한 기타 정보가 포함됩니다. 또한 당사는 귀하의 장치에 대한 특정 정보와 당사 웹사이트와의 상호 작용 방식을 자동으로 수집하며, 여기에는 IP 주소, 브라우저 유형, 방문한 페이지, 방문의 시간 및 날짜가 포함됩니다."
+      },
+      "howWeUseInformation": {
+        "title": "정보 사용 방식",
+        "description": "당사는 수집한 정보를 사용하여 주문을 처리하고, 거래 이메일을 보내고, 질의에 응답하고, 마케팅 커뮤니케이션(귀하의 동의 하에)을 보내고, 웹사이트 및 서비스를 개선하고, 사기를 방지하고, 법적 의무를 준수합니다. 또한 당사는 귀하의 경험을 개인화하고 귀하의 관심사와 일치하는 상품을 추천하기 위해 귀하의 정보를 사용할 수 있습니다."
+      },
+      "sharingYourInformation": {
+        "title": "정보 공유",
+        "description": "당사는 제3자에게 개인정보를 판매, 거래 또는 임대하지 않습니다. 당사는 결제 처리, 배송 회사, 이메일 서비스 제공자 등 당사 웹사이트 운영 및 사업 수행을 돕는 서비스 제공자와 정보를 공유할 수 있습니다. 또한 법에 의해 요구되거나 당사의 권리, 개인정보, 안전 또는 재산을 보호하기 위해 정보를 공개할 수 있습니다."
+      },
+      "dataRetention": {
+        "title": "데이터 보유",
+        "description": "당사는 모든 법적, 회계 또는 보고 요구 사항을 충족하기 위해 수집한 목적을 달성하기 위해 필요한 기간 동안 개인정보를 보유합니다. 보유 기간의 길이는 처리의 맥락과 당사의 법적 의무에 따라 달라집니다."
+      },
+      "security": {
+        "title": "보안",
+        "description": "당사는 무단 접근, 변경, 공개 또는 파괴로부터 개인정보를 보호하기 위해 적절한 기술적, 조직적 조치를 시행합니다. 그러나 인터넷상의 전송 방식이나 전자 저장소는 완전히 안전하지 않으며, 당사는 절대적인 보안을 보장할 수 없습니다."
+      },
+      "yourRights": {
+        "title": "귀하의 권리",
+        "description": "귀하의 위치에 따라, 귀하는 개인정보에 대한 접근, 수정, 삭제 또는 포팅 권리와 같은 특정 권리를 가질 수 있습니다. 이러한 권리를 행사하려면 privacy@yinyanaguardian.com으로 당사에 문의하세요. 당사는 해당 법률에서 요구하는 기간 내에 귀하의 요청에 응답합니다."
+      },
+      "thirdPartyLinks": {
+        "title": "제3자 링크",
+        "description": "당사 웹사이트에는 제3자 웹사이트로의 링크가 포함될 수 있습니다. 당사는 이러한 외부 사이트의 개인정보 보호정책이나 콘텐츠에 대해 책임지지 않습니다. 개인정보를 제공하기 전에 해당 사이트의 개인정보 보호정책을 검토할 것을 권장합니다."
+      },
+      "changes": {
+        "title": "본 개인정보 보호정책 변경",
+        "description": "당사는 당사의 관행이나 해당 법률의 변경을 반영하기 위해 본 개인정보 보호정책을 수시로 업데이트할 수 있습니다. 당사는 업데이트된 정책을 당사 웹사이트에 게시하고 '마지막 업데이트' 날짜를 업데이트하여 중요한 변경 사항을 귀하에게 알립니다."
+      },
+      "contact": {
+        "title": "문의",
+        "description": "본 개인정보 보호정책이나 당사의 개인정보 보호 관행에 대해 질문이 있으신 경우, privacy@yinyanaguardian.com으로 당사에 문의하거나 당사의 문의 양식을 통해 연락하세요."
+      }
+    },
+    "termsOfServiceContent": {
+      "title": "서비스 약관",
+      "introduction": "본 서비스 약관('약관')은 YINYANG GUARDIAN 웹사이트 및 서비스에 대한 귀하의 접근 및 사용을 관리합니다. 당사 웹사이트에 접근하거나 사용함으로써 귀하는 본 약관에 구속되는 것에 동의합니다. 본 약관의 어느 부분이든 동의하지 않으시면, 당사 웹사이트를 사용하지 마세요.",
+      "useOfWebsite": {
+        "title": "웹사이트 사용",
+        "description": "귀하는 합법적인 목적으로만 이 웹사이트를 사용하고, 다른 사람의 권리를 침해하거나 웹사이트 사용 및 즐거움을 제한하는 방식으로 사용하지 않기로 동의합니다. 금지된 행동으로는 사람에게 괴로움이나 불편을 초래하는 괴롭힘, 외설적이거나 불쾌한 콘텐츠 전송, 당사 웹사이트 내 정상적인 대화 흐름 방해, 당사 시스템에 무단 접근 시도가 포함됩니다."
+      },
+      "intellectualProperty": {
+        "title": "지적재산권",
+        "description": "당사 웹사이트의 모든 콘텐츠(텍스트, 그래픽, 로고, 이미지, 소프트웨어 포함)는 YINYANG GUARDIAN 또는 당사의 콘텐츠 공급자의 재산이며 국제 저작권법으로 보호됩니다. 당사의 사전 서면 승인 없이는 당사의 콘텐츠를 복제, 배포, 전송, 수정 또는 파생물을 만들 수 없습니다."
+      },
+      "productInformation": {
+        "title": "상품 정보",
+        "description": "당사는 모든 상품의 정확한 설명 및 가격을 제공하기 위해 노력합니다. 그러나 당사는 상품 설명, 가격 또는 기타 콘텐츠가 정확하고, 완전하고, 오류가 없음을 보장하지 않습니다. 당사는 모든 오류를 수정하고 모든 주문을 거절 또는 취소할 권리를 보유합니다. 상품 색상은 귀하의 장치의 디스플레이 설정으로 인해 달리 보일 수 있습니다."
+      },
+      "pricing": {
+        "title": "가격 및 가용성",
+        "description": "모든 가격은 예고 없이 변경될 수 있습니다. 당사는 수량을 제한할 권리를 보유하며 언제든지 제품을 중단할 수 있습니다. 가격은 당사 웹사이트를 통해 배치된 주문에만 유효합니다. 당사는 가격 오류 또는 오자에 대해 책임을 지지 않습니다."
+      },
+      "orderAcceptance": {
+        "title": "주문 수락",
+        "description": "당사는 모든 주문을 수락 또는 거절할 권리를 보유합니다. 당사는 정보 확인을 요청할 수 있으며 사기 또는 불법 활동과 관련된 것으로 보이는 주문을 취소할 수 있습니다. 주문을 배치함으로써, 귀하는 본인이 최소 18세 이상이고 본 약관을 체결할 권한이 있음을 진술하고 보증합니다."
+      },
+      "paymentTerms": {
+        "title": "결제 약관",
+        "description": "주문이 처리되기 전에 전액 결제를 받아야 합니다. 당사는 당사 웹사이트에 표시된 주요 신용 카드, 직불 카드 및 기타 결제 방법을 수락합니다. 귀하는 계정에 발생하는 모든 요금을 지불하기로 동의합니다. 모든 결제 정보는 당사 결제 처리 담당자인 Stripe를 통해 안전하게 처리됩니다."
+      },
+      "shipping": {
+        "title": "배송 및 배달",
+        "description": "당사는 2-3 영업일 이내에 주문을 배송합니다. 배송 시간과 비용은 귀하의 위치에 따라 다릅니다. 당사는 배송 회사로 인한 지연에 대해 책임을 지지 않습니다. 손실 위험은 배송 회사에 배송할 때 귀하에게 이전됩니다. 국제 주문은 관세 및 세금의 대상이 될 수 있습니다."
+      },
+      "returns": {
+        "title": "반품 및 환불",
+        "description": "당사는 미착용 상품이 원래 포장에 있는 경우 모든 상품에 대해 30일 환불 보증을 제공합니다. 반품을 시작하려면 고객 서비스 팀에 문의하세요. 반품을 받아 검사한 후, 당사는 7-10 영업일 이내에 환불을 처리합니다. 반품 배송료는 당사 오류 또는 결함 상품으로 인한 반품을 제외하고는 고객의 책임입니다."
+      },
+      "limitationOfLiability": {
+        "title": "책임 제한",
+        "description": "법률에서 허용하는 최대 범위 내에서, YINYANG GUARDIAN은 손해 가능성을 조언받았더라도 간접, 우발적, 특수, 결과적 또는 징벌적 손해배상(잃어버린 이윤, 잃어버린 수익 또는 데이터 손실 포함)에 대해 책임을 지지 않습니다. 모든 청구에 대한 당사의 총 책임은 귀하가 상품 또는 서비스에 대해 지불한 금액을 초과하지 않습니다."
+      },
+      "disclaimers": {
+        "title": "면책조항",
+        "description": "본 웹사이트 및 그 콘텐츠는 명시적 또는 암시적 보증 없이 '그대로' 제공됩니다. 당사는 웹사이트가 중단되지 않고, 오류가 없고, 바이러스가 없음을 보장하지 않습니다. 당사는 정확한 영적 및 치유 정보를 제시하기 위해 노력하지만, 이러한 주장은 과학적으로 입증되지 않았습니다. 크리스탈은 의료 상태를 진단, 치료, 치유 또는 예방하기 위한 것이 아닙니다. 의료 우려 사항이 있으면 의료 전문가에게 문의하세요."
+      },
+      "modifications": {
+        "title": "약관 수정",
+        "description": "당사는 언제든지 본 약관을 수정할 권리를 보유합니다. 변경 사항은 당사 웹사이트에 게시되면 즉시 효력이 발생합니다. 수정된 약관 게시 이후 웹사이트를 계속 사용하는 것은 귀하가 변경 사항을 수락하고 동의하는 것을 의미합니다."
+      },
+      "governing": {
+        "title": "준거법",
+        "description": "본 약관은 법률 충돌 조항을 고려하지 않고 YINYANG GUARDIAN이 운영하는 관할권의 법률에 따라 관리되고 해석됩니다."
+      },
+      "contact": {
+        "title": "문의",
+        "description": "본 서비스 약관에 대해 질문이 있으신 경우, legal@yinyanaguardian.com으로 당사에 문의하거나 당사의 문의 양식을 통해 연락하세요."
+      }
+    }
+  },
+  "common": {
+    "home": "홈",
+    "loading": "로딩 중...",
+    "error": "오류",
+    "tryAgain": "다시 시도",
+    "remove": "제거",
+    "save": "저장",
+    "cancel": "취소",
+    "close": "닫기",
+    "back": "뒤로",
+    "next": "다음",
+    "previous": "이전",
+    "viewDetails": "자세히 보기",
+    "learnMore": "자세히 알아보기",
+    "items": "항목"
+  }
+}

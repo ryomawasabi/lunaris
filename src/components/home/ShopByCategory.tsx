@@ -4,17 +4,19 @@ import Link from "next/link";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import PlaceholderImage from "@/components/layout/PlaceholderImage";
 import { useProductStatus } from "@/components/providers/ProductStatusProvider";
+import { useLanguage } from '@/components/providers/LanguageProvider';
 import { cn } from "@/lib/utils";
 
 export function ShopByCategory() {
   const { categories } = useProductStatus();
+  const { t } = useLanguage();
 
   return (
     <section className="py-16 md:py-24 px-6 md:px-12 bg-white">
       <div className="max-w-7xl mx-auto">
         <SectionTitle
-          subtitle="Browse"
-          title="Shop by Category"
+          subtitle={t('home.shopByCategory.browse')}
+          title={t('home.shopByCategory.title')}
           align="center"
         />
 
@@ -48,7 +50,7 @@ export function ShopByCategory() {
                     {category.name}
                   </h3>
                   <p className="font-sans text-cream/80 text-sm">
-                    {category.productCount} Products
+                    {category.productCount} {t('home.shopByCategory.subtitle')}
                   </p>
                 </div>
               </div>

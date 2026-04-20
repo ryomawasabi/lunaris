@@ -5,11 +5,13 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Turnstile } from '@marsidev/react-turnstile'
 import { createClient } from '@/lib/supabase/client'
+import { useLanguage } from '@/components/providers/LanguageProvider'
 import { Mail, Lock, AlertCircle, Loader, Eye, EyeOff } from 'lucide-react'
 
 export default function LoginPage() {
   const router = useRouter()
   const supabase = createClient()
+  const { t } = useLanguage()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -23,7 +25,7 @@ export default function LoginPage() {
     setError('')
 
     if (!captchaToken) {
-      setError('Please complete the verification.')
+      setError(t('auth.pleaseComplete'))
       return
     }
 
@@ -64,9 +66,9 @@ export default function LoginPage() {
       <div className="max-w-md mx-auto px-4 py-20">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="font-serif text-4xl text-dark mb-2">Sign In</h1>
+          <h1 className="font-serif text-4xl text-dark mb-2">{t('auth.signIn')}</h1>
           <p className="text-warm font-sans text-sm">
-            Access your YINYANG GUARDIAN account
+            {t('auth.signInDescription')}
           </p>
         </div>
 
@@ -86,7 +88,7 @@ export default function LoginPage() {
               htmlFor="email"
               className="block text-sm font-sans font-medium text-dark mb-2"
             >
-              Email
+              {t('auth.email')}
             </label>
             <div className="relative">
               <Mail className="absolute left-3 top-3.5 text-warm-light" size={18} />
@@ -108,7 +110,7 @@ export default function LoginPage() {
               htmlFor="password"
               className="block text-sm font-sans font-medium text-dark mb-2"
             >
-              Password
+              {t('auth.password')}
             </label>
             <div className="relative">
               <Lock className="absolute left-3 top-3.5 text-warm-light" size={18} />
@@ -154,10 +156,10 @@ export default function LoginPage() {
             {isLoading ? (
               <>
                 <Loader size={18} className="animate-spin" />
-                Signing in...
+                {t('auth.signingIn')}
               </>
             ) : (
-              'Sign In'
+              t('auth.signIn')
             )}
           </button>
         </form>
@@ -165,20 +167,20 @@ export default function LoginPage() {
         {/* Divider */}
         <div className="my-6 flex items-center gap-4">
           <div className="flex-1 h-px bg-stone-light"></div>
-          <span className="text-warm-light text-xs font-sans">OR</span>
+          <span className="text-warm-light text-xs font-sans">{t('auth.or')}</span>
           <div className="flex-1 h-px bg-stone-light"></div>
         </div>
 
         {/* Sign Up Link */}
         <div className="text-center">
           <p className="text-dark text-sm font-sans mb-2">
-            Don&apos;t have an account?
+            {t('auth.noAccount')}
           </p>
           <Link
             href="/signup"
             className="text-gold hover:text-gold-dark font-sans font-medium transition-colors"
           >
-            Create Account
+            {t('auth.createAccount')}
           </Link>
         </div>
       </div>

@@ -6,6 +6,8 @@ import { Search, User, Heart, ShoppingBag, Menu, X, LogOut } from 'lucide-react'
 import { useAuth } from '@/components/auth/AuthProvider';
 import { useCart } from '@/components/providers/CartProvider';
 import { useWishlist } from '@/components/providers/WishlistProvider';
+import { useLanguage } from '@/components/providers/LanguageProvider';
+import LanguageSwitcher from '@/components/layout/LanguageSwitcher';
 import SearchModal from '@/components/search/SearchModal';
 
 export default function Header() {
@@ -16,6 +18,7 @@ export default function Header() {
   const { user, isAdmin, isLoading, signOut } = useAuth();
   const { itemCount, setCartOpen } = useCart();
   const { wishlistCount } = useWishlist();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,11 +30,11 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { label: 'Shop All', href: '/products' },
-    { label: 'Soul Stone Discovery', href: '/crystal-quiz' },
-    { label: 'Crystal Essence', href: '/gift-box' },
-    { label: 'Collections', href: '/collections' },
-    { label: 'About', href: '/about' },
+    { label: t('nav.shopAll'), href: '/products' },
+    { label: t('nav.soulStoneDiscovery'), href: '/crystal-quiz' },
+    { label: t('nav.crystalEssence'), href: '/gift-box' },
+    { label: t('nav.collections'), href: '/collections' },
+    { label: t('nav.about'), href: '/about' },
   ];
 
   return (
@@ -67,9 +70,10 @@ export default function Header() {
 
           {/* Right Icons */}
           <div className="flex items-center gap-6 ml-8">
+            <LanguageSwitcher />
             <button
               onClick={() => setSearchOpen(true)}
-              aria-label="Search"
+              aria-label={t('nav.search')}
               className="text-dark hover:text-gold transition-colors"
             >
               <Search size={20} />
@@ -82,7 +86,7 @@ export default function Header() {
               <div className="relative">
                 <button
                   onClick={() => setUserMenuOpen(!userMenuOpen)}
-                  aria-label="User account"
+                  aria-label={t('nav.userAccount')}
                   className="text-dark hover:text-gold transition-colors"
                 >
                   <User size={20} />
@@ -91,7 +95,7 @@ export default function Header() {
                 {userMenuOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-cream border border-stone-light rounded-lg shadow-lg z-50">
                     <div className="p-3 border-b border-stone-light">
-                      <p className="text-xs font-sans text-warm-light">Signed in as</p>
+                      <p className="text-xs font-sans text-warm-light">{t('nav.signedInAs')}</p>
                       <p className="text-sm font-sans text-dark truncate">{user.email}</p>
                     </div>
                     <div className="p-2 space-y-1">
@@ -101,7 +105,7 @@ export default function Header() {
                           className="block px-3 py-2 text-sm font-sans text-dark hover:bg-stone-light rounded transition-colors"
                           onClick={() => setUserMenuOpen(false)}
                         >
-                          Admin Dashboard
+                          {t('nav.adminDashboard')}
                         </Link>
                       )}
                       <button
@@ -112,7 +116,7 @@ export default function Header() {
                         className="w-full text-left px-3 py-2 text-sm font-sans text-dark hover:bg-stone-light rounded transition-colors flex items-center gap-2"
                       >
                         <LogOut size={16} />
-                        Sign Out
+                        {t('nav.signOut')}
                       </button>
                     </div>
                   </div>
@@ -122,7 +126,7 @@ export default function Header() {
               <Link
                 href="/login"
                 className="text-dark hover:text-gold transition-colors"
-                aria-label="Sign in"
+                aria-label={t('nav.signIn')}
               >
                 <User size={20} />
               </Link>
@@ -178,9 +182,10 @@ export default function Header() {
           </Link>
 
           <div className="flex items-center gap-4">
+            <LanguageSwitcher />
             <button
               onClick={() => setSearchOpen(true)}
-              aria-label="Search"
+              aria-label={t('nav.search')}
               className="text-dark"
             >
               <Search size={20} />

@@ -1,7 +1,12 @@
+'use client'
+
 import PlaceholderImage from "@/components/layout/PlaceholderImage";
 import { Button } from "@/components/ui/Button";
+import { useLanguage } from '@/components/providers/LanguageProvider';
 
 export function GiftSection() {
+  const { t } = useLanguage();
+
   return (
     <section className="py-16 md:py-24 px-6 md:px-12 bg-stone-light">
       <div className="max-w-7xl mx-auto">
@@ -21,30 +26,30 @@ export function GiftSection() {
           {/* Right: Content */}
           <div className="order-1 md:order-2">
             <h2 className="font-serif text-3xl md:text-4xl text-dark mb-6">
-              Share Positive Karma
+              {t('home.gift.title')}
             </h2>
 
             <p className="font-sans text-warm mb-6 leading-relaxed">
-              Gift a piece of spiritual protection to someone you love. Each YINYANG GUARDIAN piece carries intention and sacred energy, making it more than a gift&mdash;it&apos;s a blessing.
+              {t('home.gift.description')}
             </p>
 
             <div className="space-y-3 mb-8">
               <div className="flex items-start gap-3">
                 <div className="w-1.5 h-1.5 bg-gold rounded-full mt-2 flex-shrink-0" />
                 <p className="font-sans text-warm text-sm">
-                  <span className="font-medium">Sacred Gift Wrapping</span> - Presented in our ritual-blessed packaging
+                  <span className="font-medium">{t('home.gift.wrapping.title')}</span> - {t('home.gift.wrapping.description')}
                 </p>
               </div>
               <div className="flex items-start gap-3">
                 <div className="w-1.5 h-1.5 bg-gold rounded-full mt-2 flex-shrink-0" />
                 <p className="font-sans text-warm text-sm">
-                  <span className="font-medium">Personal Blessing</span> - Add your own intention note to amplify the energy
+                  <span className="font-medium">{t('home.gift.blessing.title')}</span> - {t('home.gift.blessing.description')}
                 </p>
               </div>
               <div className="flex items-start gap-3">
                 <div className="w-1.5 h-1.5 bg-gold rounded-full mt-2 flex-shrink-0" />
                 <p className="font-sans text-warm text-sm">
-                  <span className="font-medium">Spirit Guide Card</span> - Explains the spiritual properties and how to activate the piece
+                  <span className="font-medium">{t('home.gift.card.title')}</span> - {t('home.gift.card.description')}
                 </p>
               </div>
             </div>
@@ -54,7 +59,7 @@ export function GiftSection() {
               variant="primary"
               size="md"
             >
-              Shop Gifts
+              {t('home.gift.cta')}
             </Button>
           </div>
         </div>

@@ -1,0 +1,458 @@
+{
+  "nav": {
+    "shopAll": "全部商品",
+    "soulStoneDiscovery": "灵魂石探索",
+    "crystalEssence": "晶体精华",
+    "collections": "系列",
+    "about": "关于我们",
+    "search": "搜索",
+    "userAccount": "用户账户",
+    "signedInAs": "登录身份：",
+    "adminDashboard": "管理员仪表板",
+    "signOut": "退出登录",
+    "signIn": "登录",
+    "wishlist": "愿望清单",
+    "shoppingBag": "购物袋"
+  },
+  "footer": {
+    "brandDescription": "受阴阳古老智慧启发的脉轮平衡水晶珠宝，精心打造以恢复平衡与和谐。",
+    "shop": "购物",
+    "necklaces": "项链",
+    "bracelets": "手链",
+    "earrings": "耳环",
+    "rings": "戒指",
+    "newArrivals": "新品上市",
+    "bestSellers": "畅销品",
+    "collections": "系列",
+    "protection": "保护",
+    "loveHarmony": "爱与和谐",
+    "prosperity": "繁荣",
+    "essenceOil": "精油",
+    "crystalDiffuser": "水晶香薰机",
+    "help": "帮助",
+    "faq": "常见问题",
+    "shippingReturns": "运输和退货",
+    "sizeGuide": "尺码指南",
+    "contact": "联系我们",
+    "aboutUs": "关于我们",
+    "allRightsReserved": "版权所有。",
+    "securePayments": "安全支付：",
+    "privacyPolicy": "隐私政策",
+    "termsOfService": "服务条款"
+  },
+  "home": {
+    "hero": {
+      "title": "唤醒你的精神能量",
+      "description": "融合古老智慧和宇宙能量的神圣珠宝。每件佩戴的珠宝都能带来保护、吸引财富并使脉轮保持一致。",
+      "cta": "探索系列"
+    },
+    "brandValues": {
+      "blessed": {
+        "title": "祝福与净化",
+        "description": "每件珠宝都经过我们神圣仪式流程的能量净化和激活，以增强其自然力量和意图。"
+      },
+      "sacred": {
+        "title": "神圣宝石",
+        "description": "我们从世界各地道德采购水晶，精选具有真正能量和经证实的治愈特性的宝石。"
+      },
+      "karmic": {
+        "title": "业力礼赠",
+        "description": "带着意图赠礼。每次购买都包含关于如何引导水晶能量和建立有意义联系的指导。"
+      },
+      "energy": {
+        "title": "能量保证",
+        "description": "在30天内感受到差异，否则可以退货。我们对我们创作的每件珠宝的变革力量负责。"
+      }
+    },
+    "newsletter": {
+      "title": "加入阴阳圈",
+      "description": "获得限量版、灵性指导和来自我们内部圈子的特殊优惠的独家访问权。",
+      "emailPlaceholder": "输入您的电子邮件",
+      "submitButton": "订阅",
+      "successMessage": "感谢您的订阅！请检查您的电子邮件以获取特别欢迎优惠。",
+      "agreement": "订阅即表示您同意我们的",
+      "privacyPolicyLink": "隐私政策"
+    },
+    "bestSellers": {
+      "section": "最强大的珠宝",
+      "title": "畅销品",
+      "viewAll": "查看全部畅销品"
+    },
+    "newArrivals": {
+      "section": "新品祝福",
+      "title": "新品上市",
+      "viewAll": "查看全部新品上市"
+    },
+    "shopByCategory": {
+      "browse": "浏览",
+      "title": "按分类购物",
+      "subtitle": "产品"
+    },
+    "collectionShowcase": {
+      "title": "神圣系列",
+      "subtitle": "按精神意图购物"
+    },
+    "gift": {
+      "title": "分享正面业力",
+      "description": "具有深刻意义和意图的礼物，包装在祝福中，并有目的地呈现。",
+      "wrapping": {
+        "title": "神圣礼品包装",
+        "description": "采用我们仪式祝福的包装呈现"
+      },
+      "blessing": {
+        "title": "个人祝福",
+        "description": "添加您自己的意图便签以增强能量"
+      },
+      "card": {
+        "title": "精神指南卡",
+        "description": "解释精神属性以及如何激活该珠宝"
+      },
+      "cta": "购买礼品"
+    },
+    "featured": {
+      "badge": "畅销品",
+      "title": "最受欢迎的珠宝",
+      "description": "我们最珍视的水晶，由我们的社区因其强大的能量和永恒的美感而精选。",
+      "viewDetails": "查看详情",
+      "exploreAll": "探索全部珠宝"
+    },
+    "ugc": {
+      "title": "引导能量"
+    },
+    "asSeenIn": {
+      "title": "受精神社区信赖"
+    }
+  },
+  "products": {
+    "breadcrumb": "首页",
+    "title": "产品",
+    "allJewelry": "所有珠宝",
+    "category": "分类",
+    "collection": "系列",
+    "showingProducts": "显示 {count} / {total} 个产品",
+    "clearFilters": "清除筛选条件",
+    "noProducts": "未找到产品",
+    "noProductsDescription": "尝试调整筛选条件或浏览所有产品",
+    "viewAllProducts": "查看全部产品",
+    "sortBy": "排序方式",
+    "sortFeatured": "推荐",
+    "sortPriceLow": "价格：低到高",
+    "sortPriceHigh": "价格：高到低",
+    "sortNewest": "最新",
+    "sortBestSelling": "畅销",
+    "priceRange": "价格范围",
+    "priceUnder75": "75美元以下",
+    "price75to150": "$75 - $150",
+    "price150to250": "$150 - $250",
+    "priceOver250": "250美元以上",
+    "clearPriceFilter": "清除价格筛选条件",
+    "clearAllFilters": "清除所有筛选条件"
+  },
+  "productDetail": {
+    "breadcrumb": "产品",
+    "badgeBestSeller": "畅销品",
+    "badgeNew": "新品",
+    "reviews": "{rating} 星（满分5星）• {count} 条评论",
+    "saveAmount": "节省 {amount}",
+    "quantity": "数量",
+    "addToCart": "加入购物车",
+    "soldOut": "已售完",
+    "addToWishlist": "添加到愿望清单",
+    "freeShipping": "满150美元免运费",
+    "easyReturns": "30天内免费退货",
+    "satisfactionGuaranteed": "满意度保证",
+    "whyYouLoveIt": "您为什么会喜欢它",
+    "gemstones": {
+      "title": "正品宝石",
+      "description": "道德采购的水晶，具有真正的能量和经证实的治愈特性，与您的意图产生共鸣。"
+    },
+    "handcrafted": {
+      "title": "手工制作",
+      "description": "每件珠宝都由了解水晶工作神圣本质的熟练工匠精心创作。"
+    },
+    "meaningfulDesign": {
+      "title": "有意义的设计",
+      "description": "每个元素都经过精心选择，以引导特定的能量并与您的精神之旅保持一致。"
+    },
+    "symbolismMeaning": "象征意义与含义",
+    "customerReviews": "客户评论",
+    "reviewsSummary": "{rating}/5 基于 {count} 条评论",
+    "viewAllReviews": "查看全部评论",
+    "youMayAlsoLike": "您可能也喜欢"
+  },
+  "cart": {
+    "emptyCart": "您的购物车为空",
+    "emptyCartDescription": "看起来您还没有在购物车中添加任何商品。",
+    "startShopping": "开始购物",
+    "cartTitle": "购物车",
+    "continueShopping": "继续购物",
+    "freeShippingThreshold": "还需要 {amount} 即可获得免运费！",
+    "qualifiesForFreeShipping": "您符合免运费资格！",
+    "orderSummary": "订单摘要",
+    "subtotal": "小计",
+    "shipping": "运费",
+    "free": "免费",
+    "calculatedAtCheckout": "在结账时计算",
+    "total": "总计",
+    "proceedToCheckout": "进行结账",
+    "secureCheckout": "由 Stripe 提供的安全结账",
+    "yourCart": "您的购物车",
+    "discoverEssenceOils": "探索我们的水晶注入精油",
+    "shopNow": "立即购物",
+    "shippingCalculated": "运费在结账时计算",
+    "viewCartCheckout": "查看购物车和结账"
+  },
+  "checkout": {
+    "thankYou": "谢谢！",
+    "orderPlaced": "您的订单已成功提交。",
+    "yourOrderID": "您的订单ID",
+    "saveForTracking": "保存以追踪您的订单",
+    "whatHappensNext": "接下来会发生什么？",
+    "nextSteps": "您很快会收到包含订单详情的电子邮件确认。当您的订单发货时，我们会通知您。",
+    "continueShopping": "继续购物",
+    "trackOrder": "追踪您的订单"
+  },
+  "auth": {
+    "signIn": "登录",
+    "signInDescription": "访问您的 YINYANG GUARDIAN 账户",
+    "pleaseComplete": "请完成验证。",
+    "email": "电子邮件",
+    "password": "密码",
+    "signingIn": "登录中...",
+    "or": "或",
+    "noAccount": "没有账户？",
+    "createAccount": "创建账户",
+    "createAccountDescription": "加入 YINYANG GUARDIAN 购买有意义的珠宝",
+    "accountCreated": "账户创建成功！",
+    "redirecting": "正在重定向到登录...",
+    "fullName": "全名",
+    "passwordRecommendation": "建议至少8个字符",
+    "haveAccount": "已经有账户了？"
+  },
+  "wishlist": {
+    "myWishlist": "我的愿望清单",
+    "itemsCount": "您的愿望清单中有 {count} 项",
+    "emptyWishlist": "您的愿望清单为空",
+    "emptyWishlistDescription": "将您最喜欢的珠宝保存到愿望清单中，我们会帮助您记住它们",
+    "startExploring": "开始探索"
+  },
+  "orders": {
+    "backToStore": "返回商店",
+    "trackYourOrder": "追踪您的订单",
+    "trackDescription": "输入您的电子邮件和订单ID以检查订单状态。",
+    "emailAddress": "电子邮件地址",
+    "orderID": "订单ID",
+    "orderIDDescription": "确认页面中的8个字符代码。",
+    "lookingUp": "查询中...",
+    "trackOrderButton": "追踪订单",
+    "orderNotFound": "未找到订单",
+    "orderNumber": "订单 #{id}",
+    "placedOn": "提交于 {date}",
+    "orderConfirmed": "订单已确认",
+    "shipped": "已发货",
+    "delivered": "已送达",
+    "items": "项目",
+    "shippingTo": "配送至"
+  },
+  "search": {
+    "placeholder": "搜索产品...",
+    "noResults": "未找到与「{query}」匹配的产品",
+    "startTyping": "开始输入以搜索产品..."
+  },
+  "about": {
+    "aboutUs": "关于我们",
+    "philosophyTitle": "我们的理念",
+    "philosophyDescription": "我们相信真正的平衡来自于尊重水晶的古老智慧和现代自我发现之旅。我们创作的每件珠宝都充满意图、精心制作，并被祝福以支持您的精神进化。",
+    "chakraTitle": "脉轮平衡水晶",
+    "chakraDescription": "我们精心选择和配对宝石，使其与每个能量中心产生共鸣，帮助您恢复平衡并释放您的自然活力。",
+    "yinYangTitle": "阴阳采购",
+    "yinYangDescription": "我们道德采购的实践既尊重提供这些宝藏的地球，也尊重用虔诚精神创作这些宝藏的工匠。",
+    "balancedTitle": "平衡设计",
+    "balancedDescription": "从色彩和谐到几何平衡，每个设计元素都体现阴阳原理，呈现完美平衡的补充力量。",
+    "activationTitle": "能量激活",
+    "activationDescription": "通过我们的神圣仪式流程，每件珠宝都被净化和充能，以增强其自然能量并支持您的意图。",
+    "chakraStonesLabel": "脉轮石",
+    "balancingHoursLabel": "平衡小时数",
+    "energyCentersLabel": "能量中心",
+    "discoverBalance": "发现您的平衡",
+    "discoverBalanceDescription": "找到与您的脉轮一致的水晶并恢复您的能量流。",
+    "exploreCollections": "探索系列"
+  },
+  "faq": {
+    "title": "常见问题",
+    "subtitle": "查找关于我们的水晶、订购和精神实践的常见问题的答案。",
+    "orderingShipping": "订购和运送",
+    "returnsExchanges": "退货和交换",
+    "productCare": "产品和护理",
+    "gifting": "礼赠",
+    "q1": "发货需要多长时间？",
+    "a1": "我们通常在2-3个工作日内发货。国内订单在5-7个工作日内送达，而国际订单可能需要10-21个工作日，具体取决于位置。",
+    "q2": "您提供国际运输吗？",
+    "a2": "是的！我们向全球大多数国家发货。运费和交付时间因位置而异。您将在结账时看到所有选项。",
+    "q3": "您的退货政策是什么？",
+    "a3": "我们对所有未佩戴的原始包装商品提供30天内退款保证。如果水晶与您的能量不相符，只需退货获得全额退款。",
+    "q4": "我可以交换产品吗？",
+    "a4": "当然可以。在购买后30天内交换是免费的。请联系我们的客户服务团队安排交换。",
+    "q5": "我如何护理我的水晶珠宝？",
+    "a5": "请远离极端高温、化学物质和长期阳光直射。用软布轻轻擦拭。我们建议在月光下或用鼠尾草每月净化一次，以维护其能量特性。",
+    "q6": "您的水晶是真的吗？",
+    "a6": "是的，每件珠宝都采用从世界各地道德采购的正品宝石。我们验证所有水晶的真实性和能量特性。",
+    "q7": "我应该如何激活我的水晶？",
+    "a7": "将珠宝握在手中并设定明确的意图。您也可以将其放在身体上、与其一起睡眠或冥想。每块水晶都附带一张精神指南卡，说明其特定的激活过程。",
+    "q8": "我可以将这些作为礼物赠送吗？",
+    "a8": "水晶是美丽而有意义的礼物！我们提供免费礼品包装、个人祝福卡和精神指南卡，帮助您的亲人与水晶的能量建立联系。",
+    "q9": "您提供活动的批量订单吗？",
+    "a9": "是的！对于大型订单或特殊活动，请联系我们的客户服务团队。我们为批量购买和公司礼赠提供特殊价格。",
+    "q10": "如果我收到的珠宝有破损怎么办？",
+    "a10": "我们在包装每份订单时都非常谨慎。如果您的珠宝到达时有破损，请立即与我们联系并附上照片，我们将免费立即发送替换品。",
+    "stillHaveQuestions": "仍有问题？",
+    "contactUs": "请通过 support@yinyanaguardian.com 或我们的联系表格与我们的客户服务团队联系。我们在这里帮助您！"
+  },
+  "gifts": {
+    "title": "赠送平衡的力量",
+    "subtitle": "精心选择的水晶以启发、治愈和改变。",
+    "whyGiftBalance": "为什么赠送平衡",
+    "whyDescription": "水晶是意图的礼物。当您赠送来自 YINYANG GUARDIAN 的珠宝时，您不仅仅是在赠送珠宝——您在分享治愈能量、精神支持和有意义的联系。",
+    "wrappingTitle": "神圣礼品包装",
+    "wrappingDescription": "每份礼物都精美地呈现在我们仪式祝福的包装中，准备好给人留下难忘的印象。",
+    "cardTitle": "个人祝福卡",
+    "cardDescription": "添加您自己的意图和信息。您的话语会增强水晶的能量并创建更深层的联系。",
+    "guideTitle": "精神指南卡",
+    "guideDescription": "解释水晶的治愈特性、脉轮对齐以及如何激活其能量。",
+    "giftByOccasion": "按场合赠送",
+    "birthday": "生日",
+    "anniversary": "周年纪念",
+    "graduation": "毕业",
+    "mothersDay": "母亲节",
+    "justBecause": "无特殊理由",
+    "thankYou": "感谢",
+    "giftByPrice": "按价格赠送",
+    "under75": "75美元以下",
+    "price75to150": "$75 - $150",
+    "price150to250": "$150 - $250",
+    "premiumPrice": "高端（$250以上）",
+    "mostHarmonious": "最和谐的礼品珠宝",
+    "mostHarmoniousSubtitle": "我们畅销的水晶，因其多功能能量和永恒魅力而精选。"
+  },
+  "collections": {
+    "title": "我们的系列",
+    "subtitle": "按精神意图策划，为您的旅程设计。"
+  },
+  "legal": {
+    "privacyPolicy": "隐私政策",
+    "termsOfService": "服务条款",
+    "lastUpdated": "最后更新",
+    "privacyPolicyContent": {
+      "title": "隐私政策",
+      "introduction": "在 YINYANG GUARDIAN，我们致力于保护您的隐私。本隐私政策说明当您访问我们的网站和使用我们的服务时，我们如何收集、使用、披露和保护您的信息。",
+      "informationWeCollect": {
+        "title": "我们收集的信息",
+        "description": "我们收集您直接提供给我们的信息，例如当您创建账户、进行购买、订阅我们的新闻通讯或与我们联系以获得客户支持时。这包括您的姓名、电子邮件地址、电话号码、邮寄地址、支付信息以及您选择提供的任何其他信息。我们还自动收集有关您的设备以及您如何与我们的网站交互的某些信息，包括您的IP地址、浏览器类型、访问的页面以及访问的时间和日期。"
+      },
+      "howWeUseInformation": {
+        "title": "我们如何使用您的信息",
+        "description": "我们使用收集的信息来处理您的订单、向您发送交易电子邮件、回复您的询问、发送营销通讯（征得您的同意）、改进我们的网站和服务、防止欺诈以及遵守法律义务。我们也可能使用您的信息来个性化您的体验并推荐与您的兴趣相符的产品。"
+      },
+      "sharingYourInformation": {
+        "title": "分享您的信息",
+        "description": "我们不向第三方出售、交易或出租您的个人信息。我们可能与协助我们运营网站和开展业务的服务提供商分享您的信息，例如支付处理器、运输公司和电子邮件服务提供商。如果法律要求或为了保护我们的权利、隐私、安全或财产，我们也可能披露您的信息。"
+      },
+      "dataRetention": {
+        "title": "数据保留",
+        "description": "我们保留您的个人信息的时间与为其收集而设立的目的所需的时间一样长，包括以满足任何法律、会计或报告要求。保留的长度取决于处理的背景和我们的法律义务。"
+      },
+      "security": {
+        "title": "安全",
+        "description": "我们实施适当的技术和组织措施来保护您的个人信息免受未经授权的访问、更改、披露或销毁。但是，互联网传输或电子存储方法完全安全的方法，我们无法保证绝对安全。"
+      },
+      "yourRights": {
+        "title": "您的权利",
+        "description": "根据您的位置，您可能在您的个人信息方面拥有某些权利，例如访问、更正、删除或迁移您的数据的权利。要行使这些权利，请通过 privacy@yinyanaguardian.com 与我们联系。我们将在适用法律规定的时间范围内回复您的请求。"
+      },
+      "thirdPartyLinks": {
+        "title": "第三方链接",
+        "description": "我们的网站可能包含指向第三方网站的链接。我们对这些外部网站的隐私实践或内容不负责。我们鼓励您在提供任何个人信息之前查看其隐私政策。"
+      },
+      "changes": {
+        "title": "对本隐私政策的更改",
+        "description": "我们可能会不时更新本隐私政策以反映我们实践或适用法律的更改。我们将通过在我们的网站上发布更新的政策和更新\"最后更新\"日期来通知您任何重大更改。"
+      },
+      "contact": {
+        "title": "联系我们",
+        "description": "如果您对本隐私政策或我们的隐私实践有任何疑问，请通过 privacy@yinyanaguardian.com 或我们的联系表格与我们联系。"
+      }
+    },
+    "termsOfServiceContent": {
+      "title": "服务条款",
+      "introduction": "这些服务条款（\"条款\"）规定您对 YINYANG GUARDIAN 网站和服务的访问和使用。访问或使用我们的网站即表示您同意受这些条款的约束。如果您不同意这些条款的任何部分，请勿使用我们的网站。",
+      "useOfWebsite": {
+        "title": "网站使用",
+        "description": "您同意仅为合法目的使用本网站，以及以不侵犯他人权利或限制其使用和享受网站的方式使用。禁止的行为包括骚扰或对任何人造成困扰或不便、发送淫秽或冒犯性内容、中断我们网站内的正常对话流程、以及尝试获得我们系统的未授权访问。"
+      },
+      "intellectualProperty": {
+        "title": "知识产权",
+        "description": "我们网站上的所有内容，包括文本、图形、标志、图像和软件，是 YINYANG GUARDIAN 或其内容供应商的财产，受国际著作权法保护。未经我们的事先书面许可，您不得复制、分发、传输、修改或创建任何内容的衍生作品。"
+      },
+      "productInformation": {
+        "title": "产品信息",
+        "description": "我们努力为所有产品提供准确的描述和定价。但是，我们不保证产品描述、定价或其他内容的准确性、完整性或无错误性。我们保留纠正任何错误的权利，以及拒绝或取消任何订单的权利。由于您的设备的显示设置，产品颜色可能会看起来有所不同。"
+      },
+      "pricing": {
+        "title": "定价和可用性",
+        "description": "所有价格如有变更，恕不另行通知。我们保留限制数量和随时停产任何产品的权利。价格仅对通过我们网站下达的订单有效。我们不对任何定价错误或排版错误负责。"
+      },
+      "orderAcceptance": {
+        "title": "订单接受",
+        "description": "我们保留接受或拒绝任何订单的权利。我们可能要求验证信息，并可能取消似乎涉及欺诈或非法活动的订单。下达订单即表示您声明并保证您年满18岁并有权进入这些条款。"
+      },
+      "paymentTerms": {
+        "title": "支付条款",
+        "description": "必须在订单处理前收到全额付款。我们接受主要信用卡、借记卡和我们网站上指示的其他支付方式。您同意支付您账户产生的所有费用。所有支付信息都通过我们的支付处理器 Stripe 进行安全处理。"
+      },
+      "shipping": {
+        "title": "运输和交付",
+        "description": "我们在2-3个工作日内发货。运费和时间因您的位置而异。我们对运输公司或海关造成的任何延迟不负责。风险损失在交付给运输公司时转移给您。国际订单可能需要缴纳关税和税款。"
+      },
+      "returns": {
+        "title": "退货和退款",
+        "description": "我们对所有未佩戴的原始包装商品提供30天内退款保证。要发起退货，请联系我们的客户服务团队。收到并检查您的退货后，我们将在7-10个工作日内处理您的退款。除非退货是由于我们的错误或产品缺陷，否则退货运费由客户承担。"
+      },
+      "limitationOfLiability": {
+        "title": "责任限制",
+        "description": "在法律允许的最大范围内，YINYANG GUARDIAN 对任何间接、附带、特殊、后果或惩罚性损害（包括利润损失、收入损失或数据损失）不承担责任，即使被告知可能发生此类损害。我们对任何索赔的总责任不得超过您为产品或服务支付的金额。"
+      },
+      "disclaimers": {
+        "title": "免责声明",
+        "description": "本网站及其内容均按\"原样\"提供，不附带任何形式的明示或暗示保证。我们不保证网站不会中断、无错误或无病毒。虽然我们努力提供准确的精神和治愈信息，但这些声明未经科学证明。水晶无意诊断、治疗、治愈或预防任何医疗状况。如有医疗问题，请咨询医疗专业人士。"
+      },
+      "modifications": {
+        "title": "对条款的修改",
+        "description": "我们保留随时修改这些条款的权利。修改在发布到我们的网站时立即生效。您在修订条款发布后继续使用网站，即表示您接受并同意这些更改。"
+      },
+      "governing": {
+        "title": "管辖法律",
+        "description": "这些条款受 YINYANG GUARDIAN 运营所在司法管辖区的法律管理并按照其法律解释，不考虑其法律冲突条款。"
+      },
+      "contact": {
+        "title": "联系我们",
+        "description": "如果您对这些服务条款有任何疑问，请通过 legal@yinyanaguardian.com 或我们的联系表格与我们联系。"
+      }
+    }
+  },
+  "common": {
+    "home": "首页",
+    "loading": "加载中...",
+    "error": "错误",
+    "tryAgain": "重试",
+    "remove": "移除",
+    "save": "保存",
+    "cancel": "取消",
+    "close": "关闭",
+    "back": "返回",
+    "next": "下一个",
+    "previous": "上一个",
+    "viewDetails": "查看详情",
+    "learnMore": "了解更多",
+    "items": "项目"
+  }
+}

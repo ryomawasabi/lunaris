@@ -16,8 +16,10 @@ import { ImageGallery } from '@/components/product/ImageGallery'
 import { QuantitySelector } from '@/components/product/QuantitySelector'
 import { useProductStatus } from '@/components/providers/ProductStatusProvider'
 import { useCart } from '@/components/providers/CartProvider'
+import { useLanguage } from '@/components/providers/LanguageProvider'
 
 export default function ProductDetailContent() {
+  const { t } = useLanguage()
   const params = useParams()
   const slug = params.slug as string
   const { products } = useProductStatus()
@@ -44,11 +46,11 @@ export default function ProductDetailContent() {
       <div className="px-4 md:px-6 lg:px-8 py-6 border-b border-stone-light">
         <div className="max-w-7xl mx-auto flex items-center gap-2 text-sm">
           <Link href="/" className="text-warm hover:text-dark transition-colors">
-            Home
+            {t('common.home')}
           </Link>
           <ChevronRight className="w-4 h-4 text-warm" />
           <Link href="/products" className="text-warm hover:text-dark transition-colors">
-            Products
+            {t('productDetail.breadcrumb')}
           </Link>
           <ChevronRight className="w-4 h-4 text-warm" />
           <span className="text-dark font-medium">{product.name}</span>
@@ -69,8 +71,8 @@ export default function ProductDetailContent() {
               {/* Badges */}
               {(product.isBestSeller || product.isNew) && (
                 <div className="flex gap-2 mb-6">
-                  {product.isBestSeller && <Badge variant="bestseller">Best Seller</Badge>}
-                  {product.isNew && <Badge variant="new">New</Badge>}
+                  {product.isBestSeller && <Badge variant="bestseller">{t('productDetail.badgeBestSeller')}</Badge>}
+                  {product.isNew && <Badge variant="new">{t('productDetail.badgeNew')}</Badge>}
                 </div>
               )}
 
@@ -88,7 +90,7 @@ export default function ProductDetailContent() {
                     size="md"
                   />
                   <span className="text-sm text-warm">
-                    {product.rating} out of 5 &bull; {product.reviewCount} reviews
+                    {t('productDetail.reviews', { rating: product.rating, count: product.reviewCount })}
                   </span>
                 </div>
               )}
@@ -105,7 +107,7 @@ export default function ProductDetailContent() {
                         {formatPrice(product.compareAtPrice!)}
                       </span>
                       <span className="text-sm font-medium text-warm">
-                        Save {formatPrice(savingsAmount)}
+                        {t('productDetail.saveAmount', { amount: formatPrice(savingsAmount) })}
                       </span>
                     </>
                   )}
@@ -148,7 +150,7 @@ export default function ProductDetailContent() {
 
               {/* Quantity Selector */}
               <div className="mb-6">
-                <p className="text-sm font-sans font-medium text-dark mb-3">Quantity</p>
+                <p className="text-sm font-sans font-medium text-dark mb-3">{t('productDetail.quantity')}</p>
                 <QuantitySelector onQuantityChange={setQuantity} />
               </div>
 
@@ -169,10 +171,10 @@ export default function ProductDetailContent() {
                   }}
                   disabled={product.isSoldOut}
                 >
-                  {product.isSoldOut ? 'Sold Out' : 'Add to Cart'}
+                  {product.isSoldOut ? t('productDetail.soldOut') : t('productDetail.addToCart')}
                 </Button>
                 <Button variant="secondary" size="lg" className="w-full">
-                  Add to Wishlist
+                  {t('productDetail.addToWishlist')}
                 </Button>
               </div>
 
@@ -182,7 +184,7 @@ export default function ProductDetailContent() {
                   <Truck className="w-5 h-5 text-warm flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="text-sm text-warm">
-                      Complimentary shipping on orders over <span className="font-medium">$150</span>
+                      {t('productDetail.freeShipping')}
                     </p>
                   </div>
                 </div>
@@ -190,7 +192,7 @@ export default function ProductDetailContent() {
                   <RotateCcw className="w-5 h-5 text-warm flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="text-sm text-warm">
-                      <span className="font-medium">30-day easy returns</span> — satisfaction guaranteed
+                      <span className="font-medium">{t('productDetail.easyReturns')}</span> — {t('productDetail.satisfactionGuaranteed')}
                     </p>
                   </div>
                 </div>
@@ -200,7 +202,7 @@ export default function ProductDetailContent() {
 
           {/* Why You'll Love It Section */}
           <section className="my-16 py-16 border-t border-b border-stone-light">
-            <SectionTitle title="Why You'll Love It" align="center" />
+            <SectionTitle title={t('productDetail.whyYouLoveIt')} align="center" />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
                 <div className="mb-4 flex justify-center">
@@ -208,9 +210,9 @@ export default function ProductDetailContent() {
                     <Sparkles className="w-6 h-6 text-warm" />
                   </div>
                 </div>
-                <h3 className="font-serif text-lg text-dark mb-2">Genuine Gemstones</h3>
+                <h3 className="font-serif text-lg text-dark mb-2">{t('productDetail.gemstones.title')}</h3>
                 <p className="text-sm text-warm">
-                  Every piece features authentic, high-quality gemstones hand-selected for their beauty and energy.
+                  {t('productDetail.gemstones.description')}
                 </p>
               </div>
 
@@ -220,9 +222,9 @@ export default function ProductDetailContent() {
                     <Hammer className="w-6 h-6 text-warm" />
                   </div>
                 </div>
-                <h3 className="font-serif text-lg text-dark mb-2">Handcrafted</h3>
+                <h3 className="font-serif text-lg text-dark mb-2">{t('productDetail.handcrafted.title')}</h3>
                 <p className="text-sm text-warm">
-                  Thoughtfully designed and skillfully crafted by our artisans with attention to every detail.
+                  {t('productDetail.handcrafted.description')}
                 </p>
               </div>
 
@@ -232,9 +234,9 @@ export default function ProductDetailContent() {
                     <Award className="w-6 h-6 text-warm" />
                   </div>
                 </div>
-                <h3 className="font-serif text-lg text-dark mb-2">Meaningful Design</h3>
+                <h3 className="font-serif text-lg text-dark mb-2">{t('productDetail.meaningfulDesign.title')}</h3>
                 <p className="text-sm text-warm">
-                  Each piece carries symbolic significance rooted in spiritual traditions and personal intention.
+                  {t('productDetail.meaningfulDesign.description')}
                 </p>
               </div>
             </div>
@@ -242,7 +244,7 @@ export default function ProductDetailContent() {
 
           {/* Symbolism & Meaning Section */}
           <section className="my-16">
-            <SectionTitle title="Symbolism &amp; Meaning" align="left" />
+            <SectionTitle title={t('productDetail.symbolismMeaning')} align="left" />
             <div className="max-w-3xl">
               <p className="text-base text-warm leading-relaxed">
                 {product.longDescription}
@@ -253,8 +255,8 @@ export default function ProductDetailContent() {
           {/* Reviews Section */}
           <section className="my-16 py-16 border-t border-b border-stone-light">
             <SectionTitle
-              title="Customer Reviews"
-              subtitle={`${product.rating}/5 based on ${product.reviewCount} reviews`}
+              title={t('productDetail.customerReviews')}
+              subtitle={t('productDetail.reviewsSummary', { rating: product.rating, count: product.reviewCount })}
               align="left"
             />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -278,7 +280,7 @@ export default function ProductDetailContent() {
             </div>
             <div className="mt-8 text-center">
               <Button variant="secondary" size="md">
-                View All Reviews
+                {t('productDetail.viewAllReviews')}
               </Button>
             </div>
           </section>
@@ -286,7 +288,7 @@ export default function ProductDetailContent() {
           {/* Related Products Section */}
           {relatedProducts.length > 0 && (
             <section className="my-16">
-              <SectionTitle title="You May Also Like" align="center" />
+              <SectionTitle title={t('productDetail.youMayAlsoLike')} align="center" />
               <ProductGrid products={relatedProducts} columns={4} />
             </section>
           )}

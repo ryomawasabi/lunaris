@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { Search, Package, CheckCircle, Truck, MapPin, Loader2, ArrowLeft } from 'lucide-react'
+import { useLanguage } from '@/components/providers/LanguageProvider'
 import { cn } from '@/lib/utils'
 
 interface TrackedOrder {
@@ -24,12 +25,13 @@ interface TrackedOrder {
 }
 
 const STATUS_STEPS = [
-  { key: 'paid', label: 'Order Confirmed', icon: CheckCircle },
-  { key: 'shipped', label: 'Shipped', icon: Truck },
-  { key: 'delivered', label: 'Delivered', icon: MapPin },
+  { key: 'paid', labelKey: 'orders.orderConfirmed', icon: CheckCircle },
+  { key: 'shipped', labelKey: 'orders.shipped', icon: Truck },
+  { key: 'delivered', labelKey: 'orders.delivered', icon: MapPin },
 ]
 
 export default function OrderTrackPage() {
+  const { t } = useLanguage()
   const [email, setEmail] = useState('')
   const [orderId, setOrderId] = useState('')
   const [order, setOrder] = useState<TrackedOrder | null>(null)
@@ -76,20 +78,20 @@ export default function OrderTrackPage() {
       <div className="max-w-2xl mx-auto px-4 py-16">
         <Link href="/" className="inline-flex items-center gap-2 text-sm font-sans text-warm hover:text-dark transition-colors mb-8">
           <ArrowLeft size={16} />
-          Back to Store
+          {t('orders.backToStore')}
         </Link>
 
         <div className="text-center mb-10">
           <Package size={40} className="text-gold mx-auto mb-4" />
-          <h1 className="font-serif text-3xl text-dark mb-2">Track Your Order</h1>
-          <p className="font-sans text-warm">Enter your email and order ID to check the status of your order.</p>
+          <h1 className="font-serif text-3xl text-dark mb-2">{t('orders.trackYourOrder')}</h1>
+          <p className="font-sans text-warm">{t('orders.trackDescription')}</p>
         </div>
 
         {/* Search Form */}
         <form onSubmit={handleTrack} className="bg-white border border-stone-light rounded-lg p-6 mb-8">
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-sans font-medium text-dark mb-1">Email Address</label>
+              <label className="block text-sm font-sans font-medium text-dark mb-1">{t('orders.emailAddress')}</label>
               <input
                 type="email"
                 value={email}
@@ -100,7 +102,7 @@ export default function OrderTrackPage() {
               />
             </div>
             <div>
-              <label className="block text-sm font-sans font-medium text-dark mb-1">Order ID</label>
+              <label className="block text-sm font-sans font-medium text-dark mb-1">{t('orders.orderID')}</label>
               <input
                 type="text"
                 value={orderId}
@@ -109,7 +111,7 @@ export default function OrderTrackPage() {
                 required
                 className="w-full px-4 py-3 border border-stone-light rounded-lg font-sans text-dark placeholder-warm-light focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
               />
-              <p className="text-xs text-warm font-sans mt-1">The 8-character code from your confirmation page.</p>
+              <p className="text-xs text-warm font-sans mt-1">{t('orders.orderIDDescription')}</p>
             </div>
             <button
               type="submit"
@@ -117,7 +119,7 @@ export default function OrderTrackPage() {
               className="w-full px-6 py-3.5 bg-dark text-cream font-sans text-sm font-medium uppercase tracking-wider hover:bg-charcoal transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
             >
               {loading ? <Loader2 className="animate-spin" size={16} /> : <Search size={16} />}
-              {loading ? 'Looking up...' : 'Track Order'}
+              {loading ? t('orders.lookingUp') : t('orders.trackOrderButton')}
             </button>
           </div>
         </form>
@@ -135,9 +137,9 @@ export default function OrderTrackPage() {
             <div className="px-6 py-4 border-b border-stone-light">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="font-sans font-medium text-dark">Order #{order.id.slice(0, 8).toUpperCase()}</p>
+                  <p className="font-sans font-medium text-dark">{t('orders.orderNumber', { id: order.id.slice(0, 8).toUpperCase() })}</p>
                   <p className="text-xs text-warm font-sans">
-                    Placed on {new Date(order.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                    {t('orders.placedOn', { date: new Date(order.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) })}
                   </p>
                 </div>
                 <p className="font-serif text-lg text-dark">${Number(order.total).toFixed(2)}</p>
@@ -178,7 +180,7 @@ export default function OrderTrackPage() {
                             : stepStatus === 'current' ? 'text-gold-dark font-medium'
                             : 'text-warm'
                         )}>
-                          {step.label}
+                          {t(step.labelKey)}
                         </p>
                       </div>
                     )
@@ -198,7 +200,7 @@ export default function OrderTrackPage() {
 
             {/* Items */}
             <div className="px-6 py-4 border-t border-stone-light">
-              <p className="text-xs font-sans font-medium text-dark uppercase tracking-wider mb-3">Items</p>
+              <p className="text-xs font-sans font-medium text-dark uppercase tracking-wider mb-3">{t('orders.items')}</p>
               {order.items.map((item, i) => (
                 <div key={i} className="flex justify-between font-sans text-sm py-1">
                   <span className="text-dark">{item.name} × {item.quantity}</span>
@@ -210,7 +212,7 @@ export default function OrderTrackPage() {
             {/* Shipping */}
             {order.shipping_address && (
               <div className="px-6 py-4 border-t border-stone-light">
-                <p className="text-xs font-sans font-medium text-dark uppercase tracking-wider mb-2">Shipping To</p>
+                <p className="text-xs font-sans font-medium text-dark uppercase tracking-wider mb-2">{t('orders.shippingTo')}</p>
                 <p className="font-sans text-sm text-warm">
                   {order.shipping_address.name}, {order.shipping_address.line1}, {order.shipping_address.city} {order.shipping_address.postal_code}, {order.shipping_address.country}
                 </p>

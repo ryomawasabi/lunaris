@@ -3,32 +3,34 @@
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { X } from 'lucide-react';
 import { useProductStatus } from '@/components/providers/ProductStatusProvider';
+import { useLanguage } from '@/components/providers/LanguageProvider';
 import { cn } from '@/lib/utils';
 
 interface ProductFiltersProps {
   className?: string;
 }
 
-const PRICE_RANGES = [
-  { label: 'Under $75', min: 0, max: 75 },
-  { label: '$75 - $150', min: 75, max: 150 },
-  { label: '$150 - $250', min: 150, max: 250 },
-  { label: 'Over $250', min: 250, max: Infinity },
-];
-
-const SORT_OPTIONS = [
-  { value: '', label: 'Featured' },
-  { value: 'price-asc', label: 'Price: Low to High' },
-  { value: 'price-desc', label: 'Price: High to Low' },
-  { value: 'newest', label: 'Newest' },
-  { value: 'bestsellers', label: 'Best Selling' },
-];
-
 export function ProductFilters({ className }: ProductFiltersProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { categories, collections } = useProductStatus();
+  const { t } = useLanguage();
+
+  const PRICE_RANGES = [
+    { label: t('products.priceUnder75'), min: 0, max: 75 },
+    { label: t('products.price75to150'), min: 75, max: 150 },
+    { label: t('products.price150to250'), min: 150, max: 250 },
+    { label: t('products.priceOver250'), min: 250, max: Infinity },
+  ];
+
+  const SORT_OPTIONS = [
+    { value: '', label: t('products.sortFeatured') },
+    { value: 'price-asc', label: t('products.sortPriceLow') },
+    { value: 'price-desc', label: t('products.sortPriceHigh') },
+    { value: 'newest', label: t('products.sortNewest') },
+    { value: 'bestsellers', label: t('products.sortBestSelling') },
+  ];
 
   const currentCategory = searchParams.get('category');
   const currentCollection = searchParams.get('collection');
@@ -58,7 +60,7 @@ export function ProductFilters({ className }: ProductFiltersProps) {
       {/* Sort Dropdown */}
       <div className="mb-8 pb-8 border-b border-stone-light">
         <label className="block text-sm font-sans font-medium text-dark mb-3">
-          Sort By
+          {t('products.sortBy')}
         </label>
         <select
           value={currentSort}
@@ -75,7 +77,7 @@ export function ProductFilters({ className }: ProductFiltersProps) {
 
       {/* Category Filter */}
       <div className="mb-8 pb-8 border-b border-stone-light">
-        <h3 className="text-sm font-sans font-medium text-dark mb-4">Category</h3>
+        <h3 className="text-sm font-sans font-medium text-dark mb-4">{t('products.category')}</h3>
         <div className="space-y-3">
           {categories.map((category) => (
             <label key={category.id} className="flex items-center cursor-pointer group">
@@ -97,7 +99,7 @@ export function ProductFilters({ className }: ProductFiltersProps) {
 
       {/* Collection Filter */}
       <div className="mb-8 pb-8 border-b border-stone-light">
-        <h3 className="text-sm font-sans font-medium text-dark mb-4">Collection</h3>
+        <h3 className="text-sm font-sans font-medium text-dark mb-4">{t('products.collection')}</h3>
         <div className="space-y-3">
           {collections.map((collection) => (
             <label key={collection.id} className="flex items-center cursor-pointer group">
@@ -119,7 +121,7 @@ export function ProductFilters({ className }: ProductFiltersProps) {
 
       {/* Price Filter */}
       <div className="mb-8 pb-8 border-b border-stone-light">
-        <h3 className="text-sm font-sans font-medium text-dark mb-4">Price Range</h3>
+        <h3 className="text-sm font-sans font-medium text-dark mb-4">{t('products.priceRange')}</h3>
         <div className="space-y-3">
           {PRICE_RANGES.map((range) => (
             <label
@@ -148,7 +150,7 @@ export function ProductFilters({ className }: ProductFiltersProps) {
               onClick={() => handleFilterChange('priceRange', null)}
               className="text-xs text-warm hover:text-dark transition-colors font-medium"
             >
-              Clear Price Filter
+              {t('products.clearPriceFilter')}
             </button>
           )}
         </div>
@@ -161,7 +163,7 @@ export function ProductFilters({ className }: ProductFiltersProps) {
           className="w-full flex items-center justify-center gap-2 px-4 py-3 border border-stone rounded text-sm font-sans font-medium text-dark hover:bg-stone/5 transition-colors"
         >
           <X className="w-4 h-4" />
-          Clear All Filters
+          {t('products.clearAllFilters')}
         </button>
       )}
     </div>
