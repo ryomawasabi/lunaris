@@ -18,8 +18,6 @@ import { cn } from '@/lib/utils'
 import {
   AreaChart,
   Area,
-  BarChart,
-  Bar,
   XAxis,
   YAxis,
   Tooltip,
@@ -431,35 +429,36 @@ export default function AnalyticsDashboard() {
         <div className="bg-white border border-stone-light rounded-lg p-6">
           <h2 className="font-serif text-xl text-dark mb-4">Top Products</h2>
           {topProducts.length > 0 ? (
-            <ResponsiveContainer width="100%" height={220}>
-              <BarChart data={topProducts.slice(0, 5)} layout="vertical" margin={{ left: 10, right: 20 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" horizontal={false} />
-                <XAxis
-                  type="number"
-                  tick={{ fontSize: 11, fill: '#9CA3AF' }}
-                  tickLine={false}
-                  axisLine={{ stroke: '#E5E7EB' }}
-                  tickFormatter={(v: number) => formatCurrency(v)}
-                />
-                <YAxis
-                  type="category"
-                  dataKey="name"
-                  tick={{ fontSize: 11, fill: '#374151' }}
-                  tickLine={false}
-                  axisLine={false}
-                  width={120}
-                />
-                <Tooltip
-                  formatter={(value: number) => [formatCurrency(value), 'Revenue']}
-                  contentStyle={{ borderRadius: '8px', border: '1px solid #e5e7eb', fontSize: '12px' }}
-                />
-                <Bar dataKey="revenue" radius={[0, 6, 6, 0]} barSize={24}>
-                  {topProducts.slice(0, 5).map((_, i) => (
-                    <Cell key={i} fill={PRODUCT_COLORS[i % PRODUCT_COLORS.length]} />
-                  ))}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
+            <div className="space-y-3">
+              {topProducts.slice(0, 5).map((product, i) => {
+                const maxRevenue = topProducts[0]?.revenue || 1
+                const pct = (product.revenue / maxRevenue) * 100
+                return (
+                  <div key={i}>
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="font-sans text-sm text-dark font-medium truncate max-w-[60%]" title={product.name}>
+                        {product.name}
+                      </span>
+                      <div className="flex items-center gap-3">
+                        <span className="font-sans text-xs text-warm">{product.quantity} sold</span>
+                        <span className="font-sans text-sm text-dark font-medium tabular-nums">
+                          {formatCurrency(product.revenue)}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="w-full bg-stone-light/50 rounded-full h-2">
+                      <div
+                        className="h-2 rounded-full transition-all duration-500"
+                        style={{
+                          width: `${pct}%`,
+                          backgroundColor: PRODUCT_COLORS[i % PRODUCT_COLORS.length],
+                        }}
+                      />
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
           ) : (
             <div className="flex items-center justify-center h-48 text-warm font-sans text-sm">
               No product sales data yet
