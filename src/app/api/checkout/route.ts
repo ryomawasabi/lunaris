@@ -22,8 +22,21 @@ export async function POST(req: NextRequest) {
     const stripe = getStripe()
     const { items } = await req.json()
 
-    if (!items || items.length === 0) {
+    if (!items || !Array.isArray(items) || items.length === 0) {
       return NextResponse.json({ error: 'No items provided' }, { status: 400 })
+    }
+
+    // Validate all items have valid price and quantity
+    for (const item of items) {
+      if (!item.name || typeof item.name !== 'string' || item.name.length > 500) {
+        return NextResponse.json({ error: 'Invalid item name' }, { status: 400 })
+      }
+      if (typeof item.price !== 'number' || item.price <= 0 || !isFinite(item.price)) {
+        return NextResponse.json({ error: 'Invalid item price' }, { status: 400 })
+      }
+      if (typeof item.quantity !== 'number' || item.quantity < 1 || item.quantity > 10 || !Number.isInteger(item.quantity)) {
+        return NextResponse.json({ error: 'Invalid item quantity' }, { status: 400 })
+      }
     }
 
     // Build absolute URL for redirects

@@ -16,21 +16,35 @@ function CheckoutSuccessContent() {
     clearCart()
   }, [clearCart])
 
-  // Fetch order info from the Stripe session
+  // Fetch order info from the Stripe session (with retry for webhook delay)
   useEffect(() => {
     const sessionId = searchParams.get('session_id')
-    if (sessionId) {
+    if (!sessionId) return
+
+    let retries = 0
+    const maxRetries = 5
+
+    const fetchOrder = () => {
       fetch(`/api/orders/lookup?session_id=${sessionId}`)
         .then((res) => res.json())
         .then((data) => {
           if (data.order_id) {
             setOrderInfo({ orderId: data.order_id, email: data.email || '' })
+          } else if (retries < maxRetries) {
+            // Webhook may not have processed yet, retry with backoff
+            retries++
+            setTimeout(fetchOrder, retries * 2000)
           }
         })
         .catch(() => {
-          // Ignore - order info is optional enhancement
+          if (retries < maxRetries) {
+            retries++
+            setTimeout(fetchOrder, retries * 2000)
+          }
         })
     }
+
+    fetchOrder()
   }, [searchParams])
 
   return (

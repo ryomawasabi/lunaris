@@ -5,11 +5,11 @@ import { sendOrderConfirmation } from '@/lib/email/order-confirmation'
 
 export const dynamic = 'force-dynamic'
 
-// Use Supabase with anon key (webhook doesn't have user session)
+// Use Supabase with service role key (webhook doesn't have user session, needs to bypass RLS)
 function getSupabase() {
   return createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
   )
 }
 
@@ -84,46 +84,58 @@ export async function POST(req: NextRequest) {
       const total = (session.amount_total || 0) / 100
       const shippingCost = (session.total_details?.amount_shipping || 0) / 100
 
-      // Save order to Supabase
+      // Save order to Supabase (with duplicate check for webhook retries)
       const supabase = getSupabase()
-      const { error: insertError } = await supabase.from('orders').insert({
-        stripe_session_id: session.id,
-        stripe_payment_intent: typeof session.payment_intent === 'string'
-          ? session.payment_intent
-          : session.payment_intent?.id || null,
-        customer_email: session.customer_details?.email || session.customer_email || null,
-        customer_name: session.customer_details?.name || null,
-        shipping_address: shippingAddress,
-        items,
-        subtotal,
-        shipping_cost: shippingCost,
-        total,
-        currency: session.currency || 'usd',
-        status: 'paid',
-      })
 
-      if (insertError) {
-        console.error('Failed to save order:', insertError)
-        // Don't return error to Stripe - the payment already succeeded
-        // Log for manual review
+      // Check if order already exists (webhook retry protection)
+      const { data: existingOrder } = await supabase
+        .from('orders')
+        .select('id')
+        .eq('stripe_session_id', session.id)
+        .maybeSingle()
+
+      if (existingOrder) {
+        console.log('Order already exists for session:', session.id, '- skipping duplicate')
       } else {
-        console.log('Order saved successfully for session:', session.id)
+        const customerEmail = session.customer_details?.email || session.customer_email || null
 
-        // Send order confirmation email (non-blocking)
-        const customerEmail = session.customer_details?.email || session.customer_email
-        if (customerEmail) {
-          sendOrderConfirmation({
-            customerEmail,
-            customerName: session.customer_details?.name || '',
-            items: items.map(i => ({ name: i.name || 'Item', quantity: i.quantity || 1, price: i.price })),
-            subtotal,
-            shippingCost,
-            total,
-            currency: session.currency || 'usd',
-            shippingAddress: shippingAddress,
-          }).catch((err) => {
-            console.error('Email send error (non-blocking):', err)
-          })
+        const { error: insertError } = await supabase.from('orders').insert({
+          stripe_session_id: session.id,
+          stripe_payment_intent: typeof session.payment_intent === 'string'
+            ? session.payment_intent
+            : session.payment_intent?.id || null,
+          customer_email: customerEmail,
+          customer_name: session.customer_details?.name || null,
+          shipping_address: shippingAddress,
+          items,
+          subtotal,
+          shipping_cost: shippingCost,
+          total,
+          currency: session.currency || 'usd',
+          status: 'paid',
+        })
+
+        if (insertError) {
+          console.error('Failed to save order:', insertError, { sessionId: session.id, email: customerEmail })
+          // Don't return error to Stripe - the payment already succeeded
+        } else {
+          console.log('Order saved successfully for session:', session.id)
+
+          // Send order confirmation email only after successful insert
+          if (customerEmail) {
+            sendOrderConfirmation({
+              customerEmail,
+              customerName: session.customer_details?.name || '',
+              items: items.map(i => ({ name: i.name || 'Item', quantity: i.quantity || 1, price: i.price })),
+              subtotal,
+              shippingCost,
+              total,
+              currency: session.currency || 'usd',
+              shippingAddress: shippingAddress,
+            }).catch((err) => {
+              console.error('Email send error (non-blocking):', err)
+            })
+          }
         }
       }
     } catch (err) {

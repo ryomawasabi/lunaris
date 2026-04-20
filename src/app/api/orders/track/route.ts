@@ -15,9 +15,16 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'Email and order ID are required' }, { status: 400 })
   }
 
+  // Validate email format
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  if (!emailRegex.test(email)) {
+    return NextResponse.json({ error: 'Invalid email format' }, { status: 400 })
+  }
+
+  // Use service role key to bypass RLS (public endpoint requires server-side access)
   const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
   )
 
   // Search by email and order ID prefix (first 8 chars)

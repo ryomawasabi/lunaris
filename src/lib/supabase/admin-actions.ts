@@ -138,6 +138,10 @@ export async function getAdminProductById(id: string) {
  */
 export async function getAdminCollections() {
   try {
+    const isUserAdmin = await isAdmin()
+    if (!isUserAdmin) {
+      return { success: false, error: 'Unauthorized', data: [] }
+    }
     const supabase = createServerSupabaseClient()
     const { data, error } = await supabase
       .from('collections')
@@ -160,6 +164,10 @@ export async function getAdminCollections() {
  */
 export async function getAdminCategories() {
   try {
+    const isUserAdmin = await isAdmin()
+    if (!isUserAdmin) {
+      return { success: false, error: 'Unauthorized', data: [] }
+    }
     const supabase = createServerSupabaseClient()
     const { data, error } = await supabase
       .from('categories')

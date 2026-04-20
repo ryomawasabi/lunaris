@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/admin/', '/api/', '/login', '/signup', '/checkout/'],
+        disallow: ['/admin/', '/api/', '/login', '/signup', '/checkout/', '/orders/', '/wishlist'],
       },
     ],
     sitemap: 'https://yinyangguardian.com/sitemap.xml',

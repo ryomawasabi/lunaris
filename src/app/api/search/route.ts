@@ -12,8 +12,14 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ products: [] })
     }
 
+    // Sanitize input: limit length and remove special characters that could break Supabase filters
+    const sanitized = query.trim().slice(0, 100).replace(/[%_"'\\{}()]/g, '')
+    if (sanitized.length === 0) {
+      return NextResponse.json({ products: [] })
+    }
+
     const supabase = createServerSupabaseClient()
-    const searchTerm = `%${query}%`
+    const searchTerm = `%${sanitized}%`
 
     // Search across multiple fields using ilike (case-insensitive)
     const { data, error } = await supabase
@@ -22,7 +28,7 @@ export async function GET(request: NextRequest) {
       .eq('is_active', true)
       .neq('category', 'Stones')
       .or(
-        `name.ilike.${searchTerm},short_description.ilike.${searchTerm},category.ilike.${searchTerm},gemstone.ilike.${searchTerm},crystal_type.ilike.${searchTerm},materials.cs.{"${query.toLowerCase()}"}`
+        `name.ilike.${searchTerm},short_description.ilike.${searchTerm},category.ilike.${searchTerm},gemstone.ilike.${searchTerm},crystal_type.ilike.${searchTerm}`
       )
       .limit(10)
 
