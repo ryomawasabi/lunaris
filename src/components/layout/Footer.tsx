@@ -233,6 +233,12 @@ export default function Footer() {
               >
                 Terms of Service
               </Link>
+              <Link
+                href="/legal/tokutei"
+                className="hover:text-cream transition-colors"
+              >
+                特定商取引法
+              </Link>
             </div>
           </div>
         </div>
