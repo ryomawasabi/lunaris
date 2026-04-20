@@ -66,9 +66,11 @@ function CollectionDetailContent() {
             {collection.tagline}
           </p>
           <div className="h-px w-12 bg-gold mx-auto" />
-          <p className="font-sans text-cream/70 text-center text-sm uppercase tracking-wider mt-6">
-            Symbolism: {collection.symbolism}
-          </p>
+          {collection.symbolism && (
+            <p className="font-sans text-cream/70 text-center text-sm uppercase tracking-wider mt-6">
+              {collection.symbolism}
+            </p>
+          )}
         </div>
       </section>
 

@@ -262,12 +262,13 @@ export default function AdminCollectionsPage() {
               />
             </div>
             <div>
-              <label className="block text-sm font-sans font-medium text-dark mb-1">Symbolism</label>
+              <label className="block text-sm font-sans font-medium text-dark mb-1">Page Label</label>
+              <p className="text-xs text-warm mb-1.5">Displayed above the collection title on the detail page (e.g. &quot;BESTSELLER&quot;, &quot;NEW ARRIVAL&quot;, &quot;SEASONAL PICK&quot;)</p>
               <input
                 type="text"
                 value={formSymbolism}
                 onChange={(e) => setFormSymbolism(e.target.value)}
-                placeholder="e.g. Balance & Harmony"
+                placeholder="e.g. BESTSELLER, NEW ARRIVAL"
                 className="w-full px-4 py-2.5 border border-stone-light rounded-lg font-sans text-dark focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
               />
             </div>
