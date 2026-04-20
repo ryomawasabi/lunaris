@@ -304,34 +304,43 @@ export async function updateProduct(id: string, formData: FormData): Promise<Act
     const isNew = formData.get('isNew') === 'true'
     const isGiftable = formData.get('isGiftable') === 'true'
 
+    const updatePayload = {
+      slug,
+      name,
+      price,
+      compare_at_price: compareAtPrice,
+      category,
+      collection,
+      gemstone,
+      crystal_type: crystalType,
+      crystal_effects: crystalEffects,
+      symbolic_meaning: symbolicMeaning,
+      short_description: shortDescription,
+      long_description: longDescription,
+      materials,
+      images,
+      badges,
+      rating,
+      review_count: reviewCount,
+      is_best_seller: isBestSeller,
+      is_new: isNew,
+      is_giftable: isGiftable,
+      updated_at: new Date().toISOString(),
+    }
+
+    console.log('[updateProduct] Updating product ID:', id)
+    console.log('[updateProduct] is_best_seller value:', isBestSeller)
+    console.log('[updateProduct] SUPABASE_SERVICE_ROLE_KEY exists:', !!process.env.SUPABASE_SERVICE_ROLE_KEY)
+
     const { data, error } = await supabase
       .from('products')
-      .update({
-        slug,
-        name,
-        price,
-        compare_at_price: compareAtPrice,
-        category,
-        collection,
-        gemstone,
-        crystal_type: crystalType,
-        crystal_effects: crystalEffects,
-        symbolic_meaning: symbolicMeaning,
-        short_description: shortDescription,
-        long_description: longDescription,
-        materials,
-        images,
-        badges,
-        rating,
-        review_count: reviewCount,
-        is_best_seller: isBestSeller,
-        is_new: isNew,
-        is_giftable: isGiftable,
-        updated_at: new Date().toISOString(),
-      })
+      .update(updatePayload)
       .eq('id', id)
       .select()
       .single()
+
+    console.log('[updateProduct] Result data:', data?.id, 'is_best_seller:', data?.is_best_seller)
+    console.log('[updateProduct] Error:', error)
 
     if (error) {
       console.error('Database error:', error)
