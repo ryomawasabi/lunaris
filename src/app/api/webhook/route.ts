@@ -63,7 +63,10 @@ export async function POST(req: NextRequest) {
       }))
 
       // Build shipping address from session
-      const shippingDetails = session.shipping_details || session.customer_details
+      // Use type assertion to access shipping_details which may vary by API version
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const sessionAny = session as any
+      const shippingDetails = sessionAny.shipping_details || session.customer_details
       const shippingAddress = shippingDetails?.address
         ? {
             name: shippingDetails.name || session.customer_details?.name || '',

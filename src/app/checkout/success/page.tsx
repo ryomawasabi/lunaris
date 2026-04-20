@@ -1,12 +1,12 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import { CheckCircle, Package, ArrowRight, Search } from 'lucide-react'
+import { CheckCircle, Package, ArrowRight, Search, Loader2 } from 'lucide-react'
 import { useCart } from '@/components/providers/CartProvider'
 
-export default function CheckoutSuccessPage() {
+function CheckoutSuccessContent() {
   const { clearCart } = useCart()
   const searchParams = useSearchParams()
   const [orderInfo, setOrderInfo] = useState<{ orderId: string; email: string } | null>(null)
@@ -91,5 +91,19 @@ export default function CheckoutSuccessPage() {
         </div>
       </div>
     </main>
+  )
+}
+
+export default function CheckoutSuccessPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="min-h-screen bg-cream flex items-center justify-center">
+          <Loader2 className="animate-spin text-warm" size={32} />
+        </main>
+      }
+    >
+      <CheckoutSuccessContent />
+    </Suspense>
   )
 }
