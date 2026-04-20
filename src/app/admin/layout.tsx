@@ -12,6 +12,7 @@ import {
   Loader,
   ShoppingCart,
   Globe,
+  BarChart3,
 } from 'lucide-react'
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
@@ -62,6 +63,11 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       label: 'Categories',
       href: '/admin/categories',
       icon: Grid3x3,
+    },
+    {
+      label: 'Analytics',
+      href: '/admin/analytics',
+      icon: BarChart3,
     },
     {
       label: 'SEO',
