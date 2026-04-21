@@ -14,6 +14,7 @@ import {
   Globe,
   BarChart3,
   Settings,
+  FileText,
 } from 'lucide-react'
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
@@ -64,6 +65,11 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       label: 'Categories',
       href: '/admin/categories',
       icon: Grid3x3,
+    },
+    {
+      label: 'Blog',
+      href: '/admin/blog',
+      icon: FileText,
     },
     {
       label: 'Analytics',

@@ -52,3 +52,22 @@ export interface Review {
   date: string;
   verified: boolean;
 }
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  content: string;
+  excerpt: string;
+  coverImage: string;
+  category: string;
+  tags: string[];
+  author: string;
+  isPublished: boolean;
+  publishedAt: string | null;
+  metaTitle: string;
+  metaDescription: string;
+  relatedProducts: string[];
+  createdAt: string;
+  updatedAt: string;
+}

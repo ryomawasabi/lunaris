@@ -1,5 +1,5 @@
 import { createServerSupabaseClient } from './server'
-import type { Product, Collection, Category, Review } from '../types'
+import type { Product, Collection, Category, Review, BlogPost } from '../types'
 
 /**
  * Convert snake_case database fields to camelCase frontend format
@@ -310,5 +310,127 @@ export async function isAdmin(): Promise<boolean> {
   } catch (error) {
     console.error('Error in isAdmin:', error)
     return false
+  }
+}
+
+/**
+ * Convert snake_case database fields to camelCase frontend format for blog posts
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function mapDbBlogPostToBlogPost(dbPost: any): BlogPost {
+  return {
+    id: dbPost.id,
+    title: dbPost.title,
+    slug: dbPost.slug,
+    content: dbPost.content,
+    excerpt: dbPost.excerpt,
+    coverImage: dbPost.cover_image,
+    category: dbPost.category,
+    tags: dbPost.tags || [],
+    author: dbPost.author,
+    isPublished: dbPost.is_published,
+    publishedAt: dbPost.published_at,
+    metaTitle: dbPost.meta_title,
+    metaDescription: dbPost.meta_description,
+    relatedProducts: dbPost.related_products || [],
+    createdAt: dbPost.created_at,
+    updatedAt: dbPost.updated_at,
+  }
+}
+
+/**
+ * Get all published blog posts with optional filtering
+ */
+export async function getBlogPosts(options?: {
+  category?: string
+  limit?: number
+}): Promise<BlogPost[]> {
+  try {
+    const supabase = createServerSupabaseClient()
+    let query = supabase
+      .from('blog_posts')
+      .select('*')
+      .eq('is_published', true)
+      .lte('published_at', new Date().toISOString())
+
+    if (options?.category) {
+      query = query.eq('category', options.category)
+    }
+
+    query = query.order('published_at', { ascending: false })
+
+    if (options?.limit) {
+      query = query.limit(options.limit)
+    }
+
+    const { data, error } = await query
+
+    if (error) {
+      console.error('Error fetching blog posts:', error)
+      return []
+    }
+
+    return (data || []).map(mapDbBlogPostToBlogPost)
+  } catch (error) {
+    console.error('Error in getBlogPosts:', error)
+    return []
+  }
+}
+
+/**
+ * Get a blog post by slug
+ */
+export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
+  try {
+    const supabase = createServerSupabaseClient()
+    const { data, error } = await supabase
+      .from('blog_posts')
+      .select('*')
+      .eq('slug', slug)
+      .eq('is_published', true)
+      .lte('published_at', new Date().toISOString())
+      .single()
+
+    if (error) {
+      console.error('Error fetching blog post:', error)
+      return null
+    }
+
+    return data ? mapDbBlogPostToBlogPost(data) : null
+  } catch (error) {
+    console.error('Error in getBlogPostBySlug:', error)
+    return null
+  }
+}
+
+/**
+ * Get all distinct blog categories from published posts
+ */
+export async function getBlogCategories(): Promise<string[]> {
+  try {
+    const supabase = createServerSupabaseClient()
+    const { data, error } = await supabase
+      .from('blog_posts')
+      .select('category', { count: 'exact' })
+      .eq('is_published', true)
+      .lte('published_at', new Date().toISOString())
+
+    if (error) {
+      console.error('Error fetching blog categories:', error)
+      return []
+    }
+
+    // Extract unique categories
+    const categories = new Set<string>()
+    for (const post of data || []) {
+      if (post.category) {
+        categories.add(post.category)
+      }
+    }
+
+    return Array.from(categories).sort()
+  } catch (error) {
+    console.error('Error in getBlogCategories:', error)
+    return []
   }
 }

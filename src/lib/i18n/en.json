@@ -616,6 +616,19 @@
       }
     }
   },
+  "blog": {
+    "title": "Journal",
+    "subtitle": "Explore crystal healing guides, wellness tips, and the stories behind our handcrafted jewelry.",
+    "filterBy": "Filter:",
+    "allPosts": "All Posts",
+    "readMore": "Read More",
+    "noArticles": "No Articles Found",
+    "noArticlesInCategory": "No articles found in this category.",
+    "noArticlesYet": "Check back soon for spiritual wisdom and crystal insights.",
+    "viewAllPosts": "View All Posts",
+    "backToJournal": "Back to Journal",
+    "relatedProducts": "Related Products"
+  },
   "common": {
     "home": "Home",
     "loading": "Loading...",

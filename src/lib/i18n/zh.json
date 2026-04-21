@@ -616,6 +616,19 @@
       }
     }
   },
+  "blog": {
+    "title": "灵感日志",
+    "subtitle": "探索水晶疗愈指南、健康生活小贴士，以及手工珠宝背后的故事。",
+    "filterBy": "分类:",
+    "allPosts": "全部文章",
+    "readMore": "阅读更多",
+    "noArticles": "未找到文章",
+    "noArticlesInCategory": "该分类下暂无文章。",
+    "noArticlesYet": "我们正在准备有关灵性智慧和水晶洞见的精彩内容，敬请期待。",
+    "viewAllPosts": "查看全部文章",
+    "backToJournal": "返回日志",
+    "relatedProducts": "相关产品"
+  },
   "common": {
     "home": "首页",
     "loading": "加载中...",

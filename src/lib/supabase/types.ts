@@ -26,6 +26,11 @@ export type Database = {
         Insert: DbProfileInsert
         Update: Partial<DbProfileInsert>
       }
+      blog_posts: {
+        Row: DbBlogPost
+        Insert: DbBlogPostInsert
+        Update: Partial<DbBlogPostInsert>
+      }
     }
   }
 }
@@ -176,4 +181,42 @@ export type DbReviewInsert = {
   text?: string | null
   verified?: boolean
   created_at?: string
+}
+
+export type DbBlogPost = {
+  id: string
+  title: string
+  slug: string
+  content: string
+  excerpt: string | null
+  cover_image: string | null
+  category: string | null
+  tags: string[]
+  author: string
+  is_published: boolean
+  published_at: string | null
+  meta_title: string | null
+  meta_description: string | null
+  related_products: string[]
+  created_at: string
+  updated_at: string
+}
+
+export type DbBlogPostInsert = {
+  id?: string
+  title: string
+  slug: string
+  content: string
+  excerpt?: string | null
+  cover_image?: string | null
+  category?: string | null
+  tags?: string[]
+  author?: string
+  is_published?: boolean
+  published_at?: string | null
+  meta_title?: string | null
+  meta_description?: string | null
+  related_products?: string[]
+  created_at?: string
+  updated_at?: string
 }

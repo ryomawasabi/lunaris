@@ -616,6 +616,19 @@
       }
     }
   },
+  "blog": {
+    "title": "ジャーナル",
+    "subtitle": "クリスタルヒーリングガイド、ウェルネスのヒント、ハンドメイドジュエリーの物語をお届けします。",
+    "filterBy": "カテゴリ:",
+    "allPosts": "すべての記事",
+    "readMore": "続きを読む",
+    "noArticles": "記事が見つかりません",
+    "noArticlesInCategory": "このカテゴリの記事はまだありません。",
+    "noArticlesYet": "スピリチュアルな知恵やクリスタルの情報をお届けする記事を準備中です。",
+    "viewAllPosts": "すべての記事を見る",
+    "backToJournal": "ジャーナルに戻る",
+    "relatedProducts": "関連アイテム"
+  },
   "common": {
     "home": "ホーム",
     "loading": "読み込み中...",
