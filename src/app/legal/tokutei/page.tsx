@@ -29,10 +29,10 @@ export default function TokuteiPage() {
 
         <div className="space-y-0 border-t border-stone-light">
           <Row label="販売業者" sublabel="Seller">
-            Ryoma Uchida
+            YINYANG GUARDIAN
           </Row>
-          <Row label="代表者" sublabel="Representative">
-            Ryoma Uchida
+          <Row label="運営責任者" sublabel="Representative">
+            内田 稜真
           </Row>
           <Row label="所在地" sublabel="Address">
             〒220-0071 神奈川県横浜市西区浅間町1丁目4-3 ウィザードビル402
