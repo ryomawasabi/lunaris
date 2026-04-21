@@ -29,19 +29,19 @@ export default function TokuteiPage() {
 
         <div className="space-y-0 border-t border-stone-light">
           <Row label="販売業者" sublabel="Seller">
-            請求があった場合に遅滞なく開示いたします
+            Ryoma Uchida
           </Row>
           <Row label="代表者" sublabel="Representative">
-            請求があった場合に遅滞なく開示いたします
+            Ryoma Uchida
           </Row>
           <Row label="所在地" sublabel="Address">
-            請求があった場合に遅滞なく開示いたします
+            〒220-0071 神奈川県横浜市西区浅間町1丁目4-3 ウィザードビル402
           </Row>
           <Row label="電話番号" sublabel="Phone">
             請求があった場合に遅滞なく開示いたします
           </Row>
           <Row label="メールアドレス" sublabel="Email">
-            info@yinyangguardian.com
+            creseraairise@gmail.com
           </Row>
           <Row label="販売URL" sublabel="Website">
             https://www.yinyangguardian.com
