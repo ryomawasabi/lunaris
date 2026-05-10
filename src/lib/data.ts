@@ -434,6 +434,130 @@ export const PRODUCTS: Product[] = [
     isNew: true,
     isGiftable: true,
   },
+  // ──── Crystal Bracelets ────
+  {
+    id: "prod_035",
+    slug: "amethyst-guardian-bracelet",
+    name: "Amethyst Guardian Bracelet",
+    price: 39,
+    category: "Crystal Bracelets",
+    collection: ["Crystal Bracelet", "Protection"],
+    gemstone: "Amethyst",
+    crystalType: "Amethyst",
+    crystalEffects: ["Spiritual Awareness", "Intuition", "Protection", "Calm"],
+    symbolicMeaning:
+      "Amethyst, the stone of the third eye — a guardian crystal that heightens intuition, calms the mind, and shields the spirit from negative energy.",
+    shortDescription:
+      "Natural amethyst bead bracelet for spiritual protection, intuition enhancement, and third eye chakra activation.",
+    longDescription:
+      "The Amethyst Guardian Bracelet is crafted from hand-selected natural amethyst beads, each radiating the deep violet frequency of the third eye and crown chakras. Amethyst has been revered since ancient times as the stone of sobriety and spiritual clarity — Greek warriors wore it into battle believing it would keep their minds sharp and focused. Each bead carries the calming vibration of this master healing crystal, creating a continuous field of protective energy around your wrist. Wear it during meditation to deepen your practice, during sleep to enhance lucid dreaming, or throughout the day as a shield against psychic stress and negative environments. The natural color variations within each bead are a reminder that true beauty lies in imperfection.",
+    materials: [
+      "Natural amethyst beads",
+      "Elastic crystal cord",
+    ],
+    images: [
+      "/bracelets/amethyst-bracelet.jpg",
+      "/bracelets/amethyst-cluster.jpg",
+    ],
+    badges: ["new"],
+    rating: 4.8,
+    reviewCount: 12,
+    isNew: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_036",
+    slug: "citrine-abundance-bracelet",
+    name: "Citrine Abundance Bracelet",
+    price: 39,
+    category: "Crystal Bracelets",
+    collection: ["Crystal Bracelet", "Abundance"],
+    gemstone: "Citrine",
+    crystalType: "Citrine",
+    crystalEffects: ["Abundance", "Joy", "Manifestation", "Confidence"],
+    symbolicMeaning:
+      "Citrine, the merchant's stone — a radiant crystal of abundance that channels the sun's golden energy to manifest prosperity and ignite inner joy.",
+    shortDescription:
+      "Natural citrine bead bracelet for abundance attraction, solar plexus activation, and joyful energy manifestation.",
+    longDescription:
+      "The Citrine Abundance Bracelet glows with the warm, golden energy of the sun, each bead carrying the vibrant frequency of manifestation and joy. Known as the 'merchant's stone,' citrine has been placed in cash registers and wallets for centuries by those seeking to attract prosperity. Unlike most crystals, citrine does not hold or accumulate negative energy — it transmutes it, making this bracelet a self-cleansing talisman of perpetual positivity. The solar plexus chakra responds immediately to citrine's warm vibration, boosting confidence, creativity, and personal power. Wear it to job interviews, business meetings, or any situation where you want to radiate confidence and attract favorable outcomes. Each bead is a tiny sun on your wrist, a constant reminder of your own radiant potential.",
+    materials: [
+      "Natural citrine beads",
+      "Elastic crystal cord",
+    ],
+    images: [
+      "/bracelets/citrine-bracelet.jpg",
+      "/bracelets/citrine-cluster.jpg",
+    ],
+    badges: ["new"],
+    rating: 4.9,
+    reviewCount: 15,
+    isNew: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_037",
+    slug: "obsidian-shield-bracelet",
+    name: "Obsidian Shield Bracelet",
+    price: 39,
+    category: "Crystal Bracelets",
+    collection: ["Crystal Bracelet", "Protection"],
+    gemstone: "Obsidian",
+    crystalType: "Obsidian",
+    crystalEffects: ["Protection", "Grounding", "Truth", "Shadow Work"],
+    symbolicMeaning:
+      "Born from volcanic fire — obsidian is the ultimate protective stone, absorbing negative energy and grounding the spirit in unshakeable strength.",
+    shortDescription:
+      "Natural obsidian bead bracelet with pixiu charm for powerful psychic protection, grounding, and negative energy absorption.",
+    longDescription:
+      "The Obsidian Shield Bracelet combines the raw protective power of natural obsidian beads with a hand-carved pixiu guardian charm — an ancient Chinese mythical creature believed to attract wealth and ward off evil spirits. Obsidian, formed from rapidly cooled volcanic lava, carries the fierce protective energy of the earth's core. It creates an impenetrable energetic shield around its wearer, absorbing and transmuting negative energy on contact. The deep black luster of each bead serves as a mirror for self-reflection, making this bracelet especially powerful for shadow work and personal truth-seeking. Wear it when entering challenging environments, during energy-clearing rituals, or simply as a daily guardian that keeps your energy field clean and grounded. The pixiu charm adds an extra layer of spiritual protection and prosperity attraction.",
+    materials: [
+      "Natural obsidian beads",
+      "Hand-carved pixiu charm",
+      "Tiger eye accent bead",
+      "Elastic crystal cord",
+    ],
+    images: [
+      "/bracelets/obsidian-bracelet.jpg",
+    ],
+    badges: ["new"],
+    rating: 4.7,
+    reviewCount: 9,
+    isNew: true,
+    isGiftable: true,
+  },
+  {
+    id: "prod_038",
+    slug: "smoky-quartz-grounding-bracelet",
+    name: "Smoky Quartz Grounding Bracelet",
+    price: 39,
+    category: "Crystal Bracelets",
+    collection: ["Crystal Bracelet", "Grounding"],
+    gemstone: "Smoky Quartz",
+    crystalType: "Smoky Quartz",
+    crystalEffects: ["Grounding", "Stress Relief", "Detoxification", "Stability"],
+    symbolicMeaning:
+      "Smoky quartz, the anchor stone — a gentle grounding crystal that dissolves stress and negativity while reconnecting you to the stabilizing energy of the earth.",
+    shortDescription:
+      "Natural smoky quartz bead bracelet with rutile inclusions for deep grounding, stress dissolution, and root chakra stabilization.",
+    longDescription:
+      "The Smoky Quartz Grounding Bracelet features exquisite beads of natural smoky quartz with delicate rutile needle inclusions, creating an otherworldly landscape within each stone. Smoky quartz is nature's most effective grounding crystal — it gently neutralizes negative vibrations and detoxifies the energy body without the intensity of obsidian. The copper-colored rutile needles within each bead amplify the stone's grounding properties while adding the energy of clarity and divine inspiration. This bracelet activates the root chakra, creating a stable energetic foundation from which higher spiritual work becomes possible. Wear it during stressful periods to maintain emotional equilibrium, during grounding meditation to deepen your earth connection, or daily as a gentle reminder to stay present and centered. The smoky quartz focal bead serves as a powerful anchor point for your intentions.",
+    materials: [
+      "Natural smoky quartz beads",
+      "Rutile quartz inclusions",
+      "Silver-tone accent charms",
+      "Elastic crystal cord",
+    ],
+    images: [
+      "/bracelets/smoky-quartz-bracelet.jpg",
+      "/bracelets/smoky-quartz-cluster.jpg",
+    ],
+    badges: ["new"],
+    rating: 4.8,
+    reviewCount: 11,
+    isNew: true,
+    isGiftable: true,
+  },
 ];
 
 export const COLLECTIONS: Collection[] = [
@@ -463,6 +587,19 @@ export const COLLECTIONS: Collection[] = [
       "Yin water meets yang stone, spatial purification, ambient harmony. The art of transforming your environment through crystal-charged mist.",
     productCount: 0,
   },
+  {
+    id: "col_007",
+    slug: "crystal-bracelet",
+    name: "Crystal Bracelet",
+    tagline: "Wearable crystal energy for daily protection and balance",
+    description: "Natural crystal bead bracelets that carry the healing vibrations of earth's most powerful stones, keeping their energy close to you throughout the day.",
+    longDescription:
+      "Our Crystal Bracelet collection brings the ancient power of healing crystals into wearable form. Each bracelet is strung with hand-selected natural gemstone beads — amethyst for spiritual protection, citrine for abundance, obsidian for grounding, and smoky quartz for stress relief. In yin-yang philosophy, wearing crystals against the skin creates a direct energetic circuit between stone and spirit, allowing the crystal's vibration to harmonize with your own biofield continuously. Unlike stones placed in a room, a bracelet moves with you — guarding your energy in crowded spaces, amplifying your intentions during meditation, and serving as a tangible reminder of your spiritual practice. Each bead is a small universe of compressed earth energy, millions of years in the making, now yours to carry.",
+    image: "/bracelets/amethyst-bracelet.jpg",
+    symbolism:
+      "Wearable earth energy, continuous crystal healing, portable protection. The ancient art of keeping sacred stones close to the body.",
+    productCount: 4,
+  },
 ];
 
 export const CATEGORIES: Category[] = [
@@ -472,6 +609,13 @@ export const CATEGORIES: Category[] = [
     name: "Essence Oils",
     image: "/Essence oil/Rose Berry.png",
     productCount: 6,
+  },
+  {
+    id: "cat_008",
+    slug: "crystal-bracelets",
+    name: "Crystal Bracelets",
+    image: "/bracelets/amethyst-bracelet.jpg",
+    productCount: 4,
   },
 ];
 
