@@ -4,6 +4,7 @@ import Link from "next/link";
 import PlaceholderImage from "@/components/layout/PlaceholderImage";
 import { Collection } from "@/lib/types";
 import { useLanguage } from '@/components/providers/LanguageProvider';
+import { useProductTranslation } from '@/hooks/useProductTranslation';
 
 interface CollectionCardProps {
   collection: Collection;
@@ -11,6 +12,7 @@ interface CollectionCardProps {
 
 export function CollectionCard({ collection }: CollectionCardProps) {
   const { t } = useLanguage();
+  const { translateCollection } = useProductTranslation();
   return (
     <Link href={`/collections/${collection.slug}`}>
       <div className="group relative overflow-hidden aspect-square md:aspect-auto md:h-96">
@@ -25,7 +27,7 @@ export function CollectionCard({ collection }: CollectionCardProps) {
         {/* Text Content - Bottom aligned */}
         <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
           <h3 className="font-serif text-2xl md:text-3xl text-cream mb-2">
-            {collection.name}
+            {translateCollection(collection.name)}
           </h3>
           <p className="font-sans text-cream/80 text-sm mb-4 line-clamp-2">
             {collection.tagline}

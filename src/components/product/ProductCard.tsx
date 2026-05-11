@@ -13,14 +13,17 @@ import { useProductStatusSafe } from "@/components/providers/ProductStatusProvid
 import { useCart } from "@/components/providers/CartProvider";
 import { useWishlist } from "@/components/providers/WishlistProvider";
 import { useLanguage } from '@/components/providers/LanguageProvider';
+import { useProductTranslation } from '@/hooks/useProductTranslation';
 
 interface ProductCardProps {
   product: Product;
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product: rawProduct }: ProductCardProps) {
   const [addedFeedback, setAddedFeedback] = useState(false);
   const { t } = useLanguage();
+  const { translateProduct } = useProductTranslation();
+  const product = translateProduct(rawProduct);
   const productStatus = useProductStatusSafe();
   const { addItem } = useCart();
   const { isInWishlist, toggleWishlist } = useWishlist();

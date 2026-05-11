@@ -9,11 +9,13 @@ import { ProductGrid } from '@/components/product/ProductGrid'
 import { CollectionSort } from '@/components/collection/CollectionSort'
 import { getCollectionBySlug, getProductsByCollection, filterProducts } from '@/lib/utils'
 import { useProductStatus } from '@/components/providers/ProductStatusProvider'
+import { useProductTranslation } from '@/hooks/useProductTranslation'
 
 function CollectionDetailContent() {
   const params = useParams()
   const searchParams = useSearchParams()
   const { products: allProducts, collections } = useProductStatus()
+  const { translateCollection } = useProductTranslation()
   const slug = params.slug as string
 
   const collection = getCollectionBySlug(slug, collections)
@@ -51,7 +53,7 @@ function CollectionDetailContent() {
       {/* Hero Section */}
       <section className="relative w-full aspect-[21/8] overflow-hidden">
         <div className="absolute inset-0">
-          <PlaceholderImage width="w-full" height="h-full" src={collection.image} alt={collection.name} />
+          <PlaceholderImage width="w-full" height="h-full" src={collection.image} alt={translateCollection(collection.name)} />
         </div>
 
         {/* Overlay Gradient */}
@@ -60,7 +62,7 @@ function CollectionDetailContent() {
         {/* Hero Content */}
         <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
           <h1 className="font-serif text-5xl md:text-6xl text-cream text-center mb-4">
-            {collection.name}
+            {translateCollection(collection.name)}
           </h1>
           <p className="font-sans text-cream/80 text-center text-lg mb-6 max-w-2xl">
             {collection.tagline}
@@ -85,7 +87,7 @@ function CollectionDetailContent() {
             Collections
           </Link>
           <span className="text-warm/50">/</span>
-          <span className="text-dark">{collection.name}</span>
+          <span className="text-dark">{translateCollection(collection.name)}</span>
         </div>
       </nav>
 
@@ -123,7 +125,7 @@ function CollectionDetailContent() {
               No products found in this collection
             </p>
             <p className="font-sans text-sm text-warm mb-8">
-              Check back soon for new pieces from {collection.name}
+              Check back soon for new pieces from {translateCollection(collection.name)}
             </p>
             <Link
               href="/collections"

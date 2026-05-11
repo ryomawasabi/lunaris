@@ -4,6 +4,7 @@ import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { X } from 'lucide-react';
 import { useProductStatus } from '@/components/providers/ProductStatusProvider';
 import { useLanguage } from '@/components/providers/LanguageProvider';
+import { useProductTranslation } from '@/hooks/useProductTranslation';
 import { cn } from '@/lib/utils';
 
 interface ProductFiltersProps {
@@ -16,6 +17,7 @@ export function ProductFilters({ className }: ProductFiltersProps) {
   const searchParams = useSearchParams();
   const { categories, collections } = useProductStatus();
   const { t } = useLanguage();
+  const { translateCategory, translateCollection } = useProductTranslation();
 
   const PRICE_RANGES = [
     { label: t('products.priceUnder75'), min: 0, max: 75 },
@@ -90,7 +92,7 @@ export function ProductFilters({ className }: ProductFiltersProps) {
                 className="w-4 h-4 rounded border-stone accent-gold cursor-pointer"
               />
               <span className="ml-3 text-sm text-warm group-hover:text-dark transition-colors">
-                {category.name}
+                {translateCategory(category.name)}
               </span>
             </label>
           ))}
@@ -112,7 +114,7 @@ export function ProductFilters({ className }: ProductFiltersProps) {
                 className="w-4 h-4 rounded border-stone accent-gold cursor-pointer"
               />
               <span className="ml-3 text-sm text-warm group-hover:text-dark transition-colors">
-                {collection.name}
+                {translateCollection(collection.name)}
               </span>
             </label>
           ))}

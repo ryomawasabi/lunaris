@@ -17,16 +17,19 @@ import { QuantitySelector } from '@/components/product/QuantitySelector'
 import { useProductStatus } from '@/components/providers/ProductStatusProvider'
 import { useCart } from '@/components/providers/CartProvider'
 import { useLanguage } from '@/components/providers/LanguageProvider'
+import { useProductTranslation } from '@/hooks/useProductTranslation'
 
 export default function ProductDetailContent() {
   const { t } = useLanguage()
+  const { translateProduct } = useProductTranslation()
   const params = useParams()
   const slug = params.slug as string
   const { products } = useProductStatus()
   const { addItem } = useCart()
   const [quantity, setQuantity] = useState(1)
 
-  const product = getProductBySlug(slug, products)
+  const rawProduct = getProductBySlug(slug, products)
+  const product = rawProduct ? translateProduct(rawProduct) : null
 
   if (!product) {
     notFound()

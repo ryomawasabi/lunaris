@@ -5,11 +5,13 @@ import { SectionTitle } from "@/components/ui/SectionTitle";
 import PlaceholderImage from "@/components/layout/PlaceholderImage";
 import { useProductStatus } from "@/components/providers/ProductStatusProvider";
 import { useLanguage } from '@/components/providers/LanguageProvider';
+import { useProductTranslation } from '@/hooks/useProductTranslation';
 import { cn } from "@/lib/utils";
 
 export function ShopByCategory() {
   const { categories } = useProductStatus();
   const { t } = useLanguage();
+  const { translateCategory } = useProductTranslation();
 
   return (
     <section className="py-16 md:py-24 px-6 md:px-12 bg-white">
@@ -34,10 +36,10 @@ export function ShopByCategory() {
                   <PlaceholderImage
                     width="w-full"
                     height="h-full"
-                    text={category.name}
+                    text={translateCategory(category.name)}
                     className="w-full h-full"
                     src={category.image}
-                    alt={category.name}
+                    alt={translateCategory(category.name)}
                   />
                 </div>
 
@@ -47,7 +49,7 @@ export function ShopByCategory() {
                 {/* Content */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
                   <h3 className="font-serif text-2xl md:text-3xl text-cream mb-2 text-center">
-                    {category.name}
+                    {translateCategory(category.name)}
                   </h3>
                   <p className="font-sans text-cream/80 text-sm">
                     {category.productCount} {t('home.shopByCategory.subtitle')}
