@@ -130,9 +130,22 @@ export default function ProductDetailContent() {
                     <h3 className="font-sans font-medium text-dark text-sm uppercase tracking-wider mb-2">
                       {product.gemstone}
                     </h3>
-                    <p className="text-sm text-warm italic">
+                    <p className="text-sm text-warm italic mb-3">
                       {product.symbolicMeaning}
                     </p>
+                    {/* Crystal Effects Tags */}
+                    {product.crystalEffects && product.crystalEffects.length > 0 && (
+                      <div className="flex flex-wrap gap-2">
+                        {product.crystalEffects.map((effect, idx) => (
+                          <span
+                            key={idx}
+                            className="inline-flex items-center px-3 py-1 rounded-full text-xs font-sans font-medium bg-warm/8 text-warm border border-warm/15"
+                          >
+                            ✦ {effect}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

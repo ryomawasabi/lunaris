@@ -142,9 +142,20 @@ export function ProductCard({ product: rawProduct }: ProductCardProps) {
 
           {/* Gemstone Tag */}
           {product.gemstone && (
-            <p className="text-xs text-warm uppercase tracking-wider mb-2">
+            <p className="text-xs text-warm uppercase tracking-wider mb-1">
               {product.gemstone}
             </p>
+          )}
+
+          {/* Crystal Effects */}
+          {product.crystalEffects && product.crystalEffects.length > 0 && (
+            <div className="flex flex-wrap gap-1 mb-2">
+              {product.crystalEffects.slice(0, 3).map((effect, idx) => (
+                <span key={idx} className="text-[10px] text-warm/70 font-sans">
+                  {idx > 0 && '·'} {effect}
+                </span>
+              ))}
+            </div>
           )}
 
           {/* Symbolic Meaning */}

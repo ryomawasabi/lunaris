@@ -101,7 +101,7 @@ export default function LotusChakraMap() {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-12">
           <p className="font-sans text-xs uppercase tracking-[0.25em] text-gold mb-4">{t('chakraMap.label')}</p>
-          <h2 className="font-serif text-3xl md:text-5xl text-dark font-light">Chakra &times; {t('chakraMap.title')}</h2>
+          <h2 className="font-serif text-3xl md:text-5xl text-dark font-light">{t('chakraMap.title')}</h2>
           <div className="h-px w-16 mx-auto mt-5" style={{ background: 'linear-gradient(90deg, transparent, #5A8EAE, transparent)' }} />
         </div>
 
