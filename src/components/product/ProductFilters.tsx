@@ -99,28 +99,6 @@ export function ProductFilters({ className }: ProductFiltersProps) {
         </div>
       </div>
 
-      {/* Collection Filter */}
-      <div className="mb-8 pb-8 border-b border-stone-light">
-        <h3 className="text-sm font-sans font-medium text-dark mb-4">{t('products.collection')}</h3>
-        <div className="space-y-3">
-          {collections.map((collection) => (
-            <label key={collection.id} className="flex items-center cursor-pointer group">
-              <input
-                type="checkbox"
-                checked={currentCollection === collection.slug}
-                onChange={(e) =>
-                  handleFilterChange('collection', e.target.checked ? collection.slug : null)
-                }
-                className="w-4 h-4 rounded border-stone accent-gold cursor-pointer"
-              />
-              <span className="ml-3 text-sm text-warm group-hover:text-dark transition-colors">
-                {translateCollection(collection.name)}
-              </span>
-            </label>
-          ))}
-        </div>
-      </div>
-
       {/* Price Filter */}
       <div className="mb-8 pb-8 border-b border-stone-light">
         <h3 className="text-sm font-sans font-medium text-dark mb-4">{t('products.priceRange')}</h3>
