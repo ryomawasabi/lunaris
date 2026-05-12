@@ -70,14 +70,29 @@ function GradientPlaceholder() {
   )
 }
 
+const LANG_MAP: Record<string, string> = {
+  en: 'en',
+  ja: 'ja',
+  ko: 'ko',
+  zh: 'zh',
+}
+
 export function BlogListClient({ posts, categories }: BlogListClientProps) {
-  const { t } = useLanguage()
+  const { t, locale } = useLanguage()
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
 
   const filteredPosts = useMemo(() => {
-    if (!selectedCategory) return posts
-    return posts.filter((post) => post.category === selectedCategory)
-  }, [posts, selectedCategory])
+    const lang = LANG_MAP[locale] || 'en'
+    let filtered = posts.filter((post) => (post.language || 'en') === lang)
+    // Fallback to English if no posts in current language
+    if (filtered.length === 0) {
+      filtered = posts.filter((post) => (post.language || 'en') === 'en')
+    }
+    if (selectedCategory) {
+      filtered = filtered.filter((post) => post.category === selectedCategory)
+    }
+    return filtered
+  }, [posts, selectedCategory, locale])
 
   return (
     <main className="min-h-screen bg-cream">

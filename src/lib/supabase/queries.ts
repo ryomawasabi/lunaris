@@ -333,6 +333,7 @@ function mapDbBlogPostToBlogPost(dbPost: any): BlogPost {
     metaTitle: dbPost.meta_title,
     metaDescription: dbPost.meta_description,
     relatedProducts: dbPost.related_products || [],
+    language: dbPost.language || 'en',
     createdAt: dbPost.created_at,
     updatedAt: dbPost.updated_at,
   }
@@ -344,6 +345,7 @@ function mapDbBlogPostToBlogPost(dbPost: any): BlogPost {
 export async function getBlogPosts(options?: {
   category?: string
   limit?: number
+  language?: string
 }): Promise<BlogPost[]> {
   try {
     const supabase = createServerSupabaseClient()
@@ -352,6 +354,10 @@ export async function getBlogPosts(options?: {
       .select('*')
       .eq('is_published', true)
       .lte('published_at', new Date().toISOString())
+
+    if (options?.language) {
+      query = query.eq('language', options.language)
+    }
 
     if (options?.category) {
       query = query.eq('category', options.category)

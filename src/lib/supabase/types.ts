@@ -198,6 +198,7 @@ export type DbBlogPost = {
   meta_title: string | null
   meta_description: string | null
   related_products: string[]
+  language: string
   created_at: string
   updated_at: string
 }
@@ -217,6 +218,7 @@ export type DbBlogPostInsert = {
   meta_title?: string | null
   meta_description?: string | null
   related_products?: string[]
+  language?: string
   created_at?: string
   updated_at?: string
 }

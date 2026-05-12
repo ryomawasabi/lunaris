@@ -68,6 +68,7 @@ export interface BlogPost {
   metaTitle: string;
   metaDescription: string;
   relatedProducts: string[];
+  language: string;
   createdAt: string;
   updatedAt: string;
 }
