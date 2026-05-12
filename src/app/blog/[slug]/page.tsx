@@ -16,13 +16,16 @@ export async function generateMetadata(
 
   if (!post) {
     return {
-      title: 'Article Not Found | CRESERA',
+      title: 'Article Not Found | YINYANG GUARDIAN',
     }
   }
 
   return {
-    title: `${post.metaTitle || post.title} | CRESERA`,
+    title: post.metaTitle || post.title,
     description: post.metaDescription || post.excerpt,
+    alternates: {
+      canonical: `https://yinyangguardian.com/blog/${params.slug}`,
+    },
     openGraph: {
       title: post.metaTitle || post.title,
       description: post.metaDescription || post.excerpt,
@@ -81,6 +84,7 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
     headline: post.title,
     description: post.excerpt,
     image: post.coverImage,
+    url: `https://yinyangguardian.com/blog/${params.slug}`,
     author: {
       '@type': 'Person',
       name: post.author,
@@ -89,8 +93,23 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
     dateModified: post.updatedAt,
     publisher: {
       '@type': 'Organization',
-      name: 'CRESERA',
+      name: 'YINYANG GUARDIAN',
+      logo: { '@type': 'ImageObject', url: 'https://yinyangguardian.com/icon.svg' },
     },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://yinyangguardian.com/blog/${params.slug}`,
+    },
+  }
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://yinyangguardian.com' },
+      { '@type': 'ListItem', position: 2, name: 'Journal', item: 'https://yinyangguardian.com/blog' },
+      { '@type': 'ListItem', position: 3, name: post.title, item: `https://yinyangguardian.com/blog/${params.slug}` },
+    ],
   }
 
   return (
@@ -98,6 +117,10 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <BlogArticleClient post={post} relatedProducts={relatedProducts} />
     </>

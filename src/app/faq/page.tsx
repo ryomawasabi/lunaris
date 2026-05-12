@@ -5,8 +5,15 @@ import { Accordion, AccordionItem } from '@/components/ui/Accordion';
 import { Button } from '@/components/ui/Button';
 
 export const metadata: Metadata = {
-  title: 'FAQ | YINYANG GUARDIAN',
-  description: 'Frequently asked questions about YINYANG GUARDIAN chakra crystal jewelry, energy alignment, shipping, and care.',
+  title: 'FAQ — Shipping, Returns, Crystal Care & Chakra Properties',
+  description: 'Find answers about YINYANG GUARDIAN crystal jewelry — shipping times, return policy, gemstone care, chakra properties, gift wrapping, and more. Free shipping on orders over $100.',
+  alternates: {
+    canonical: 'https://yinyangguardian.com/faq',
+  },
+  openGraph: {
+    title: 'FAQ | YINYANG GUARDIAN',
+    description: 'Frequently asked questions about our crystal jewelry, shipping, returns, and crystal care.',
+  },
 };
 
 export default function FAQPage() {
@@ -103,8 +110,28 @@ export default function FAQPage() {
     },
   ];
 
+  // Generate FAQ structured data for Google rich results
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqSections.flatMap(section =>
+      section.questions.map(q => ({
+        '@type': 'Question',
+        name: q.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: q.answer,
+        },
+      }))
+    ),
+  };
+
   return (
     <main className="min-h-screen bg-cream">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       {/* Hero Section */}
       <section className="relative h-80 md:h-96 overflow-hidden">
         <PlaceholderImage

@@ -40,7 +40,7 @@ export default function NewBlogPostPage() {
     content: '',
     excerpt: '',
     category: 'Wellness',
-    author: 'CRESERA',
+    author: 'YINYANG GUARDIAN',
     metaTitle: '',
     metaDescription: '',
     relatedProducts: '',

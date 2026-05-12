@@ -42,7 +42,7 @@ export default function EditBlogPostPage({ params }: { params: { id: string } })
     content: '',
     excerpt: '',
     category: 'Wellness',
-    author: 'CRESERA',
+    author: 'YINYANG GUARDIAN',
     metaTitle: '',
     metaDescription: '',
     relatedProducts: '',

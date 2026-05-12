@@ -6,11 +6,14 @@ import { COLLECTIONS as FALLBACK_COLLECTIONS } from '@/lib/data';
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Collections | YINYANG GUARDIAN',
-  description: 'Explore our sacred collections of spiritual jewelry, each channeling unique cosmic energies to protect, heal, and empower your soul.',
+  title: 'Collections — Crystal Bracelets, Essence Oils, Crystal Balls & More',
+  description: 'Explore our curated collections of spiritual crystal jewelry — Protection, Love & Harmony, Grounding, Abundance, and more. Each collection channels unique gemstone energies.',
+  alternates: {
+    canonical: 'https://yinyangguardian.com/collections',
+  },
   openGraph: {
-    title: 'Collections | YINYANG GUARDIAN',
-    description: 'Explore our sacred collections of spiritual jewelry channeling cosmic energy.',
+    title: 'Crystal Jewelry Collections | YINYANG GUARDIAN',
+    description: 'Curated crystal jewelry collections for protection, love, grounding, and abundance.',
   },
 };
 

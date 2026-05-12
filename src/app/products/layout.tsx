@@ -1,11 +1,14 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Shop All | YINYANG GUARDIAN',
-  description: 'Explore our full collection of meaningful luxury jewelry. Each piece features natural gemstones and spiritual symbolism for protection, love, and personal transformation.',
+  title: 'Shop Crystal Jewelry — Bracelets, Essence Oils & Crystal Balls',
+  description: 'Browse our handcrafted crystal jewelry collection. Crystal bracelets, essence oils, and divination spheres made with natural gemstones like Rose Quartz, Amethyst, and Citrine. Free shipping over $100.',
+  alternates: {
+    canonical: 'https://yinyangguardian.com/products',
+  },
   openGraph: {
-    title: 'Shop All | YINYANG GUARDIAN',
-    description: 'Explore our full collection of meaningful luxury jewelry with natural gemstones.',
+    title: 'Shop All Crystal Jewelry | YINYANG GUARDIAN',
+    description: 'Handcrafted crystal jewelry with natural gemstones. Bracelets, essence oils, and crystal balls for chakra alignment.',
   },
 }
 

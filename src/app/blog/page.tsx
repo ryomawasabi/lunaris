@@ -3,10 +3,10 @@ import { getBlogPosts, getBlogCategories } from '@/lib/supabase/queries'
 import { BlogListClient } from '@/components/blog/BlogListClient'
 
 export const metadata: Metadata = {
-  title: 'Journal | CRESERA',
+  title: 'Journal | YINYANG GUARDIAN',
   description: 'Explore crystal healing guides, wellness tips, and the stories behind our handcrafted jewelry.',
   openGraph: {
-    title: 'Journal | CRESERA',
+    title: 'Journal | YINYANG GUARDIAN',
     description: 'Explore crystal healing guides, wellness tips, and the stories behind our handcrafted jewelry.',
   },
 }
