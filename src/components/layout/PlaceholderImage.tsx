@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { Gem } from 'lucide-react';
 
 interface PlaceholderImageProps {
@@ -10,6 +11,8 @@ interface PlaceholderImageProps {
   className?: string;
   src?: string;
   alt?: string;
+  priority?: boolean;
+  sizes?: string;
 }
 
 export default function PlaceholderImage({
@@ -19,20 +22,25 @@ export default function PlaceholderImage({
   className = '',
   src,
   alt = 'Image',
+  priority = false,
+  sizes = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw',
 }: PlaceholderImageProps) {
   const [imageError, setImageError] = useState(false);
 
-  // If src is provided and hasn't failed to load, render the image
+  // If src is provided and hasn't failed to load, render the optimized image
   if (src && !imageError) {
     return (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src={src}
-        alt={alt}
-        loading="lazy"
-        className={`w-full h-full object-cover ${className}`}
-        onError={() => setImageError(true)}
-      />
+      <div className={`relative w-full h-full ${className}`}>
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes={sizes}
+          priority={priority}
+          className="object-cover"
+          onError={() => setImageError(true)}
+        />
+      </div>
     );
   }
 

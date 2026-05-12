@@ -36,6 +36,8 @@ export function ImageGallery({
           className="w-full h-full"
           src={typeof selectedImage === 'string' && (selectedImage.startsWith('http') || selectedImage.startsWith('data:') || selectedImage.startsWith('/')) ? selectedImage : undefined}
           alt={`${productName} image ${selectedImageIndex + 1}`}
+          priority={selectedImageIndex === 0}
+          sizes="(max-width: 1024px) 100vw, 50vw"
         />
       </div>
 

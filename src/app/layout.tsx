@@ -25,6 +25,7 @@ import { WishlistProvider } from "@/components/providers/WishlistProvider";
 import { LenisProvider } from "@/components/providers/LenisProvider";
 import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import { CartDrawer } from "@/components/cart/CartDrawer";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 
 export const metadata: Metadata = {
   title: {
@@ -122,6 +123,7 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-cream antialiased">
+        <GoogleAnalytics />
         <AuthProvider>
           <LanguageProvider>
             <ProductStatusProvider>
