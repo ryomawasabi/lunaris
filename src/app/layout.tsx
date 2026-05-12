@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   title: "YINYANG GUARDIAN | Meaningful Luxury Jewelry",
   description: "Discover YINYANG GUARDIAN luxury spiritual jewelry crafted with intention. Each piece features natural gemstones and carries symbolic meaning. Shop meaningful jewelry for protection, love, prosperity, and personal transformation.",
   metadataBase: new URL("https://yinyangguardian.com"),
+  icons: {
+    icon: "/icon.svg",
+  },
   openGraph: {
     title: "YINYANG GUARDIAN | Meaningful Luxury Jewelry",
     description: "Discover YINYANG GUARDIAN luxury spiritual jewelry crafted with intention and natural gemstones.",
