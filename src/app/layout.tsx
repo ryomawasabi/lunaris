@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   },
   description: "Shop handcrafted crystal jewelry designed to align your chakras and restore balance. Featuring natural gemstones like Rose Quartz, Amethyst, and Citrine with meaningful yin-yang symbolism. Free shipping on orders over $100.",
   metadataBase: new URL("https://yinyangguardian.com"),
+  verification: {
+    google: "2vRn23vj5SKkvImsgZgQte7ixgAiSNRRw_7vTIS-xtI",
+  },
   icons: {
     icon: "/icon.svg",
   },
