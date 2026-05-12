@@ -15,9 +15,9 @@ export function ProductFilters({ className }: ProductFiltersProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const { categories, collections } = useProductStatus();
+  const { categories } = useProductStatus();
   const { t } = useLanguage();
-  const { translateCategory, translateCollection } = useProductTranslation();
+  const { translateCategory } = useProductTranslation();
 
   const PRICE_RANGES = [
     { label: t('products.priceUnder75'), min: 0, max: 75 },
