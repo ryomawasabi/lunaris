@@ -2,10 +2,22 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { getZodiacFromDate, getMatchingCrystalTypes, POWER_STONE_EFFECTS } from '@/lib/zodiac';
+import {
+  getZodiacFromDate,
+  getMatchingCrystalTypes,
+  POWER_STONE_EFFECTS,
+  getLocalizedZodiacName,
+  getLocalizedElement,
+  getLocalizedEnergy,
+  getLocalizedEnergyDescription,
+  getLocalizedCrystalReason,
+  getLocalizedEffect,
+  getLocalizedCrystalName,
+} from '@/lib/zodiac';
 import type { ZodiacSign } from '@/lib/zodiac';
 import { useProductStatus } from '@/components/providers/ProductStatusProvider';
 import { useLanguage } from '@/components/providers/LanguageProvider';
+import { useProductTranslation } from '@/hooks/useProductTranslation';
 import type { Product } from '@/lib/types';
 import { Sparkles, ArrowRight, RotateCcw, Calendar, ShoppingBag } from 'lucide-react';
 import { ZodiacWheel } from './ZodiacWheel';
@@ -19,7 +31,8 @@ interface MatchedProduct {
 }
 
 export function CrystalQuiz() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
+  const { translateProduct, translateCategory } = useProductTranslation();
   const [step, setStep] = useState<Step>('intro');
   const [month, setMonth] = useState('');
   const [day, setDay] = useState('');
@@ -212,16 +225,16 @@ export function CrystalQuiz() {
                 {result.symbol}
               </div>
               <h2 className="font-serif text-5xl md:text-7xl text-white mb-4" style={{ textShadow: '0 2px 20px rgba(0,0,0,0.5)' }}>
-                {result.name}
+                {getLocalizedZodiacName(result, locale)}
               </h2>
               <p className="font-sans text-sm md:text-base text-[#8BB8D6] tracking-[0.2em] uppercase mb-6">
-                {result.dateRange} · {t('quiz.element', { element: result.element })}
+                {result.dateRange} · {getLocalizedElement(result.element, locale)}{locale !== 'en' ? '' : ' Element'}
               </p>
               <p className="font-serif text-2xl md:text-3xl text-[#8BB8D6]/80 italic mb-10">
-                &ldquo;{result.energy}&rdquo;
+                &ldquo;{getLocalizedEnergy(result.energy, locale)}&rdquo;
               </p>
               <p className="font-sans text-white/60 max-w-xl mx-auto text-sm md:text-base leading-relaxed">
-                {result.energyDescription}
+                {getLocalizedEnergyDescription(result.name, locale)}
               </p>
             </div>
 
@@ -243,6 +256,8 @@ export function CrystalQuiz() {
                 const crystalProducts = matchedProducts.filter(
                   (mp) => mp.matchedCrystal === crystal.name
                 );
+                const localizedCrystalName = getLocalizedCrystalName(crystal.name, locale);
+                const localizedReason = getLocalizedCrystalReason(result.name, crystal.name, locale);
 
                 return (
                   <div
@@ -255,10 +270,15 @@ export function CrystalQuiz() {
                       <div className="flex items-center gap-3 mb-2">
                         <span className="text-lg text-gold">◆</span>
                         <h4 className="font-serif text-xl md:text-2xl text-dark">
-                          {crystal.name}
-                          {POWER_STONE_EFFECTS[crystal.name]?.nameJa && (
+                          {locale === 'en' ? crystal.name : localizedCrystalName}
+                          {locale === 'en' && POWER_STONE_EFFECTS[crystal.name]?.nameJa && (
                             <span className="text-sm font-sans text-warm-light ml-2">
                               {POWER_STONE_EFFECTS[crystal.name].nameJa}
+                            </span>
+                          )}
+                          {locale !== 'en' && (
+                            <span className="text-sm font-sans text-warm-light ml-2">
+                              {crystal.name}
                             </span>
                           )}
                         </h4>
@@ -271,13 +291,13 @@ export function CrystalQuiz() {
                               key={effect}
                               className="inline-block text-xs font-sans px-2.5 py-1 rounded-full bg-gold/10 text-gold-dark"
                             >
-                              {effect}
+                              {getLocalizedEffect(effect, locale)}
                             </span>
                           ))}
                         </div>
                       )}
                       <p className="font-sans text-warm text-sm leading-relaxed">
-                        {crystal.reason}
+                        {localizedReason || crystal.reason}
                       </p>
                     </div>
 
@@ -285,7 +305,7 @@ export function CrystalQuiz() {
                     {crystalProducts.length > 0 && (
                       <div className="mt-5 pt-5 border-t border-stone-light/60">
                         <p className="text-xs font-sans text-warm-light uppercase tracking-wider mb-4">
-                          {t('quiz.recommendedPieces', { crystal: crystal.name })}
+                          {t('quiz.recommendedPieces', { crystal: localizedCrystalName })}
                         </p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                           {crystalProducts.map(({ product }) => (
@@ -298,17 +318,17 @@ export function CrystalQuiz() {
                               <div className="relative aspect-[4/3] overflow-hidden bg-stone-light">
                                 <img
                                   src={product.images[0]}
-                                  alt={product.name}
+                                  alt={translateProduct(product).name}
                                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                 />
                               </div>
                               {/* Product Info */}
                               <div className="p-4">
                                 <h5 className="font-serif text-base md:text-lg text-dark leading-tight mb-1 group-hover:text-gold transition-colors">
-                                  {product.name}
+                                  {translateProduct(product).name}
                                 </h5>
                                 <p className="text-xs font-sans text-warm-light mb-3">
-                                  {product.crystalType} · {product.category}
+                                  {getLocalizedCrystalName(product.crystalType, locale)} · {translateCategory(product.category)}
                                 </p>
                                 {/* Crystal Effects Tags */}
                                 <div className="flex flex-wrap gap-1.5">
@@ -317,7 +337,7 @@ export function CrystalQuiz() {
                                       key={effect}
                                       className="inline-block text-xs font-sans px-2.5 py-1 rounded-full bg-gold/10 text-gold-dark"
                                     >
-                                      {effect}
+                                      {getLocalizedEffect(effect, locale)}
                                     </span>
                                   ))}
                                 </div>
@@ -342,7 +362,7 @@ export function CrystalQuiz() {
                   {t('quiz.celestialCollection')}
                 </h3>
                 <p className="font-sans text-warm text-sm">
-                  {t('quiz.allPiecesAligned', { sign: result.name })}
+                  {t('quiz.allPiecesAligned', { sign: getLocalizedZodiacName(result, locale) })}
                 </p>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -357,20 +377,20 @@ export function CrystalQuiz() {
                     <div className="relative aspect-square overflow-hidden bg-stone-light">
                       <img
                         src={product.images[0]}
-                        alt={product.name}
+                        alt={translateProduct(product).name}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                       {/* Crystal Type Badge */}
                       <div className="absolute top-2 left-2">
                         <span className="inline-block text-[10px] font-sans px-2 py-1 rounded-full bg-dark/70 text-cream backdrop-blur-sm">
-                          {product.crystalType}
+                          {getLocalizedCrystalName(product.crystalType, locale)}
                         </span>
                       </div>
                     </div>
                     {/* Info */}
                     <div className="p-3 md:p-4">
                       <h5 className="font-serif text-sm md:text-base text-dark leading-tight mb-2 group-hover:text-gold transition-colors">
-                        {product.name}
+                        {translateProduct(product).name}
                       </h5>
                       {/* Effects */}
                       <div className="flex flex-wrap gap-1 mb-2">
@@ -379,7 +399,7 @@ export function CrystalQuiz() {
                             key={effect}
                             className="inline-block text-[10px] font-sans px-2 py-0.5 rounded-full bg-gold/10 text-gold-dark"
                           >
-                            {effect}
+                            {getLocalizedEffect(effect, locale)}
                           </span>
                         ))}
                       </div>
