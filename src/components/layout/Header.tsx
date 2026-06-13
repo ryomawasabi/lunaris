@@ -37,6 +37,9 @@ export default function Header() {
 
   const navLinks = [
     { label: t('nav.shopAll'), href: '/products' },
+    // Bazi quiz entry point. English label by design (quiz launches EN-only);
+    // sits next to Soul Stone Discovery so the two can be swapped later.
+    { label: 'Bazi Reading', href: '/bazi' },
     { label: t('nav.soulStoneDiscovery'), href: '/crystal-quiz' },
     { label: t('nav.crystalEssence'), href: '/gift-box' },
     { label: t('nav.collections'), href: '/collections' },
