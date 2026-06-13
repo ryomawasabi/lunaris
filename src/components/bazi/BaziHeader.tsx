@@ -23,9 +23,9 @@ export function BaziHeader() {
     <header className="sticky top-0 z-40 border-b border-bazi-border/60 bg-bazi-ink/95 backdrop-blur supports-[backdrop-filter]:bg-bazi-ink/80">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-5 py-4">
         <Link
-          href="/bazi"
+          href="/"
           className="font-serif text-xl tracking-[0.22em] text-bazi-cream sm:text-2xl"
-          aria-label="YINYANG GUARDIAN — Discover your guardian"
+          aria-label="YINYANG GUARDIAN — back to home"
         >
           YINYANG GUARDIAN
         </Link>
