@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Search, User, Heart, ShoppingBag, Menu, X, LogOut } from 'lucide-react';
 import { useAuth } from '@/components/auth/AuthProvider';
@@ -19,6 +20,7 @@ export default function Header() {
   const { itemCount, setCartOpen } = useCart();
   const { wishlistCount } = useWishlist();
   const { t } = useLanguage();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,6 +30,10 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // The Bazi diagnostic flow uses its own ink-green header (BaziHeader);
+  // suppress the global site chrome there so the page reads as one sheet.
+  if (pathname?.startsWith('/bazi')) return null;
 
   const navLinks = [
     { label: t('nav.shopAll'), href: '/products' },
