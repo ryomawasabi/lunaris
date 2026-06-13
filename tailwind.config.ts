@@ -32,10 +32,30 @@ const config: Config = {
           star: '#A0D0F0',
           aura: '#6BA0C0',
         },
+        // Bazi quiz feature tokens (ADD ONLY - spec 1.7).
+        // Namespaced under bazi-* so existing site gold/cream/dark
+        // tokens are untouched. Mood: night / ink / jade / gold.
+        bazi: {
+          ink: '#15211C',
+          raised: '#1C2B24',
+          border: '#2C3B33',
+          gold: '#C9A86A',
+          cream: '#F2EBDD',
+          body: '#D8D2C4',
+          muted: '#8A9389',
+        },
+        element: {
+          wood: '#7BAE6E',
+          fire: '#D4604A',
+          earth: '#D9A441',
+          metal: '#C9C2B4',
+          water: '#5A8FB8',
+        },
       },
       fontFamily: {
         serif: ['var(--font-serif)', 'Cormorant Garamond', 'Georgia', 'serif'],
         sans: ['var(--font-sans)', 'Inter', 'system-ui', 'sans-serif'],
+        'serif-jp': ['var(--font-serif-jp)', 'Noto Serif JP', 'serif'],
       },
       spacing: {
         '18': '4.5rem',

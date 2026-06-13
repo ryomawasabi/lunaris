@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Instagram, Facebook, MapPin, Twitter } from 'lucide-react';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 import LanguageSwitcher from '@/components/layout/LanguageSwitcher';
@@ -8,6 +9,10 @@ import LanguageSwitcher from '@/components/layout/LanguageSwitcher';
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const { t } = useLanguage();
+  const pathname = usePathname();
+
+  // Hidden in the Bazi diagnostic flow (own ink-green sheet, no exit ramps).
+  if (pathname?.startsWith('/bazi')) return null;
 
   return (
     <footer className="bg-dark text-cream texture-noise-dark">

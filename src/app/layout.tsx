@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Cormorant_Garamond, Inter, Noto_Serif_JP } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 
@@ -16,6 +16,15 @@ const inter = Inter({
   weight: ["300", "400", "500", "600"],
   display: "swap",
   variable: "--font-sans",
+});
+
+// Bazi quiz feature: CJK serif for kanji pillar tiles (§1.7).
+// Exposed as the `--font-serif-jp` CSS var; used via `font-serif-jp`.
+const notoSerifJp = Noto_Serif_JP({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-serif-jp",
 });
 import Footer from "@/components/layout/Footer";
 import { AuthProvider } from "@/components/auth/AuthProvider";
@@ -85,7 +94,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${inter.variable} ${notoSerifJp.variable}`}>
       <head>
         <script
           type="application/ld+json"
