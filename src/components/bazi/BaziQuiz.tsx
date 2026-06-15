@@ -93,6 +93,17 @@ export function BaziQuiz() {
     if (day && Number(day) > maxDay) setDay(String(maxDay));
   }, [maxDay, day]);
 
+  // Pre-fill birth date from the homepage hero hand-off (/bazi?y=&m=&d=).
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const sp = new URLSearchParams(window.location.search);
+    const y = sp.get('y'), m = sp.get('m'), d = sp.get('d');
+    if (y) setYear(y);
+    if (m) setMonth(m);
+    if (d) setDay(d);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // Debounced city autocomplete
   useEffect(() => {
     if (city && cityQuery === city.label) return;
