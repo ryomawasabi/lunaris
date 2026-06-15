@@ -11,6 +11,7 @@ import { FloatingParticles } from '@/components/animations/FloatingParticles';
 import { LotusPond } from '@/components/animations/LotusPond';
 import { SectionDivider } from '@/components/animations/SectionDivider';
 import { useLanguage } from '@/components/providers/LanguageProvider';
+import { BaziHomeHero } from '@/components/bazi/BaziHomeHero';
 
 export default function Home() {
   const { t } = useLanguage();
@@ -19,6 +20,9 @@ export default function Home() {
 
       {/* Cinematic Hero */}
       <AnimatedHero />
+
+      {/* Bazi quiz entry — prominent interactive hero CTA */}
+      <BaziHomeHero />
 
       {/* Opening Statement */}
       <section className="py-20 md:py-32 px-4 bg-dark relative overflow-hidden">
