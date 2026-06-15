@@ -55,7 +55,8 @@ export const STONES: Record<ElementKey, Stone> = {
   },
   metal: {
     category: { en: 'Clear Quartz & Moonstone' },
-    crystalTypes: ['Clear Quartz', 'Moonstone', 'Quartz'],
+    // Specific names only — a bare 'Quartz' token over-matched Smoky/Rose Quartz.
+    crystalTypes: ['Clear Quartz', 'Moonstone'],
     description: {
       en: 'Clear, resonant stones of expression and clarity that carry a true note without ever raising their voice. They are for the days you want to be heard — and remembered.',
     },
