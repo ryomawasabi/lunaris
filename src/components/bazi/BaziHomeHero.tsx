@@ -12,6 +12,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import type { PillarView } from '@/lib/bazi/types';
+import { FloatingParticles } from '@/components/animations/FloatingParticles';
 
 const CURRENT_YEAR = new Date().getFullYear();
 const YEARS = Array.from({ length: CURRENT_YEAR - 1900 + 1 }, (_, i) => CURRENT_YEAR - i);
@@ -65,8 +66,21 @@ export function BaziHomeHero() {
   const previewKey = preview ? preview.map((p) => p.ganzhi).join('') : 'empty';
 
   return (
-    <section className="bg-bazi-ink texture-noise-dark px-5 py-16 md:py-20">
-      <div className="mx-auto max-w-2xl text-center">
+    <section className="relative overflow-hidden bg-bazi-ink texture-noise-dark px-5 py-16 md:py-20">
+      {/* Ambient motion: gold motes + slow-rotating faint rings */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <FloatingParticles count={16} color="#C9A86A" />
+        <div
+          className="absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-bazi-gold/[0.06]"
+          style={{ animation: 'spin 90s linear infinite' }}
+        />
+        <div
+          className="absolute left-1/2 top-1/2 h-[360px] w-[360px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-element-water/[0.06]"
+          style={{ animation: 'spin 120s linear infinite reverse' }}
+        />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-2xl text-center">
         <p className="text-xs uppercase tracking-[0.3em] text-bazi-gold">New · Bazi Reading</p>
         <h2 className="mt-3 font-serif text-4xl leading-tight text-bazi-cream sm:text-5xl">
           Discover Your Guardian

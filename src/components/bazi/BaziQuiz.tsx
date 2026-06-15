@@ -27,6 +27,7 @@ const MONTHS = [
 ];
 const HOURS = Array.from({ length: 24 }, (_, i) => i);
 const MINUTES = Array.from({ length: 60 }, (_, i) => i);
+const BIRTH_KEY = 'yyg-bazi-birth';
 
 function daysInMonth(year: number, month: number): number {
   if (!year || !month) return 31;
@@ -93,14 +94,34 @@ export function BaziQuiz() {
     if (day && Number(day) > maxDay) setDay(String(maxDay));
   }, [maxDay, day]);
 
-  // Pre-fill birth date from the homepage hero hand-off (/bazi?y=&m=&d=).
+  // Pre-fill on mount. Priority: homepage hero hand-off (/bazi?y=&m=&d=) wins;
+  // otherwise restore the visitor's last birth details from localStorage (#4
+  // "remember my birth date/time" — lightweight, no login required).
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const sp = new URLSearchParams(window.location.search);
-    const y = sp.get('y'), m = sp.get('m'), d = sp.get('d');
-    if (y) setYear(y);
-    if (m) setMonth(m);
-    if (d) setDay(d);
+    const qy = sp.get('y'), qm = sp.get('m'), qd = sp.get('d');
+    if (qy || qm || qd) {
+      if (qy) setYear(qy);
+      if (qm) setMonth(qm);
+      if (qd) setDay(qd);
+      return;
+    }
+    try {
+      const saved = JSON.parse(localStorage.getItem(BIRTH_KEY) || 'null');
+      if (saved && typeof saved === 'object') {
+        if (saved.year) setYear(String(saved.year));
+        if (saved.month) setMonth(String(saved.month));
+        if (saved.day) setDay(String(saved.day));
+        if (saved.unknownTime) {
+          setUnknownTime(true);
+        } else {
+          if (saved.hour !== '' && saved.hour != null) setHour(String(saved.hour));
+          if (saved.minute !== '' && saved.minute != null) setMinute(String(saved.minute));
+        }
+        if (saved.city?.id) { setCity(saved.city); setCityQuery(saved.city.label); }
+      }
+    } catch { /* ignore corrupt storage */ }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -146,6 +167,17 @@ export function BaziQuiz() {
     if (!city) return setError('Please choose your birth city.');
 
     const timePayload = !unknownTime ? { hour: Number(hour), minute: Number(minute || 0) } : null;
+
+    // Remember these birth details for the visitor's next visit (#4).
+    try {
+      localStorage.setItem(BIRTH_KEY, JSON.stringify({
+        year, month, day,
+        hour: unknownTime ? '' : hour,
+        minute: unknownTime ? '' : minute,
+        unknownTime,
+        city,
+      }));
+    } catch { /* storage may be unavailable */ }
 
     setStep('revealing');
     try {
