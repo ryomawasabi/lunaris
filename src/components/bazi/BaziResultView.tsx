@@ -86,6 +86,11 @@ export function BaziResultView({ result, onRestart }: { result: BaziResult; onRe
     const seen = new Set<string>();
     for (const p of products) {
       if (p.isHidden || p.isSoldOut) continue;
+      // Only wearable / crystal pieces belong under "wear your stone" — skip
+      // essence oils, diffusers, candles, etc. (which may carry a stray crystal
+      // tag via the gemstone fallback) so they never surface here.
+      const cat = (p.category || '').toLowerCase();
+      if (/oil|diffuser|essence|candle|spray|incense/.test(cat)) continue;
       const ct = (p.crystalType || '').toLowerCase();
       const name = (p.name || '').toLowerCase();
       if (types.some((t) => ct === t || ct.includes(t) || name.includes(t)) && !seen.has(p.id)) {
