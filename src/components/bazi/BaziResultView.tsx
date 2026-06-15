@@ -5,9 +5,12 @@
  * Presentational: receives a fully locale-resolved BaziResult from the engine.
  */
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import type { BaziResult } from '@/lib/bazi/types';
+import type { Product } from '@/lib/types';
+import { useProductStatusSafe } from '@/components/providers/ProductStatusProvider';
+import { ProductCard } from '@/components/product/ProductCard';
 
 function EmailCapture({ shareImageUrl }: { shareImageUrl: string }) {
   const [email, setEmail] = useState('');
@@ -71,6 +74,28 @@ function EmailCapture({ shareImageUrl }: { shareImageUrl: string }) {
 
 export function BaziResultView({ result, onRestart }: { result: BaziResult; onRestart?: () => void }) {
   const [copied, setCopied] = useState(false);
+  const productStatus = useProductStatusSafe();
+
+  // In-stock products whose stone matches the recommended stone (same approach
+  // as Soul Stone Discovery): matches on crystal_type or product name. Empty
+  // when nothing in stock for this stone — the CTA then points at the shop.
+  const matchedProducts = useMemo(() => {
+    const products = productStatus?.products ?? [];
+    const types = result.stone.crystalTypes.map((t) => t.toLowerCase());
+    const out: Product[] = [];
+    const seen = new Set<string>();
+    for (const p of products) {
+      if (p.isHidden || p.isSoldOut) continue;
+      const ct = (p.crystalType || '').toLowerCase();
+      const name = (p.name || '').toLowerCase();
+      if (types.some((t) => ct === t || ct.includes(t) || name.includes(t)) && !seen.has(p.id)) {
+        out.push(p);
+        seen.add(p.id);
+      }
+      if (out.length >= 3) break;
+    }
+    return out;
+  }, [productStatus?.products, result.stone.crystalTypes]);
 
   async function share() {
     const url = typeof window !== 'undefined' ? window.location.origin + result.shareImageUrl : result.shareImageUrl;
@@ -185,13 +210,25 @@ export function BaziResultView({ result, onRestart }: { result: BaziResult; onRe
         )}
       </div>
 
+      {/* 9b — In-stock pieces in your stone (images) */}
+      {matchedProducts.length > 0 && (
+        <div className="mt-6">
+          <p className="mb-3 text-center text-xs uppercase tracking-[0.25em] text-bazi-muted">
+            Wear your guardian&apos;s stone
+          </p>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+            {matchedProducts.map((p) => <ProductCard key={p.id} product={p} />)}
+          </div>
+        </div>
+      )}
+
       {/* 10 — CTA + share/save */}
       <div className="mt-8 flex flex-col items-center gap-4">
         <Link
           href={result.stone.productHref}
           className="rounded-md bg-bazi-gold px-8 py-3 font-medium text-bazi-ink transition hover:opacity-90"
         >
-          See {result.stone.category}
+          {matchedProducts.length > 0 ? `Shop all ${result.stone.category}` : `See ${result.stone.category}`}
         </Link>
         <div className="flex items-center gap-5 text-sm text-bazi-muted">
           <button onClick={share} className="hover:text-bazi-gold">
