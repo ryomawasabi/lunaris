@@ -28,8 +28,15 @@ function fmtTime(h: number, m: number): string {
 async function resolveProductHref(crystalTypes: string[]): Promise<string> {
   try {
     const supabase = createServerSupabaseClient();
+    // Match the recommended stone against crystal_type, gemstone, OR product
+    // name so a product auto-connects as long as ANY of those carries the stone
+    // name (see BAZI_STONE_PRODUCT_GUIDE.md for the tagging map).
     const orFilter = crystalTypes
-      .flatMap((ct) => [`crystal_type.ilike.%${ct}%`, `gemstone.ilike.%${ct}%`])
+      .flatMap((ct) => [
+        `crystal_type.ilike.%${ct}%`,
+        `gemstone.ilike.%${ct}%`,
+        `name.ilike.%${ct}%`,
+      ])
       .join(',');
     const { data } = await supabase
       .from('products')

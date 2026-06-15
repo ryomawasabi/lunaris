@@ -29,35 +29,35 @@ export const STONES: Record<ElementKey, Stone> = {
     category: { en: 'Obsidian' },
     crystalTypes: ['Black Obsidian', 'Obsidian', 'Smoky Quartz'],
     description: {
-      en: 'A grounding dark stone that holds what it gathers — depth, memory, and the quiet pull of moving water.',
+      en: 'A grounding obsidian that holds what it gathers — depth, memory, and the quiet pull of moving water. Worn close it steadies a restless mind and keeps your own counsel: the piece you reach for when the world asks too much.',
     },
   },
   fire: {
     category: { en: 'Carnelian' },
     crystalTypes: ['Carnelian', 'Red Agate', 'Red Jasper'],
     description: {
-      en: 'A warm red stone of nerve and momentum — it keeps the spark lit when the moment asks you to move.',
+      en: 'A warm carnelian of nerve and momentum that keeps the spark lit when the moment asks you to move. Wear it on the days you need to begin — courage you can feel against the skin.',
     },
   },
   wood: {
     category: { en: 'Green Aventurine' },
     crystalTypes: ['Green Aventurine', 'Aventurine', 'Green Fluorite'],
     description: {
-      en: 'A fresh green stone of opening and growth — the feeling of a new horizon seen from somewhere high.',
+      en: 'A fresh green aventurine of opening and growth — the feeling of a new horizon seen from somewhere high. Kept near, it turns hesitation into a first step: a quiet talisman for everything still ahead of you.',
     },
   },
   earth: {
     category: { en: "Citrine & Tiger's Eye" },
     crystalTypes: ['Citrine', "Tiger's Eye", 'Tigers Eye', 'Tiger Eye'],
     description: {
-      en: 'Steadying golden stones that hold the centre — warmth you can stand on when everything else shifts.',
+      en: 'Steadying golden stones that hold the centre — warmth you can stand on when everything else shifts. Worn together they carry the calm confidence of someone the whole room quietly leans on.',
     },
   },
   metal: {
     category: { en: 'Clear Quartz & Moonstone' },
     crystalTypes: ['Clear Quartz', 'Moonstone', 'Quartz'],
     description: {
-      en: 'Clear, resonant stones of expression and clarity — they carry a true note without ever raising their voice.',
+      en: 'Clear, resonant stones of expression and clarity that carry a true note without ever raising their voice. They are for the days you want to be heard — and remembered.',
     },
   },
 };
