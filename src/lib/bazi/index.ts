@@ -18,7 +18,7 @@ import type { Chart, Pillar } from './engine';
 import { classify, type BranchResult } from './branching';
 import { loc, type Locale } from './locale';
 import { ARCHETYPE_TITLE } from './data/archetypes';
-import { GUARDIANS } from './data/guardians';
+import { getGuardian } from './data/guardians';
 import { STONES, STONE_ROLE } from './data/stones';
 import { RARITY } from './data/rarity';
 import { getTemplate, fallbackPersonality } from './data/templates';
@@ -154,7 +154,11 @@ export function composeResult(
     : loc(fallbackPersonality(dm.char, dm.polarity, branch.favorable), locale);
   const reading = template ? loc(template.reading, locale) : null;
 
-  const guardian = GUARDIANS[branch.favorable];
+  // The guardian variant is complementary to the Day Master's polarity
+  // (yin attracts yang — the son that completes you), giving 9 across the
+  // five elements (Water keeps one shared son).
+  const guardianPolarity = chart.dayMaster.polarity === 'yang' ? 'yin' : 'yang';
+  const guardian = getGuardian(branch.favorable, guardianPolarity);
   const stone = STONES[branch.favorable];
   const stoneRole =
     branch.stoneRole === 'nurturing'
